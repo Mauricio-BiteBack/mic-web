@@ -19,11 +19,10 @@ export default function CotizarModal({ channels, onClose }: CotizarModalProps) {
     setLoading(true);
     setError(false);
     const fd = new FormData(e.currentTarget);
-    const res = await fetch('/api/cotizar', {
+    const res = await fetch('/api/cotizacion', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        origen: 'cotizar',
         nombre: fd.get('nombre'),
         empresa: fd.get('empresa'),
         email: fd.get('email'),

@@ -62,16 +62,15 @@ export default function ContactoPage() {
     setLoading(true);
     setError(false);
     const fd = new FormData(e.currentTarget);
-    const res = await fetch('/api/cotizar', {
+    const res = await fetch('/api/contacto', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        origen: 'contacto',
         nombre: fd.get('nombre'),
         empresa: fd.get('empresa'),
         email: fd.get('email'),
         whatsapp: fd.get('whatsapp'),
-        ciudad: fd.get('pais'),
+        pais: fd.get('pais'),
         mensaje: fd.get('mensaje'),
       }),
     });
