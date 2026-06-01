@@ -8,7 +8,7 @@ import PageShell from '@/components/PageShell';
 
 const STATS = [
   { num: '19+', label: 'Años de experiencia' },
-  { num: '40+', label: 'Canales disponibles' },
+  { num: '90+', label: 'Canales disponibles' },
   { num: '700+', label: 'Clientes activos' },
   { num: '14', label: 'Países en LATAM' },
 ];
@@ -37,7 +37,7 @@ const VALUES = [
   {
     num: '03',
     title: 'Responsabilidad',
-    desc: 'Cumplimos lo que prometemos, siempre. 19 años de trayectoria ininterrumpida respaldan nuestra palabra y nuestra capacidad de respuesta.',
+    desc: 'Cumplimos lo que prometemos, siempre. 26 años de trayectoria ininterrumpida respaldan nuestra palabra y nuestra capacidad de respuesta.',
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <polyline points="20 6 9 17 4 12"/>
@@ -70,22 +70,10 @@ const TEAM = [
     img: '/nosotros-Emily.png',
   },
   {
-    name: 'Yuleima Uzcátegui',
-    role: 'Ingeniero de Sistemas',
-    bio: 'Especialista en desarrollo de software, implementación de plataformas IPTV y soporte a Headend, con más de 10 años de experiencia en proyectos tecnológicos en múltiples industrias.',
-    img: '/nosotros-Yuleima.png',
-  },
-  {
     name: 'Nailuj López Izarra',
     role: 'Ejecutiva Comercial',
     bio: 'Amplia experiencia en telecomunicaciones, señales de TV, digitalización y plataformas IPTV y OTT. Propone soluciones concretas a los desafíos comerciales de cada cliente.',
     img: '/nosotros-Nailuj.png',
-  },
-  {
-    name: 'Judith García',
-    role: 'Ejecutiva Comercial',
-    bio: 'Especialista en telecomunicaciones y señales de televisión, con vasta experiencia en conversión de contenidos analógicos a digitales, IPTV y servicios OTT.',
-    img: '/nosotros-Judith.png',
   },
   {
     name: 'Thalia Rodríguez',
@@ -120,7 +108,7 @@ export default function NosotrosPage() {
               Lima · Miami · LATAM
             </div>
             <h1 className="text-[clamp(32px,4.5vw,58px)] font-bold leading-[1.06] tracking-[-0.025em] mb-5">
-              19 años conectando contenido con audiencias en Latinoamérica.
+              26 años conectando contenido con audiencias en Latinoamérica.
             </h1>
             <p className="text-[18px] text-white/78 leading-relaxed">
               Somos una empresa peruana con presencia en Lima y Miami, especializada en la distribución de señales de TV e implementación de tecnología para cableoperadores.
@@ -191,7 +179,7 @@ export default function NosotrosPage() {
               <p className="text-[18px] text-[#E8078B] font-semibold mb-6">Un sueño hecho realidad.</p>
               <div className="space-y-4 text-[16px] text-[#6a7196] leading-[1.8]">
                 <p>
-                  Hace 19 años empezamos a comercializar y distribuir canales de televisión internacionales europeos para toda la Región Andina. Poco a poco fuimos entendiendo que nuestro mercado exigía contenidos más cercanos, y empezamos a distribuir DHE, Pasiones, Cine Latino, Inti y otros contenidos de altísima calidad.
+                  Hace 26 años empezamos a comercializar y distribuir canales de televisión internacionales europeos para toda la Región Andina. Poco a poco fuimos entendiendo que nuestro mercado exigía contenidos más cercanos, y empezamos a distribuir DHE, Pasiones, Cine Latino, Inti y otros contenidos de altísima calidad.
                 </p>
                 <p>
                   Conscientes de lo constantes que son los cambios, fuimos los primeros en apostar por la tecnología IP. Hoy distribuimos contenidos lineales y on demand para las distintas plataformas, posicionándonos como la <strong className="text-[#0a1133]">única empresa peruana</strong> que distribuye, gestiona y realiza streaming de contenidos para los distintos actores del mercado de telecomunicaciones: operadores de cable e internet, ISP, WISP, canales de TV y servicios de streaming.

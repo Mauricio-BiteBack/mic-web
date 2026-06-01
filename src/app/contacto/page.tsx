@@ -54,12 +54,30 @@ const SOCIALS = [
 
 export default function ContactoPage() {
   const [sent, setSent] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    // TODO: wire to API route with Nodemailer/Resend → info@mic.pe
-    console.log('Form submitted — would send to info@mic.pe');
-    setSent(true);
+    setLoading(true);
+    setError(false);
+    const fd = new FormData(e.currentTarget);
+    const res = await fetch('/api/cotizar', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        origen: 'contacto',
+        nombre: fd.get('nombre'),
+        empresa: fd.get('empresa'),
+        email: fd.get('email'),
+        whatsapp: fd.get('whatsapp'),
+        ciudad: fd.get('pais'),
+        mensaje: fd.get('mensaje'),
+      }),
+    });
+    setLoading(false);
+    if (res.ok) setSent(true);
+    else setError(true);
   }
 
   return (
@@ -246,11 +264,15 @@ export default function ContactoPage() {
                       className="border border-gray-200 rounded-[10px] px-3.5 py-3 text-[14px] outline-none focus:border-[#193595] transition-colors resize-none"
                     />
                   </div>
+                  {error && (
+                    <p className="text-[13px] text-red-500 text-center">Hubo un error al enviar. Escríbenos directamente a info@mic.pe</p>
+                  )}
                   <button
                     type="submit"
-                    className="mt-1 py-4 bg-[#E8078B] text-white font-semibold text-[15px] rounded-[12px] shadow-[0_6px_18px_rgba(232,7,139,0.35)] hover:bg-[#ff1e9f] transition-all duration-200 cursor-pointer"
+                    disabled={loading}
+                    className="mt-1 py-4 bg-[#E8078B] text-white font-semibold text-[15px] rounded-[12px] shadow-[0_6px_18px_rgba(232,7,139,0.35)] hover:bg-[#ff1e9f] transition-all duration-200 cursor-pointer disabled:opacity-60"
                   >
-                    Enviar mensaje
+                    {loading ? 'Enviando…' : 'Enviar mensaje'}
                   </button>
                   <p className="text-[12px] text-[#6a7196] text-center">
                     Sin spam. Tu información es confidencial. Enviado a info@mic.pe

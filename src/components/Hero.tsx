@@ -35,7 +35,7 @@ export default function Hero() {
         >
           {/* Eyebrow */}
           <div className="inline-flex items-center gap-2.5 bg-white/10 border border-white/20 px-3.5 py-2 rounded-full text-[13px] font-medium text-white/90 mb-6 backdrop-blur-sm">
-            <span className="bg-[#E8078B] text-white text-[11px] font-bold px-2 py-[3px] rounded-full uppercase tracking-wider">14 años</span>
+            <span className="bg-[#E8078B] text-white text-[11px] font-bold px-2 py-[3px] rounded-full uppercase tracking-wider">26 años</span>
             distribuyendo señales en 14 países
           </div>
 

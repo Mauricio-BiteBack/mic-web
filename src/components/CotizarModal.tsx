@@ -11,11 +11,30 @@ interface CotizarModalProps {
 
 export default function CotizarModal({ channels, onClose }: CotizarModalProps) {
   const [sent, setSent] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    // TODO: connect to Resend / API route
-    setSent(true);
+    setLoading(true);
+    setError(false);
+    const fd = new FormData(e.currentTarget);
+    const res = await fetch('/api/cotizar', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        origen: 'cotizar',
+        nombre: fd.get('nombre'),
+        empresa: fd.get('empresa'),
+        email: fd.get('email'),
+        whatsapp: fd.get('whatsapp'),
+        ciudad: fd.get('ciudad'),
+        canales: channels.map(c => `${c.name} · ${c.type}`),
+      }),
+    });
+    setLoading(false);
+    if (res.ok) setSent(true);
+    else setError(true);
   }
 
   const waMessage = channels.length > 0
@@ -90,23 +109,27 @@ export default function CotizarModal({ channels, onClose }: CotizarModalProps) {
 
               <form onSubmit={handleSubmit} className="flex flex-col gap-3">
                 <input
+                  name="nombre"
                   required
                   placeholder="Nombre completo"
                   className="border border-gray-200 rounded-[10px] px-3.5 py-3 text-[14px] font-[inherit] bg-white outline-none focus:border-[#193595] transition-colors w-full"
                 />
                 <input
+                  name="empresa"
                   required
                   placeholder="Empresa / Operador"
                   className="border border-gray-200 rounded-[10px] px-3.5 py-3 text-[14px] font-[inherit] bg-white outline-none focus:border-[#193595] transition-colors w-full"
                 />
                 <div className="grid grid-cols-2 gap-3">
                   <input
+                    name="email"
                     required
                     type="email"
                     placeholder="Email"
                     className="border border-gray-200 rounded-[10px] px-3.5 py-3 text-[14px] font-[inherit] bg-white outline-none focus:border-[#193595] transition-colors w-full"
                   />
                   <input
+                    name="whatsapp"
                     required
                     type="tel"
                     placeholder="WhatsApp"
@@ -114,15 +137,21 @@ export default function CotizarModal({ channels, onClose }: CotizarModalProps) {
                   />
                 </div>
                 <input
+                  name="ciudad"
                   placeholder="Ciudad / País"
                   className="border border-gray-200 rounded-[10px] px-3.5 py-3 text-[14px] font-[inherit] bg-white outline-none focus:border-[#193595] transition-colors w-full"
                 />
 
+                {error && (
+                  <p className="text-[13px] text-red-500 text-center">Hubo un error al enviar. Intenta por WhatsApp.</p>
+                )}
+
                 <button
                   type="submit"
-                  className="mt-1 py-4 bg-[#E8078B] text-white font-semibold text-[15px] rounded-[12px] shadow-[0_6px_18px_rgba(232,7,139,0.35)] hover:bg-[#ff1e9f] transition-all duration-200 cursor-pointer"
+                  disabled={loading}
+                  className="mt-1 py-4 bg-[#E8078B] text-white font-semibold text-[15px] rounded-[12px] shadow-[0_6px_18px_rgba(232,7,139,0.35)] hover:bg-[#ff1e9f] transition-all duration-200 cursor-pointer disabled:opacity-60"
                 >
-                  Enviar solicitud
+                  {loading ? 'Enviando…' : 'Enviar solicitud'}
                 </button>
 
                 <div className="flex items-center gap-3 mt-2">

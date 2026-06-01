@@ -29,7 +29,7 @@ export default function Services() {
             Servicios
           </span>
           <h2 className="text-[clamp(28px,3.5vw,44px)] font-bold tracking-[-0.025em] text-[#0a1133] mb-4">
-            Cuatro formas de hacer crecer tu operador.
+            Cuatro formas de hacer crecer tu operación.
           </h2>
           <p className="text-[17px] text-[#6a7196] leading-relaxed">
             Sin contratos atados, sin volúmenes mínimos. Empieza con lo que necesitas hoy y escala cuando convenga.
