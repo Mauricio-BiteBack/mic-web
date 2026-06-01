@@ -109,19 +109,19 @@ export default function Navbar({ onOpenCart }: NavbarProps) {
             {/* Megamenu dropdown */}
             {megaOpen && (
               <div
-                className="absolute top-[calc(100%+12px)] left-0 w-[720px] bg-white rounded-[20px] shadow-[0_20px_60px_rgba(13,30,107,0.18)] border border-gray-100 p-5 z-50"
+                className="absolute top-[calc(100%+12px)] left-0 w-[300px] bg-white rounded-[20px] shadow-[0_20px_60px_rgba(13,30,107,0.18)] border border-gray-100 p-5 z-50"
                 onMouseEnter={handleMegaEnter}
                 onMouseLeave={handleMegaLeave}
               >
-                {/* Arrow */}
-                <div className="absolute -top-[7px] left-1/2 -translate-x-1/2 w-3.5 h-3.5 bg-white border-l border-t border-gray-100 rotate-45" />
+                {/* Arrow apuntando al botón Servicios */}
+                <div className="absolute -top-[7px] left-6 w-3.5 h-3.5 bg-white border-l border-t border-gray-100 rotate-45" />
 
-                <div className="grid grid-cols-2 gap-2">
+                <div className="flex flex-col gap-2">
                   {SERVICES.map(s => (
                     <a
                       key={s.num}
                       href={s.href}
-                      className={`group flex gap-3.5 p-4 rounded-[14px] border transition-all duration-150 hover:-translate-y-0.5 hover:shadow-md ${
+                      className={`group flex gap-3 p-3.5 rounded-[14px] border transition-all duration-150 hover:shadow-md ${
                         s.accent
                           ? 'bg-[#fff0f8] border-[#E8078B]/20 hover:bg-[#ffe0f3]'
                           : 'bg-[#f6f7fb] border-gray-100 hover:bg-white hover:border-gray-200'
