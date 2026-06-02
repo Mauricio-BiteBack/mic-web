@@ -609,4 +609,13 @@ export const CHANNEL_DETAILS: Record<string, ChannelDetail> = {
       { label: 'Tecnología', value: 'IP' },
     ],
   },
+  'radio-carioca-tv': {
+    longDesc: `Radio Carioca es un canal musical dedicado a celebrar la riqueza de la música y la cultura brasileña a través de una programación dinámica y entretenida. Con una propuesta única en español, ofrece una combinación de videoclips, especiales musicales, biografías de artistas, contenido exclusivo detrás de cámaras y cobertura de los eventos más emblemáticos de Brasil.\n\nEntre sus principales atractivos destaca la cobertura especial del famoso Carnaval de Río de Janeiro, acercando a la audiencia toda la energía, color y tradición de una de las festividades más importantes del mundo.\n\nRadio Carioca es una ventana al ritmo, la cultura y la pasión de Brasil, diseñada para conectar a los espectadores con los artistas, historias y sonidos que han marcado generaciones.`,
+    videoUrls: [yt('https://youtu.be/2dw1o6jnB5I')],
+    specs: [
+      { label: 'Código', value: 'Radio Carioca TV' },
+      { label: 'Contenido', value: 'Musicales · Biografías · Backstage · Carnaval de Río de Janeiro' },
+      { label: 'Tecnología', value: 'IP' },
+    ],
+  },
 };
