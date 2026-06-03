@@ -396,7 +396,7 @@ export const CHANNELS: Channel[] = [
     color: '#b45309',
     dark: '#78350f',
     desc: 'Salsa, ritmos afrocaribeños y eventos musicales desde Panamá.',
-    imageUrl: '/Tropical Salsa.jpg',
+    imageUrl: '/Tropical Salsa.png',
   },
   {
     id: 'tropical-urban-tv',
