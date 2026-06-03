@@ -1170,6 +1170,18 @@ export const CHANNELS: Channel[] = [
     desc: 'Noticias, documentales y debates desde un punto de vista ruso para el mercado extranjero.',
     imageUrl: '/Rusia TV.jpeg',
   },
+  {
+    id: 'radio-carioca-tv',
+    name: 'Radio Carioca TV',
+    category: 'Musical',
+    brand: 'Independiente',
+    type: 'IP',
+    lang: 'ES',
+    color: '#16a34a',
+    dark: '#14532d',
+    desc: 'Canal musical orientado al entretenimiento y la difusión de contenidos relacionados con la música y la cultura artística.',
+    imageUrl: '/RADIO CARIOCA TV.png',
+  },
 ];
 
 export const CATEGORIES = [
