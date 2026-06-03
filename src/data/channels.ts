@@ -102,7 +102,7 @@ export const CHANNELS: Channel[] = [
     color: '#374151',
     dark: '#111827',
     desc: 'Las mejores películas clásicas de siempre.',
-    imageUrl: '/Classic +.png',
+    imageUrl: '/CLASSIC+.png',
   },
   // ── GRUPO MAX ─────────────────────────────────────────────────────────────
   {
