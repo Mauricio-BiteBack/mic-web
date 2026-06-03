@@ -1,6 +1,7 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -85,10 +86,16 @@ function ChannelCard({ ch }: { ch: Channel }) {
 
 export default function CatalogoPage() {
   const cart = useCart();
+  const searchParams = useSearchParams();
   const [catFilter, setCatFilter] = useState('all');
   const [brandFilter, setBrandFilter] = useState('all');
   const [typeFilter, setTypeFilter] = useState('all');
   const [search, setSearch] = useState('');
+
+  useEffect(() => {
+    const q = searchParams.get('q');
+    if (q) setSearch(q);
+  }, [searchParams]);
   const [filtersOpen, setFiltersOpen] = useState(true);
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
 

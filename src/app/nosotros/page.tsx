@@ -7,7 +7,7 @@ import Image from 'next/image';
 import PageShell from '@/components/PageShell';
 
 const STATS = [
-  { num: '19+', label: 'Años de experiencia' },
+  { num: '26+', label: 'Años de experiencia' },
   { num: '90+', label: 'Canales disponibles' },
   { num: '700+', label: 'Clientes activos' },
   { num: '14', label: 'Países en LATAM' },
@@ -154,11 +154,6 @@ export default function NosotrosPage() {
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 50vw"
                 />
-              </div>
-              {/* Floating badge */}
-              <div className="absolute -bottom-5 -right-5 bg-white rounded-[16px] shadow-[0_8px_30px_rgba(13,30,107,0.15)] px-5 py-4 border border-gray-100">
-                <span className="text-[11px] font-semibold uppercase tracking-wider text-[#6a7196] block mb-0.5">Fundada en</span>
-                <span className="text-[26px] font-extrabold text-[#193595]">2006</span>
               </div>
             </motion.div>
 

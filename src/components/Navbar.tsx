@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
+import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useCart } from './CartContext';
@@ -20,13 +21,23 @@ function ServiceIcon({ kind }: { kind: string }) {
 
 export default function Navbar({ onOpenCart }: NavbarProps) {
   const cart = useCart();
+  const router = useRouter();
   const [scrolled, setScrolled] = useState(false);
   const [bump, setBump] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [megaOpen, setMegaOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
   const prevCount = useRef(cart.count);
   const megaRef = useRef<HTMLDivElement>(null);
   const megaTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    const q = searchQuery.trim();
+    router.push(q ? `/catalogo?q=${encodeURIComponent(q)}` : '/catalogo');
+    setSearchQuery('');
+    setMenuOpen(false);
+  };
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -169,6 +180,28 @@ export default function Navbar({ onOpenCart }: NavbarProps) {
               {label}
             </a>
           ))}
+
+          {/* Search — desktop, empujado a la derecha dentro del nav */}
+          <form onSubmit={handleSearch} className="ml-auto">
+            <div className={`flex items-center rounded-[10px] border px-3 py-1.5 gap-2 transition-colors ${
+              isDark
+                ? 'bg-white/10 border-white/20'
+                : 'bg-gray-100 border-gray-200'
+            }`}>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className={isDark ? 'text-white/60' : 'text-[#6a7196]'}>
+                <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+              </svg>
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={e => setSearchQuery(e.target.value)}
+                placeholder="Buscar canal…"
+                className={`bg-transparent text-[13.5px] w-[150px] outline-none ${
+                  isDark ? 'text-white placeholder-white/50' : 'text-[#0a1133] placeholder-[#9ca3af]'
+                }`}
+              />
+            </div>
+          </form>
         </nav>
 
         {/* Actions */}
@@ -244,6 +277,18 @@ export default function Navbar({ onOpenCart }: NavbarProps) {
               {label}
             </a>
           ))}
+          <form onSubmit={handleSearch} className="flex items-center rounded-[10px] border border-gray-200 bg-gray-100 px-3 py-2 gap-2">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#6a7196]">
+              <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            </svg>
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={e => setSearchQuery(e.target.value)}
+              placeholder="Buscar canal…"
+              className="bg-transparent text-[14px] text-[#0a1133] placeholder-[#9ca3af] outline-none flex-1"
+            />
+          </form>
           <a
             href="#configurador"
             onClick={() => setMenuOpen(false)}

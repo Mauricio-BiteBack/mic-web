@@ -69,7 +69,7 @@ export default function Hero() {
           {/* Metrics */}
           <div className="grid grid-cols-4 border-t border-white/20 pt-7 max-w-[580px]">
             {[
-              { num: '40+', label: 'Canales disponibles' },
+              { num: '90+', label: 'Canales disponibles' },
               { num: '14', label: 'Países en LATAM' },
               { num: 'RPP', label: 'Distribuidor oficial' },
               { num: '24/7', label: 'Soporte técnico' },
