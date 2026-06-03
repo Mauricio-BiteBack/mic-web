@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useMemo, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
@@ -84,7 +84,7 @@ function ChannelCard({ ch }: { ch: Channel }) {
   );
 }
 
-export default function CatalogoPage() {
+function CatalogoContent() {
   const cart = useCart();
   const searchParams = useSearchParams();
   const [catFilter, setCatFilter] = useState('all');
@@ -517,5 +517,13 @@ export default function CatalogoPage() {
         </div>
       )}
     </PageShell>
+  );
+}
+
+export default function CatalogoPage() {
+  return (
+    <Suspense>
+      <CatalogoContent />
+    </Suspense>
   );
 }
