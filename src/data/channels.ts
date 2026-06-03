@@ -408,7 +408,7 @@ export const CHANNELS: Channel[] = [
     color: '#7c3aed',
     dark: '#3b0764',
     desc: 'Canal del género urbano y eventos musicales desde Panamá.',
-    imageUrl: '/Tropical Urban TV.jpg',
+    imageUrl: '/Tropical Urban.png',
   },
   {
     id: 'tropical-cultour-tv',

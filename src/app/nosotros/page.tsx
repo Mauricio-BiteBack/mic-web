@@ -148,7 +148,7 @@ export default function NosotrosPage() {
             >
               <div className="rounded-[24px] overflow-hidden shadow-[0_24px_72px_rgba(13,30,107,0.18)] aspect-[4/3]">
                 <Image
-                  src="/Nosotros Banner.png"
+                  src="/EQUIPO MIC.jpeg"
                   alt="MIC — nuestro equipo"
                   fill
                   className="object-cover"
