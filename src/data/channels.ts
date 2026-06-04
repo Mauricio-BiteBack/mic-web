@@ -1195,6 +1195,18 @@ export const CHANNELS: Channel[] = [
     imageUrl: '/RFI.png',
   },
   {
+    id: 'cine-d',
+    name: 'Cine D',
+    category: 'Religión',
+    brand: 'Independiente',
+    type: 'IP',
+    lang: 'ES',
+    color: '#7c2d12',
+    dark: '#3a0a00',
+    desc: 'Películas inspiradas en la fe: historias bíblicas, testimonios y producciones cristianas que transforman vidas.',
+    imageUrl: '/CINE D IMAGEN.png',
+  },
+  {
     id: 'ewtn',
     name: 'EWTN',
     category: 'Religión',

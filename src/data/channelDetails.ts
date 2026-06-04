@@ -626,6 +626,14 @@ export const CHANNEL_DETAILS: Record<string, ChannelDetail> = {
       { label: 'Tecnología', value: 'IP' },
     ],
   },
+  'cine-d': {
+    displayCategory: 'Cine Religioso',
+    longDesc: `Cine D: Películas que Iluminan el Alma\n\nEn Cine D, te ofrecemos una selección única de películas que nos acercan a la fe y la espiritualidad. Disfruta de historias inspiradas en la Biblia, películas sobre Jesús, y contenidos cristianos que te conectarán con el mensaje de esperanza y amor.\n\nNuestro canal es el lugar ideal para quienes buscan entretenimiento enriquecedor, con historias que edifican, testimonios de fe, y películas religiosas que transforman vidas. Desde clásicos cristianos hasta producciones modernas, Cine D trae a la pantalla grandes relatos basados en los principios y valores cristianos.\n\nCon Cine D, no solo verás una película; vivirás una experiencia que te acerca más a la palabra de Dios.\n\n¡Únete a nuestra comunidad y deja que el cine te guíe en el camino de la fe!`,
+    specs: [
+      { label: 'Código', value: 'Cine D' },
+      { label: 'Tecnología', value: 'IP' },
+    ],
+  },
   'ewtn': {
     longDesc: `EWTN es una señal que acompaña a millones de personas alrededor del mundo con contenido que inspira, fortalece la fe y brinda esperanza en el día a día. Con transmisiones de la Santa Misa, mensajes de reflexión, noticias del Vaticano, testimonios, programas familiares y espacios de formación espiritual, EWTN conecta con quienes buscan una televisión con propósito, valores y un mensaje que toque el corazón. Una compañía de fe y esperanza disponible las 24 horas del día.`,
     specs: [
