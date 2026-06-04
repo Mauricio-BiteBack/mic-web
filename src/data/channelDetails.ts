@@ -354,7 +354,7 @@ export const CHANNEL_DETAILS: Record<string, ChannelDetail> = {
   },
   'tropical-salsa': {
     longDesc: `Canal de salsa, ritmos afrocaribeños y eventos musicales desde Panamá. Una propuesta vibrante que celebra la música tropical en toda su riqueza rítmica y cultural.`,
-    videoUrls: [yt('https://youtu.be/EmVmf_uLP6w')],
+    videoUrls: [yt('https://www.youtube.com/watch?v=m6smTnO0fjk')],
     specs: [
       { label: 'Código', value: 'Tropical Salsa' },
       { label: 'País de origen', value: 'Panamá' },
@@ -373,7 +373,7 @@ export const CHANNEL_DETAILS: Record<string, ChannelDetail> = {
   },
   'tropical-urban-tv': {
     longDesc: `Urban TV es el canal del género urbano y eventos musicales desde Panamá. Una propuesta dinámica que conecta con las audiencias jóvenes a través de los ritmos más actuales del reggaetón, trap y música urbana.`,
-    videoUrls: [yt('https://youtu.be/EmVmf_uLP6w')],
+    videoUrls: [yt('https://www.youtube.com/watch?v=m6smTnO0fjk')],
     specs: [
       { label: 'Código', value: 'Tropical Urban TV' },
       { label: 'País de origen', value: 'Panamá' },
@@ -382,7 +382,7 @@ export const CHANNEL_DETAILS: Record<string, ChannelDetail> = {
   },
   'tropical-cultour-tv': {
     longDesc: `Cultour TV es el canal de jazz, latin jazz y eventos culturales desde Panamá. Una propuesta sofisticada que celebra la música de jazz y las expresiones culturales más refinadas de América Latina.`,
-    videoUrls: [yt('https://youtu.be/EmVmf_uLP6w'), yt('https://youtu.be/-XoaiWp4mVM')],
+    videoUrls: [yt('https://www.youtube.com/watch?v=m6smTnO0fjk')],
     specs: [
       { label: 'Código', value: 'Tropical Cultour TV' },
       { label: 'País de origen', value: 'Panamá' },
