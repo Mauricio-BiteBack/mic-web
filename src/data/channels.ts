@@ -1182,6 +1182,18 @@ export const CHANNELS: Channel[] = [
     desc: 'Canal musical orientado al entretenimiento y la difusión de contenidos relacionados con la música y la cultura artística.',
     imageUrl: '/RADIO CARIOCA TV.png',
   },
+  {
+    id: 'rfi',
+    name: 'RFI',
+    category: 'Informativo',
+    brand: 'Independiente',
+    type: 'IP',
+    lang: 'ES',
+    color: '#003580',
+    dark: '#001a40',
+    desc: 'Radio France Internationale: noticias, análisis y cultura desde Francia para el mundo en múltiples idiomas.',
+    imageUrl: '/RFI.png',
+  },
 ];
 
 export const CATEGORIES = [

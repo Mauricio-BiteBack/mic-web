@@ -617,4 +617,13 @@ export const CHANNEL_DETAILS: Record<string, ChannelDetail> = {
       { label: 'Tecnología', value: 'IP' },
     ],
   },
+  'rfi': {
+    longDesc: `RFI (Radio France Internationale) es una reconocida emisora internacional que conecta a sus oyentes con la actualidad del mundo a través de noticias, análisis, cultura y contenidos de interés global. Con una cobertura informativa confiable y una mirada internacional, RFI ofrece programación en múltiples idiomas, acercando a las audiencias a los acontecimientos más relevantes de política, economía, sociedad y cultura. Una señal pensada para quienes buscan información de calidad, perspectiva global y conexión con el mundo sin fronteras.`,
+    videoUrls: [yt('https://youtu.be/Kbf5NnHh9OU?si=Dm1ZjY6Yq13zRFn5')],
+    specs: [
+      { label: 'Código', value: 'RFI' },
+      { label: 'País de origen', value: 'Francia' },
+      { label: 'Tecnología', value: 'IP' },
+    ],
+  },
 };
