@@ -96,8 +96,10 @@ function CatalogoContent() {
     const q = searchParams.get('q');
     if (q) setSearch(q);
   }, [searchParams]);
-  const [filtersOpen, setFiltersOpen] = useState(true);
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
+  const [catOpen, setCatOpen] = useState(true);
+  const [distOpen, setDistOpen] = useState(false);
+  const [brandOpen, setBrandOpen] = useState(false);
 
   const filtered = useMemo(() => {
     return CHANNELS.filter(ch => {
@@ -313,176 +315,236 @@ function CatalogoContent() {
         </div>
       )}
 
-      {/* ── DESKTOP FILTERS (hidden on mobile) ──────────────────────── */}
-      <div className="hidden md:block bg-white border-b border-gray-200 sticky top-[72px] z-20 shadow-sm">
-        <div className="max-w-[1240px] mx-auto px-6">
-          {/* Filter header row */}
-          <div className="flex items-center justify-between py-3 border-b border-gray-100">
-            <div className="flex items-center gap-3">
+      {/* ── DESKTOP + MOBILE CONTENT AREA ──────────────────────────── */}
+      <section className="py-8 px-4 md:px-6 bg-[#f6f7fb] min-h-[400px] pb-28">
+        <div className="max-w-[1280px] mx-auto">
+          <div className="flex gap-6 items-start">
+
+            {/* ── LEFT SIDEBAR (desktop only) ──────────────────────── */}
+            <aside className="hidden md:flex flex-col w-[210px] flex-shrink-0 sticky top-[80px] max-h-[calc(100vh-96px)] overflow-y-auto bg-white rounded-[14px] border border-gray-200 shadow-sm">
+
               {/* Search */}
-              <div className="relative">
-                <svg className="absolute left-3 top-1/2 -translate-y-1/2 text-[#6a7196]" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-                <input
-                  value={search}
-                  onChange={e => setSearch(e.target.value)}
-                  placeholder="Buscar canal..."
-                  className="pl-8 pr-4 py-1.5 rounded-[8px] border border-gray-200 text-[13px] outline-none focus:border-[#193595] w-[180px] transition-colors bg-[#f6f7fb]"
-                />
+              <div className="p-3.5 border-b border-gray-100">
+                <div className="relative">
+                  <svg className="absolute left-2.5 top-1/2 -translate-y-1/2 text-[#6a7196]" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                  <input
+                    value={search}
+                    onChange={e => setSearch(e.target.value)}
+                    placeholder="Buscar canal..."
+                    className="w-full pl-7 pr-3 py-1.5 rounded-[8px] border border-gray-200 text-[12.5px] outline-none focus:border-[#193595] transition-colors bg-[#f6f7fb]"
+                  />
+                </div>
               </div>
-              {activeFilterCount > 0 && (
-                <button
-                  onClick={clearAll}
-                  className="flex items-center gap-1.5 text-[12px] font-semibold text-[#E8078B] hover:text-[#c4006a] transition-colors cursor-pointer px-2.5 py-1.5 rounded-[7px] bg-[#fff0f8] border border-[#E8078B]/20"
-                >
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-                  Limpiar ({activeFilterCount})
-                </button>
-              )}
-            </div>
-            <button
-              onClick={() => setFiltersOpen(v => !v)}
-              className="flex items-center gap-1.5 text-[12.5px] font-medium text-[#6a7196] hover:text-[#193595] transition-colors cursor-pointer"
-            >
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="11" y1="18" x2="13" y2="18"/></svg>
-              {filtersOpen ? 'Ocultar filtros' : 'Mostrar filtros'}
-            </button>
-          </div>
 
-          {/* Filter groups */}
-          <AnimatePresence>
-            {filtersOpen && (
-              <motion.div
-                initial={{ height: 0, opacity: 0 }}
-                animate={{ height: 'auto', opacity: 1 }}
-                exit={{ height: 0, opacity: 0 }}
-                transition={{ duration: 0.2 }}
-                className="overflow-hidden"
-              >
-                <div className="py-4 flex flex-col gap-4">
-
-                  {/* Group 1: Tipo de distribución */}
-                  <div className="flex flex-wrap items-center gap-2">
-                    <span className="text-[11px] font-bold uppercase tracking-[0.1em] text-[#6a7196] w-[100px] flex-shrink-0">Distribución</span>
-                    <div className="flex flex-wrap gap-1.5">
+              {/* Clear filters */}
+              <AnimatePresence>
+                {activeFilterCount > 0 && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: 'auto', opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.15 }}
+                    className="overflow-hidden border-b border-gray-100"
+                  >
+                    <div className="px-3.5 py-2">
                       <button
-                        onClick={() => setTypeFilter('all')}
-                        className={`px-3 py-1.5 rounded-[8px] text-[12.5px] font-medium transition-all duration-150 cursor-pointer border ${
-                          typeFilter === 'all'
-                            ? 'bg-[#0a1133] text-white border-[#0a1133] shadow-sm'
-                            : 'bg-white border-gray-200 text-[#6a7196] hover:border-[#0a1133] hover:text-[#0a1133]'
-                        }`}
+                        onClick={clearAll}
+                        className="flex items-center gap-1.5 text-[11.5px] font-semibold text-[#E8078B] hover:text-[#c4006a] transition-colors cursor-pointer"
                       >
-                        Todos <span className="opacity-60 text-[11px]">({CHANNELS.length})</span>
+                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                        Limpiar filtros ({activeFilterCount})
                       </button>
-                      {(['IP', 'Lineal', 'FAST'] as const).map(t => (
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+
+              {/* ── Categorías accordion ── */}
+              <div className="border-b border-gray-100">
+                <button
+                  onClick={() => setCatOpen(v => !v)}
+                  className="w-full flex items-center justify-between px-3.5 py-3 hover:bg-gray-50 transition-colors cursor-pointer"
+                >
+                  <span className="text-[11.5px] font-bold uppercase tracking-[0.08em] text-[#0a1133]">Categorías</span>
+                  <svg
+                    className={`text-[#6a7196] transition-transform duration-200 ${catOpen ? 'rotate-180' : ''}`}
+                    width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"
+                  >
+                    <polyline points="6 9 12 15 18 9"/>
+                  </svg>
+                </button>
+                <AnimatePresence>
+                  {catOpen && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
+                      className="overflow-hidden"
+                    >
+                      <div className="px-2.5 pb-2.5 flex flex-col gap-0.5">
                         <button
-                          key={t}
-                          onClick={() => setTypeFilter(typeFilter === t ? 'all' : t)}
-                          className={`px-3 py-1.5 rounded-[8px] text-[12.5px] font-medium transition-all duration-150 cursor-pointer border ${
-                            typeFilter === t
-                              ? t === 'IP'
-                                ? 'bg-[#193595] text-white border-[#193595] shadow-sm'
-                                : t === 'FAST'
-                                ? 'bg-[#E8078B] text-white border-[#E8078B] shadow-sm'
-                                : 'bg-[#0aa84f] text-white border-[#0aa84f] shadow-sm'
-                              : 'bg-white border-gray-200 text-[#6a7196] hover:border-gray-400 hover:text-[#0a1133]'
+                          onClick={() => setCatFilter('all')}
+                          className={`w-full text-left px-2.5 py-1.5 rounded-[7px] text-[12px] font-medium transition-all duration-150 cursor-pointer flex items-center justify-between ${
+                            catFilter === 'all'
+                              ? 'bg-[#193595] text-white'
+                              : 'text-[#374151] hover:bg-gray-100'
                           }`}
                         >
-                          {t} <span className="opacity-60 text-[11px]">({typeCounts[t] || 0})</span>
+                          <span>Todas</span>
+                          <span className={`text-[10.5px] ${catFilter === 'all' ? 'text-white/70' : 'text-[#9ca3af]'}`}>{CHANNELS.length}</span>
                         </button>
-                      ))}
-                    </div>
-                  </div>
+                        {CATEGORIES.filter(c => c.id !== 'all').map(c => {
+                          const count = categoryCounts[c.id] || 0;
+                          if (count === 0) return null;
+                          return (
+                            <button
+                              key={c.id}
+                              onClick={() => setCatFilter(catFilter === c.id ? 'all' : c.id)}
+                              className={`w-full text-left px-2.5 py-1.5 rounded-[7px] text-[12px] font-medium transition-all duration-150 cursor-pointer flex items-center justify-between ${
+                                catFilter === c.id
+                                  ? 'bg-[#193595] text-white'
+                                  : 'text-[#374151] hover:bg-gray-100'
+                              }`}
+                            >
+                              <span className="truncate pr-1">{c.label}</span>
+                              <span className={`text-[10.5px] flex-shrink-0 ${catFilter === c.id ? 'text-white/70' : 'text-[#9ca3af]'}`}>{count}</span>
+                            </button>
+                          );
+                        })}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
 
-                  {/* Group 2: Categoría de programación */}
-                  <div className="flex flex-wrap items-start gap-2">
-                    <span className="text-[11px] font-bold uppercase tracking-[0.1em] text-[#6a7196] w-[100px] flex-shrink-0 pt-1.5">Categoría</span>
-                    <div className="flex flex-wrap gap-1.5 flex-1">
-                      <button
-                        onClick={() => setCatFilter('all')}
-                        className={`px-3 py-1.5 rounded-[8px] text-[12.5px] font-medium transition-all duration-150 cursor-pointer border ${
-                          catFilter === 'all'
-                            ? 'bg-[#193595] text-white border-[#193595] shadow-sm'
-                            : 'bg-white border-gray-200 text-[#6a7196] hover:border-[#193595] hover:text-[#193595]'
-                        }`}
-                      >
-                        Todas
-                      </button>
-                      {CATEGORIES.filter(c => c.id !== 'all').map(c => {
-                        const count = categoryCounts[c.id] || 0;
-                        if (count === 0) return null;
-                        return (
+              {/* ── Distribución accordion ── */}
+              <div className="border-b border-gray-100">
+                <button
+                  onClick={() => setDistOpen(v => !v)}
+                  className="w-full flex items-center justify-between px-3.5 py-3 hover:bg-gray-50 transition-colors cursor-pointer"
+                >
+                  <span className="text-[11.5px] font-bold uppercase tracking-[0.08em] text-[#0a1133]">Distribución</span>
+                  <svg
+                    className={`text-[#6a7196] transition-transform duration-200 ${distOpen ? 'rotate-180' : ''}`}
+                    width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"
+                  >
+                    <polyline points="6 9 12 15 18 9"/>
+                  </svg>
+                </button>
+                <AnimatePresence>
+                  {distOpen && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
+                      className="overflow-hidden"
+                    >
+                      <div className="px-2.5 pb-2.5 flex flex-col gap-0.5">
+                        {(['all', 'IP', 'Lineal', 'FAST'] as const).map(t => (
                           <button
-                            key={c.id}
-                            onClick={() => setCatFilter(catFilter === c.id ? 'all' : c.id)}
-                            className={`px-3 py-1.5 rounded-[8px] text-[12.5px] font-medium transition-all duration-150 cursor-pointer border ${
-                              catFilter === c.id
-                                ? 'bg-[#193595] text-white border-[#193595] shadow-sm'
-                                : 'bg-white border-gray-200 text-[#6a7196] hover:border-[#193595] hover:text-[#193595]'
+                            key={t}
+                            onClick={() => setTypeFilter(typeFilter === t ? (t === 'all' ? 'all' : 'all') : t)}
+                            className={`w-full text-left px-2.5 py-1.5 rounded-[7px] text-[12px] font-medium transition-all duration-150 cursor-pointer flex items-center justify-between ${
+                              typeFilter === t || (t === 'all' && typeFilter === 'all')
+                                ? t === 'IP'
+                                  ? 'bg-[#193595] text-white'
+                                  : t === 'FAST'
+                                  ? 'bg-[#E8078B] text-white'
+                                  : t === 'Lineal'
+                                  ? 'bg-[#0aa84f] text-white'
+                                  : 'bg-[#0a1133] text-white'
+                                : 'text-[#374151] hover:bg-gray-100'
                             }`}
                           >
-                            {c.label}
-                            <span className="ml-1 opacity-55 text-[11px]">({count})</span>
+                            <span>{t === 'all' ? 'Todos' : t}</span>
+                            <span className={`text-[10.5px] ${typeFilter === t || (t === 'all' && typeFilter === 'all') ? 'text-white/70' : 'text-[#9ca3af]'}`}>
+                              {t === 'all' ? CHANNELS.length : typeCounts[t] || 0}
+                            </span>
                           </button>
-                        );
-                      })}
-                    </div>
-                  </div>
+                        ))}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
 
-                  {/* Group 3: Marca */}
-                  <div className="flex flex-wrap items-start gap-2">
-                    <span className="text-[11px] font-bold uppercase tracking-[0.1em] text-[#6a7196] w-[100px] flex-shrink-0 pt-1.5">Marca</span>
-                    <div className="flex flex-wrap gap-1.5 flex-1">
-                      {BRANDS.map(b => {
-                        const count = brandCounts[b] || 0;
-                        if (count === 0) return null;
-                        return (
-                          <button
-                            key={b}
-                            onClick={() => setBrandFilter(brandFilter === b ? 'all' : b)}
-                            className={`px-3 py-1.5 rounded-full text-[12px] font-semibold transition-all cursor-pointer border ${
-                              brandFilter === b
-                                ? 'bg-[#E8078B] text-white border-[#E8078B] shadow-sm'
-                                : 'bg-white border-gray-200 text-[#6a7196] hover:border-[#E8078B] hover:text-[#E8078B]'
-                            }`}
-                          >
-                            {b}
-                            <span className="ml-1 opacity-65 text-[11px]">({count})</span>
-                          </button>
-                        );
-                      })}
-                    </div>
-                  </div>
+              {/* ── Marca accordion ── */}
+              <div>
+                <button
+                  onClick={() => setBrandOpen(v => !v)}
+                  className="w-full flex items-center justify-between px-3.5 py-3 hover:bg-gray-50 transition-colors cursor-pointer"
+                >
+                  <span className="text-[11.5px] font-bold uppercase tracking-[0.08em] text-[#0a1133]">Marca</span>
+                  <svg
+                    className={`text-[#6a7196] transition-transform duration-200 ${brandOpen ? 'rotate-180' : ''}`}
+                    width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"
+                  >
+                    <polyline points="6 9 12 15 18 9"/>
+                  </svg>
+                </button>
+                <AnimatePresence>
+                  {brandOpen && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
+                      className="overflow-hidden"
+                    >
+                      <div className="px-2.5 pb-2.5 flex flex-col gap-0.5">
+                        {BRANDS.map(b => {
+                          const count = brandCounts[b] || 0;
+                          if (count === 0) return null;
+                          return (
+                            <button
+                              key={b}
+                              onClick={() => setBrandFilter(brandFilter === b ? 'all' : b)}
+                              className={`w-full text-left px-2.5 py-1.5 rounded-[7px] text-[12px] font-medium transition-all duration-150 cursor-pointer flex items-center justify-between ${
+                                brandFilter === b
+                                  ? 'bg-[#E8078B] text-white'
+                                  : 'text-[#374151] hover:bg-gray-100'
+                              }`}
+                            >
+                              <span className="truncate pr-1">{b}</span>
+                              <span className={`text-[10.5px] flex-shrink-0 ${brandFilter === b ? 'text-white/70' : 'text-[#9ca3af]'}`}>{count}</span>
+                            </button>
+                          );
+                        })}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+
+            </aside>
+
+            {/* ── MAIN CONTENT ─────────────────────────────────────── */}
+            <div className="flex-1 min-w-0">
+              <div className="flex items-center justify-between mb-5">
+                <p className="text-[13px] text-[#6a7196]">
+                  <span className="font-semibold text-[#0a1133]">{filtered.length}</span>{' '}
+                  canal{filtered.length !== 1 ? 'es' : ''} encontrado{filtered.length !== 1 ? 's' : ''}
+                </p>
+              </div>
+
+              {filtered.length === 0 ? (
+                <div className="text-center py-20 text-[#6a7196]">
+                  <svg className="mx-auto mb-4 opacity-40" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                  <p className="text-[16px] font-medium mb-3">No se encontraron canales con esos filtros.</p>
+                  <button onClick={clearAll} className="text-[#E8078B] hover:underline cursor-pointer font-semibold text-[14px]">
+                    Limpiar todos los filtros
+                  </button>
                 </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
-      </div>
+              ) : (
+                <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                  {filtered.map(ch => <ChannelCard key={ch.id} ch={ch} />)}
+                </div>
+              )}
+            </div>
 
-      {/* Grid */}
-      <section className="py-10 px-6 bg-[#f6f7fb] min-h-[400px] pb-28">
-        <div className="max-w-[1240px] mx-auto">
-          <div className="flex items-center justify-between mb-5">
-            <p className="text-[13px] text-[#6a7196]">
-              <span className="font-semibold text-[#0a1133]">{filtered.length}</span>{' '}
-              canal{filtered.length !== 1 ? 'es' : ''} encontrado{filtered.length !== 1 ? 's' : ''}
-            </p>
           </div>
-
-          {filtered.length === 0 ? (
-            <div className="text-center py-20 text-[#6a7196]">
-              <svg className="mx-auto mb-4 opacity-40" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-              <p className="text-[16px] font-medium mb-3">No se encontraron canales con esos filtros.</p>
-              <button onClick={clearAll} className="text-[#E8078B] hover:underline cursor-pointer font-semibold text-[14px]">
-                Limpiar todos los filtros
-              </button>
-            </div>
-          ) : (
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
-              {filtered.map(ch => <ChannelCard key={ch.id} ch={ch} />)}
-            </div>
-          )}
         </div>
       </section>
 
