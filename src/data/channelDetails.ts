@@ -194,11 +194,6 @@ export const CHANNEL_DETAILS: Record<string, ChannelDetail> = {
     longDesc: `Ruido TV es un canal vibrante dedicado a la música rock independiente de toda Latinoamérica. En sus transmisiones, los espectadores pueden descubrir nuevos talentos, sumergirse en sonidos alternativos y disfrutar de una mezcla auténtica de géneros y estilos provenientes de diversos países.\n\nRuido TV se posiciona como un espacio único para promover bandas emergentes y conectarlas con una audiencia apasionada por la música independiente y la cultura rockera.`,
     specs: [{ label: 'Código', value: 'Ruidos TV' }],
   },
-  'kanade': {
-    longDesc: `KANADE es un canal familiar y misceláneo, creado para quienes buscan variedad, emoción y conexión real con la pantalla. Anime, K-dramas, películas, programas en vivo y más, todo en un solo lugar.\n\nNuestra programación combina lo mejor del entretenimiento asiático con contenidos informativos y espacios que acompañan a toda la familia, a cualquier hora del día. Somos más que un canal: somos ese espacio donde todos encuentran algo que les gusta.`,
-    videoUrls: [yt('https://youtu.be/OWpWQUORiM8')],
-    specs: [{ label: 'Código', value: 'Kanade' }],
-  },
   'esports-max-2': {
     longDesc: `Un canal hecho para gamers de verdad. Disfruta de los mejores videojuegos, coberturas de eSports, análisis, reseñas y contenido exclusivo sobre el mundo gaming. Desde los títulos clásicos hasta los últimos lanzamientos, aquí encontrarás toda la emoción, estrategia y aventura que un verdadero fanático de los videojuegos necesita. ¡Conéctate y juega sin límites!`,
     specs: [{ label: 'Código', value: 'Esport Max 2' }],
@@ -623,6 +618,15 @@ export const CHANNEL_DETAILS: Record<string, ChannelDetail> = {
     specs: [
       { label: 'Código', value: 'RFI' },
       { label: 'País de origen', value: 'Francia' },
+      { label: 'Tecnología', value: 'IP' },
+    ],
+  },
+  'entertainment-play-classic': {
+    displayCategory: 'Cine Clásico',
+    longDesc: `Entertainment Play Classic\n\nLos grandes clásicos del entretenimiento que marcaron generaciones\n\nEntertainment Play Classic es un canal dedicado a revivir la época dorada de la televisión y el cine, ofreciendo una selección de series icónicas, comedias inolvidables y películas que han trascendido el paso del tiempo. Su programación reúne producciones legendarias que continúan cautivando a audiencias de todas las edades.\n\nDisfruta de personajes entrañables, historias memorables y el humor que definió a generaciones enteras, en una propuesta ideal para los amantes de la nostalgia y el entretenimiento clásico.\n\nEntertainment Play Classic: Donde los clásicos viven para siempre.`,
+    videoUrls: [yt('https://youtu.be/bko0izo7P1k')],
+    specs: [
+      { label: 'Código', value: 'Entertainment Play Classic' },
       { label: 'Tecnología', value: 'IP' },
     ],
   },
