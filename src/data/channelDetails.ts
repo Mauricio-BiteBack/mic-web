@@ -626,4 +626,11 @@ export const CHANNEL_DETAILS: Record<string, ChannelDetail> = {
       { label: 'Tecnología', value: 'IP' },
     ],
   },
+  'ewtn': {
+    longDesc: `EWTN es una señal que acompaña a millones de personas alrededor del mundo con contenido que inspira, fortalece la fe y brinda esperanza en el día a día. Con transmisiones de la Santa Misa, mensajes de reflexión, noticias del Vaticano, testimonios, programas familiares y espacios de formación espiritual, EWTN conecta con quienes buscan una televisión con propósito, valores y un mensaje que toque el corazón. Una compañía de fe y esperanza disponible las 24 horas del día.`,
+    specs: [
+      { label: 'Código', value: 'EWTN' },
+      { label: 'Tecnología', value: 'IP' },
+    ],
+  },
 };

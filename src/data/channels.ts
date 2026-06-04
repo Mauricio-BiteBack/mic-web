@@ -1194,6 +1194,18 @@ export const CHANNELS: Channel[] = [
     desc: 'Radio France Internationale: noticias, análisis y cultura desde Francia para el mundo en múltiples idiomas.',
     imageUrl: '/RFI.png',
   },
+  {
+    id: 'ewtn',
+    name: 'EWTN',
+    category: 'Religión',
+    brand: 'Independiente',
+    type: 'IP',
+    lang: 'ES',
+    color: '#7c3aed',
+    dark: '#3b0764',
+    desc: 'Santa Misa, reflexiones, noticias del Vaticano y formación espiritual. Fe y esperanza las 24 horas.',
+    imageUrl: '/EWTN.png',
+  },
 ];
 
 export const CATEGORIES = [
