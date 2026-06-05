@@ -194,10 +194,6 @@ export const CHANNEL_DETAILS: Record<string, ChannelDetail> = {
     longDesc: `Ruido TV es un canal vibrante dedicado a la música rock independiente de toda Latinoamérica. En sus transmisiones, los espectadores pueden descubrir nuevos talentos, sumergirse en sonidos alternativos y disfrutar de una mezcla auténtica de géneros y estilos provenientes de diversos países.\n\nRuido TV se posiciona como un espacio único para promover bandas emergentes y conectarlas con una audiencia apasionada por la música independiente y la cultura rockera.`,
     specs: [{ label: 'Código', value: 'Ruidos TV' }],
   },
-  'esports-max-2': {
-    longDesc: `Un canal hecho para gamers de verdad. Disfruta de los mejores videojuegos, coberturas de eSports, análisis, reseñas y contenido exclusivo sobre el mundo gaming. Desde los títulos clásicos hasta los últimos lanzamientos, aquí encontrarás toda la emoción, estrategia y aventura que un verdadero fanático de los videojuegos necesita. ¡Conéctate y juega sin límites!`,
-    specs: [{ label: 'Código', value: 'Esport Max 2' }],
-  },
   'el-mundo-del-campo': {
     longDesc: `Programa dedicado al agro colombiano donde cada día mostramos las cosas buenas que hace la gente del campo. A lo largo de 20 años hemos visto con satisfacción que el campo de nuestro país está lleno de gente empeñada a dar lo mejor de sí misma por sacar adelante su actividad agropecuaria.`,
     videoUrls: [yt('https://youtube.com/shorts/erGJxJaKXNI')],
@@ -404,15 +400,6 @@ export const CHANNEL_DETAILS: Record<string, ChannelDetail> = {
       { label: 'Tecnología', value: 'IP' },
     ],
   },
-  'esports-max': {
-    longDesc: `ESport Max es un canal dedicado a la difusión y creación de contenido sobre deportes electrónicos y videojuegos las 24 horas del día, dirigido al público joven hispanohablante del mundo. Con programación de todo tipo dentro del universo de los videojuegos: magazines informativos, gameplays, análisis, reseñas y los torneos de esports más destacados del continente. ¡Todo el mundo de los videojuegos en un solo lugar!`,
-    videoUrls: [yt('https://youtu.be/ulXfNySOEgg')],
-    specs: [
-      { label: 'Código', value: 'Esports Max' },
-      { label: 'Distribución', value: 'Latinoamérica' },
-      { label: 'Tecnología', value: 'IP' },
-    ],
-  },
   'pasiones': {
     longDesc: `Pasiones es un canal multicultural, dedicado a telenovelas y series de televisión de diversos géneros, con producciones latinoamericanas que lideraron las mediciones de audiencia y marcaron una época en Venezuela, Colombia, Argentina, Brasil, Chile, México, Perú y Estados Unidos hispano.\n\nLas 24 horas, los 7 días de la semana, Pasiones ofrece la mejor combinación de los más recientes éxitos y los clásicos de siempre. Distribución exclusiva para Perú.`,
     videoUrls: [yt('https://youtu.be/2m7ueEb-kzQ')],
@@ -539,16 +526,6 @@ export const CHANNEL_DETAILS: Record<string, ChannelDetail> = {
     videoUrls: [yt('https://youtu.be/kBpmF2R-fTc')],
     specs: [{ label: 'Código', value: 'Rewind' }],
   },
-  'sportsmax-news': {
-    longDesc: `EsportsMax News: Un canal de noticias deportivas 24/7 con las últimas novedades del deporte mundial en tiempo real. Cobertura continua para los fanáticos del deporte que no quieren perderse nada.`,
-    videoUrls: [yt('https://youtu.be/jyfwLiUh6_A')],
-    specs: [
-      { label: 'Código', value: 'SportsMax News' },
-      { label: 'Distribución', value: 'Latinoamérica' },
-      { label: 'País de origen', value: 'Venezuela' },
-      { label: 'Tecnología', value: 'IP' },
-    ],
-  },
   'energeek': {
     longDesc: `Este canal, parte de la familia EnerGeek, ofrece una programación diversa las 24 horas del día. Desde emocionantes caricaturas hasta cautivadoras series de animación japonesa, pasando por vibrantes series live-action y divertidas sitcoms, es el destino perfecto para todos los amantes del entretenimiento.`,
     videoUrls: [yt('https://youtu.be/aA5QeV3A9hs')],
@@ -559,11 +536,6 @@ export const CHANNEL_DETAILS: Record<string, ChannelDetail> = {
     longDesc: `Classic+ es el canal con las mejores películas clásicas de siempre. Una selección cuidadosa de los grandes títulos que han marcado la historia del cine, presentados sin interrupciones para que disfrutes de la experiencia completa.`,
     videoUrls: [yt('https://youtu.be/WGLzF8dSLTU')],
     specs: [{ label: 'Código', value: 'Classic' }],
-  },
-  'max-anime': {
-    longDesc: `Un canal 100% anime, de acción y aventura. Todo el universo del anime japonés en un solo lugar, con las mejores series y películas de acción y aventura para los fanáticos del género.`,
-    videoUrls: [yt('https://youtu.be/GrgvBNWXu2c')],
-    specs: [{ label: 'Código', value: 'Max Anime' }],
   },
   'vpi': {
     longDesc: `VPI TV es un canal creado para ofrecer a los venezolanos información sin censura, de calidad y con acceso directo. Un canal hecho por venezolanos para venezolanos en cualquier parte del mundo.\n\nNoticias en vivo, los mejores programas con periodistas destacados y contenido actualizado en salud, deportes, economía, arte, espectáculos, belleza y cocina. Lo urgente, lo importante y lo interesante sobre Venezuela y el mundo.`,

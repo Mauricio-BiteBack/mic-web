@@ -6,12 +6,14 @@ export type ChannelCategory =
   | 'Comedia'
   | 'Documental'
   | 'Entretenimiento Peruano'
+  | 'Regional Peruano'
   | 'Misceláneos'
   | 'Religión'
   | 'Caricaturas'
   | 'Deportes'
   | 'Turismo'
-  | 'Infantil';
+  | 'Infantil'
+  | 'Cine';
 
 export interface Channel {
   id: string;
@@ -32,7 +34,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'fmh-movies',
     name: 'FMH Movies',
-    category: 'Misceláneos',
+    category: 'Cine',
     brand: 'FMH',
     type: 'IP',
     lang: 'ES',
@@ -254,30 +256,6 @@ export const CHANNELS: Channel[] = [
     imageUrl: '/Clover Portada.png',
   },
   {
-    id: 'esports-max',
-    name: 'Esports Max',
-    category: 'Deportes',
-    brand: 'NeoTech',
-    type: 'IP',
-    lang: 'ES',
-    color: '#16a34a',
-    dark: '#14532d',
-    desc: 'Deportes electrónicos y videojuegos 24/7 para el público joven hispanohablante.',
-    imageUrl: '/Esports Max.png',
-  },
-  {
-    id: 'esports-max-2',
-    name: 'Esports Max 2',
-    category: 'Deportes',
-    brand: 'NeoTech',
-    type: 'IP',
-    lang: 'ES',
-    color: '#15803d',
-    dark: '#14532d',
-    desc: 'Videojuegos, coberturas de eSports, análisis y reseñas para gamers de verdad.',
-    imageUrl: '/Esports Max 2.png',
-  },
-  {
     id: 'animash',
     name: 'Animash',
     category: 'Infantil',
@@ -300,18 +278,6 @@ export const CHANNELS: Channel[] = [
     dark: '#0e3e4a',
     desc: 'Series animadas educativas que desarrollan habilidades cognitivas en niños de preescolar.',
     imageUrl: '/Zkids.png',
-  },
-  {
-    id: 'max-anime',
-    name: 'Max Anime',
-    category: 'Infantil',
-    brand: 'NeoTech',
-    type: 'IP',
-    lang: 'ES',
-    color: '#4f46e5',
-    dark: '#1e1b4b',
-    desc: 'Un canal 100% anime, de acción y aventura.',
-    imageUrl: '/max anime.png',
   },
   {
     id: 'energeek',
@@ -657,7 +623,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'sumac-tv',
     name: 'SUMAC TV',
-    category: 'Musical',
+    category: 'Regional Peruano',
     brand: 'Independiente',
     type: 'Lineal',
     lang: 'ES',
@@ -789,7 +755,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'tv-tropical-cumbia',
     name: 'Tv Tropical Cumbia',
-    category: 'Entretenimiento Peruano',
+    category: 'Musical',
     brand: 'Independiente',
     type: 'IP',
     lang: 'ES',
@@ -1003,18 +969,6 @@ export const CHANNELS: Channel[] = [
     imageUrl: '/Comic Pop.png',
   },
   {
-    id: 'sportsmax-news',
-    name: 'SportsMax News',
-    category: 'Informativo',
-    brand: 'Independiente',
-    type: 'IP',
-    lang: 'ES',
-    color: '#16a34a',
-    dark: '#14532d',
-    desc: 'Noticias deportivas 24/7 con las últimas novedades del deporte mundial.',
-    imageUrl: '/SportsMax News.png',
-  },
-  {
     id: 'vpi',
     name: 'VPI',
     category: 'Informativo',
@@ -1089,7 +1043,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'like-tv',
     name: 'Like TV',
-    category: 'Musical',
+    category: 'Regional Peruano',
     brand: 'Independiente',
     type: 'IP',
     lang: 'ES',
@@ -1227,7 +1181,9 @@ export const CATEGORIES = [
   { id: 'Comedia', label: 'Comedia' },
   { id: 'Documental', label: 'Documental' },
   { id: 'Entretenimiento Peruano', label: 'Entretenimiento Peruano' },
+  { id: 'Regional Peruano', label: 'Regional Peruano' },
   { id: 'Misceláneos', label: 'Misceláneos' },
+  { id: 'Cine', label: 'Cine' },
   { id: 'Religión', label: 'Religión' },
   { id: 'Caricaturas', label: 'Caricaturas' },
   { id: 'Deportes', label: 'Deportes' },
