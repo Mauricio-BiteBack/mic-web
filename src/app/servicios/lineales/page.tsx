@@ -5,48 +5,56 @@ import PageShell from '@/components/PageShell';
 
 const FEATURES = [
   {
+    step: '01',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <rect x="2" y="3" width="20" height="14" rx="2"/><polyline points="8 21 12 17 16 21"/>
+        <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
       </svg>
     ),
-    title: 'Interfaz web intuitiva',
-    desc: 'Gestión completa de flujos de trabajo de extremo a extremo desde un panel centralizado.',
+    title: 'Evaluación y Monitoreo',
+    sub: 'Analizamos tu contenido',
+    desc: 'Monitoreamos tu señal o biblioteca de contenidos para evaluar su potencial técnico y comercial.',
   },
   {
+    step: '02',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
+        <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/>
       </svg>
     ),
-    title: 'Transferencia a la nube MIC',
-    desc: 'Tu contenido migra a la infraestructura MIC de forma segura y sin pérdida de calidad.',
+    title: 'Integración MIC',
+    sub: 'Incorporación a nuestra cartera',
+    desc: 'Integramos tu contenido a nuestro portafolio y definimos la estrategia de distribución más adecuada.',
   },
   {
+    step: '03',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+        <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
       </svg>
     ),
-    title: 'Programación y playlists',
-    desc: 'Crea listas de reproducción, agenda horarios y mantén tu canal siempre activo sin gaps.',
+    title: 'Promoción y Comercialización',
+    sub: 'Presentamos tu canal al mercado',
+    desc: 'Promocionamos tu señal en propuestas comerciales, redes sociales, eventos y reuniones con operadores.',
   },
   {
+    step: '04',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M1 6v16l7-4 8 4 7-4V2l-7 4-8-4-7 4z"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/>
+        <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
       </svg>
     ),
-    title: 'Distribución masiva',
-    desc: 'Llega a más de 700 clientes activos o a cualquier plataforma OTT y FAST.',
+    title: 'Distribución y Monetización',
+    sub: 'Llega a nuevas audiencias',
+    desc: 'Distribuimos tu contenido a operadores, plataformas IPTV, OTT y canales FAST para generar nuevas oportunidades de negocio.',
   },
 ];
 
 const FLOW = [
-  { label: 'Tu contenido', sub: 'YouTube, archivos, biblioteca propia', color: 'bg-[#193595]' },
-  { label: 'Nube MIC', sub: 'Procesamiento, programación y playlists', color: 'bg-[#E8078B]' },
-  { label: '700+ clientes', sub: 'Cable operadores en LATAM', color: 'bg-[#0aa84f]' },
-  { label: 'Plataformas OTT', sub: 'FAST y streaming en línea', color: 'bg-[#f5b015]' },
+  { label: 'Evaluación', sub: 'Análisis técnico y comercial de tu contenido', color: 'bg-[#193595]' },
+  { label: 'Integración MIC', sub: 'Incorporación a nuestra red de distribución', color: 'bg-[#E8078B]' },
+  { label: 'Promoción', sub: 'Presentación a operadores y plataformas', color: 'bg-[#0aa84f]' },
+  { label: 'Distribución', sub: 'IPTV, OTT y canales FAST en Latinoamérica', color: 'bg-[#f5b015]' },
 ];
 
 export default function LinealesPage() {
@@ -67,10 +75,10 @@ export default function LinealesPage() {
               Creación de canales lineales en streaming 24x7
             </h1>
             <p className="text-[17px] text-white/78 leading-relaxed mb-8">
-              Si tienes contenidos transmitidos en YouTube o contenidos que ya fueron emitidos en canales de TV que ya no están siendo disfrutados, podemos monetizarlos creando un canal de TV lineal 24/7, distribuir el contenido a nuestros más de 700 clientes o a cualquier plataforma OTT, incluyendo Free Ad-Supported Streaming TV (FAST), y utilizar un modelo de pago por uso para una mayor rentabilidad.
+              Si cuentas con contenido audiovisual, programas, o producciones propias, en MIC podemos ayudarte a llevarlo más lejos. Evaluamos su potencial, lo integramos a nuestra red de distribución y lo presentamos a operadores, plataformas IPTV, OTT y canales FAST en toda Latinoamérica.<br/><br/>Además, podemos convertir tu biblioteca de contenidos en un canal lineal 24/7, permitiéndote ampliar tu alcance, generar nuevas audiencias y crear nuevas oportunidades de monetización.
             </p>
             <a
-              href="/cotizacion"
+              href="https://wa.me/message/R5QI3ZBQMLUXP1" target="_blank" rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-7 py-4 bg-[#E8078B] text-white text-[15.5px] font-semibold rounded-[12px] shadow-[0_6px_18px_rgba(232,7,139,0.4)] hover:bg-[#ff1e9f] transition-all duration-200 cursor-pointer group"
             >
               Solicitar información
@@ -132,11 +140,15 @@ export default function LinealesPage() {
                 transition={{ duration: 0.4, delay: i * 0.08 }}
                 className="bg-white border border-gray-200 rounded-[18px] p-6 flex gap-5 hover:shadow-md transition-shadow"
               >
-                <div className="w-11 h-11 rounded-[10px] bg-[#193595]/8 text-[#193595] grid place-items-center flex-shrink-0">
-                  {f.icon}
+                <div className="flex flex-col items-center gap-2 flex-shrink-0">
+                  <div className="w-11 h-11 rounded-[10px] bg-[#193595]/8 text-[#193595] grid place-items-center">
+                    {f.icon}
+                  </div>
+                  <span className="text-[10px] font-bold text-[#193595]/50 tracking-widest">{f.step}</span>
                 </div>
                 <div>
-                  <h3 className="text-[16px] font-bold text-[#0a1133] mb-1.5">{f.title}</h3>
+                  <h3 className="text-[16px] font-bold text-[#0a1133] mb-0.5">{f.title}</h3>
+                  <p className="text-[12px] font-semibold text-[#E8078B] mb-1.5">{f.sub}</p>
                   <p className="text-[14px] text-[#6a7196] leading-relaxed">{f.desc}</p>
                 </div>
               </motion.div>
@@ -155,7 +167,7 @@ export default function LinealesPage() {
             Con modelo de pago por uso, sin inversión inicial en infraestructura. Monetiza desde el primer mes.
           </p>
           <a
-            href="/cotizacion"
+            href="https://wa.me/message/R5QI3ZBQMLUXP1" target="_blank" rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-8 py-4 bg-[#E8078B] text-white text-[15.5px] font-semibold rounded-[12px] shadow-[0_6px_18px_rgba(232,7,139,0.35)] hover:bg-[#ff1e9f] transition-all duration-200 cursor-pointer group"
           >
             Solicitar información

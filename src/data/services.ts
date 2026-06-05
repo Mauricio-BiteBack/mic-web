@@ -19,8 +19,8 @@ export const SERVICES: Service[] = [
   {
     num: '02',
     verb: 'Crea',
-    title: 'Lineal 24x7',
-    desc: 'Construimos tu canal lineal a partir de tu propia biblioteca. Programación continua, sin gaps.',
+    title: 'Distribuye tu Contenido con MIC',
+    desc: 'Promocionamos y comercializamos tu canal a través de nuestra red de operadores aliados.',
     accent: false,
     href: '/servicios/lineales',
   },
