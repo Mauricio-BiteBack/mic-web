@@ -114,49 +114,6 @@ export default function LinealesPage() {
         </div>
       </section>
 
-      {/* Features */}
-      <section className="py-20 px-6">
-        <div className="max-w-[1240px] mx-auto">
-          <div className="max-w-[600px] mb-14">
-            <span className="inline-flex items-center gap-2 text-[12px] font-semibold tracking-[0.14em] uppercase text-[#E8078B] mb-3">
-              <span className="w-5 h-[2px] bg-[#E8078B] rounded-full" />
-              Características
-            </span>
-            <h2 className="text-[clamp(26px,3vw,40px)] font-bold tracking-[-0.025em] text-[#0a1133] mb-3">
-              Todo lo que incluye el servicio.
-            </h2>
-            <p className="text-[16px] text-[#6a7196] leading-relaxed">
-              Una solución completa para llevar tu contenido al aire en 24 horas.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-            {FEATURES.map((f, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: i * 0.08 }}
-                className="bg-white border border-gray-200 rounded-[18px] p-6 flex gap-5 hover:shadow-md transition-shadow"
-              >
-                <div className="flex flex-col items-center gap-2 flex-shrink-0">
-                  <div className="w-11 h-11 rounded-[10px] bg-[#193595]/8 text-[#193595] grid place-items-center">
-                    {f.icon}
-                  </div>
-                  <span className="text-[10px] font-bold text-[#193595]/50 tracking-widest">{f.step}</span>
-                </div>
-                <div>
-                  <h3 className="text-[16px] font-bold text-[#0a1133] mb-0.5">{f.title}</h3>
-                  <p className="text-[12px] font-semibold text-[#E8078B] mb-1.5">{f.sub}</p>
-                  <p className="text-[14px] text-[#6a7196] leading-relaxed">{f.desc}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* CTA */}
       <section className="py-16 px-6 bg-[#f6f7fb]">
         <div className="max-w-[700px] mx-auto text-center">
