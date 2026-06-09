@@ -617,4 +617,12 @@ export const CHANNEL_DETAILS: Record<string, ChannelDetail> = {
       { label: 'Tecnología', value: 'IP' },
     ],
   },
+  'tv-carioca-internacional': {
+    longDesc: `TV Carioca Internacional\n\nLa esencia del entretenimiento brasileño para toda Latinoamérica\n\nTV Carioca Internacional es una señal dedicada a llevar lo mejor de la televisión clásica, el cine, la comedia y la cultura de Brasil a las audiencias de habla hispana. Con programación en portugués y subtítulos en español, ofrece una experiencia única que acerca al público a la riqueza cultural y artística brasileña.\n\nDisfruta de grandes clásicos del entretenimiento mundial como Charles Chaplin, El Gordo y el Flaco, Los Tres Chiflados, Yo Amo a Lucy y Mi Bella Genio, además de espacios musicales, cine y programas especiales que reflejan la alegría y el espíritu de Brasil.\n\nLa señal también presenta coberturas especiales de eventos emblemáticos como el Carnaval de Río de Janeiro, llevando toda la energía, color y tradición de una de las celebraciones más reconocidas del mundo.\n\nTV Carioca Internacional combina nostalgia, diversión y cultura en una propuesta ideal para toda la familia.`,
+    videoUrls: [yt('https://youtu.be/TSroykhqoTU')],
+    specs: [
+      { label: 'Código', value: 'TV Carioca Internacional' },
+      { label: 'Tecnología', value: 'IP' },
+    ],
+  },
 };

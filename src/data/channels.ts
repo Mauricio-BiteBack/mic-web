@@ -1172,6 +1172,18 @@ export const CHANNELS: Channel[] = [
     desc: 'Santa Misa, reflexiones, noticias del Vaticano y formación espiritual. Fe y esperanza las 24 horas.',
     imageUrl: '/EWTN.png',
   },
+  {
+    id: 'tv-carioca-internacional',
+    name: 'TV Carioca Internacional',
+    category: 'Misceláneos',
+    brand: 'Independiente',
+    type: 'IP',
+    lang: 'ES',
+    color: '#15803d',
+    dark: '#052e16',
+    desc: 'La esencia del entretenimiento brasileño para toda Latinoamérica. Clásicos, comedia, cine y cultura de Brasil con subtítulos en español.',
+    imageUrl: '/TV CARIOCA INTERNACIONAL.png',
+  },
 ];
 
 export const CATEGORIES = [
