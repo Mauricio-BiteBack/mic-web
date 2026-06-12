@@ -7,6 +7,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import PageShell from '@/components/PageShell';
 import { useCart } from '@/components/CartContext';
+import { useCotizar } from '@/components/CotizarContext';
 import { CHANNELS, CATEGORIES, BRANDS, Channel } from '@/data/channels';
 
 function ChannelCard({ ch }: { ch: Channel }) {
@@ -86,6 +87,7 @@ function ChannelCard({ ch }: { ch: Channel }) {
 
 function CatalogoContent() {
   const cart = useCart();
+  const cotizar = useCotizar();
   const searchParams = useSearchParams();
   const [catFilter, setCatFilter] = useState('all');
   const [brandFilter, setBrandFilter] = useState('all');
@@ -154,7 +156,7 @@ function CatalogoContent() {
           style={{ zIndex: -20 }}
           priority
         />
-        <div className="absolute inset-0 bg-[#0D1E6B]/70" style={{ zIndex: -10 }} />
+        <div className="absolute inset-0 bg-[#841F89]/75" style={{ zIndex: -10 }} />
         <div className="max-w-[1240px] mx-auto relative">
           <span className="inline-flex items-center gap-2 bg-white/10 border border-white/20 px-3.5 py-1.5 rounded-full text-[12px] font-medium mb-5">
             Catálogo completo
@@ -568,12 +570,12 @@ function CatalogoContent() {
               >
                 Limpiar
               </button>
-              <a
-                href="/cotizacion"
+              <button
+                onClick={cotizar.open}
                 className="px-6 py-2.5 bg-[#E8078B] text-white font-semibold text-[14px] rounded-[10px] shadow-[0_4px_14px_rgba(232,7,139,0.4)] hover:bg-[#ff1e9f] transition-colors cursor-pointer"
               >
                 Solicitar cotización →
-              </a>
+              </button>
             </div>
           </div>
         </div>

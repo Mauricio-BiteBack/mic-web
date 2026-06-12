@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useCart } from './CartContext';
+import { useCotizar } from './CotizarContext';
 import { SERVICES } from '@/data/services';
 
 interface NavbarProps {
@@ -21,6 +22,7 @@ function ServiceIcon({ kind }: { kind: string }) {
 
 export default function Navbar({ onOpenCart }: NavbarProps) {
   const cart = useCart();
+  const cotizar = useCotizar();
   const router = useRouter();
   const [scrolled, setScrolled] = useState(false);
   const [bump, setBump] = useState(false);
@@ -226,12 +228,12 @@ export default function Navbar({ onOpenCart }: NavbarProps) {
           </button>
 
           {/* CTA */}
-          <a
-            href="#configurador"
+          <button
+            onClick={cotizar.open}
             className="hidden md:inline-flex items-center gap-1.5 px-4 py-2.5 bg-[#E8078B] text-white text-sm font-semibold rounded-[10px] shadow-[0_6px_18px_rgba(232,7,139,0.35)] hover:bg-[#ff1e9f] hover:shadow-[0_10px_26px_rgba(232,7,139,0.45)] transition-all duration-200 cursor-pointer"
           >
             Solicitar cotización
-          </a>
+          </button>
 
           {/* Mobile hamburger */}
           <button
@@ -283,13 +285,12 @@ export default function Navbar({ onOpenCart }: NavbarProps) {
               className="bg-transparent text-[14px] text-[#0a1133] placeholder-[#9ca3af] outline-none flex-1"
             />
           </form>
-          <a
-            href="#configurador"
-            onClick={() => setMenuOpen(false)}
+          <button
+            onClick={() => { cotizar.open(); setMenuOpen(false); }}
             className="mt-1 inline-flex justify-center px-4 py-3 bg-[#E8078B] text-white text-sm font-semibold rounded-[10px] shadow-[0_6px_18px_rgba(232,7,139,0.35)] cursor-pointer"
           >
             Solicitar cotización
-          </a>
+          </button>
         </div>
       )}
     </header>

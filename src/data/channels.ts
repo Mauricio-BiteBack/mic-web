@@ -60,7 +60,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'fmh-family',
     name: 'FMH Family',
-    category: 'Misceláneos',
+    category: 'Cine',
     brand: 'FMH',
     type: 'IP',
     lang: 'ES',
@@ -97,7 +97,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'classic-plus',
     name: 'Classic+',
-    category: 'Misceláneos',
+    category: 'Cine',
     brand: 'FMH',
     type: 'IP',
     lang: 'ES',
@@ -170,7 +170,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'memorias-film',
     name: 'Memorias Film',
-    category: 'Misceláneos',
+    category: 'Cine',
     brand: 'Grupo Max',
     type: 'IP',
     lang: 'ES',
@@ -208,7 +208,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'cine-latino',
     name: 'Cine Latino',
-    category: 'Misceláneos',
+    category: 'Cine',
     brand: 'MIC',
     type: 'FAST',
     lang: 'ES',
@@ -221,7 +221,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'rewind',
     name: 'Rewind',
-    category: 'Misceláneos',
+    category: 'Cine',
     brand: 'MIC',
     type: 'FAST',
     lang: 'ES',
@@ -246,7 +246,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'clover',
     name: 'Clover',
-    category: 'Misceláneos',
+    category: 'Cine',
     brand: 'NeoTech',
     type: 'IP',
     lang: 'ES',
@@ -491,7 +491,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'comedy-channel',
     name: 'Comedy Channel',
-    category: 'Comedia',
+    category: 'Cine',
     brand: 'Independiente',
     type: 'IP',
     lang: 'ES',
@@ -611,7 +611,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'lejano-oeste',
     name: 'Lejano Oeste',
-    category: 'Misceláneos',
+    category: 'Cine',
     brand: 'Independiente',
     type: 'IP',
     lang: 'ES',
@@ -875,7 +875,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'classic-western',
     name: 'Classic Western',
-    category: 'Misceláneos',
+    category: 'Cine',
     brand: 'Independiente',
     type: 'IP',
     lang: 'ES',
@@ -1151,7 +1151,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'cine-d',
     name: 'Cine D',
-    category: 'Religión',
+    category: 'Cine',
     brand: 'Independiente',
     type: 'IP',
     lang: 'ES',

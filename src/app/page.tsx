@@ -13,13 +13,13 @@ import RPPBanner from '@/components/RPPBanner';
 import Footer from '@/components/Footer';
 import WhatsAppFloat from '@/components/WhatsAppFloat';
 import CartDrawer from '@/components/CartDrawer';
-import CotizarModal from '@/components/CotizarModal';
 import { useCart } from '@/components/CartContext';
+import { useCotizar } from '@/components/CotizarContext';
 
 export default function HomePage() {
   const cart = useCart();
+  const cotizar = useCotizar();
   const [cartOpen, setCartOpen] = useState(false);
-  const [cotizarOpen, setCotizarOpen] = useState(false);
 
   return (
     <>
@@ -30,7 +30,7 @@ export default function HomePage() {
         <TrustBar />
         <RPPBanner />
         <CatalogPreview />
-        <PackageConfigurator onCotizar={() => setCotizarOpen(true)} />
+        <PackageConfigurator onCotizar={cotizar.open} />
         <Services />
         <Testimonials />
         <CTAStrip />
@@ -42,15 +42,8 @@ export default function HomePage() {
       <CartDrawer
         open={cartOpen}
         onClose={() => setCartOpen(false)}
-        onCotizar={() => setCotizarOpen(true)}
+        onCotizar={cotizar.open}
       />
-
-      {cotizarOpen && (
-        <CotizarModal
-          channels={cart.channels}
-          onClose={() => setCotizarOpen(false)}
-        />
-      )}
     </>
   );
 }

@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
 import { CartProvider } from '@/components/CartContext';
+import { CotizarProvider } from '@/components/CotizarContext';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -31,7 +32,7 @@ export default function RootLayout({
   return (
     <html lang="es" className={`${inter.variable} h-full`}>
       <body className="min-h-full flex flex-col antialiased font-[family-name:var(--font-inter)]">
-        <CartProvider>{children}</CartProvider>
+        <CartProvider><CotizarProvider>{children}</CotizarProvider></CartProvider>
       </body>
     </html>
   );
