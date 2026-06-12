@@ -28,11 +28,21 @@ export default function LinealesPage() {
   const onChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
     setForm(p => ({ ...p, [e.target.name]: e.target.value }));
 
-  const onSubmit = (e: React.FormEvent) => {
+  const [sending, setSending] = useState(false);
+
+  const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const msg = `Nombre: ${form.nombre}%0AEmpresa: ${form.empresa}%0AEmail: ${form.email}%0ATel: ${form.telefono}%0APaís: ${form.pais}%0AContenido: ${form.tipoContenido}%0AHoras: ${form.horas}%0AComentarios: ${form.comentarios}`;
-    window.open(`https://wa.me/message/R5QI3ZBQMLUXP1?text=${msg}`, '_blank');
-    setSent(true);
+    setSending(true);
+    try {
+      const res = await fetch('/api/canal-lineal', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      });
+      if (res.ok) setSent(true);
+    } finally {
+      setSending(false);
+    }
   };
 
   const input = 'w-full px-4 py-3 rounded-xl border border-[#d8dbe8] bg-white text-[14px] text-[#0a1133] placeholder:text-[#b0b5cc] focus:outline-none focus:ring-2 focus:ring-[#193595]/25 focus:border-[#193595] transition';
@@ -436,10 +446,10 @@ export default function LinealesPage() {
                 <label className="text-[12px] font-semibold text-white/60 uppercase tracking-wide">Comentarios</label>
                 <textarea name="comentarios" value={form.comentarios} onChange={onChange} rows={3} placeholder="Cuéntanos más sobre tu proyecto…" className={`${input} resize-none`} />
               </div>
-              <button type="submit" className="w-full flex items-center justify-center gap-2 py-4 bg-[#E8078B] text-white text-[16px] font-bold rounded-[12px] shadow-[0_6px_22px_rgba(232,7,139,0.45)] hover:bg-[#ff1e9f] transition-all group">
-                🚀 Quiero crear mi canal
+              <button type="submit" disabled={sending} className="w-full flex items-center justify-center gap-2 py-4 bg-[#E8078B] text-white text-[16px] font-bold rounded-[12px] shadow-[0_6px_22px_rgba(232,7,139,0.45)] hover:bg-[#ff1e9f] transition-all disabled:opacity-70 disabled:cursor-not-allowed">
+                {sending ? 'Enviando…' : '🚀 Quiero crear mi canal'}
               </button>
-              <p className="text-center text-[12px] text-white/35 mt-3">Al enviar serás redirigido a WhatsApp para completar tu solicitud.</p>
+              <p className="text-center text-[12px] text-white/35 mt-3">Tu solicitud llegará directamente a nuestro equipo de ingeniería.</p>
             </motion.form>
           )}
         </div>
