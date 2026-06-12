@@ -111,89 +111,227 @@ export default function LinealesPage() {
         </div>
       </section>
 
-      {/* ── BENTO GRID ── */}
+      {/* ── CASOS DE ÉXITO ── */}
+      <section className="py-10 px-6 bg-[#0a1133]">
+        <div className="max-w-[1240px] mx-auto">
+          <div className="flex flex-col sm:flex-row items-center gap-6 sm:gap-10">
+            <p className="text-[13px] font-semibold text-white/40 uppercase tracking-widest whitespace-nowrap flex-shrink-0">🏆 Casos de éxito</p>
+            <div className="flex-1 h-px bg-white/10 hidden sm:block" />
+            <div className="flex flex-wrap items-center justify-center sm:justify-end gap-8">
+              {[
+                { src: '/logo-chikitoonz.jpg', alt: 'Chikitoonz' },
+                { src: '/logo-fierro-a-fondo.png', alt: 'Fierro a Fondo' },
+              ].map((logo, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.2 + i * 0.15 }}
+                  className="bg-white/6 border border-white/10 rounded-xl px-7 py-4 flex items-center justify-center h-[80px] min-w-[160px]"
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={logo.src} alt={logo.alt} className="max-h-[52px] max-w-[140px] object-contain filter brightness-0 invert opacity-80 hover:opacity-100 transition-opacity" />
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── TODO LO QUE NECESITAS ── */}
       <section className="py-16 px-6 bg-[#f0f2f8]">
         <div className="max-w-[1240px] mx-auto">
           <motion.div {...f(0)} className="text-center mb-10">
             <h2 className="text-[clamp(22px,3vw,36px)] font-bold text-[#0a1133] tracking-tight">Todo lo que necesitas, en un solo lugar.</h2>
           </motion.div>
 
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 auto-rows-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
 
-            {/* Large card - Why */}
-            <motion.div {...f(0)} className="col-span-2 row-span-1 bg-[#193595] text-white rounded-2xl p-7">
-              <div className="text-[13px] font-semibold text-white/50 uppercase tracking-widest mb-3">💡 ¿Por qué un canal propio?</div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                {['Crea nuevas oportunidades de monetización', 'Mayor posicionamiento de marca', 'Llega a nuevas audiencias', 'Impulsa tus plataformas digitales', 'Proyecta imagen más profesional'].map((t, i) => (
-                  <div key={i} className="flex items-center gap-2 text-[14px] text-white/85">
+            {/* 1 - Por qué */}
+            <motion.div {...f(0)} className="bg-[#193595] text-white rounded-2xl p-7 flex flex-col gap-4">
+              <div className="flex items-center gap-3">
+                <span className="w-10 h-10 rounded-xl bg-white/15 flex items-center justify-center text-xl flex-shrink-0">💡</span>
+                <span className="text-[14px] font-bold text-white uppercase tracking-wide">¿Por qué un canal propio?</span>
+              </div>
+              <ul className="flex flex-col gap-2.5">
+                {[
+                  'Nuevas oportunidades de monetización',
+                  'Mayor posicionamiento de marca',
+                  'Llega a nuevas audiencias',
+                  'Impulsa tus plataformas digitales',
+                  'Proyecta imagen más profesional',
+                ].map((t, i) => (
+                  <li key={i} className="flex items-center gap-2.5 text-[13.5px] text-white/85">
                     <span className="w-4 h-4 rounded-full bg-[#E8078B] flex items-center justify-center flex-shrink-0">
                       <svg width="9" height="9" viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
                     </span>
                     {t}
-                  </div>
+                  </li>
                 ))}
+              </ul>
+            </motion.div>
+
+            {/* 2 - Para quién */}
+            <motion.div {...f(1)} className="bg-[#E8078B] text-white rounded-2xl p-7 flex flex-col gap-4">
+              <div className="flex items-center gap-3">
+                <span className="w-10 h-10 rounded-xl bg-white/15 flex items-center justify-center text-xl flex-shrink-0">👥</span>
+                <span className="text-[14px] font-bold text-white uppercase tracking-wide">¿Para quién?</span>
               </div>
-            </motion.div>
-
-            {/* For who */}
-            <motion.div {...f(1)} className="bg-[#E8078B] text-white rounded-2xl p-6">
-              <div className="text-[12px] font-semibold text-white/60 uppercase tracking-widest mb-3">👥 ¿Para quién?</div>
-              <ul className="flex flex-col gap-1.5">
-                {['Productoras', 'Creadores de contenido', 'Empresas y marcas', 'Medios digitales', 'Universidades', 'Organizaciones'].map((a, i) => (
-                  <li key={i} className="text-[13px] text-white/90 flex items-center gap-1.5">
-                    <span className="text-white/50">›</span>{a}
+              <ul className="flex flex-col gap-2.5">
+                {[
+                  'Productoras audiovisuales',
+                  'Creadores de contenido',
+                  'Empresas y marcas',
+                  'Medios digitales',
+                  'Universidades e instituciones',
+                  'Organizaciones especializadas',
+                ].map((a, i) => (
+                  <li key={i} className="flex items-center gap-2.5 text-[13.5px] text-white/90">
+                    <span className="w-4 h-4 rounded-full bg-white/25 flex items-center justify-center flex-shrink-0">
+                      <svg width="9" height="9" viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                    </span>
+                    {a}
                   </li>
                 ))}
               </ul>
             </motion.div>
 
-            {/* Content types */}
-            <motion.div {...f(2)} className="bg-[#0aa84f] text-white rounded-2xl p-6">
-              <div className="text-[12px] font-semibold text-white/60 uppercase tracking-widest mb-3">🎥 Tipos de contenido</div>
-              <ul className="flex flex-col gap-1.5">
-                {['Programas grabados', 'Noticias especializadas', 'Videos corporativos', 'Contenido educativo', 'Cursos y capacitaciones', 'Documentales'].map((t, i) => (
-                  <li key={i} className="text-[13px] text-white/90 flex items-center gap-1.5">
-                    <span className="text-white/50">›</span>{t}
+            {/* 3 - Tipos de contenido */}
+            <motion.div {...f(2)} className="bg-[#0aa84f] text-white rounded-2xl p-7 flex flex-col gap-4">
+              <div className="flex items-center gap-3">
+                <span className="w-10 h-10 rounded-xl bg-white/15 flex items-center justify-center text-xl flex-shrink-0">🎥</span>
+                <span className="text-[14px] font-bold text-white uppercase tracking-wide">Tipos de contenido</span>
+              </div>
+              <ul className="flex flex-col gap-2.5">
+                {[
+                  'Programas grabados',
+                  'Noticias e información especializada',
+                  'Videos corporativos',
+                  'Contenido educativo',
+                  'Cursos y capacitaciones',
+                  'Documentales',
+                ].map((t, i) => (
+                  <li key={i} className="flex items-center gap-2.5 text-[13.5px] text-white/90">
+                    <span className="w-4 h-4 rounded-full bg-white/25 flex items-center justify-center flex-shrink-0">
+                      <svg width="9" height="9" viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                    </span>
+                    {t}
                   </li>
                 ))}
               </ul>
             </motion.div>
 
-            {/* We do everything */}
-            <motion.div {...f(3)} className="col-span-2 bg-[#0a1133] text-white rounded-2xl p-7">
-              <div className="text-[13px] font-semibold text-white/40 uppercase tracking-widest mb-3">🛠 Nosotros hacemos todo por ti</div>
-              <div className="grid grid-cols-2 gap-2">
-                {['Crear el canal', 'Organizar los contenidos', 'Diseñar la imagen', 'Programar transmisión automática', 'Mantener señal 24/7', 'Soporte especializado'].map((t, i) => (
-                  <div key={i} className="flex items-center gap-2 text-[14px] text-white/80">
+            {/* 4 - Hacemos todo */}
+            <motion.div {...f(3)} className="bg-[#0a1133] text-white rounded-2xl p-7 flex flex-col gap-4">
+              <div className="flex items-center gap-3">
+                <span className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-xl flex-shrink-0">🛠</span>
+                <span className="text-[14px] font-bold text-white uppercase tracking-wide">Nosotros hacemos todo</span>
+              </div>
+              <ul className="flex flex-col gap-2.5">
+                {[
+                  'Crear el canal',
+                  'Organizar los contenidos',
+                  'Diseñar la imagen del canal',
+                  'Programar transmisión automática',
+                  'Mantener la señal 24/7',
+                  'Soporte especializado',
+                ].map((t, i) => (
+                  <li key={i} className="flex items-center gap-2.5 text-[13.5px] text-white/80">
                     <span className="w-4 h-4 rounded-full bg-[#f5b015] flex items-center justify-center flex-shrink-0">
                       <svg width="9" height="9" viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
                     </span>
                     {t}
-                  </div>
+                  </li>
                 ))}
+              </ul>
+            </motion.div>
+
+            {/* 5 - QR */}
+            <motion.div {...f(4)} className="bg-[#f5b015] rounded-2xl p-7 flex flex-col gap-4">
+              <div className="flex items-center gap-3">
+                <span className="w-10 h-10 rounded-xl bg-black/10 flex items-center justify-center text-xl flex-shrink-0">📲</span>
+                <span className="text-[14px] font-bold text-black/75 uppercase tracking-wide">QR en pantalla</span>
+              </div>
+              <p className="text-[14px] text-black/70 leading-relaxed">
+                Incorporamos un código QR en vivo durante la transmisión para llevar a tu audiencia hacia tus redes, web o servicios.
+              </p>
+              <div className="flex justify-center mt-auto pt-2">
+                <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="rounded-xl bg-white p-2 shadow-sm">
+                  {/* Top-left finder */}
+                  <rect x="8" y="8" width="30" height="30" rx="3" fill="#1a1a1a"/>
+                  <rect x="13" y="13" width="20" height="20" rx="2" fill="white"/>
+                  <rect x="18" y="18" width="10" height="10" rx="1" fill="#1a1a1a"/>
+                  {/* Top-right finder */}
+                  <rect x="82" y="8" width="30" height="30" rx="3" fill="#1a1a1a"/>
+                  <rect x="87" y="13" width="20" height="20" rx="2" fill="white"/>
+                  <rect x="92" y="18" width="10" height="10" rx="1" fill="#1a1a1a"/>
+                  {/* Bottom-left finder */}
+                  <rect x="8" y="82" width="30" height="30" rx="3" fill="#1a1a1a"/>
+                  <rect x="13" y="87" width="20" height="20" rx="2" fill="white"/>
+                  <rect x="18" y="92" width="10" height="10" rx="1" fill="#1a1a1a"/>
+                  {/* Data modules - row 1 */}
+                  <rect x="46" y="8" width="7" height="7" rx="1" fill="#1a1a1a"/>
+                  <rect x="57" y="8" width="7" height="7" rx="1" fill="#1a1a1a"/>
+                  <rect x="68" y="8" width="7" height="7" rx="1" fill="#1a1a1a"/>
+                  {/* Data modules - row 2 */}
+                  <rect x="46" y="19" width="7" height="7" rx="1" fill="#1a1a1a"/>
+                  <rect x="68" y="19" width="7" height="7" rx="1" fill="#1a1a1a"/>
+                  {/* Data modules - row 3 */}
+                  <rect x="57" y="30" width="7" height="7" rx="1" fill="#1a1a1a"/>
+                  {/* Data modules - middle rows */}
+                  <rect x="8"  y="46" width="7" height="7" rx="1" fill="#1a1a1a"/>
+                  <rect x="19" y="46" width="7" height="7" rx="1" fill="#1a1a1a"/>
+                  <rect x="35" y="46" width="7" height="7" rx="1" fill="#1a1a1a"/>
+                  <rect x="46" y="46" width="7" height="7" rx="1" fill="#1a1a1a"/>
+                  <rect x="57" y="46" width="7" height="7" rx="1" fill="#1a1a1a"/>
+                  <rect x="68" y="46" width="7" height="7" rx="1" fill="#1a1a1a"/>
+                  <rect x="79" y="46" width="7" height="7" rx="1" fill="#1a1a1a"/>
+                  <rect x="90" y="46" width="7" height="7" rx="1" fill="#1a1a1a"/>
+                  <rect x="105" y="46" width="7" height="7" rx="1" fill="#1a1a1a"/>
+                  <rect x="8"  y="57" width="7" height="7" rx="1" fill="#1a1a1a"/>
+                  <rect x="35" y="57" width="7" height="7" rx="1" fill="#1a1a1a"/>
+                  <rect x="57" y="57" width="7" height="7" rx="1" fill="#1a1a1a"/>
+                  <rect x="79" y="57" width="7" height="7" rx="1" fill="#1a1a1a"/>
+                  <rect x="105" y="57" width="7" height="7" rx="1" fill="#1a1a1a"/>
+                  <rect x="19" y="68" width="7" height="7" rx="1" fill="#1a1a1a"/>
+                  <rect x="46" y="68" width="7" height="7" rx="1" fill="#1a1a1a"/>
+                  <rect x="68" y="68" width="7" height="7" rx="1" fill="#1a1a1a"/>
+                  <rect x="90" y="68" width="7" height="7" rx="1" fill="#1a1a1a"/>
+                  <rect x="105" y="68" width="7" height="7" rx="1" fill="#1a1a1a"/>
+                  {/* Bottom-right data */}
+                  <rect x="46" y="82" width="7" height="7" rx="1" fill="#1a1a1a"/>
+                  <rect x="57" y="82" width="7" height="7" rx="1" fill="#1a1a1a"/>
+                  <rect x="79" y="82" width="7" height="7" rx="1" fill="#1a1a1a"/>
+                  <rect x="105" y="82" width="7" height="7" rx="1" fill="#1a1a1a"/>
+                  <rect x="46" y="93" width="7" height="7" rx="1" fill="#1a1a1a"/>
+                  <rect x="68" y="93" width="7" height="7" rx="1" fill="#1a1a1a"/>
+                  <rect x="90" y="93" width="7" height="7" rx="1" fill="#1a1a1a"/>
+                  <rect x="57" y="104" width="7" height="7" rx="1" fill="#1a1a1a"/>
+                  <rect x="79" y="104" width="7" height="7" rx="1" fill="#1a1a1a"/>
+                  <rect x="105" y="104" width="7" height="7" rx="1" fill="#1a1a1a"/>
+                </svg>
               </div>
             </motion.div>
 
-            {/* QR */}
-            <motion.div {...f(4)} className="bg-[#f5b015] rounded-2xl p-6 flex flex-col justify-between">
-              <div>
-                <div className="text-[12px] font-semibold text-black/40 uppercase tracking-widest mb-2">📲 QR en pantalla</div>
-                <p className="text-[14px] text-black/80 font-medium leading-snug">Incorporamos un QR en vivo para llevar a tu audiencia hacia tus redes, web o servicios.</p>
+            {/* 6 - Red MIC */}
+            <motion.div {...f(5)} className="bg-white border border-[#d8dbe8] rounded-2xl p-7 flex flex-col gap-4">
+              <div className="flex items-center gap-3">
+                <span className="w-10 h-10 rounded-xl bg-[#193595]/10 flex items-center justify-center text-xl flex-shrink-0">⭐</span>
+                <span className="text-[14px] font-bold text-[#0a1133] uppercase tracking-wide">Red MIC</span>
               </div>
-              <div className="mt-4 text-[40px] text-center">⬛📱⬛</div>
-            </motion.div>
-
-            {/* Network */}
-            <motion.div {...f(5)} className="bg-white border-2 border-[#193595] rounded-2xl p-6 flex flex-col justify-between">
-              <div>
-                <div className="text-[12px] font-semibold text-[#193595]/50 uppercase tracking-widest mb-2">⭐ Red MIC</div>
-                <p className="text-[14px] text-[#374060] leading-snug">Accede a nuestra red de <strong className="text-[#193595]">+150 cableoperadores</strong> en Latinoamérica para mayor exposición.</p>
-              </div>
-              <div className="mt-4 flex items-end gap-1">
-                {[40, 60, 80, 55, 90, 70, 100].map((h, i) => (
-                  <div key={i} className="flex-1 rounded-sm bg-[#193595]/20" style={{ height: h * 0.5 + 'px' }}/>
+              <p className="text-[14px] text-[#374060] leading-relaxed">
+                Accede a nuestra red de <strong className="text-[#193595]">+150 cableoperadores</strong> en Latinoamérica. Tu canal llega a más personas desde el primer día.
+              </p>
+              <ul className="flex flex-col gap-2 mt-auto">
+                {['Mayor posicionamiento', 'Más alcance regional', 'Nuevas audiencias', 'Más oportunidades de monetización'].map((t, i) => (
+                  <li key={i} className="flex items-center gap-2 text-[13px] text-[#6a7196]">
+                    <span className="w-4 h-4 rounded-full bg-[#193595] flex items-center justify-center flex-shrink-0">
+                      <svg width="9" height="9" viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                    </span>
+                    {t}
+                  </li>
                 ))}
-              </div>
+              </ul>
             </motion.div>
 
           </div>
