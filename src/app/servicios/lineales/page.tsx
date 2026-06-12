@@ -117,28 +117,22 @@ export default function LinealesPage() {
           <div className="flex flex-col sm:flex-row items-center gap-6 sm:gap-10">
             <p className="text-[13px] font-semibold text-white/40 uppercase tracking-widest whitespace-nowrap flex-shrink-0">🏆 Casos de éxito</p>
             <div className="flex-1 h-px bg-white/10 hidden sm:block" />
-            <div className="flex flex-wrap items-center justify-center sm:justify-end gap-6">
-              {/* Chikitoonz — fondo morado para que el logo resalte */}
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                className="bg-[#3b0764] rounded-2xl px-8 py-4 flex flex-col items-center justify-center gap-2 h-[110px] min-w-[200px] shadow-[0_4px_24px_rgba(107,33,168,0.5)] hover:shadow-[0_6px_32px_rgba(107,33,168,0.7)] hover:scale-105 transition-all duration-200"
-              >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/logo-chikitoonz.jpg" alt="Chikitoonz" className="max-h-[72px] max-w-[160px] object-contain rounded-lg" />
-              </motion.div>
-
-              {/* Fierro a Fondo — fondo negro para que el rojo resalte */}
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.35 }}
-                className="bg-[#111111] rounded-2xl px-8 py-4 flex flex-col items-center justify-center gap-2 h-[110px] min-w-[200px] shadow-[0_4px_24px_rgba(220,38,38,0.35)] hover:shadow-[0_6px_32px_rgba(220,38,38,0.55)] hover:scale-105 transition-all duration-200"
-              >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/logo-fierro-a-fondo.png" alt="Fierro a Fondo" className="max-h-[72px] max-w-[160px] object-contain" />
-              </motion.div>
+            <div className="flex flex-wrap items-center justify-center sm:justify-end gap-10">
+              {[
+                { src: '/logo-chikitoonz.jpg', alt: 'Chikitoonz', delay: 0.2 },
+                { src: '/logo-fierro-a-fondo.png', alt: 'Fierro a Fondo', delay: 0.35 },
+              ].map((logo) => (
+                <motion.div
+                  key={logo.alt}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: logo.delay }}
+                  className="hover:scale-105 transition-transform duration-200"
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={logo.src} alt={logo.alt} className="h-[72px] w-auto object-contain" />
+                </motion.div>
+              ))}
             </div>
           </div>
         </div>
