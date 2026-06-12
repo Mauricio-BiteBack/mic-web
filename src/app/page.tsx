@@ -28,10 +28,10 @@ export default function HomePage() {
       <main>
         <Hero />
         <TrustBar />
+        <RPPBanner />
         <Services />
         <PackageConfigurator onCotizar={() => setCotizarOpen(true)} />
         <CatalogPreview />
-        <RPPBanner />
         <Testimonials />
         <CTAStrip />
       </main>

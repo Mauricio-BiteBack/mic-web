@@ -36,8 +36,8 @@ export async function POST(req: NextRequest) {
   });
 
   if (error) {
-    console.error('Resend error:', error);
-    return NextResponse.json({ ok: false }, { status: 500 });
+    console.error('Resend error:', JSON.stringify(error));
+    return NextResponse.json({ ok: false, error }, { status: 500 });
   }
 
   return NextResponse.json({ ok: true });

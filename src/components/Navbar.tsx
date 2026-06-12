@@ -132,20 +132,14 @@ export default function Navbar({ onOpenCart }: NavbarProps) {
                     <a
                       key={s.num}
                       href={s.href}
-                      className={`group flex gap-3 p-3.5 rounded-[14px] border transition-all duration-150 hover:shadow-md ${
-                        s.accent
-                          ? 'bg-[#fff0f8] border-[#E8078B]/20 hover:bg-[#ffe0f3]'
-                          : 'bg-[#f6f7fb] border-gray-100 hover:bg-white hover:border-gray-200'
-                      }`}
+                      className="group flex gap-3 p-3.5 rounded-[14px] border bg-[#f6f7fb] border-gray-100 hover:bg-[#fff0f8] hover:border-[#E8078B]/25 hover:shadow-md transition-all duration-150"
                     >
-                      <div className={`w-9 h-9 rounded-[10px] grid place-items-center flex-shrink-0 ${
-                        s.accent ? 'bg-[#E8078B] text-white' : 'bg-[#193595]/10 text-[#193595]'
-                      }`}>
+                      <div className="w-9 h-9 rounded-[10px] grid place-items-center flex-shrink-0 bg-[#193595]/10 text-[#193595] group-hover:bg-[#E8078B] group-hover:text-white transition-all duration-150">
                         <ServiceIcon kind={s.title} />
                       </div>
                       <div className="min-w-0">
                         <div className="flex items-center gap-1.5 mb-0.5">
-                          <span className={`text-[10px] font-semibold uppercase tracking-wider ${s.accent ? 'text-[#E8078B]' : 'text-[#6a7196]'}`}>{s.verb}</span>
+                          <span className="text-[10px] font-semibold uppercase tracking-wider text-[#6a7196] group-hover:text-[#E8078B] transition-colors duration-150">{s.verb}</span>
                         </div>
                         <strong className="block text-[14px] font-bold text-[#0a1133] leading-tight mb-1">{s.title}</strong>
                         <p className="text-[12px] text-[#6a7196] leading-relaxed line-clamp-2">{s.desc}</p>

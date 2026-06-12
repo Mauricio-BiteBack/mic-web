@@ -29,17 +29,28 @@ export default function LinealesPage() {
     setForm(p => ({ ...p, [e.target.name]: e.target.value }));
 
   const [sending, setSending] = useState(false);
+  const [error, setError] = useState(false);
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSending(true);
+    setError(false);
     try {
       const res = await fetch('/api/canal-lineal', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),
       });
-      if (res.ok) setSent(true);
+      if (res.ok) {
+        setSent(true);
+      } else {
+        const data = await res.json().catch(() => ({}));
+        console.error('API error:', res.status, data);
+        setError(true);
+      }
+    } catch (err) {
+      console.error('Fetch error:', err);
+      setError(true);
     } finally {
       setSending(false);
     }
@@ -449,6 +460,11 @@ export default function LinealesPage() {
               <button type="submit" disabled={sending} className="w-full flex items-center justify-center gap-2 py-4 bg-[#E8078B] text-white text-[16px] font-bold rounded-[12px] shadow-[0_6px_22px_rgba(232,7,139,0.45)] hover:bg-[#ff1e9f] transition-all disabled:opacity-70 disabled:cursor-not-allowed">
                 {sending ? 'Enviando…' : '🚀 Quiero crear mi canal'}
               </button>
+              {error && (
+                <p className="text-center text-[13px] text-red-400 mt-2">
+                  Hubo un error al enviar. Por favor intenta de nuevo o escríbenos a <a href="mailto:ingenieria@mic.pe" className="underline">ingenieria@mic.pe</a>.
+                </p>
+              )}
               <p className="text-center text-[12px] text-white/35 mt-3">Tu solicitud llegará directamente a nuestro equipo de ingeniería.</p>
             </motion.form>
           )}
