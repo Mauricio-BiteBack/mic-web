@@ -117,22 +117,32 @@ export default function LinealesPage() {
           <div className="flex flex-col sm:flex-row items-center gap-6 sm:gap-10">
             <p className="text-[13px] font-semibold text-white/40 uppercase tracking-widest whitespace-nowrap flex-shrink-0">🏆 Casos de éxito</p>
             <div className="flex-1 h-px bg-white/10 hidden sm:block" />
-            <div className="flex flex-wrap items-center justify-center sm:justify-end gap-10">
-              {[
-                { src: '/logo-chikitoonz.png', alt: 'Chikitoonz', delay: 0.2, cls: 'h-[210px] w-[546px] object-contain' },
-                { src: '/logo-fierro-a-fondo.png', alt: 'Fierro a Fondo', delay: 0.35, cls: 'h-[100px] w-[260px] object-contain' },
-              ].map((logo) => (
-                <motion.div
-                  key={logo.alt}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: logo.delay }}
-                  className="hover:scale-105 transition-transform duration-200"
-                >
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={logo.src} alt={logo.alt} className={logo.cls} />
-                </motion.div>
-              ))}
+            <div className="flex flex-wrap items-center justify-center sm:justify-end gap-4">
+              {/* Chikitoonz */}
+              <motion.a
+                href="/canales/chikitoonz"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                whileHover={{ scale: 1.12, filter: 'drop-shadow(0 0 18px rgba(255,255,255,0.9)) drop-shadow(0 0 6px rgba(255,255,255,0.6))' }}
+                className="cursor-pointer"
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/logo-chikitoonz.png" alt="Chikitoonz" className="h-[315px] w-[819px] object-contain" />
+              </motion.a>
+
+              {/* Fierro a Fondo */}
+              <motion.a
+                href="/canales/fierro-a-fondo"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.35 }}
+                whileHover={{ scale: 1.12, filter: 'drop-shadow(0 0 18px rgba(255,255,255,0.9)) drop-shadow(0 0 6px rgba(255,255,255,0.6))' }}
+                className="cursor-pointer"
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/logo-fierro-a-fondo.png" alt="Fierro a Fondo" className="h-[100px] w-[260px] object-contain" />
+              </motion.a>
             </div>
           </div>
         </div>
