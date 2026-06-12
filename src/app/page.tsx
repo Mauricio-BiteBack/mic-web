@@ -29,9 +29,9 @@ export default function HomePage() {
         <Hero />
         <TrustBar />
         <RPPBanner />
-        <Services />
-        <PackageConfigurator onCotizar={() => setCotizarOpen(true)} />
         <CatalogPreview />
+        <PackageConfigurator onCotizar={() => setCotizarOpen(true)} />
+        <Services />
         <Testimonials />
         <CTAStrip />
       </main>
