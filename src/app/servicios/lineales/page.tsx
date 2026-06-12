@@ -119,7 +119,7 @@ export default function LinealesPage() {
             <div className="flex-1 h-px bg-white/10 hidden sm:block" />
             <div className="flex flex-wrap items-center justify-center sm:justify-end gap-10">
               {[
-                { src: '/logo-chikitoonz.jpg', alt: 'Chikitoonz', delay: 0.2 },
+                { src: '/logo-chikitoonz.png', alt: 'Chikitoonz', delay: 0.2 },
                 { src: '/logo-fierro-a-fondo.png', alt: 'Fierro a Fondo', delay: 0.35 },
               ].map((logo) => (
                 <motion.div
@@ -130,7 +130,7 @@ export default function LinealesPage() {
                   className="hover:scale-105 transition-transform duration-200"
                 >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={logo.src} alt={logo.alt} className="h-[72px] w-auto object-contain" />
+                  <img src={logo.src} alt={logo.alt} className="h-[100px] w-auto object-contain" />
                 </motion.div>
               ))}
             </div>
