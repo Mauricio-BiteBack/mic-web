@@ -13,7 +13,8 @@ export type ChannelCategory =
   | 'Deportes'
   | 'Turismo'
   | 'Infantil'
-  | 'Cine';
+  | 'Cine'
+  | 'Series';
 
 export interface Channel {
   id: string;
@@ -158,7 +159,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'memorias-toons',
     name: 'Memorias Toons',
-    category: 'Caricaturas',
+    category: 'Infantil',
     brand: 'Grupo Max',
     type: 'IP',
     lang: 'ES',
@@ -182,7 +183,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'memorias-series',
     name: 'Memorias Series',
-    category: 'Misceláneos',
+    category: 'Series',
     brand: 'Grupo Max',
     type: 'IP',
     lang: 'ES',
@@ -234,7 +235,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'ztv',
     name: 'ZTV',
-    category: 'Misceláneos',
+    category: 'Infantil',
     brand: 'NeoTech',
     type: 'FAST',
     lang: 'ES',
@@ -294,7 +295,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'energeek-radio',
     name: 'Energeek Radio',
-    category: 'Musical',
+    category: 'Infantil',
     brand: 'NeoTech',
     type: 'IP',
     lang: 'ES',
@@ -659,7 +660,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'retro-x',
     name: 'Retro X',
-    category: 'Caricaturas',
+    category: 'Infantil',
     brand: 'Independiente',
     type: 'IP',
     lang: 'ES',
@@ -839,7 +840,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'classic-series',
     name: 'Classic Series',
-    category: 'Misceláneos',
+    category: 'Series',
     brand: 'Independiente',
     type: 'IP',
     lang: 'ES',
@@ -887,7 +888,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'fierro-a-fondo',
     name: 'Fierro a Fondo',
-    category: 'Misceláneos',
+    category: 'Deportes',
     brand: 'Independiente',
     type: 'IP',
     lang: 'ES',
@@ -899,7 +900,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'agrotendencia',
     name: 'Agrotendencia',
-    category: 'Documental',
+    category: 'Misceláneos',
     brand: 'Independiente',
     type: 'IP',
     lang: 'ES',
@@ -1077,18 +1078,6 @@ export const CHANNELS: Channel[] = [
     imageUrl: '/Conecta2 TV.jpg',
   },
   {
-    id: 'mun2-tv',
-    name: 'Mun2 TV',
-    category: 'Musical',
-    brand: 'Independiente',
-    type: 'IP',
-    lang: 'ES',
-    color: '#9333ea',
-    dark: '#3b0764',
-    desc: 'Música sin límites. Transmitiendo en vivo desde New York para el mundo.',
-    imageUrl: '/Mun2 TV.jpg',
-  },
-  {
     id: 'nativa',
     name: 'Nativa',
     category: 'Informativo',
@@ -1139,7 +1128,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'entertainment-play-classic',
     name: 'Entertainment Play Classic',
-    category: 'Misceláneos',
+    category: 'Series',
     brand: 'Independiente',
     type: 'IP',
     lang: 'ES',
@@ -1175,7 +1164,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'tv-carioca-internacional',
     name: 'TV Carioca Internacional',
-    category: 'Misceláneos',
+    category: 'Series',
     brand: 'Independiente',
     type: 'IP',
     lang: 'ES',
@@ -1196,6 +1185,7 @@ export const CATEGORIES = [
   { id: 'Regional Peruano', label: 'Regional Peruano' },
   { id: 'Misceláneos', label: 'Misceláneos' },
   { id: 'Cine', label: 'Cine' },
+  { id: 'Series', label: 'Series' },
   { id: 'Religión', label: 'Religión' },
   { id: 'Caricaturas', label: 'Caricaturas' },
   { id: 'Deportes', label: 'Deportes' },

@@ -335,14 +335,6 @@ export const CHANNEL_DETAILS: Record<string, ChannelDetail> = {
       { label: 'Tecnología', value: 'IP' },
     ],
   },
-  'mun2-tv': {
-    longDesc: `Música sin límites. Mun2 TV transmite en vivo desde New York para el mundo, llevando lo mejor de la música latina y urbana directamente a tu pantalla.`,
-    specs: [
-      { label: 'Código', value: 'Mun2-TV' },
-      { label: 'País de origen', value: 'USA' },
-      { label: 'Tecnología', value: 'IP' },
-    ],
-  },
   'tropical-salsa': {
     longDesc: `Canal de salsa, ritmos afrocaribeños y eventos musicales desde Panamá. Una propuesta vibrante que celebra la música tropical en toda su riqueza rítmica y cultural.`,
     videoUrls: [yt('https://www.youtube.com/watch?v=m6smTnO0fjk')],
