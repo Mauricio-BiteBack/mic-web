@@ -21,17 +21,17 @@ function ServiceIcon({ kind }: { kind: string }) {
 
 export default function Services() {
   return (
-    <section id="servicios" className="py-24">
+    <section id="servicios" className="py-24 bg-[#841F89]">
       <div className="max-w-[1240px] mx-auto px-6">
         <div className="max-w-[720px] mb-14">
-          <span className="inline-flex items-center gap-2 text-[12px] font-semibold tracking-[0.14em] uppercase text-[#E8078B] mb-3">
-            <span className="w-5 h-[2px] bg-[#E8078B] rounded-full" />
+          <span className="inline-flex items-center gap-2 text-[12px] font-semibold tracking-[0.14em] uppercase text-white/70 mb-3">
+            <span className="w-5 h-[2px] bg-white/70 rounded-full" />
             Servicios
           </span>
-          <h2 className="text-[clamp(28px,3.5vw,44px)] font-bold tracking-[-0.025em] text-[#0a1133] mb-4">
+          <h2 className="text-[clamp(28px,3.5vw,44px)] font-bold tracking-[-0.025em] text-white mb-4">
             Cuatro formas de hacer crecer tu operación.
           </h2>
-          <p className="text-[17px] text-[#6a7196] leading-relaxed">
+          <p className="text-[17px] text-white/75 leading-relaxed">
             Sin contratos atados, sin volúmenes mínimos. Empieza con lo que necesitas hoy y escala cuando convenga.
           </p>
         </div>
