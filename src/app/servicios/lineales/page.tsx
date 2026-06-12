@@ -120,24 +120,28 @@ export default function LinealesPage() {
             <div className="flex flex-wrap items-center justify-center sm:justify-end gap-4">
               {/* Chikitoonz */}
               <motion.a
-                href="/canales/chikitoonz"
+                href="https://www.mic.pe/catalogo/chikitoonz" target="_blank" rel="noopener noreferrer"
                 initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
+                animate={{ opacity: 1, y: 0, filter: 'drop-shadow(0 0 0px rgba(255,255,255,0))' }}
                 transition={{ duration: 0.5, delay: 0.2 }}
                 whileHover={{ scale: 1.12, filter: 'drop-shadow(0 0 18px rgba(255,255,255,0.9)) drop-shadow(0 0 6px rgba(255,255,255,0.6))' }}
+                whileTap={{ scale: 1.05 }}
+                style={{ willChange: 'filter, transform' }}
                 className="cursor-pointer"
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/logo-chikitoonz.png" alt="Chikitoonz" className="h-[315px] w-[819px] object-contain" />
+                <img src="/logo-chikitoonz.png" alt="Chikitoonz" className="h-[220px] w-[573px] object-contain" />
               </motion.a>
 
               {/* Fierro a Fondo */}
               <motion.a
-                href="/canales/fierro-a-fondo"
+                href="https://www.mic.pe/catalogo/fierro-a-fondo" target="_blank" rel="noopener noreferrer"
                 initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
+                animate={{ opacity: 1, y: 0, filter: 'drop-shadow(0 0 0px rgba(255,255,255,0))' }}
                 transition={{ duration: 0.5, delay: 0.35 }}
                 whileHover={{ scale: 1.12, filter: 'drop-shadow(0 0 18px rgba(255,255,255,0.9)) drop-shadow(0 0 6px rgba(255,255,255,0.6))' }}
+                whileTap={{ scale: 1.05 }}
+                style={{ willChange: 'filter, transform' }}
                 className="cursor-pointer"
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
