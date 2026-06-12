@@ -119,7 +119,7 @@ export default function LinealesPage() {
             <div className="flex-1 h-px bg-white/10 hidden sm:block" />
             <div className="flex flex-wrap items-center justify-center sm:justify-end gap-10">
               {[
-                { src: '/logo-chikitoonz.png', alt: 'Chikitoonz', delay: 0.2, cls: 'h-[150px] w-[390px] object-contain' },
+                { src: '/logo-chikitoonz.png', alt: 'Chikitoonz', delay: 0.2, cls: 'h-[210px] w-[546px] object-contain' },
                 { src: '/logo-fierro-a-fondo.png', alt: 'Fierro a Fondo', delay: 0.35, cls: 'h-[100px] w-[260px] object-contain' },
               ].map((logo) => (
                 <motion.div
