@@ -130,7 +130,7 @@ export default function LinealesPage() {
                   className="hover:scale-105 transition-transform duration-200"
                 >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={logo.src} alt={logo.alt} className="h-[100px] w-auto object-contain" />
+                  <img src={logo.src} alt={logo.alt} className="h-[100px] w-[260px] object-contain" />
                 </motion.div>
               ))}
             </div>
