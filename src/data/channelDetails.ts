@@ -617,4 +617,25 @@ export const CHANNEL_DETAILS: Record<string, ChannelDetail> = {
       { label: 'Tecnología', value: 'IP' },
     ],
   },
+  'esports-max': {
+    longDesc: `E Sport Max es el canal dedicado a los torneos de juegos electrónicos más emocionantes del mundo. Una propuesta pensada para adolescentes y jóvenes apasionados por el gaming competitivo, con cobertura de las principales competencias de esports, análisis de jugadas y todo lo que necesitas saber del universo gamer.`,
+    videoUrls: [yt('https://www.youtube.com/watch?v=ulXfNySOEgg')],
+    specs: [
+      { label: 'Código', value: 'E Sport Max' },
+      { label: 'Tecnología', value: 'IP' },
+    ],
+  },
+  'horse-racing-max': {
+    longDesc: `Horse Racing Max es el canal especializado en carreras de caballos, transmitiendo en vivo y en diferido las competencias hípicas más importantes del mundo. Una señal única para los aficionados a las carreras, con cobertura de los principales hipódromos, análisis de ejemplares y toda la emoción del deporte hípico.`,
+    videoUrls: [yt('https://www.youtube.com/watch?v=qlfsxOPrnZo')],
+    specs: [
+      { label: 'Código', value: 'Horse Racing Max' },
+      { label: 'Tecnología', value: 'IP' },
+    ],
+  },
+  'max-anime': {
+    longDesc: `Un canal 100% anime, de acción y aventura. Todo el universo del anime japonés en un solo lugar, con las mejores series y películas de acción y aventura para los fanáticos del género.`,
+    videoUrls: [yt('https://youtu.be/GrgvBNWXu2c')],
+    specs: [{ label: 'Código', value: 'Max Anime' }],
+  },
 };
