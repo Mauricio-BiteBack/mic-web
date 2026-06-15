@@ -958,6 +958,18 @@ export const CHANNELS: Channel[] = [
     imageUrl: '/Ovacion.png',
   },
   {
+    id: 'sportsmax-news',
+    name: 'SportsMax News',
+    category: 'Deportes',
+    brand: 'Independiente',
+    type: 'IP',
+    lang: 'ES',
+    color: '#16a34a',
+    dark: '#14532d',
+    desc: 'Noticias deportivas 24/7 con las últimas novedades del deporte mundial.',
+    imageUrl: '/SportsMax News.png',
+  },
+  {
     id: 'esports-max',
     name: 'E Sport Max',
     category: 'Deportes',

@@ -617,6 +617,16 @@ export const CHANNEL_DETAILS: Record<string, ChannelDetail> = {
       { label: 'Tecnología', value: 'IP' },
     ],
   },
+  'sportsmax-news': {
+    longDesc: `SportsMax News: Un canal de noticias deportivas 24/7 con las últimas novedades del deporte mundial en tiempo real. Cobertura continua para los fanáticos del deporte que no quieren perderse nada.`,
+    videoUrls: [yt('https://youtu.be/jyfwLiUh6_A')],
+    specs: [
+      { label: 'Código', value: 'SportsMax News' },
+      { label: 'Distribución', value: 'Latinoamérica' },
+      { label: 'País de origen', value: 'Venezuela' },
+      { label: 'Tecnología', value: 'IP' },
+    ],
+  },
   'esports-max': {
     longDesc: `E Sport Max es el canal dedicado a los torneos de juegos electrónicos más emocionantes del mundo. Una propuesta pensada para adolescentes y jóvenes apasionados por el gaming competitivo, con cobertura de las principales competencias de esports, análisis de jugadas y todo lo que necesitas saber del universo gamer.`,
     videoUrls: [yt('https://www.youtube.com/watch?v=ulXfNySOEgg')],
