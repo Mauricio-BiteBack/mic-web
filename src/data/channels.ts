@@ -387,7 +387,7 @@ export const CHANNELS: Channel[] = [
     color: '#0f766e',
     dark: '#134e4a',
     desc: 'Jazz, latin jazz y eventos culturales. Cultura musical desde Panamá.',
-    imageUrl: '/Tropical Cultour TV.jpg',
+    imageUrl: '/Tropical Cultour TV.png',
   },
   {
     id: 'odtv',
