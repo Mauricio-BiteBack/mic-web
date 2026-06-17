@@ -379,7 +379,7 @@ export const CHANNELS: Channel[] = [
   },
   {
     id: 'tropical-cultour-tv',
-    name: 'Tropical Cultour TV',
+    name: 'Tropical Cultura TV',
     category: 'Musical',
     brand: 'Open',
     type: 'IP',

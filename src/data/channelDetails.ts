@@ -367,7 +367,7 @@ export const CHANNEL_DETAILS: Record<string, ChannelDetail> = {
     longDesc: `Cultour TV es el canal de jazz, latin jazz y eventos culturales desde Panamá. Una propuesta sofisticada que celebra la música de jazz y las expresiones culturales más refinadas de América Latina.`,
     videoUrls: [yt('https://www.youtube.com/watch?v=m6smTnO0fjk')],
     specs: [
-      { label: 'Código', value: 'Tropical Cultour TV' },
+      { label: 'Código', value: 'Tropical Cultura TV' },
       { label: 'País de origen', value: 'Panamá' },
       { label: 'Tecnología', value: 'IP' },
     ],
