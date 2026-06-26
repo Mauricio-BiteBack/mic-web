@@ -17,11 +17,6 @@ export const CHANNEL_DETAILS: Record<string, ChannelDetail> = {
     videoUrls: [yt('https://youtu.be/lFDVrmg3Rkg')],
     specs: [{ label: 'Código', value: 'Comercio TV' }],
   },
-  'suyai-tv': {
-    longDesc: `Este proyecto en formato televisivo busca ser un medio vinculante entre las culturas, las artes y las comunidades de telespectadores. La propuesta consiste en generar y desarrollar una plataforma cultural al servicio de la comunidad, a través de la difusión de las artes, las culturas y los patrimonios en sus distintas dimensiones: local, nacional e internacional. También es un espacio de expresión para propuestas artísticas y sus diversos gestores.`,
-    videoUrls: [yt('https://youtu.be/tZNlHibYbrI')],
-    specs: [{ label: 'Código', value: 'SUYAI TV' }],
-  },
   'memorias-toons': {
     longDesc: `Las mejores series animadas de tu vida. Los toons más clásicos y exclusivos.\n\nBienvenidos al canal que celebra las mejores series animadas infantiles clásicas y antiguas. Aquí encontrarás a los personajes que marcaron generaciones, aventuras llenas de nostalgia y valores que nunca pasan de moda. Es el lugar perfecto para revivir los momentos mágicos de tu infancia y compartirlos con las nuevas generaciones. ¡La magia de lo clásico está más viva que nunca!`,
     videoUrls: [yt('https://youtu.be/Wesk18sBlbs')],
@@ -84,11 +79,6 @@ export const CHANNEL_DETAILS: Record<string, ChannelDetail> = {
     longDesc: `Bethel es un canal religioso peruano enfocado en la transmisión de contenidos cristianos, orientados a fortalecer la fe, la esperanza y los valores familiares. Su programación incluye mensajes bíblicos, prédicas, espacios de reflexión, música cristiana y contenidos espirituales, diseñados para acompañar a la audiencia en su vida diaria.\n\nEl canal se caracteriza por su tono cercano, inspirador y positivo, convirtiéndose en una señal de acompañamiento espiritual constante para hogares que buscan contenido con propósito y mensaje edificante.`,
     videoUrls: [yt('https://youtu.be/fIMguqHIdNQ')],
     specs: [{ label: 'Código', value: 'BETHEL' }],
-  },
-  'energeek-radio': {
-    longDesc: `Radio Energeek es el espacio ideal para los amantes de la música y la cultura coreana. Con una propuesta única, fusionamos los géneros Rock, Pop, K-Pop y lo mejor de la cultura coreana en una experiencia auditiva vibrante y llena de energía.\n\nDesde los ritmos más intensos del rock hasta los éxitos más populares del K-Pop, Radio Energeek es tu portal a un mundo sonoro sin fronteras. Nos mantenemos conectados con lo último en tendencias y cultura coreana, celebrando la diversidad musical. ¡Porque en Energeek, la música es una aventura sin límites!`,
-    videoUrls: [yt('https://youtu.be/1eoBQQ-e5WA')],
-    specs: [{ label: 'Código', value: 'ENERGEEK RADIO' }],
   },
   'albricias-tv': {
     longDesc: `Albricias TV es la señal que trae lo mejor de la vida en la granja y la música que conecta a todos. Desde los encantadores documentales sobre animales de granja hasta una selección de música variada, Albricias TV tiene algo para todos.\n\nDisfruta de contenido que celebra las tradiciones, la naturaleza y el ritmo vibrante de la música que te hace bailar, mientras exploras el mundo rural de una manera entretenida y educativa.`,
@@ -517,11 +507,6 @@ export const CHANNEL_DETAILS: Record<string, ChannelDetail> = {
     longDesc: `REWIND es un canal que presenta excelentes películas, sin cortes y sin comerciales, destacando todo el espectro de la historia del cine. Además, se renueva día a día buscando aquellas joyas del séptimo arte escondidas en el tiempo y en la memoria colectiva, desde 1920 hasta la actualidad.\n\nSu programación abarca títulos para niños, jóvenes y adultos, quienes se encantan día a día rememorando aquellos pasajes de la historia fílmica que marcaron épocas y vidas.`,
     videoUrls: [yt('https://youtu.be/kBpmF2R-fTc')],
     specs: [{ label: 'Código', value: 'Rewind' }],
-  },
-  'energeek': {
-    longDesc: `Este canal, parte de la familia EnerGeek, ofrece una programación diversa las 24 horas del día. Desde emocionantes caricaturas hasta cautivadoras series de animación japonesa, pasando por vibrantes series live-action y divertidas sitcoms, es el destino perfecto para todos los amantes del entretenimiento.`,
-    videoUrls: [yt('https://youtu.be/aA5QeV3A9hs')],
-    specs: [{ label: 'Código', value: 'ENERGEEK' }],
   },
   'classic-plus': {
     displayCategory: 'Cine Clásico',
