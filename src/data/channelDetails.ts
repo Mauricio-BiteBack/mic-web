@@ -287,6 +287,18 @@ export const CHANNEL_DETAILS: Record<string, ChannelDetail> = {
     videoUrls: [yt('https://youtu.be/CMrOuCDS8ns')],
     specs: [{ label: 'Código', value: 'Animash' }],
   },
+  'france-24': {
+    displayCategory: 'Noticias Internacionales',
+    longDesc: `El mundo cambia cada segundo, y France 24 te mantiene un paso adelante. Con una cobertura informativa las 24 horas del día, el canal ofrece noticias de última hora, análisis especializados, entrevistas exclusivas y reportajes desde los lugares donde ocurre la noticia. Gracias a su amplia red de corresponsales internacionales, France 24 brinda una visión global de los acontecimientos más importantes en política, economía, ciencia, tecnología, cultura y sociedad, con el rigor periodístico que lo ha convertido en una de las cadenas informativas más respetadas a nivel internacional.`,
+    videoUrls: [yt('https://youtu.be/yCm7BnUsHqs?si=FcVM4w8lJ72QMz7t')],
+    specs: [{ label: 'Código', value: 'France 24' }],
+  },
+  'oracion-con-son': {
+    displayCategory: 'Música Cristiana',
+    longDesc: `Oración con Son es el canal donde la fe cobra vida a través de la música. Una propuesta dedicada a la alabanza, la adoración y los conciertos cristianos que elevan el espíritu y conectan al oyente con lo eterno.\n\nCon una programación cuidadosamente seleccionada, reúne lo mejor de la música cristiana contemporánea y tradicional, desde conciertos en vivo hasta videoclips de artistas que llevan el mensaje de esperanza, amor y fe a todos los rincones del mundo. Porque la música es la oración que más alto llega.`,
+    videoUrls: [yt('https://youtu.be/yCm7BnUsHqs?si=FcVM4w8lJ72QMz7t')],
+    specs: [{ label: 'Código', value: 'Oración con Son' }],
+  },
   'aliento-vision': {
     longDesc: `Somos una cadena de televisión en español, enfocada en transmitir aliento, fe y esperanza en un mundo plagado de dificultades, con el fin de fortalecer la familia y el matrimonio.\n\nNuestra meta es impactar al mundo con el mensaje cristiano de aliento, esperanza y fe con una programación edificante, inspiradora, educativa, informativa y divertida.`,
     videoUrls: [yt('https://youtu.be/cL0de2vP27w')],
@@ -324,6 +336,12 @@ export const CHANNEL_DETAILS: Record<string, ChannelDetail> = {
       { label: 'País de origen', value: 'Perú' },
       { label: 'Tecnología', value: 'IP' },
     ],
+  },
+  'horizons-crime': {
+    displayCategory: 'Documental Crime',
+    longDesc: `Horizons Crime te lleva al corazón de los casos más impactantes y perturbadores de la historia. Crímenes reales, investigaciones policiales, misterios sin resolver y testimonios que revelan la cara más oscura de la humanidad.\n\nCada historia es un viaje profundo hacia la verdad, con documentales que exploran la mente criminal, los métodos de investigación forense y los procesos judiciales que sacudieron a sociedades enteras. Porque conocer el crimen es también entender cómo protegernos de él.`,
+    videoUrls: [yt('https://youtu.be/8gu4L1ocqhg?si=iGlwVVzonpxfGVUb')],
+    specs: [{ label: 'Código', value: 'Horizons Crime' }],
   },
   'tropical-salsa': {
     longDesc: `Canal de salsa, ritmos afrocaribeños y eventos musicales desde Panamá. Una propuesta vibrante que celebra la música tropical en toda su riqueza rítmica y cultural.`,
