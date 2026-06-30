@@ -1,8 +1,9 @@
 export type ChannelType = 'IP' | 'Lineal' | 'FAST';
-export type ChannelBrand = 'FMH' | 'RPP' | 'MIC' | 'Grupo Max' | 'NeoTech' | 'Open' | 'Españolas' | 'Independiente';
+export type ChannelBrand = 'FMH' | 'RPP' | 'MIC' | 'Grupo Max' | 'NeoTech' | 'Open' | 'Españolas' | 'Independiente' | 'Vibra';
 export type ChannelCategory =
   | 'Informativo'
   | 'Musical'
+  | 'Música'
   | 'Comedia'
   | 'Documental'
   | 'Entretenimiento Peruano'
@@ -14,7 +15,8 @@ export type ChannelCategory =
   | 'Turismo'
   | 'Infantil'
   | 'Cine'
-  | 'Series';
+  | 'Series'
+  | 'Novelas';
 
 export interface Channel {
   id: string;
@@ -1185,6 +1187,127 @@ export const CHANNELS: Channel[] = [
     desc: 'La esencia del entretenimiento brasileño para toda Latinoamérica. Clásicos, comedia, cine y cultura de Brasil con subtítulos en español.',
     imageUrl: '/TV CARIOCA INTERNACIONAL.png',
   },
+  // ── Vibra ─────────────────────────────────────────────────────────────────
+  {
+    id: 'vibra-novelas',
+    name: 'Vibra Novelas',
+    category: 'Novelas',
+    brand: 'Vibra',
+    type: 'IP',
+    lang: 'ES',
+    color: '#be123c',
+    dark: '#4c0519',
+    desc: 'Las telenovelas más recordadas y exitosas de la televisión latinoamericana, las 24 horas del día.',
+    imageUrl: '/VIBRA NOVELAS.png',
+  },
+  {
+    id: 'vibra-series',
+    name: 'Vibra Series',
+    category: 'Series',
+    brand: 'Vibra',
+    type: 'IP',
+    lang: 'ES',
+    color: '#1d4ed8',
+    dark: '#1e3a8a',
+    desc: 'Las producciones que marcaron a millones: drama, misterio, suspenso y emoción en cada capítulo.',
+    imageUrl: '/VIBRA SERIES.png',
+  },
+  {
+    id: 'vibra-terror',
+    name: 'Vibra Terror',
+    category: 'Cine',
+    brand: 'Vibra',
+    type: 'IP',
+    lang: 'ES',
+    color: '#1c1917',
+    dark: '#0c0a09',
+    desc: 'Las películas de horror que desafían la mente y ponen a prueba tus nervios.',
+    imageUrl: '/VIBRA TERROR.png',
+  },
+  {
+    id: 'vibra-junior',
+    name: 'Vibra Junior',
+    category: 'Infantil',
+    brand: 'Vibra',
+    type: 'IP',
+    lang: 'ES',
+    color: '#f59e0b',
+    dark: '#78350f',
+    desc: 'Imaginación, diversión y aprendizaje para los más pequeños con series y caricaturas de valores.',
+    imageUrl: '/VIBRA JUNIOR.png',
+  },
+  {
+    id: 'mirai',
+    name: 'Mirai',
+    category: 'Cine',
+    brand: 'Vibra',
+    type: 'IP',
+    lang: 'ES',
+    color: '#7c3aed',
+    dark: '#3b0764',
+    desc: 'La puerta de entrada al fascinante universo del entretenimiento asiático: K-Dramas y cine asiático.',
+    imageUrl: '/MIRAI.png',
+  },
+  {
+    id: 'mirai-anime',
+    name: 'Mirai Anime',
+    category: 'Infantil',
+    brand: 'Vibra',
+    type: 'IP',
+    lang: 'ES',
+    color: '#0ea5e9',
+    dark: '#0c4a6e',
+    desc: 'Clásicos y nuevas generaciones del anime: acción, fantasía y aventuras que inspiran.',
+    imageUrl: '/MIRAI ANIME.png',
+  },
+  {
+    id: 'mirai-music',
+    name: 'Mirai Music',
+    category: 'Música',
+    brand: 'Vibra',
+    type: 'IP',
+    lang: 'ES',
+    color: '#ec4899',
+    dark: '#831843',
+    desc: 'K-Pop al máximo nivel: BTS y los grupos que revolucionaron la industria musical mundial.',
+    imageUrl: '/MIRAI MUSIC.png',
+  },
+  {
+    id: 'warzone',
+    name: 'WarZone',
+    category: 'Cine',
+    brand: 'Vibra',
+    type: 'IP',
+    lang: 'ES',
+    color: '#374151',
+    dark: '#111827',
+    desc: 'Cine bélico de alto impacto. Tensión, estrategia y coraje en el corazón del combate.',
+    imageUrl: '/WARZONE.png',
+  },
+  {
+    id: 'cine-mx',
+    name: 'Cine MX',
+    category: 'Cine',
+    brand: 'Vibra',
+    type: 'IP',
+    lang: 'ES',
+    color: '#b45309',
+    dark: '#78350f',
+    desc: 'La época dorada del cine mexicano: Vicente Fernández, Pedro Infante, Cantinflas y más leyendas.',
+    imageUrl: '/CINE MX.png',
+  },
+  {
+    id: 'retrox-cartoons',
+    name: 'Retrox Cartoons',
+    category: 'Infantil',
+    brand: 'Vibra',
+    type: 'IP',
+    lang: 'ES',
+    color: '#dc2626',
+    dark: '#7f1d1d',
+    desc: 'He-Man, Spider-Man, Robotech y los clásicos de la animación que nunca pasan de moda.',
+    imageUrl: '/RETROX CARTOONS.png',
+  },
 ];
 
 export const CATEGORIES = [
@@ -1203,9 +1326,11 @@ export const CATEGORIES = [
   { id: 'Deportes', label: 'Deportes' },
   { id: 'Turismo', label: 'Turismo' },
   { id: 'Infantil', label: 'Infantil' },
+  { id: 'Novelas', label: 'Novelas' },
+  { id: 'Música', label: 'Música' },
 ] as const;
 
-export const BRANDS: ChannelBrand[] = ['Españolas', 'FMH', 'Grupo Max', 'MIC', 'NeoTech', 'Open', 'RPP', 'Independiente'];
+export const BRANDS: ChannelBrand[] = ['Españolas', 'FMH', 'Grupo Max', 'MIC', 'NeoTech', 'Open', 'RPP', 'Vibra', 'Independiente'];
 
 export const TRUST_LOGOS = [
   { name: 'FMH', letter: 'F', color: '#E8078B' },

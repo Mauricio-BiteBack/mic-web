@@ -594,6 +594,56 @@ export const CHANNEL_DETAILS: Record<string, ChannelDetail> = {
       { label: 'Tecnología', value: 'IP' },
     ],
   },
+  'vibra-novelas': {
+    displayCategory: 'Novelas',
+    longDesc: `Vibra Novelas es el hogar donde las grandes historias cobran vida. Disfruta las telenovelas más recordadas y exitosas de la televisión latinoamericana, con clásicos inolvidables que han conquistado millones de espectadores. Romance, pasión, intriga, drama y emociones intensas se unen en una programación pensada para quienes disfrutan de historias que trascienden el tiempo. Revive títulos icónicos como Betty la Fea, Pasión de Gavilanes, La Reina del Sur, María la del Barrio, Teresa, Rosalinda, Mi Pecado, Azúcar y muchas más, las 24 horas del día.`,
+    specs: [{ label: 'Código', value: 'Vibra Novelas' }],
+  },
+  'vibra-series': {
+    displayCategory: 'Series',
+    longDesc: `Vibra Series reúne las producciones que marcaron a millones de espectadores alrededor del mundo. Sumérgete en historias llenas de drama, misterio, suspenso y emoción, con personajes inolvidables y tramas tan intensas que siempre querrás ver un episodio más. Cada capítulo deja preguntas sin responder, giros inesperados y finales que despiertan la curiosidad, convirtiendo cada serie en una experiencia difícil de abandonar. Por eso, títulos como Breaking Bad, Grey's Anatomy, Dr. House, Lucifer, Lost y The X-Files se han convertido en fenómenos mundiales, capaces de mantener a la audiencia conectada durante temporadas enteras. Vibra Series es el canal ideal para quienes disfrutan de las historias que atrapan desde el primer episodio y permanecen en la memoria mucho después del último capítulo.`,
+    specs: [{ label: 'Código', value: 'Vibra Series' }],
+  },
+  'vibra-terror': {
+    displayCategory: 'Cine Terror',
+    longDesc: `¿Te atreves a enfrentar tus peores pesadillas? Vibra Terror reúne las películas de horror que desafían la mente y ponen a prueba tus nervios. Desde terror psicológico y fenómenos paranormales hasta criaturas sobrenaturales y asesinos despiadados, cada historia está diseñada para mantenerte en tensión hasta el último minuto. Porque el verdadero miedo no termina cuando acaba la película… comienza cuando apagas la televisión.`,
+    specs: [{ label: 'Código', value: 'Vibra Terror' }],
+  },
+  'vibra-junior': {
+    displayCategory: 'Infantil',
+    longDesc: `Vibra Junior es el canal donde la imaginación, la diversión y el aprendizaje crecen juntos. Diseñado para acompañar a los más pequeños en cada etapa de su desarrollo, ofrece una programación cuidadosamente seleccionada con series y caricaturas que fomentan valores como la amistad, el respeto, la empatía, la creatividad y el trabajo en equipo. Cada historia invita a descubrir nuevos mundos, resolver desafíos y vivir aventuras inolvidables junto a personajes entrañables como Hello Kitty, Care Bears, Filly Funtasia, The Deep, Jim de la Luna y muchos más. Con contenidos seguros, entretenidos y educativos, Vibra Junior brinda un espacio donde niños y familias pueden compartir momentos de diversión mientras estimulan la imaginación, la curiosidad y el aprendizaje. Porque cada episodio no solo entretiene, sino que inspira a soñar, explorar y crecer.`,
+    specs: [{ label: 'Código', value: 'Vibra Junior' }],
+  },
+  'mirai': {
+    displayCategory: 'Cine Asiático',
+    longDesc: `Mirai es la puerta de entrada al fascinante universo del entretenimiento asiático. Descubre producciones que han conquistado a millones de espectadores alrededor del mundo gracias a sus historias envolventes, personajes memorables y una forma única de transmitir emociones. Desde apasionantes K-Dramas hasta aclamadas películas asiáticas, cada contenido te invita a vivir romances inolvidables, misterios que desafían la imaginación, intensas historias de acción y relatos que te mantendrán conectado hasta el último minuto. Con títulos como Tempted, Bon Appétit, Your Majesty, My Dangerous Wife, The Host, Ponyo y el secreto de la sirenita y muchas más, Mirai reúne el entretenimiento que ha convertido a Corea y Asia en un fenómeno cultural sin fronteras. Si buscas historias capaces de emocionarte, sorprenderte y permanecer en tu memoria mucho después de los créditos finales, Mirai es el lugar donde comienza tu próxima gran historia.`,
+    specs: [{ label: 'Código', value: 'Mirai' }],
+  },
+  'mirai-anime': {
+    displayCategory: 'Anime',
+    longDesc: `Hay historias que entretienen... y otras que permanecen contigo para siempre. En Mirai Anime, cada episodio es una invitación a descubrir mundos extraordinarios, héroes que luchan por sus ideales, amistades capaces de desafiar cualquier obstáculo y aventuras que inspiran a creer en lo imposible. Desde clásicos que marcaron la historia del anime hasta títulos que continúan conquistando nuevas generaciones, cada serie combina acción, fantasía, emoción y personajes inolvidables que trascienden la pantalla. Revive grandes éxitos como Las Aventuras de Fly, Yaiba: Samurai, Marmalade Boy, Blood+ y muchas más producciones que han convertido al anime en un fenómeno cultural a nivel mundial. Mirai Anime es el destino para quienes saben que el anime es mucho más que animación: es un universo de emociones, sueños y aventuras que dejan huella para toda la vida.`,
+    specs: [{ label: 'Código', value: 'Mirai Anime' }],
+  },
+  'mirai-music': {
+    displayCategory: 'K-Pop',
+    longDesc: `La música tiene el poder de unir millones de corazones, y el K-Pop es el mejor ejemplo de ello. Mirai MUSIC reúne a los artistas que han revolucionado la industria musical y conquistado a una generación de fans en todo el mundo. Disfruta de los grandes éxitos de BTS, una de las agrupaciones más influyentes del K-Pop, junto a talentosos grupos como A.C.E, DKB, DKZ, DRIPPIN, BXB y muchos más que continúan llevando la música coreana a lo más alto. Cada canción, cada coreografía y cada presentación crean una conexión única entre los idols y sus fans, convirtiendo la música en una experiencia llena de emoción, inspiración y sentido de pertenencia. Más que un género musical, el K-Pop es una cultura que une personas, rompe fronteras y crea comunidades alrededor del mundo. Mirai MUSIC es el punto de encuentro donde esa pasión cobra vida y donde cada fan encuentra un lugar para vivir, sentir y compartir el universo del K-Pop. 💜`,
+    specs: [{ label: 'Código', value: 'Mirai Music' }],
+  },
+  'warzone': {
+    displayCategory: 'Cine Bélico',
+    longDesc: `Cruza la línea del frente y prepárate para vivir el cine bélico como nunca antes. En WarZone, cada película te transporta al corazón del combate, donde la tensión, la estrategia y el coraje se ponen a prueba en cada decisión. Experimenta la adrenalina de las misiones más peligrosas, la incertidumbre de cada batalla y la fuerza de quienes lucharon por sobrevivir en medio del caos.\n\nCon producciones llenas de acción, drama y emoción, WarZone te invita a sentir la intensidad de cada enfrentamiento y a vivir cada escena como si estuvieras en la primera línea del frente. Porque aquí no solo ves una película… entras en la Zona de Guerra.`,
+    specs: [{ label: 'Código', value: 'WarZone' }],
+  },
+  'cine-mx': {
+    displayCategory: 'Cine Mexicano',
+    longDesc: `El cine mexicano tiene historias que nunca pasan de moda. Revive la época dorada del cine mexicano junto a leyendas como Vicente Fernández, Pedro Infante, Jorge Negrete, María Félix, Cantinflas, Tin Tan y muchos más, en historias llenas de romance, comedia, drama y tradición. Cada película es un viaje al México de ayer, donde los charros, las rancheras, las costumbres y los valores dieron vida a personajes inolvidables. CINE MX es un homenaje a las producciones que siguen emocionando, reuniendo a las familias y manteniendo vivo el legado del cine mexicano.`,
+    specs: [{ label: 'Código', value: 'Cine MX' }],
+  },
+  'retrox-cartoons': {
+    displayCategory: 'Caricaturas Clásicas',
+    longDesc: `Hay caricaturas que nunca pasan de moda. Son aquellas que nos hicieron despertar temprano los fines de semana, imaginar grandes aventuras y creer que todo era posible. Retrox Cartoons reúne los clásicos que marcaron la infancia de millones de personas y que hoy siguen emocionando con el mismo espíritu. Revive las aventuras de He-Man, Spider-Man, Super Friends, Robotech, Jetter Mars, El Pájaro Carpintero y muchas más series que dejaron una huella imborrable en la historia de la animación. Porque los verdaderos clásicos no envejecen… se convierten en recuerdos que vale la pena volver a vivir.`,
+    specs: [{ label: 'Código', value: 'Retrox Cartoons' }],
+  },
   'tv-carioca-internacional': {
     longDesc: `TV Carioca Internacional\n\nLa esencia del entretenimiento brasileño para toda Latinoamérica\n\nTV Carioca Internacional es una señal dedicada a llevar lo mejor de la televisión clásica, el cine, la comedia y la cultura de Brasil a las audiencias de habla hispana. Con programación en portugués y subtítulos en español, ofrece una experiencia única que acerca al público a la riqueza cultural y artística brasileña.\n\nDisfruta de grandes clásicos del entretenimiento mundial como Charles Chaplin, El Gordo y el Flaco, Los Tres Chiflados, Yo Amo a Lucy y Mi Bella Genio, además de espacios musicales, cine y programas especiales que reflejan la alegría y el espíritu de Brasil.\n\nLa señal también presenta coberturas especiales de eventos emblemáticos como el Carnaval de Río de Janeiro, llevando toda la energía, color y tradición de una de las celebraciones más reconocidas del mundo.\n\nTV Carioca Internacional combina nostalgia, diversión y cultura en una propuesta ideal para toda la familia.`,
     videoUrls: [yt('https://youtu.be/TSroykhqoTU')],
