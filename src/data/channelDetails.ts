@@ -47,10 +47,6 @@ export const CHANNEL_DETAILS: Record<string, ChannelDetail> = {
     videoUrls: [yt('https://youtu.be/ZPmbnoWDen8')],
     specs: [{ label: 'Código', value: 'Juntos TV' }],
   },
-  'piura-tv': {
-    longDesc: `Piura TV: la señal que conecta con el norte del Perú.\n\nVive lo mejor de Piura con una programación auténtica, cercana y con identidad regional. Noticias, cultura, entretenimiento y mucho más, directamente desde el corazón del norte para todo el país. Piura TV es la voz de su gente, el reflejo de su historia y el impulso de su futuro.`,
-    specs: [{ label: 'Código', value: 'PIURA TV' }],
-  },
   'pbo': {
     longDesc: `PBO Digital es un canal multiplataforma peruano que conecta a la audiencia con la información, el análisis y la opinión de manera clara, directa y sin rodeos.\n\nCon un estilo único, cercano y auténtico, PBO Digital acompaña a los televidentes en cada momento, ofreciendo contenidos que informan, cuestionan y generan debate. Se ha consolidado como el espacio donde la información en tiempo real se encuentra con la opinión directa y el análisis que mueve la conversación en el Perú.`,
     specs: [{ label: 'Código', value: 'PBO' }],
@@ -155,11 +151,6 @@ export const CHANNEL_DETAILS: Record<string, ChannelDetail> = {
       { label: 'Tecnología', value: 'IP' },
     ],
   },
-  'gamarra-tv': {
-    longDesc: `Señal de contenido peruano que muestra el Emporio Textil de Gamarra y la cultura gastronómica, artesanal, musical y turística de nuestro país. Una ventana al corazón económico y cultural del Perú.`,
-    videoUrls: [yt('https://youtu.be/9zD5YUcAcvM')],
-    specs: [{ label: 'Código', value: 'Gamarra TV' }],
-  },
   'inka-vision': {
     longDesc: `Somos Inka Visión, señal abierta en Cusco. Un canal cultural, educativo e informativo con una programación totalmente en vivo desde el corazón del Imperio Inca. Conectamos al Cusco con el mundo.`,
     videoUrls: [yt('https://youtu.be/jJslVUEfz8I')],
@@ -170,19 +161,10 @@ export const CHANNEL_DETAILS: Record<string, ChannelDetail> = {
     videoUrls: [yt('https://youtu.be/m6smTnO0fjk')],
     specs: [{ label: 'Código', value: 'TV Tropical Cumbia' }],
   },
-  'tvm-sur-chile': {
-    longDesc: `TVM es un canal digital con oficinas centrales en la Comuna de Los Muermos, Décima Región de Los Lagos. Su foco central es entregar información que aporte a la construcción de una sociedad participativa e incluyente, a través de contenidos informativos, culturales, deportivos y educativos en múltiples plataformas.`,
-    videoUrls: [yt('https://youtu.be/pVFHuvDgwMk')],
-    specs: [{ label: 'Código', value: '03' }],
-  },
   'tv-libertad': {
     longDesc: `Somos un medio de comunicación hispanoamericano con enfoque global, que defiende y promueve la libertad individual, el estado de derecho y la propiedad privada como ejes fundamentales de nuestra sociedad.\n\nUna propuesta audiovisual con programación que promueve los valores occidentales de una sociedad libre, justa y democrática. Desarrollamos formatos con altos estándares de calidad en política, economía, finanzas, tecnología, ciencia, salud, bienestar, educación, cultura y deportes.`,
     videoUrls: [yt('https://youtu.be/GlxBVyGm9Wg')],
     specs: [{ label: 'Código', value: 'TV Libertad' }],
-  },
-  'ruidos-tv': {
-    longDesc: `Ruido TV es un canal vibrante dedicado a la música rock independiente de toda Latinoamérica. En sus transmisiones, los espectadores pueden descubrir nuevos talentos, sumergirse en sonidos alternativos y disfrutar de una mezcla auténtica de géneros y estilos provenientes de diversos países.\n\nRuido TV se posiciona como un espacio único para promover bandas emergentes y conectarlas con una audiencia apasionada por la música independiente y la cultura rockera.`,
-    specs: [{ label: 'Código', value: 'Ruidos TV' }],
   },
   'el-mundo-del-campo': {
     longDesc: `Programa dedicado al agro colombiano donde cada día mostramos las cosas buenas que hace la gente del campo. A lo largo de 20 años hemos visto con satisfacción que el campo de nuestro país está lleno de gente empeñada a dar lo mejor de sí misma por sacar adelante su actividad agropecuaria.`,
@@ -238,12 +220,6 @@ export const CHANNEL_DETAILS: Record<string, ChannelDetail> = {
     longDesc: `TVN Chile es el canal público líder en entretenimiento, noticias y cultura, con cobertura en todo el país y una programación pensada para toda la familia. Con contenidos actuales, cercanos y diversos, TVN conecta a los chilenos con lo que importa, destacando lo mejor de la identidad nacional. Además, ofrece señales como NTV, 24 Horas y TV Chile, y está presente en todas las plataformas digitales.`,
     videoUrls: [yt('https://youtu.be/iQ6gqVUjDgs')],
     specs: [{ label: 'Código', value: 'TVN CHILE' }],
-  },
-  'entertainment-play': {
-    displayCategory: 'Cine / Terror',
-    longDesc: `Entretenimiento terrorífico al máximo. Series clásicas de suspenso y las mejores películas de terror y drama. Un canal para los amantes del género que buscan suspenso y emoción sin parar.`,
-    videoUrls: [yt('https://youtu.be/e2CXhV4NHew')],
-    specs: [{ label: 'Código', value: 'Entertainment Play' }],
   },
   'classic-western': {
     displayCategory: 'Cine Western',
@@ -412,26 +388,6 @@ export const CHANNEL_DETAILS: Record<string, ChannelDetail> = {
       { label: 'Tecnología', value: 'Satelital' },
     ],
   },
-  'acocina': {
-    longDesc: `Programa de cocina dedicado a la gastronomía andaluza. El espacio ofrece recetas, consejos y trucos que ayudarán a los espectadores a introducirse en el arte culinario. Una ventana a la riquísima tradición gastronómica de Andalucía, España.`,
-    videoUrls: [yt('https://youtu.be/uZo4zm-Z_uU')],
-    specs: [
-      { label: 'Código', value: 'ACocina' },
-      { label: 'Distribución', value: 'Latinoamérica' },
-      { label: 'País de origen', value: 'España' },
-      { label: 'Tecnología', value: 'IP' },
-    ],
-  },
-  'aturismo': {
-    longDesc: `ATurismo emite contenidos provenientes de Andalucía Turismo. Un canal temático que ofrece las costumbres, tradiciones, gastronomía, fiestas y paisajes de la geografía andaluza, mediante reportajes y publirreportajes de alta calidad.`,
-    videoUrls: [yt('https://youtu.be/yP478sB_wLg')],
-    specs: [
-      { label: 'Código', value: 'ATurismo' },
-      { label: 'Distribución', value: 'Latinoamérica' },
-      { label: 'País de origen', value: 'España' },
-      { label: 'Tecnología', value: 'IP' },
-    ],
-  },
   'rusia-tv': {
     longDesc: `Rusia TV presenta boletines de noticias, documentales, programas de entrevistas y debates, además de noticias deportivas y programas culturales destinados al mercado de noticias extranjero, desde un punto de vista ruso.`,
     specs: [
@@ -542,16 +498,6 @@ export const CHANNEL_DETAILS: Record<string, ChannelDetail> = {
       { label: 'Tecnología', value: 'IP' },
     ],
   },
-  'asiri': {
-    longDesc: `Un canal de televisión con la mejor cobertura y programación en Noticias, Cultura y Entretenimiento. Somos Asiri TV, ¡Crece Contigo! Una propuesta peruana con contenido diverso y de calidad para toda la audiencia.`,
-    videoUrls: [yt('https://youtu.be/_QDlhUcAdQM')],
-    specs: [
-      { label: 'Código', value: 'Asiri' },
-      { label: 'Distribución', value: 'Latinoamérica' },
-      { label: 'País de origen', value: 'Perú' },
-      { label: 'Tecnología', value: 'IP' },
-    ],
-  },
   'telelima': {
     longDesc: `Un canal con bloques informativos, periodísticos, magazine familiar, salud, emprendimiento, arte, folklore peruano, cultura y entretenimiento interactivo. Telelima, uniendo a toda la familia peruana con programación cercana y de contenido local de calidad.`,
     videoUrls: [yt('https://youtu.be/gIk92AH1x1k')],
@@ -561,15 +507,6 @@ export const CHANNEL_DETAILS: Record<string, ChannelDetail> = {
     longDesc: `Animotion trae a la pantalla aquellos dibujos animados clásicos de antaño, con los cuales han crecido los que alguna vez fueron niños, y quieren rememorar aquellos clásicos de ayer y hoy. Contamos con una selección de dibujos animados clásicos en español, 24 horas, sin cortes y sin comerciales.`,
     videoUrls: [yt('https://youtu.be/yaisTcE0KTg')],
     specs: [{ label: 'Código', value: 'Animotion' }],
-  },
-  'grupo-cadena-madrid': {
-    longDesc: `Un canal de TV actual, cultural, fresco y plural. Contenidos útiles y entretenidos para la sociedad, destinados a estimular la creatividad, fomentar la participación social, informar, educar y divertir a la comunidad de Madrid y toda Latinoamérica.`,
-    specs: [
-      { label: 'Código', value: 'Grupo Cadena Media Madrid' },
-      { label: 'Distribución', value: 'Latinoamérica' },
-      { label: 'País de origen', value: 'España' },
-      { label: 'Tecnología', value: 'IP' },
-    ],
   },
   'radio-carioca-tv': {
     longDesc: `Radio Carioca es un canal musical dedicado a celebrar la riqueza de la música y la cultura brasileña a través de una programación dinámica y entretenida. Con una propuesta única en español, ofrece una combinación de videoclips, especiales musicales, biografías de artistas, contenido exclusivo detrás de cámaras y cobertura de los eventos más emblemáticos de Brasil.\n\nEntre sus principales atractivos destaca la cobertura especial del famoso Carnaval de Río de Janeiro, acercando a la audiencia toda la energía, color y tradición de una de las festividades más importantes del mundo.\n\nRadio Carioca es una ventana al ritmo, la cultura y la pasión de Brasil, diseñada para conectar a los espectadores con los artistas, historias y sonidos que han marcado generaciones.`,
