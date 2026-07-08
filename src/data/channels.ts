@@ -280,7 +280,7 @@ export const CHANNELS: Channel[] = [
     color: '#06b6d4',
     dark: '#0e3e4a',
     desc: 'Series animadas educativas que desarrollan habilidades cognitivas en niños de preescolar.',
-    imageUrl: '/Zkids.png',
+    imageUrl: '/ZKIDS.png',
   },
   // ── Open ──────────────────────────────────────────────────────────────────
   {

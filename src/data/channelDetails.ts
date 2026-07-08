@@ -255,7 +255,7 @@ export const CHANNEL_DETAILS: Record<string, ChannelDetail> = {
   },
   'zkids': {
     longDesc: `Z Kids está diseñado específicamente para los más pequeños, enfocándose en contenido educativo y entretenido que promueve el aprendizaje temprano. La programación incluye una variedad de series animadas que no solo entretienen, sino que también ayudan a desarrollar habilidades cognitivas, emocionales y sociales en niños de preescolar.`,
-    videoUrls: [yt('https://youtu.be/xPoZ9FcD1nc')],
+    videoUrls: [yt('https://www.youtube.com/watch?v=K44N39Ya-H4')],
     specs: [{ label: 'Código', value: 'Zkids' }],
   },
   'animash': {
@@ -552,6 +552,7 @@ export const CHANNEL_DETAILS: Record<string, ChannelDetail> = {
   'vibra-novelas': {
     displayCategory: 'Novelas',
     longDesc: `Vibra Novelas es el hogar donde las grandes historias cobran vida. Disfruta las telenovelas más recordadas y exitosas de la televisión latinoamericana, con clásicos inolvidables que han conquistado millones de espectadores. Romance, pasión, intriga, drama y emociones intensas se unen en una programación pensada para quienes disfrutan de historias que trascienden el tiempo. Revive títulos icónicos como Betty la Fea, Pasión de Gavilanes, La Reina del Sur, María la del Barrio, Teresa, Rosalinda, Mi Pecado, Azúcar y muchas más, las 24 horas del día.`,
+    videoUrls: [yt('https://youtu.be/MjsP4uy24Ec')],
     specs: [{ label: 'Código', value: 'Vibra Novelas' }],
   },
   'vibra-series': {

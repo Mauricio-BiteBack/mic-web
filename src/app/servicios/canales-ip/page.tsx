@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import PageShell from '@/components/PageShell';
 import { useCart } from '@/components/CartContext';
 import { CHANNELS, CATEGORIES, BRANDS, Channel } from '@/data/channels';
+import { fuzzySearch } from '@/lib/search';
 
 function ChannelCard({ ch }: { ch: Channel }) {
   const cart = useCart();
@@ -78,7 +79,7 @@ export default function CanalesIPPage() {
     return CHANNELS.filter(ch => {
       if (catFilter !== 'all' && ch.category !== catFilter) return false;
       if (brandFilter !== 'all' && ch.brand !== brandFilter) return false;
-      if (search && !ch.name.toLowerCase().includes(search.toLowerCase())) return false;
+      if (search && !fuzzySearch(`${ch.name} ${ch.category} ${ch.brand}`, search)) return false;
       return true;
     });
   }, [catFilter, brandFilter, search]);
