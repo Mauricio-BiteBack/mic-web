@@ -1162,7 +1162,7 @@ export const CHANNELS: Channel[] = [
     color: '#1c1917',
     dark: '#0c0a09',
     desc: 'Las películas de horror que desafían la mente y ponen a prueba tus nervios.',
-    imageUrl: '/VIBRA TERROR.png',
+    imageUrl: '/VIBRA TERROR 2.png',
   },
   {
     id: 'vibra-junior',
