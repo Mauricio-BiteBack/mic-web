@@ -1115,6 +1115,18 @@ export const CHANNELS: Channel[] = [
     desc: 'La esencia del entretenimiento brasileño para toda Latinoamérica. Clásicos, comedia, cine y cultura de Brasil con subtítulos en español.',
     imageUrl: '/TV CARIOCA INTERNACIONAL.png',
   },
+  {
+    id: 'via-alto-mayo',
+    name: 'Vía Alto Mayo',
+    category: 'Regional Peruano',
+    brand: 'Independiente',
+    type: 'Lineal',
+    lang: 'ES',
+    color: '#15803d',
+    dark: '#14532d',
+    desc: 'Noticias locales, cultura y tradiciones del Alto Mayo y San Martín. Turismo, gastronomía y producción de la Amazonía peruana.',
+    imageUrl: '/VIA ALTO MAYO (2).png',
+  },
   // ── Vibra ─────────────────────────────────────────────────────────────────
   {
     id: 'vibra-novelas',

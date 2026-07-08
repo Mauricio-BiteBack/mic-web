@@ -638,4 +638,9 @@ export const CHANNEL_DETAILS: Record<string, ChannelDetail> = {
     videoUrls: [yt('https://youtu.be/GrgvBNWXu2c')],
     specs: [{ label: 'Código', value: 'Max Anime' }],
   },
+  'via-alto-mayo': {
+    longDesc: `Vía Alto Mayo es un canal regional que acerca a sus televidentes la actualidad, la cultura y las tradiciones del Alto Mayo y la región San Martín. Su programación combina noticias locales, reportajes, entrevistas, espacios de opinión y contenido cultural, promoviendo el desarrollo de la comunidad y resaltando la riqueza turística, gastronómica y productiva de la Amazonía peruana.\n\nCon un enfoque cercano y comprometido con la información, Vía Alto Mayo se convierte en una ventana para conocer la realidad de la región, fortalecer la identidad local y mantener informada a la audiencia con contenido de interés para toda la familia.`,
+    videoUrls: [yt('https://youtu.be/L1kutapta4w?si=nXmthKCDSQowTwMO')],
+    specs: [{ label: 'Código', value: 'Vía Alto Mayo' }],
+  },
 };
