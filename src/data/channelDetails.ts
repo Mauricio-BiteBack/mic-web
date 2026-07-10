@@ -558,6 +558,7 @@ export const CHANNEL_DETAILS: Record<string, ChannelDetail> = {
   'vibra-series': {
     displayCategory: 'Series',
     longDesc: `Vibra Series reúne las producciones que marcaron a millones de espectadores alrededor del mundo. Sumérgete en historias llenas de drama, misterio, suspenso y emoción, con personajes inolvidables y tramas tan intensas que siempre querrás ver un episodio más. Cada capítulo deja preguntas sin responder, giros inesperados y finales que despiertan la curiosidad, convirtiendo cada serie en una experiencia difícil de abandonar. Por eso, títulos como Breaking Bad, Grey's Anatomy, Dr. House, Lucifer, Lost y The X-Files se han convertido en fenómenos mundiales, capaces de mantener a la audiencia conectada durante temporadas enteras. Vibra Series es el canal ideal para quienes disfrutan de las historias que atrapan desde el primer episodio y permanecen en la memoria mucho después del último capítulo.`,
+    videoUrls: [yt('https://youtu.be/IjY5POnM4CE')],
     specs: [{ label: 'Código', value: 'Vibra Series' }],
   },
   'vibra-terror': {
