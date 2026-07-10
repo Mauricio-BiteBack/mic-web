@@ -2,11 +2,8 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
 import { CartProvider } from '@/components/CartContext';
-<<<<<<< HEAD
 import { CotizarProvider } from '@/components/CotizarContext';
-=======
 import Script from 'next/script';
->>>>>>> 2c69548 (add umami analytics tracking)
 
 const inter = Inter({
   subsets: ['latin'],
