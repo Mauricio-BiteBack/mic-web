@@ -22,7 +22,7 @@ export default function CatalogPreview() {
             Una selección. El catálogo completo tiene mucho más.
           </h2>
           <p className="text-[17px] text-[#6a7196] leading-relaxed">
-            Filtra por categoría, tipo de distribución (IP, lineal, FAST) e idioma para encontrar la mezcla exacta.
+            Filtra por categoría, tipo de distribución (IP, lineal) e idioma para encontrar la mezcla exacta.
           </p>
         </div>
 
@@ -63,11 +63,13 @@ export default function CatalogPreview() {
                     <span className="bg-black/50 backdrop-blur-sm text-white text-[10px] font-semibold px-2 py-1 rounded-[6px] uppercase tracking-wider">
                       {ch.category}
                     </span>
-                    <span className={`text-white text-[10px] font-bold px-2 py-1 rounded-[6px] uppercase tracking-wider ${
-                      ch.type === 'IP' ? 'bg-[#193595]/90' : ch.type === 'FAST' ? 'bg-[#E8078B]/90' : 'bg-[#0aa84f]/90'
-                    }`}>
-                      {ch.type}
-                    </span>
+                    {ch.type !== 'FAST' && (
+                      <span className={`text-white text-[10px] font-bold px-2 py-1 rounded-[6px] uppercase tracking-wider ${
+                        ch.type === 'IP' ? 'bg-[#193595]/90' : 'bg-[#0aa84f]/90'
+                      }`}>
+                        {ch.type}
+                      </span>
+                    )}
                   </div>
                 </Link>
 
@@ -117,7 +119,7 @@ export default function CatalogPreview() {
               {CHANNELS.length} canales más en el catálogo completo
             </strong>
             <span className="text-white/62 text-[14px]">
-              Filtros por categoría, tipo (IP / Lineal / FAST) e idioma.
+              Filtros por categoría, tipo (IP / Lineal) e idioma.
             </span>
           </div>
           <a

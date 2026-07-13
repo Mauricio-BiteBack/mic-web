@@ -44,11 +44,13 @@ function ChannelCard({ ch }: { ch: Channel }) {
           <span className="bg-black/55 backdrop-blur-sm text-white text-[9px] font-semibold px-1.5 py-[3px] rounded-[5px] uppercase tracking-wider">
             {ch.category}
           </span>
-          <span className={`text-white text-[9px] font-bold px-1.5 py-[3px] rounded-[5px] uppercase tracking-wider ${
-            ch.type === 'IP' ? 'bg-[#193595]/90' : ch.type === 'FAST' ? 'bg-[#E8078B]/90' : 'bg-[#0aa84f]/90'
-          }`}>
-            {ch.type}
-          </span>
+          {ch.type !== 'FAST' && (
+            <span className={`text-white text-[9px] font-bold px-1.5 py-[3px] rounded-[5px] uppercase tracking-wider ${
+              ch.type === 'IP' ? 'bg-[#193595]/90' : 'bg-[#0aa84f]/90'
+            }`}>
+              {ch.type}
+            </span>
+          )}
         </div>
       </Link>
 
@@ -138,7 +140,7 @@ function CatalogoContent() {
   }, []);
 
   const typeCounts = useMemo(() => {
-    const m: Record<string, number> = { IP: 0, Lineal: 0, FAST: 0 };
+    const m: Record<string, number> = { IP: 0, Lineal: 0 };
     CHANNELS.forEach(ch => { m[ch.type] = (m[ch.type] || 0) + 1; });
     return m;
   }, []);
@@ -248,7 +250,7 @@ function CatalogoContent() {
               <div>
                 <p className="text-[11px] font-bold uppercase tracking-[0.1em] text-[#6a7196] mb-3">Distribución</p>
                 <div className="flex flex-wrap gap-2">
-                  {['all', 'IP', 'Lineal', 'FAST'].map(t => (
+                  {['all', 'IP', 'Lineal'].map(t => (
                     <button
                       key={t}
                       onClick={() => setTypeFilter(t === typeFilter ? 'all' : t)}
@@ -445,7 +447,7 @@ function CatalogoContent() {
                       className="overflow-hidden"
                     >
                       <div className="px-2.5 pb-2.5 flex flex-col gap-0.5">
-                        {(['all', 'IP', 'Lineal', 'FAST'] as const).map(t => (
+                        {(['all', 'IP', 'Lineal'] as const).map(t => (
                           <button
                             key={t}
                             onClick={() => setTypeFilter(typeFilter === t ? (t === 'all' ? 'all' : 'all') : t)}
@@ -453,8 +455,6 @@ function CatalogoContent() {
                               typeFilter === t || (t === 'all' && typeFilter === 'all')
                                 ? t === 'IP'
                                   ? 'bg-[#193595] text-white'
-                                  : t === 'FAST'
-                                  ? 'bg-[#E8078B] text-white'
                                   : t === 'Lineal'
                                   ? 'bg-[#0aa84f] text-white'
                                   : 'bg-[#0a1133] text-white'

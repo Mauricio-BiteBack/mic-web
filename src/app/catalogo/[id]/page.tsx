@@ -28,11 +28,13 @@ function RecommendedCard({ ch }: { ch: (typeof CHANNELS)[0] }) {
               <span className="text-white font-bold text-[14px]">{ch.name}</span>
             </div>
           )}
-          <div className="absolute top-2 right-2">
-            <span className={`text-white text-[9px] font-bold px-1.5 py-[3px] rounded-[5px] uppercase tracking-wider ${
-              ch.type === 'IP' ? 'bg-[#193595]/90' : ch.type === 'FAST' ? 'bg-[#E8078B]/90' : 'bg-[#0aa84f]/90'
-            }`}>{ch.type}</span>
-          </div>
+          {ch.type !== 'FAST' && (
+            <div className="absolute top-2 right-2">
+              <span className={`text-white text-[9px] font-bold px-1.5 py-[3px] rounded-[5px] uppercase tracking-wider ${
+                ch.type === 'IP' ? 'bg-[#193595]/90' : 'bg-[#0aa84f]/90'
+              }`}>{ch.type}</span>
+            </div>
+          )}
         </div>
         <div className="p-3">
           <h4 className="text-[13px] font-bold text-[#0a1133] leading-tight mb-0.5">{ch.name}</h4>
@@ -128,11 +130,13 @@ export default function ChannelPage() {
           >
             {/* Badges */}
             <div className="flex flex-wrap gap-2">
-              <span className={`inline-flex items-center px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider text-white ${
-                channel.type === 'IP' ? 'bg-[#193595]' : channel.type === 'FAST' ? 'bg-[#E8078B]' : 'bg-[#0aa84f]'
-              }`}>
-                {channel.type}
-              </span>
+              {channel.type !== 'FAST' && (
+                <span className={`inline-flex items-center px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider text-white ${
+                  channel.type === 'IP' ? 'bg-[#193595]' : 'bg-[#0aa84f]'
+                }`}>
+                  {channel.type}
+                </span>
+              )}
               <span className="inline-flex items-center px-3 py-1 rounded-full text-[11px] font-semibold uppercase tracking-wider bg-gray-100 text-[#6a7196]">
                 {detail?.displayCategory ?? channel.category}
               </span>
