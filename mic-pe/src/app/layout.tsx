@@ -2,8 +2,6 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
 import { CartProvider } from '@/components/CartContext';
-import { CotizarProvider } from '@/components/CotizarContext';
-import Script from 'next/script';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -32,16 +30,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className={`${inter.variable} h-full`}>
-      <head>
-        <Script
-          defer
-          src="https://cloud.umami.is/script.js"
-          data-website-id="642e34f4-d5dc-4d93-8875-7c79bdf93f55"
-          strategy="afterInteractive"
-        />
-      </head>
       <body className="min-h-full flex flex-col antialiased font-[family-name:var(--font-inter)]">
-        <CartProvider><CotizarProvider>{children}</CotizarProvider></CartProvider>
+        <CartProvider>{children}</CartProvider>
       </body>
     </html>
   );
