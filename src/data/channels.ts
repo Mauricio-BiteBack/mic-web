@@ -200,7 +200,7 @@ export const CHANNELS: Channel[] = [
     name: 'Pasiones',
     category: 'Entretenimiento Peruano',
     brand: 'MIC',
-    type: 'Lineal',
+    type: 'IP',
     lang: 'ES',
     color: '#c2185b',
     dark: '#5a0a30',
