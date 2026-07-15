@@ -179,12 +179,12 @@ export default function Navbar({ onOpenCart }: NavbarProps) {
 
           {/* Search — desktop, empujado a la derecha dentro del nav */}
           <form onSubmit={handleSearch} className="ml-auto">
-            <div className={`flex items-center rounded-[10px] border px-3 py-1.5 gap-2 transition-colors ${
+            <div className={`flex items-center rounded-[12px] border-2 px-4 py-2.5 gap-2.5 w-[240px] focus-within:w-[300px] transition-all duration-200 shadow-sm focus-within:shadow-md ${
               isDark
-                ? 'bg-white/10 border-white/20'
-                : 'bg-gray-100 border-gray-200'
+                ? 'bg-white/15 border-white/30 focus-within:border-[#E8078B] focus-within:bg-white/20'
+                : 'bg-white border-[#193595]/25 focus-within:border-[#E8078B]'
             }`}>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className={isDark ? 'text-white/60' : 'text-[#6a7196]'}>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className={`flex-shrink-0 ${isDark ? 'text-white/80' : 'text-[#193595]'}`}>
                 <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
               </svg>
               <input
@@ -192,8 +192,8 @@ export default function Navbar({ onOpenCart }: NavbarProps) {
                 value={searchQuery}
                 onChange={e => setSearchQuery(e.target.value)}
                 placeholder="Buscar canal…"
-                className={`bg-transparent text-[13.5px] w-[150px] outline-none ${
-                  isDark ? 'text-white placeholder-white/50' : 'text-[#0a1133] placeholder-[#9ca3af]'
+                className={`bg-transparent text-[14px] font-medium w-full outline-none ${
+                  isDark ? 'text-white placeholder-white/60' : 'text-[#0a1133] placeholder-[#6a7196]'
                 }`}
               />
             </div>

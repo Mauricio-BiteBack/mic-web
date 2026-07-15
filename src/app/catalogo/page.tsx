@@ -326,19 +326,6 @@ function CatalogoContent() {
             {/* ── LEFT SIDEBAR (desktop only) ──────────────────────── */}
             <aside className="hidden md:flex flex-col w-[210px] flex-shrink-0 sticky top-[80px] max-h-[calc(100vh-96px)] overflow-y-auto bg-white rounded-[14px] border border-gray-200 shadow-sm">
 
-              {/* Search */}
-              <div className="p-3.5 border-b border-gray-100">
-                <div className="relative">
-                  <svg className="absolute left-2.5 top-1/2 -translate-y-1/2 text-[#6a7196]" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-                  <input
-                    value={search}
-                    onChange={e => setSearch(e.target.value)}
-                    placeholder="Buscar canal..."
-                    className="w-full pl-7 pr-3 py-1.5 rounded-[8px] border border-gray-200 text-[12.5px] outline-none focus:border-[#193595] transition-colors bg-[#f6f7fb]"
-                  />
-                </div>
-              </div>
-
               {/* Clear filters */}
               <AnimatePresence>
                 {activeFilterCount > 0 && (
