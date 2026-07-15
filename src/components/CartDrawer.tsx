@@ -99,13 +99,11 @@ export default function CartDrawer({ open, onClose, onCotizar }: CartDrawerProps
                   {Object.entries(grouped).map(([type, list]) => (
                     <div key={type}>
                       <div className="flex items-center justify-between mb-3">
-                        {type !== 'FAST' && (
-                          <span className={`text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full ${
-                            type === 'IP' ? 'bg-[#193595]/10 text-[#193595]' : 'bg-[#0aa84f]/10 text-[#0aa84f]'
-                          }`}>
-                            {type}
-                          </span>
-                        )}
+                        <span className={`text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full ${
+                          type === 'IP' ? 'bg-[#193595]/10 text-[#193595]' : 'bg-[#0aa84f]/10 text-[#0aa84f]'
+                        }`}>
+                          {type}
+                        </span>
                         <span className="text-[12.5px] text-[#6a7196]">{list.length} canal{list.length !== 1 ? 'es' : ''}</span>
                       </div>
                       <div className="flex flex-col gap-2">
@@ -146,10 +144,10 @@ export default function CartDrawer({ open, onClose, onCotizar }: CartDrawerProps
             {/* Footer CTA */}
             {cart.count > 0 && (
               <div className="px-6 py-5 border-t border-gray-100 flex flex-col gap-3">
-                {[...new Set(cart.channels.map(c => c.type))].filter(t => t !== 'FAST').length > 0 && (
+                {[...new Set(cart.channels.map(c => c.type))].length > 0 && (
                   <div className="flex items-center justify-between text-[13px]">
                     <span className="text-[#6a7196]">Tipos incluidos</span>
-                    <strong className="text-[#0a1133]">{[...new Set(cart.channels.map(c => c.type))].filter(t => t !== 'FAST').join(' · ')}</strong>
+                    <strong className="text-[#0a1133]">{[...new Set(cart.channels.map(c => c.type))].join(' · ')}</strong>
                   </div>
                 )}
                 <button

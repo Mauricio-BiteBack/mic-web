@@ -1,4 +1,4 @@
-export type ChannelType = 'IP' | 'Lineal' | 'FAST';
+export type ChannelType = 'IP' | 'Lineal';
 export type ChannelBrand = 'FMH' | 'RPP' | 'MIC' | 'Grupo Max' | 'NeoTech' | 'Open' | 'Españolas' | 'Independiente' | 'Vibra';
 export type ChannelCategory =
   | 'Informativo'
@@ -213,7 +213,7 @@ export const CHANNELS: Channel[] = [
     name: 'Cine Latino',
     category: 'Cine',
     brand: 'MIC',
-    type: 'FAST',
+    type: 'IP',
     lang: 'ES',
     color: '#f5b015',
     dark: '#7a4f04',
@@ -226,7 +226,7 @@ export const CHANNELS: Channel[] = [
     name: 'Rewind',
     category: 'Cine',
     brand: 'MIC',
-    type: 'FAST',
+    type: 'IP',
     lang: 'ES',
     color: '#dc2626',
     dark: '#5a0e0e',
@@ -239,7 +239,7 @@ export const CHANNELS: Channel[] = [
     name: 'ZTV',
     category: 'Infantil',
     brand: 'NeoTech',
-    type: 'FAST',
+    type: 'IP',
     lang: 'ES',
     color: '#7c2d12',
     dark: '#3a1808',

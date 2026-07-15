@@ -44,13 +44,11 @@ function ChannelCard({ ch }: { ch: Channel }) {
           <span className="bg-black/55 backdrop-blur-sm text-white text-[9px] font-semibold px-1.5 py-[3px] rounded-[5px] uppercase tracking-wider">
             {ch.category}
           </span>
-          {ch.type !== 'FAST' && (
-            <span className={`text-white text-[9px] font-bold px-1.5 py-[3px] rounded-[5px] uppercase tracking-wider ${
-              ch.type === 'IP' ? 'bg-[#193595]/90' : 'bg-[#0aa84f]/90'
-            }`}>
-              {ch.type}
-            </span>
-          )}
+          <span className={`text-white text-[9px] font-bold px-1.5 py-[3px] rounded-[5px] uppercase tracking-wider ${
+            ch.type === 'IP' ? 'bg-[#193595]/90' : 'bg-[#0aa84f]/90'
+          }`}>
+            {ch.type}
+          </span>
         </div>
       </Link>
 
