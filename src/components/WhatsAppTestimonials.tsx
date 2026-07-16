@@ -107,14 +107,6 @@ export default function WhatsAppTestimonials() {
   return (
     <section className="py-16 px-4 bg-[#f0f4f8]">
       <div className="max-w-lg mx-auto">
-        {/* Section label */}
-        <p className="text-center text-sm font-semibold text-[#25D366] uppercase tracking-widest mb-2">
-          Lo que dicen nuestros clientes
-        </p>
-        <h2 className="text-center text-2xl md:text-3xl font-bold text-[#111b21] mb-8">
-          Conversaciones reales de nuestro grupo
-        </h2>
-
         {/* Phone frame */}
         <div className="rounded-[24px] overflow-hidden shadow-2xl border border-[#00000018] max-w-sm mx-auto">
 
@@ -151,6 +143,31 @@ export default function WhatsAppTestimonials() {
               background: `${WA_PATTERN}, #E5DDD5`,
             }}
           >
+            {/* Sent message (admin/MIC) — always visible */}
+            <div className="flex flex-col items-end mb-1">
+              <div className="relative bg-[#DCF8C6] rounded-[10px] rounded-tr-[3px] px-3 pt-1.5 pb-1.5 max-w-[82%] shadow-sm">
+                {/* Bubble tail right */}
+                <span
+                  className="absolute -right-[6px] top-0 w-0 h-0"
+                  style={{
+                    borderTop: '8px solid #DCF8C6',
+                    borderRight: '7px solid transparent',
+                  }}
+                />
+                <p className="text-[13.5px] text-[#111b21] leading-snug pr-14">
+                  Buenos días! Qué tal les fue con las señales?
+                </p>
+                <span className="absolute bottom-1.5 right-2 flex items-center gap-0.5 text-[10px] text-[#8696a0] whitespace-nowrap">
+                  8:10 a.m.
+                  {/* Double blue check */}
+                  <svg width="15" height="11" viewBox="0 0 15 11" fill="none">
+                    <path d="M1 5.5L4.5 9L9 3" stroke="#53BDEB" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M6 5.5L9.5 9L14 3" stroke="#53BDEB" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </span>
+              </div>
+            </div>
+
             <AnimatePresence>
               {testimonials.slice(0, visibleCount).map((t, i) => (
                 <motion.div
