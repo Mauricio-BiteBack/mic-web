@@ -8,6 +8,7 @@ import Services from '@/components/Services';
 import PackageConfigurator from '@/components/PackageConfigurator';
 import CatalogPreview from '@/components/CatalogPreview';
 import Testimonials from '@/components/Testimonials';
+import WhatsAppTestimonials from '@/components/WhatsAppTestimonials';
 import CTAStrip from '@/components/CTAStrip';
 import RPPBanner from '@/components/RPPBanner';
 import Footer from '@/components/Footer';
@@ -33,6 +34,7 @@ export default function HomePage() {
         <PackageConfigurator onCotizar={cotizar.open} />
         <Services />
         <Testimonials />
+        <WhatsAppTestimonials />
         <CTAStrip />
       </main>
 
