@@ -68,9 +68,10 @@ export default function WhatsAppTestimonials() {
   const bottomRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // Scroll to bottom whenever new content appears
+  // Scroll to bottom within the chat container only (never affects page scroll)
   useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    const el = containerRef.current;
+    if (el) el.scrollTop = el.scrollHeight;
   }, [visibleCount, showTyping]);
 
   // Orchestrate: typing → message → repeat, then loop
@@ -108,7 +109,7 @@ export default function WhatsAppTestimonials() {
     <section className="py-16 px-4 bg-[#f0f4f8]">
       <div className="max-w-lg mx-auto">
         {/* Phone frame */}
-        <div className="rounded-[24px] overflow-hidden shadow-2xl border border-[#00000018] max-w-sm mx-auto">
+        <div className="rounded-[24px] overflow-hidden shadow-2xl border border-[#00000018] max-w-[460px] mx-auto">
 
           {/* WhatsApp header */}
           <div className="flex items-center gap-3 px-4 py-3 bg-[#075E54]">
