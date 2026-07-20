@@ -4,6 +4,7 @@ import './globals.css';
 import { CartProvider } from '@/components/CartContext';
 import { CotizarProvider } from '@/components/CotizarContext';
 import Script from 'next/script';
+import { TOTAL_CHANNELS } from '@/data/channels';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -15,7 +16,7 @@ export const metadata: Metadata = {
   icons: { icon: '/logo blanco.png' },
   title: 'MIC — Canales de TV y tecnología para cableoperadores en LATAM',
   description:
-    'Distribución de señales IP, lineales 24x7, contenidos FAST y publicidad programática para cableoperadores de Latinoamérica. 40+ canales, 14 países.',
+    `Distribución de señales IP, lineales 24x7, contenidos FAST y publicidad programática para cableoperadores de Latinoamérica. ${TOTAL_CHANNELS} canales, 14 países.`,
   keywords: 'canales TV, cableoperadores, señales IP, FAST channels, publicidad programática, distribución de canales, LATAM',
   openGraph: {
     title: 'MIC — Canales de TV para cableoperadores',

@@ -1080,6 +1080,30 @@ export const CHANNELS: Channel[] = [
     imageUrl: '/Entertainment Play Classic.png',
   },
   {
+    id: 'entertainment-play-terror',
+    name: 'Entertainment Play Terror',
+    category: 'Cine',
+    brand: 'Independiente',
+    type: 'IP',
+    lang: 'ES',
+    color: '#7f1d1d',
+    dark: '#2a0000',
+    desc: 'Entertainment Play Terror reúne las películas y clásicos más impactantes del cine de horror, suspenso y misterio. Disfruta de historias que han marcado generaciones con personajes icónicos y tramas llenas de tensión, desde Chucky, el muñeco diabólico, Viernes 13 y Drácula: Prince of Darkness, hasta thrillers como Copycat, The Specialist, Cuckoo y el aclamado cortometraje Michael Jackson\'s Ghosts. Un canal pensado para los amantes de la adrenalina, el suspenso y el terror que mantiene a la audiencia al borde del asiento las 24 horas del día.',
+    imageUrl: '/Entertainment Play Terror.png',
+  },
+  {
+    id: 'corazon-tv',
+    name: 'Corazón TV',
+    category: 'Musical',
+    brand: 'Independiente',
+    type: 'IP',
+    lang: 'ES',
+    color: '#e11d48',
+    dark: '#4c0519',
+    desc: 'Corazón TV transmite las mejores canciones románticas de todos los tiempos, con una selección de baladas, clásicos y éxitos que siguen conquistando al público. Un canal creado para emocionar, recordar y conectar con la audiencia a través de la música, ofreciendo una programación continua con los artistas más queridos del género romántico.',
+    imageUrl: '/Corazon TV.png',
+  },
+  {
     id: 'cine-d',
     name: 'Cine D',
     category: 'Cine',
@@ -1249,6 +1273,8 @@ export const CHANNELS: Channel[] = [
     imageUrl: '/RETROX CARTOONS.png',
   },
 ];
+
+export const TOTAL_CHANNELS = CHANNELS.length;
 
 export const CATEGORIES = [
   { id: 'all', label: 'Todos' },

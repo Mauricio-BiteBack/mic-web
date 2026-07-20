@@ -12,7 +12,7 @@ export const SERVICES: Service[] = [
     num: '01',
     verb: 'Distribuye',
     title: 'Canales IP',
-    desc: 'Integra señales premium directamente a tu headend vía streaming. 40+ canales en HD listos para grilla.',
+    desc: 'Integra señales premium directamente a tu headend vía streaming. Canales HD listos para grilla.',
     accent: false,
     href: '/servicios/canales-ip',
   },

@@ -5,55 +5,13 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import PageShell from '@/components/PageShell';
+import { TOTAL_CHANNELS } from '@/data/channels';
 
 const STATS = [
   { num: '26+', label: 'Años de experiencia' },
-  { num: '90+', label: 'Canales disponibles' },
+  { num: String(TOTAL_CHANNELS), label: 'Canales disponibles' },
   { num: '700+', label: 'Clientes activos' },
   { num: '14', label: 'Países en LATAM' },
-];
-
-const VALUES = [
-  {
-    num: '01',
-    title: 'Compromiso',
-    desc: 'Cada cliente recibe nuestra total dedicación. El éxito de tu negocio es nuestro primer objetivo y la razón por la que trabajamos todos los días.',
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-      </svg>
-    ),
-  },
-  {
-    num: '02',
-    title: 'Transparencia',
-    desc: 'Operamos con honestidad y claridad en cada proceso. Siempre sabes con quién trabajas, bajo qué condiciones y qué puedes esperar de nosotros.',
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
-      </svg>
-    ),
-  },
-  {
-    num: '03',
-    title: 'Responsabilidad',
-    desc: 'Cumplimos lo que prometemos, siempre. 26 años de trayectoria ininterrumpida respaldan nuestra palabra y nuestra capacidad de respuesta.',
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <polyline points="20 6 9 17 4 12"/>
-      </svg>
-    ),
-  },
-  {
-    num: '04',
-    title: 'Entendimiento',
-    desc: 'Conocemos el negocio de la televisión desde adentro. Hablamos tu idioma, entendemos tus desafíos y te ofrecemos soluciones concretas.',
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-      </svg>
-    ),
-  },
 ];
 
 const TEAM = [
@@ -237,45 +195,6 @@ export default function NosotrosPage() {
                 </div>
               </div>
             </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Values */}
-      <section className="py-20 px-6 bg-[#f6f7fb]">
-        <div className="max-w-[1240px] mx-auto">
-          <div className="max-w-[600px] mb-12">
-            <span className="inline-flex items-center gap-2 text-[12px] font-semibold tracking-[0.14em] uppercase text-[#E8078B] mb-3">
-              <span className="w-5 h-[2px] bg-[#E8078B] rounded-full" />
-              Lo que nos define
-            </span>
-            <h2 className="text-[clamp(26px,3vw,40px)] font-bold tracking-[-0.025em] text-[#0a1133]">
-              Valores que guían cada decisión.
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {VALUES.map((v, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: i * 0.08 }}
-                className="bg-white rounded-[20px] border border-gray-200 p-6 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 flex flex-col gap-4"
-              >
-                <div className="flex items-start justify-between">
-                  <div className="w-11 h-11 rounded-[12px] bg-[#E8078B]/8 text-[#E8078B] grid place-items-center">
-                    {v.icon}
-                  </div>
-                  <span className="text-[11px] font-bold tracking-[0.12em] text-[#6a7196]/60 uppercase">{v.num}</span>
-                </div>
-                <div>
-                  <h3 className="text-[17px] font-bold text-[#0a1133] mb-2">{v.title}</h3>
-                  <p className="text-[13.5px] text-[#6a7196] leading-relaxed">{v.desc}</p>
-                </div>
-              </motion.div>
-            ))}
           </div>
         </div>
       </section>

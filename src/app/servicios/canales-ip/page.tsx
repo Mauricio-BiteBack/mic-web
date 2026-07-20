@@ -104,7 +104,7 @@ export default function CanalesIPPage() {
           </p>
           <div className="flex flex-wrap gap-6">
             {[
-              { num: '40+', label: 'Canales disponibles' },
+              { num: String(CHANNELS.filter(c => c.type === 'IP').length), label: 'Canales disponibles' },
               { num: 'HD', label: 'Calidad garantizada' },
               { num: '24/7', label: 'Uptime y soporte' },
               { num: '14', label: 'Países en LATAM' },
