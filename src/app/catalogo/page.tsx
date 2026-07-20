@@ -8,7 +8,7 @@ import Image from 'next/image';
 import PageShell from '@/components/PageShell';
 import { useCart } from '@/components/CartContext';
 import { useCotizar } from '@/components/CotizarContext';
-import { CHANNELS, CATEGORIES, BRANDS, Channel } from '@/data/channels';
+import { CHANNELS, CATEGORIES, Channel } from '@/data/channels';
 import { fuzzySearch } from '@/lib/search';
 
 function ChannelCard({ ch }: { ch: Channel }) {
@@ -91,7 +91,6 @@ function CatalogoContent() {
   const cotizar = useCotizar();
   const searchParams = useSearchParams();
   const [catFilter, setCatFilter] = useState('all');
-  const [brandFilter, setBrandFilter] = useState('all');
   const [typeFilter, setTypeFilter] = useState('all');
   const [search, setSearch] = useState('');
 
@@ -101,22 +100,18 @@ function CatalogoContent() {
   }, [searchParams]);
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   const [catOpen, setCatOpen] = useState(true);
-  const [distOpen, setDistOpen] = useState(false);
-  const [brandOpen, setBrandOpen] = useState(false);
 
   const filtered = useMemo(() => {
     return CHANNELS.filter(ch => {
       if (catFilter !== 'all' && ch.category !== catFilter) return false;
-      if (brandFilter !== 'all' && ch.brand !== brandFilter) return false;
       if (typeFilter !== 'all' && ch.type !== typeFilter) return false;
       if (search && !fuzzySearch(`${ch.name} ${ch.category} ${ch.brand}`, search)) return false;
       return true;
     });
-  }, [catFilter, brandFilter, typeFilter, search]);
+  }, [catFilter, typeFilter, search]);
 
   const activeFilterCount = [
     catFilter !== 'all',
-    brandFilter !== 'all',
     typeFilter !== 'all',
     search !== '',
   ].filter(Boolean).length;
@@ -129,21 +124,13 @@ function CatalogoContent() {
     return m;
   }, []);
 
-  const brandCounts = useMemo(() => {
-    const m: Record<string, number> = {};
-    CHANNELS.forEach(ch => {
-      m[ch.brand] = (m[ch.brand] || 0) + 1;
-    });
-    return m;
-  }, []);
-
   const typeCounts = useMemo(() => {
-    const m: Record<string, number> = { IP: 0, Lineal: 0 };
+    const m: Record<string, number> = { IP: 0, Satelital: 0 };
     CHANNELS.forEach(ch => { m[ch.type] = (m[ch.type] || 0) + 1; });
     return m;
   }, []);
 
-  const clearAll = () => { setCatFilter('all'); setBrandFilter('all'); setTypeFilter('all'); setSearch(''); };
+  const clearAll = () => { setCatFilter('all'); setTypeFilter('all'); setSearch(''); };
 
   return (
     <PageShell>
@@ -166,7 +153,7 @@ function CatalogoContent() {
             {CHANNELS.length} canales disponibles para tu grilla.
           </h1>
           <p className="text-white/70 text-[16px] leading-relaxed max-w-[560px]">
-            Filtra por categoría, marca o tipo de distribución. Agrega los que quieras y solicita cotización en segundos.
+            Filtra por categoría o tipo de distribución. Agrega los que quieras y solicita cotización en segundos.
           </p>
         </div>
       </section>
@@ -244,23 +231,33 @@ function CatalogoContent() {
             </div>
 
             <div className="px-5 py-5 flex flex-col gap-6">
-              {/* Distribución */}
-              <div>
-                <p className="text-[11px] font-bold uppercase tracking-[0.1em] text-[#6a7196] mb-3">Distribución</p>
-                <div className="flex flex-wrap gap-2">
-                  {['all', 'IP', 'Lineal'].map(t => (
-                    <button
-                      key={t}
-                      onClick={() => setTypeFilter(t === typeFilter ? 'all' : t)}
-                      className={`px-3.5 py-2 rounded-[8px] text-[13px] font-medium border cursor-pointer transition-all ${
-                        typeFilter === t || (t === 'all' && typeFilter === 'all')
-                          ? 'bg-[#0a1133] text-white border-[#0a1133]'
-                          : 'bg-white border-gray-200 text-[#6a7196]'
-                      }`}
-                    >
-                      {t === 'all' ? `Todos (${CHANNELS.length})` : `${t} (${typeCounts[t] || 0})`}
-                    </button>
-                  ))}
+              {/* Distribución — highlighted */}
+              <div className="p-4 rounded-[16px] bg-gradient-to-br from-[#193595]/8 to-[#E8078B]/8 border-2 border-[#193595]/25">
+                <p className="text-[13px] font-extrabold uppercase tracking-[0.1em] text-[#0a1133] mb-3">Distribución</p>
+                <div className="grid grid-cols-3 gap-2">
+                  {(['all', 'IP', 'Satelital'] as const).map(t => {
+                    const active = typeFilter === t || (t === 'all' && typeFilter === 'all');
+                    return (
+                      <button
+                        key={t}
+                        onClick={() => setTypeFilter(t === typeFilter ? 'all' : t)}
+                        className={`px-2 py-3 rounded-[10px] text-[13.5px] font-bold cursor-pointer transition-all ${
+                          active
+                            ? t === 'IP'
+                              ? 'bg-[#193595] text-white shadow-md'
+                              : t === 'Satelital'
+                              ? 'bg-[#0aa84f] text-white shadow-md'
+                              : 'bg-[#0a1133] text-white shadow-md'
+                            : 'bg-white border border-gray-200 text-[#374151]'
+                        }`}
+                      >
+                        <span className="block">{t === 'all' ? 'Todos' : t}</span>
+                        <span className={`block text-[11px] font-semibold mt-0.5 ${active ? 'text-white/70' : 'text-[#9ca3af]'}`}>
+                          {t === 'all' ? CHANNELS.length : typeCounts[t] || 0}
+                        </span>
+                      </button>
+                    );
+                  })}
                 </div>
               </div>
 
@@ -286,22 +283,6 @@ function CatalogoContent() {
                         {c.label} <span className="opacity-60 text-[12px]">({categoryCounts[c.id] || 0})</span>
                       </button>
                     ))}
-                </div>
-              </div>
-
-              {/* Marca */}
-              <div>
-                <p className="text-[11px] font-bold uppercase tracking-[0.1em] text-[#6a7196] mb-3">Marca</p>
-                <div className="flex flex-wrap gap-2">
-                  {BRANDS.filter(b => (brandCounts[b] || 0) > 0).map(b => (
-                    <button
-                      key={b}
-                      onClick={() => setBrandFilter(brandFilter === b ? 'all' : b)}
-                      className={`px-3.5 py-2 rounded-full text-[13px] font-semibold border cursor-pointer transition-all ${brandFilter === b ? 'bg-[#E8078B] text-white border-[#E8078B]' : 'bg-white border-gray-200 text-[#6a7196]'}`}
-                    >
-                      {b} <span className="opacity-60 text-[12px]">({brandCounts[b] || 0})</span>
-                    </button>
-                  ))}
                 </div>
               </div>
             </div>
@@ -349,8 +330,40 @@ function CatalogoContent() {
                 )}
               </AnimatePresence>
 
+              {/* ── Distribución — highlighted, always visible ── */}
+              <div className="p-3.5 pb-4 border-b border-gray-100">
+                <div className="p-3.5 rounded-[14px] bg-gradient-to-br from-[#193595]/8 to-[#E8078B]/8 border-2 border-[#193595]/25">
+                  <span className="text-[12.5px] font-extrabold uppercase tracking-[0.08em] text-[#0a1133] mb-2.5 block">Distribución</span>
+                  <div className="flex flex-col gap-1.5">
+                    {(['all', 'IP', 'Satelital'] as const).map(t => {
+                      const active = typeFilter === t || (t === 'all' && typeFilter === 'all');
+                      return (
+                        <button
+                          key={t}
+                          onClick={() => setTypeFilter(t === 'all' ? 'all' : (typeFilter === t ? 'all' : t))}
+                          className={`w-full text-left px-3 py-2.5 rounded-[10px] text-[13.5px] font-bold transition-all duration-150 cursor-pointer flex items-center justify-between ${
+                            active
+                              ? t === 'IP'
+                                ? 'bg-[#193595] text-white shadow-md'
+                                : t === 'Satelital'
+                                ? 'bg-[#0aa84f] text-white shadow-md'
+                                : 'bg-[#0a1133] text-white shadow-md'
+                              : 'bg-white text-[#374151] border border-gray-200 hover:border-[#193595]/40'
+                          }`}
+                        >
+                          <span>{t === 'all' ? 'Todos' : t}</span>
+                          <span className={`text-[11.5px] font-semibold ${active ? 'text-white/70' : 'text-[#9ca3af]'}`}>
+                            {t === 'all' ? CHANNELS.length : typeCounts[t] || 0}
+                          </span>
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+              </div>
+
               {/* ── Categorías accordion ── */}
-              <div className="border-b border-gray-100">
+              <div>
                 <button
                   onClick={() => setCatOpen(v => !v)}
                   className="w-full flex items-center justify-between px-3.5 py-3 hover:bg-gray-50 transition-colors cursor-pointer"
@@ -399,104 +412,6 @@ function CatalogoContent() {
                             >
                               <span className="truncate pr-1">{c.label}</span>
                               <span className={`text-[10.5px] flex-shrink-0 ${catFilter === c.id ? 'text-white/70' : 'text-[#9ca3af]'}`}>{count}</span>
-                            </button>
-                          );
-                        })}
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-
-              {/* ── Distribución accordion ── */}
-              <div className="border-b border-gray-100">
-                <button
-                  onClick={() => setDistOpen(v => !v)}
-                  className="w-full flex items-center justify-between px-3.5 py-3 hover:bg-gray-50 transition-colors cursor-pointer"
-                >
-                  <span className="text-[11.5px] font-bold uppercase tracking-[0.08em] text-[#0a1133]">Distribución</span>
-                  <svg
-                    className={`text-[#6a7196] transition-transform duration-200 ${distOpen ? 'rotate-180' : ''}`}
-                    width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"
-                  >
-                    <polyline points="6 9 12 15 18 9"/>
-                  </svg>
-                </button>
-                <AnimatePresence>
-                  {distOpen && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: 'auto', opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
-                      className="overflow-hidden"
-                    >
-                      <div className="px-2.5 pb-2.5 flex flex-col gap-0.5">
-                        {(['all', 'IP', 'Lineal'] as const).map(t => (
-                          <button
-                            key={t}
-                            onClick={() => setTypeFilter(typeFilter === t ? (t === 'all' ? 'all' : 'all') : t)}
-                            className={`w-full text-left px-2.5 py-1.5 rounded-[7px] text-[12px] font-medium transition-all duration-150 cursor-pointer flex items-center justify-between ${
-                              typeFilter === t || (t === 'all' && typeFilter === 'all')
-                                ? t === 'IP'
-                                  ? 'bg-[#193595] text-white'
-                                  : t === 'Lineal'
-                                  ? 'bg-[#0aa84f] text-white'
-                                  : 'bg-[#0a1133] text-white'
-                                : 'text-[#374151] hover:bg-gray-100'
-                            }`}
-                          >
-                            <span>{t === 'all' ? 'Todos' : t}</span>
-                            <span className={`text-[10.5px] ${typeFilter === t || (t === 'all' && typeFilter === 'all') ? 'text-white/70' : 'text-[#9ca3af]'}`}>
-                              {t === 'all' ? CHANNELS.length : typeCounts[t] || 0}
-                            </span>
-                          </button>
-                        ))}
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-
-              {/* ── Marca accordion ── */}
-              <div>
-                <button
-                  onClick={() => setBrandOpen(v => !v)}
-                  className="w-full flex items-center justify-between px-3.5 py-3 hover:bg-gray-50 transition-colors cursor-pointer"
-                >
-                  <span className="text-[11.5px] font-bold uppercase tracking-[0.08em] text-[#0a1133]">Marca</span>
-                  <svg
-                    className={`text-[#6a7196] transition-transform duration-200 ${brandOpen ? 'rotate-180' : ''}`}
-                    width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"
-                  >
-                    <polyline points="6 9 12 15 18 9"/>
-                  </svg>
-                </button>
-                <AnimatePresence>
-                  {brandOpen && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: 'auto', opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
-                      className="overflow-hidden"
-                    >
-                      <div className="px-2.5 pb-2.5 flex flex-col gap-0.5">
-                        {BRANDS.map(b => {
-                          const count = brandCounts[b] || 0;
-                          if (count === 0) return null;
-                          return (
-                            <button
-                              key={b}
-                              onClick={() => setBrandFilter(brandFilter === b ? 'all' : b)}
-                              className={`w-full text-left px-2.5 py-1.5 rounded-[7px] text-[12px] font-medium transition-all duration-150 cursor-pointer flex items-center justify-between ${
-                                brandFilter === b
-                                  ? 'bg-[#E8078B] text-white'
-                                  : 'text-[#374151] hover:bg-gray-100'
-                              }`}
-                            >
-                              <span className="truncate pr-1">{b}</span>
-                              <span className={`text-[10.5px] flex-shrink-0 ${brandFilter === b ? 'text-white/70' : 'text-[#9ca3af]'}`}>{count}</span>
                             </button>
                           );
                         })}

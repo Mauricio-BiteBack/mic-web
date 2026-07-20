@@ -117,7 +117,7 @@ export default function CatalogPreview() {
               {CHANNELS.length} canales más en el catálogo completo
             </strong>
             <span className="text-white/62 text-[14px]">
-              Filtros por categoría, tipo (IP / Lineal) e idioma.
+              Filtros por categoría, tipo (IP / Satelital) e idioma.
             </span>
           </div>
           <a

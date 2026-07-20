@@ -1,4 +1,4 @@
-export type ChannelType = 'IP' | 'Lineal';
+export type ChannelType = 'IP' | 'Satelital';
 export type ChannelBrand = 'FMH' | 'RPP' | 'MIC' | 'Grupo Max' | 'NeoTech' | 'Open' | 'Españolas' | 'Independiente' | 'Vibra';
 export type ChannelCategory =
   | 'Informativo'
@@ -200,7 +200,7 @@ export const CHANNELS: Channel[] = [
     name: 'Pasiones',
     category: 'Entretenimiento Peruano',
     brand: 'MIC',
-    type: 'IP',
+    type: 'Satelital',
     lang: 'ES',
     color: '#c2185b',
     dark: '#5a0a30',
@@ -213,7 +213,7 @@ export const CHANNELS: Channel[] = [
     name: 'Cine Latino',
     category: 'Cine',
     brand: 'MIC',
-    type: 'IP',
+    type: 'Satelital',
     lang: 'ES',
     color: '#f5b015',
     dark: '#7a4f04',
