@@ -60,7 +60,7 @@ const TEAM = [
   {
     name: 'Katya Sagastizabal',
     role: 'CEO & Fundadora',
-    bio: 'Con más de 18 años representando señales internacionales: Televisión Española, Pasiones, Cine Latino, DHE y FMH. Líder en soluciones tecnológicas para cableoperadores e ISP de toda LATAM.',
+    bio: 'Katya Sagastizabal es CEO de Manager International Channels (MIC). Lidera la estrategia y expansión de la compañía en Latinoamérica, promoviendo alianzas con operadores de TV paga, IPTV y OTT. Su enfoque en la innovación, la excelencia en el servicio y el desarrollo de nuevos contenidos ha posicionado a MIC como un socio estratégico para la industria audiovisual de la región.',
     img: '/nosotros-Katya.png',
   },
   {
@@ -80,6 +80,42 @@ const TEAM = [
     role: 'Ejecutiva Comercial',
     bio: 'Especialista en investigación de mercado y captación de clientes. Experta en digitalización, plataformas IPTV y OTT con enfoque en soluciones a medida para cada operador.',
     img: '/nosotros-Thalia.png',
+  },
+  {
+    name: 'Johanna Gutiérrez',
+    role: 'Ejecutiva Comercial',
+    bio: 'Especializada en el desarrollo de soluciones comerciales para operadores de TV paga, IPTV y OTT, acompaña a los clientes en la selección e integración de contenidos, ofreciendo asesoría personalizada y un servicio orientado a construir relaciones de confianza y crecimiento mutuo.',
+    img: '/nosotros-Johanna.png',
+  },
+  {
+    name: 'Frei Mendoza',
+    role: 'Ejecutiva Comercial',
+    bio: 'Brinda asesoría personalizada a operadores de TV paga, IPTV y OTT, acompañándolos en la selección e implementación de contenidos que aporten valor a sus plataformas, siempre con un enfoque en la calidad del servicio y la satisfacción del cliente.',
+    img: '/nosotros-Frei.png',
+  },
+  {
+    name: 'Jhonattan Ocampo',
+    role: 'Jefe de Operaciones Técnicas',
+    bio: 'Impulsa la innovación tecnológica y la excelencia operativa de la compañía mediante una gestión estratégica y orientada a resultados. Su liderazgo y compromiso con la mejora continua permiten optimizar procesos, fortalecer la infraestructura y garantizar soluciones confiables, eficientes y de alta calidad para operadores de TV paga, IPTV y plataformas OTT en toda Latinoamérica.',
+    img: '/nosotros-Jhonattan.png',
+  },
+  {
+    name: 'Jhon Albert',
+    role: 'Asistente Técnico',
+    bio: 'Comprometido con la continuidad y calidad de las operaciones tecnológicas de la empresa. Brinda apoyo en la integración de señales, el monitoreo de transmisiones y la gestión de procesos técnicos, colaborando con el equipo de ingeniería para ofrecer soluciones confiables y una experiencia de servicio de excelencia a nuestros clientes.',
+    img: '/nosotros-JhonAlbert.png',
+  },
+  {
+    name: 'Christian Laura',
+    role: 'Ingeniero en Operaciones',
+    bio: 'Desempeña un papel clave en la gestión y optimización de los procesos tecnológicos que respaldan la distribución de contenidos audiovisuales. Su experiencia en operaciones, monitoreo e implementación de soluciones contribuye a garantizar servicios eficientes, infraestructura confiable y altos estándares de calidad, impulsando la excelencia operativa de la compañía y el éxito de sus clientes en toda la región.',
+    img: '/nosotros-Christian.png',
+  },
+  {
+    name: 'Kayra Gonzales',
+    role: 'Marketing',
+    bio: 'Desarrolla e impulsa estrategias de marketing y comunicación orientadas a fortalecer el posicionamiento de MIC como referente en la distribución de contenidos audiovisuales. Su enfoque combina creatividad, innovación y análisis de mercado para diseñar campañas de alto impacto, potenciar la identidad de la marca y generar conexiones sólidas con operadores de TV paga, IPTV y plataformas OTT, contribuyendo al crecimiento y expansión de la compañía en Latinoamérica.',
+    img: '/nosotros-Kayra.png',
   },
 ];
 
