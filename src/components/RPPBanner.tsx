@@ -4,22 +4,47 @@ import { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
 
 const BANNERS = [
-  { src: '/RPP-MIC.jpg',   alt: 'MIC — Distribuidor Oficial de RPP TV en Perú' },
-  { src: '/banner-2.png',  alt: 'Banner MIC 2' },
-  { src: '/banner-3.png',  alt: 'Banner MIC 3' },
-  { src: '/banner-4.png',  alt: 'Banner MIC 4' },
+  { src: '/banner-vibra.png', alt: 'Banner MIC — Vibra' },
+  { src: '/RPP-MIC.jpg',      alt: 'MIC — Distribuidor Oficial de RPP TV en Perú' },
+  { src: '/banner-3.png',     alt: 'Banner MIC 3' },
+  { src: '/banner-4.png',     alt: 'Banner MIC 4' },
 ];
+
+// Clone of the first slide appended at the end so the auto-advance can keep
+// moving forward past the last slide and land visually back on slide 1,
+// instead of jumping backwards through the whole carousel.
+const SLIDES = [...BANNERS, BANNERS[0]];
 
 export default function RPPBanner() {
   const [current, setCurrent] = useState(0);
+  const [animate, setAnimate] = useState(true);
 
-  const prev = useCallback(() => setCurrent(c => (c - 1 + BANNERS.length) % BANNERS.length), []);
-  const next = useCallback(() => setCurrent(c => (c + 1) % BANNERS.length), []);
+  const next = useCallback(() => setCurrent(c => c + 1), []);
 
   useEffect(() => {
     const id = setInterval(next, 5000);
     return () => clearInterval(id);
   }, [next]);
+
+  // Once we've animated onto the cloned slide, snap back to the real first
+  // slide without a transition, then re-enable the transition for next time.
+  useEffect(() => {
+    if (current === BANNERS.length) {
+      const t = setTimeout(() => {
+        setAnimate(false);
+        setCurrent(0);
+      }, 500);
+      return () => clearTimeout(t);
+    }
+    if (!animate) {
+      const raf = requestAnimationFrame(() => setAnimate(true));
+      return () => cancelAnimationFrame(raf);
+    }
+  }, [current, animate]);
+
+  const prev = () => { setAnimate(true); setCurrent(c => (c - 1 + BANNERS.length) % BANNERS.length); };
+  const goTo = (i: number) => { setAnimate(true); setCurrent(i); };
+  const activeDot = current === BANNERS.length ? 0 : current;
 
   return (
     <section className="py-12 px-6 bg-white">
@@ -28,10 +53,10 @@ export default function RPPBanner() {
 
           {/* Slides */}
           <div
-            className="flex transition-transform duration-500 ease-in-out"
+            className={`flex ${animate ? 'transition-transform duration-500 ease-in-out' : ''}`}
             style={{ transform: `translateX(-${current * 100}%)` }}
           >
-            {BANNERS.map((b, i) => (
+            {SLIDES.map((b, i) => (
               <div key={i} className="w-full flex-shrink-0">
                 <Image
                   src={b.src}
@@ -72,10 +97,10 @@ export default function RPPBanner() {
             {BANNERS.map((_, i) => (
               <button
                 key={i}
-                onClick={() => setCurrent(i)}
+                onClick={() => goTo(i)}
                 aria-label={`Ir al banner ${i + 1}`}
                 className={`rounded-full transition-all duration-300 ${
-                  i === current
+                  i === activeDot
                     ? 'w-6 h-2 bg-white'
                     : 'w-2 h-2 bg-white/50 hover:bg-white/80'
                 }`}

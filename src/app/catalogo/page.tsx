@@ -256,9 +256,9 @@ function CatalogoContent() {
                 </div>
               </div>
 
-              {/* Distribución */}
-              <div className="p-4 rounded-[16px] bg-[#f6f7fb] border border-gray-200">
-                <p className="text-[12px] font-bold uppercase tracking-[0.1em] text-[#0a1133] mb-3">Distribución</p>
+              {/* Distribución — vivid MIC gradient */}
+              <div className="p-4 rounded-[16px] bg-gradient-to-br from-[#193595] to-[#E8078B] shadow-[0_6px_20px_rgba(232,7,139,0.25)]">
+                <p className="text-[13px] font-extrabold uppercase tracking-[0.1em] text-white mb-3">Distribución</p>
                 <div className="grid grid-cols-3 gap-2">
                   {(['all', 'IP', 'Satelital'] as const).map(t => {
                     const active = typeFilter === t || (t === 'all' && typeFilter === 'all');
@@ -266,18 +266,18 @@ function CatalogoContent() {
                       <button
                         key={t}
                         onClick={() => setTypeFilter(t === typeFilter ? 'all' : t)}
-                        className={`px-2 py-2.5 rounded-[9px] text-[12.5px] font-semibold cursor-pointer transition-all ${
+                        className={`px-2 py-2.5 rounded-[9px] text-[12.5px] font-bold cursor-pointer transition-all ${
                           active
                             ? t === 'IP'
-                              ? 'bg-[#193595] text-white shadow-sm'
+                              ? 'bg-white text-[#193595] shadow-md'
                               : t === 'Satelital'
-                              ? 'bg-[#0aa84f] text-white shadow-sm'
-                              : 'bg-[#0a1133] text-white shadow-sm'
-                            : 'bg-white border border-gray-200 text-[#374151]'
+                              ? 'bg-white text-[#E8078B] shadow-md'
+                              : 'bg-white text-[#0a1133] shadow-md'
+                            : 'bg-white/15 border border-white/30 text-white hover:bg-white/25'
                         }`}
                       >
                         <span className="block">{t === 'all' ? 'Todos' : t}</span>
-                        <span className={`block text-[10.5px] font-semibold mt-0.5 ${active ? 'text-white/70' : 'text-[#9ca3af]'}`}>
+                        <span className={`block text-[10.5px] font-semibold mt-0.5 ${active ? 'opacity-60' : 'text-white/70'}`}>
                           {t === 'all' ? CHANNELS.length : typeCounts[t] || 0}
                         </span>
                       </button>
@@ -305,7 +305,7 @@ function CatalogoContent() {
           <div className="flex gap-6 items-start">
 
             {/* ── LEFT SIDEBAR (desktop only) ──────────────────────── */}
-            <aside className="hidden md:flex flex-col w-[210px] flex-shrink-0 sticky top-[80px] max-h-[calc(100vh-96px)] overflow-y-auto bg-white rounded-[14px] border border-gray-200 shadow-sm">
+            <aside className="hidden md:flex flex-col w-[260px] flex-shrink-0 sticky top-[80px] max-h-[calc(100vh-96px)] overflow-y-auto bg-white rounded-[14px] border border-gray-200 shadow-sm">
 
               {/* Clear filters */}
               <AnimatePresence>
@@ -391,29 +391,29 @@ function CatalogoContent() {
                 </div>
               </div>
 
-              {/* ── Distribución ── */}
+              {/* ── Distribución — vivid MIC gradient, IP/Satelital stretched ── */}
               <div className="p-3.5 pb-4">
-                <div className="p-3.5 rounded-[14px] bg-[#f6f7fb] border border-gray-200">
-                  <span className="text-[11.5px] font-bold uppercase tracking-[0.08em] text-[#0a1133] mb-2.5 block">Distribución</span>
-                  <div className="flex flex-col gap-1.5">
+                <div className="p-3.5 rounded-[14px] bg-gradient-to-br from-[#193595] to-[#E8078B] shadow-[0_6px_20px_rgba(232,7,139,0.25)]">
+                  <span className="text-[11.5px] font-extrabold uppercase tracking-[0.08em] text-white mb-2.5 block">Distribución</span>
+                  <div className="grid grid-cols-3 gap-1.5">
                     {(['all', 'IP', 'Satelital'] as const).map(t => {
                       const active = typeFilter === t || (t === 'all' && typeFilter === 'all');
                       return (
                         <button
                           key={t}
                           onClick={() => setTypeFilter(t === 'all' ? 'all' : (typeFilter === t ? 'all' : t))}
-                          className={`w-full text-left px-3 py-2 rounded-[9px] text-[12.5px] font-semibold transition-all duration-150 cursor-pointer flex items-center justify-between ${
+                          className={`w-full px-1.5 py-2.5 rounded-[9px] text-[12.5px] font-bold transition-all duration-150 cursor-pointer flex flex-col items-center ${
                             active
                               ? t === 'IP'
-                                ? 'bg-[#193595] text-white shadow-sm'
+                                ? 'bg-white text-[#193595] shadow-md'
                                 : t === 'Satelital'
-                                ? 'bg-[#0aa84f] text-white shadow-sm'
-                                : 'bg-[#0a1133] text-white shadow-sm'
-                              : 'bg-white text-[#374151] border border-gray-200'
+                                ? 'bg-white text-[#E8078B] shadow-md'
+                                : 'bg-white text-[#0a1133] shadow-md'
+                              : 'bg-white/15 text-white border border-white/30 hover:bg-white/25'
                           }`}
                         >
                           <span>{t === 'all' ? 'Todos' : t}</span>
-                          <span className={`text-[10.5px] font-semibold ${active ? 'text-white/70' : 'text-[#9ca3af]'}`}>
+                          <span className={`text-[10.5px] font-semibold ${active ? 'opacity-60' : 'text-white/70'}`}>
                             {t === 'all' ? CHANNELS.length : typeCounts[t] || 0}
                           </span>
                         </button>
