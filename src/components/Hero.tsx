@@ -16,8 +16,6 @@ export default function Hero() {
         style={{ zIndex: -30 }}
         priority
       />
-      {/* Dark overlay */}
-      <div className="absolute inset-0 bg-black/45" style={{ zIndex: -20 }} aria-hidden="true" />
       {/* Subtle accent radial wash */}
       <div
         className="absolute inset-0 pointer-events-none"
@@ -34,21 +32,12 @@ export default function Hero() {
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           className="max-w-[680px]"
         >
-          {/* Eyebrow */}
-          <div className="inline-flex items-center gap-2.5 bg-white/10 border border-white/20 px-3.5 py-2 rounded-full text-[13px] font-medium text-white/90 mb-6 backdrop-blur-sm">
-            <span className="bg-[#E8078B] text-white text-[11px] font-bold px-2 py-[3px] rounded-full uppercase tracking-wider">26 años</span>
-            distribuyendo señales en 14 países
-          </div>
-
           <h1 className="text-[clamp(36px,4.6vw,60px)] font-bold leading-[1.05] tracking-[-0.025em] mb-5 text-balance">
-            Todo lo que necesita tu operador para ofrecer{' '}
-            <em className="not-italic bg-gradient-to-r from-[#E8078B] to-[#ff67c1] bg-clip-text text-transparent">
-              más canales este mes.
-            </em>
+            Impulsamos la televisión del futuro.
           </h1>
 
           <p className="text-[18px] leading-[1.55] text-white/85 max-w-[540px] mb-8 text-pretty">
-            Distribución de señales IP, lineales 24x7, contenidos FAST y publicidad programática para cableoperadores de Latinoamérica.
+            Conectamos operadores con el mejor contenido y la tecnología que necesitan para crecer.
           </p>
 
           <div className="flex gap-3 flex-wrap items-center mb-12">
