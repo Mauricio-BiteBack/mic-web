@@ -4,7 +4,7 @@ import { useState, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import PageShell from '@/components/PageShell';
 import { useCart } from '@/components/CartContext';
-import { CHANNELS, CATEGORIES, BRANDS, Channel } from '@/data/channels';
+import { CHANNELS, CATEGORIES, BRANDS, Channel, ChannelCategory } from '@/data/channels';
 import { fuzzySearch } from '@/lib/search';
 
 function ChannelCard({ ch }: { ch: Channel }) {
@@ -28,7 +28,7 @@ function ChannelCard({ ch }: { ch: Channel }) {
         )}
         <div className="relative z-10 flex justify-between items-start">
           <span className="bg-black/50 text-white text-[10px] font-semibold px-2 py-1 rounded-[6px] uppercase tracking-wider">
-            {ch.category}
+            {ch.categories[0]}
           </span>
           <span className="bg-white/20 backdrop-blur-sm text-white text-[10px] font-bold px-2 py-1 rounded-[6px] uppercase tracking-wider">
             {ch.type}
@@ -77,9 +77,9 @@ export default function CanalesIPPage() {
 
   const filtered = useMemo(() => {
     return CHANNELS.filter(ch => {
-      if (catFilter !== 'all' && ch.category !== catFilter) return false;
+      if (catFilter !== 'all' && !ch.categories.includes(catFilter as ChannelCategory)) return false;
       if (brandFilter !== 'all' && ch.brand !== brandFilter) return false;
-      if (search && !fuzzySearch(`${ch.name} ${ch.category} ${ch.brand}`, search)) return false;
+      if (search && !fuzzySearch(`${ch.name} ${ch.categories.join(' ')} ${ch.brand}`, search)) return false;
       return true;
     });
   }, [catFilter, brandFilter, search]);

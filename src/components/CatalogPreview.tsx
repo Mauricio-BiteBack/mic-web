@@ -61,7 +61,7 @@ export default function CatalogPreview() {
                   {/* Overlay badges */}
                   <div className="absolute top-3 left-3 right-3 flex justify-between items-start z-10">
                     <span className="bg-black/50 backdrop-blur-sm text-white text-[10px] font-semibold px-2 py-1 rounded-[6px] uppercase tracking-wider">
-                      {ch.category}
+                      {ch.categories[0]}
                     </span>
                     <span className={`text-white text-[10px] font-bold px-2 py-1 rounded-[6px] uppercase tracking-wider ${
                       ch.type === 'IP' ? 'bg-[#193595]/90' : 'bg-[#0aa84f]/90'

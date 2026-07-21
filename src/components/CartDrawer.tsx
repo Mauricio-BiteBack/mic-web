@@ -117,7 +117,7 @@ export default function CartDrawer({ open, onClose, onCotizar }: CartDrawerProps
                             </span>
                             <div className="flex-1 min-w-0">
                               <strong className="text-[13.5px] font-semibold text-[#0a1133] block truncate">{ch.name}</strong>
-                              <span className="text-[11.5px] text-[#6a7196]">{ch.category} · {ch.lang}</span>
+                              <span className="text-[11.5px] text-[#6a7196]">{ch.categories[0]} · {ch.lang}</span>
                             </div>
                             <button
                               onClick={() => cart.remove(ch.id)}

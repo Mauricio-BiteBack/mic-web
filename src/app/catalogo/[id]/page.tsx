@@ -36,7 +36,7 @@ function RecommendedCard({ ch }: { ch: (typeof CHANNELS)[0] }) {
         </div>
         <div className="p-3">
           <h4 className="text-[13px] font-bold text-[#0a1133] leading-tight mb-0.5">{ch.name}</h4>
-          <p className="text-[11px] text-[#6a7196]">{ch.category}</p>
+          <p className="text-[11px] text-[#6a7196]">{ch.categories[0]}</p>
         </div>
       </div>
     </Link>
@@ -72,9 +72,9 @@ export default function ChannelPage() {
 
   const inCart = cart.has(channel.id);
 
-  // Recommended: same category or same type, excluding current, max 5
+  // Recommended: shares a category or same type, excluding current, max 5
   const recommended = CHANNELS.filter(
-    c => c.id !== channel.id && (c.category === channel.category || c.type === channel.type)
+    c => c.id !== channel.id && (c.categories.some(cat => channel.categories.includes(cat)) || c.type === channel.type)
   ).slice(0, 5);
 
   return (
@@ -134,7 +134,7 @@ export default function ChannelPage() {
                 {channel.type}
               </span>
               <span className="inline-flex items-center px-3 py-1 rounded-full text-[11px] font-semibold uppercase tracking-wider bg-gray-100 text-[#6a7196]">
-                {detail?.displayCategory ?? channel.category}
+                {detail?.displayCategory ?? channel.categories.join(' · ')}
               </span>
               <span className="inline-flex items-center px-3 py-1 rounded-full text-[11px] font-semibold uppercase tracking-wider bg-[#f6f7fb] text-[#0a1133] border border-gray-200">
                 {channel.brand}

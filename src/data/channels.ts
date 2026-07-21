@@ -2,26 +2,32 @@ export type ChannelType = 'IP' | 'Satelital';
 export type ChannelBrand = 'FMH' | 'RPP' | 'MIC' | 'Grupo Max' | 'NeoTech' | 'Open' | 'Españolas' | 'Independiente' | 'Vibra';
 export type ChannelCategory =
   | 'Informativo'
-  | 'Musical'
   | 'Música'
-  | 'Comedia'
   | 'Documental'
   | 'Entretenimiento Peruano'
-  | 'Regional Peruano'
+  | 'Regionales'
   | 'Misceláneos'
   | 'Religión'
-  | 'Caricaturas'
   | 'Deportes'
   | 'Turismo'
   | 'Infantil'
   | 'Cine'
+  | 'Cine clásico'
+  | 'Cine de terror'
+  | 'Cine bélico'
+  | 'Cine infantil'
+  | 'Anime'
   | 'Series'
-  | 'Novelas';
+  | 'Novelas'
+  | 'Minería'
+  | 'Financiero'
+  | 'Cocina'
+  | 'Agricultura';
 
 export interface Channel {
   id: string;
   name: string;
-  category: ChannelCategory;
+  categories: ChannelCategory[];
   brand: ChannelBrand;
   type: ChannelType;
   lang: string;
@@ -37,7 +43,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'fmh-movies',
     name: 'FMH Movies',
-    category: 'Cine',
+    categories: ['Cine'],
     brand: 'FMH',
     type: 'IP',
     lang: 'ES',
@@ -50,7 +56,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'fmh-kids',
     name: 'FMH Kids',
-    category: 'Infantil',
+    categories: ['Cine infantil'],
     brand: 'FMH',
     type: 'IP',
     lang: 'ES',
@@ -63,7 +69,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'fmh-family',
     name: 'FMH Family',
-    category: 'Cine',
+    categories: ['Cine'],
     brand: 'FMH',
     type: 'IP',
     lang: 'ES',
@@ -76,7 +82,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'kizzi',
     name: 'Kizzi',
-    category: 'Musical',
+    categories: ['Música'],
     brand: 'FMH',
     type: 'IP',
     lang: 'ES',
@@ -88,7 +94,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'dm-kids',
     name: 'DM Kids',
-    category: 'Infantil',
+    categories: ['Infantil'],
     brand: 'FMH',
     type: 'IP',
     lang: 'ES',
@@ -100,7 +106,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'classic-plus',
     name: 'Classic+',
-    category: 'Cine',
+    categories: ['Cine clásico'],
     brand: 'FMH',
     type: 'IP',
     lang: 'ES',
@@ -113,7 +119,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'memorias-tv',
     name: 'Memorias TV',
-    category: 'Musical',
+    categories: ['Música'],
     brand: 'Grupo Max',
     type: 'IP',
     lang: 'ES',
@@ -125,7 +131,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'memorias-classic',
     name: 'Memorias Classic',
-    category: 'Musical',
+    categories: ['Música'],
     brand: 'Grupo Max',
     type: 'IP',
     lang: 'ES',
@@ -137,7 +143,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'memorias-pop-latino',
     name: 'Memorias Pop Latino',
-    category: 'Musical',
+    categories: ['Música'],
     brand: 'Grupo Max',
     type: 'IP',
     lang: 'ES',
@@ -149,7 +155,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'memorias-corazon',
     name: 'Memorias Corazón',
-    category: 'Musical',
+    categories: ['Música'],
     brand: 'Grupo Max',
     type: 'IP',
     lang: 'ES',
@@ -161,7 +167,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'memorias-toons',
     name: 'Memorias Toons',
-    category: 'Infantil',
+    categories: ['Infantil'],
     brand: 'Grupo Max',
     type: 'IP',
     lang: 'ES',
@@ -173,7 +179,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'memorias-film',
     name: 'Memorias Film',
-    category: 'Cine',
+    categories: ['Cine clásico'],
     brand: 'Grupo Max',
     type: 'IP',
     lang: 'ES',
@@ -185,7 +191,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'memorias-series',
     name: 'Memorias Series',
-    category: 'Series',
+    categories: ['Series'],
     brand: 'Grupo Max',
     type: 'IP',
     lang: 'ES',
@@ -198,7 +204,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'pasiones',
     name: 'Pasiones',
-    category: 'Entretenimiento Peruano',
+    categories: ['Novelas'],
     brand: 'MIC',
     type: 'Satelital',
     lang: 'ES',
@@ -211,7 +217,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'cine-latino',
     name: 'Cine Latino',
-    category: 'Cine',
+    categories: ['Cine'],
     brand: 'MIC',
     type: 'Satelital',
     lang: 'ES',
@@ -224,7 +230,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'rewind',
     name: 'Rewind',
-    category: 'Cine',
+    categories: ['Cine clásico'],
     brand: 'MIC',
     type: 'IP',
     lang: 'ES',
@@ -237,7 +243,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'ztv',
     name: 'ZTV',
-    category: 'Infantil',
+    categories: ['Anime'],
     brand: 'NeoTech',
     type: 'IP',
     lang: 'ES',
@@ -249,7 +255,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'clover',
     name: 'Clover',
-    category: 'Cine',
+    categories: ['Cine'],
     brand: 'NeoTech',
     type: 'IP',
     lang: 'ES',
@@ -261,7 +267,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'animash',
     name: 'Animash',
-    category: 'Infantil',
+    categories: ['Anime'],
     brand: 'NeoTech',
     type: 'IP',
     lang: 'ES',
@@ -273,7 +279,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'zkids',
     name: 'Zkids',
-    category: 'Infantil',
+    categories: ['Infantil'],
     brand: 'NeoTech',
     type: 'IP',
     lang: 'ES',
@@ -286,7 +292,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'comercio-tv',
     name: 'Comercio TV',
-    category: 'Informativo',
+    categories: ['Financiero', 'Informativo'],
     brand: 'Open',
     type: 'IP',
     lang: 'ES',
@@ -298,7 +304,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'horizons',
     name: 'Horizons',
-    category: 'Documental',
+    categories: ['Documental'],
     brand: 'Open',
     type: 'IP',
     lang: 'ES',
@@ -310,7 +316,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'horizons-explore',
     name: 'Horizons Explore',
-    category: 'Documental',
+    categories: ['Turismo', 'Documental'],
     brand: 'Open',
     type: 'IP',
     lang: 'ES',
@@ -322,7 +328,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'horizons-wild',
     name: 'Horizons Wild',
-    category: 'Documental',
+    categories: ['Documental'],
     brand: 'Open',
     type: 'IP',
     lang: 'ES',
@@ -334,7 +340,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'horizons-crime',
     name: 'Horizons Crime',
-    category: 'Documental',
+    categories: ['Documental'],
     brand: 'Open',
     type: 'IP',
     lang: 'ES',
@@ -346,7 +352,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'tropical-salsa',
     name: 'Tropical Salsa',
-    category: 'Musical',
+    categories: ['Música'],
     brand: 'Open',
     type: 'IP',
     lang: 'ES',
@@ -358,7 +364,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'tropical-urban-tv',
     name: 'Tropical Urban TV',
-    category: 'Musical',
+    categories: ['Música'],
     brand: 'Open',
     type: 'IP',
     lang: 'ES',
@@ -370,7 +376,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'tropical-cultour-tv',
     name: 'Tropical Cultura TV',
-    category: 'Musical',
+    categories: ['Música'],
     brand: 'Open',
     type: 'IP',
     lang: 'ES',
@@ -382,7 +388,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'odtv',
     name: 'ODTV',
-    category: 'Misceláneos',
+    categories: ['Entretenimiento Peruano'],
     brand: 'Open',
     type: 'IP',
     lang: 'ES',
@@ -394,7 +400,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'mix-music-channel',
     name: 'Mix Music Channel',
-    category: 'Musical',
+    categories: ['Música'],
     brand: 'Open',
     type: 'IP',
     lang: 'ES',
@@ -407,7 +413,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'rpp-tv',
     name: 'RPP TV',
-    category: 'Informativo',
+    categories: ['Informativo'],
     brand: 'RPP',
     type: 'IP',
     lang: 'ES',
@@ -421,7 +427,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'titan-channel',
     name: 'Titan Channel',
-    category: 'Deportes',
+    categories: ['Deportes'],
     brand: 'Españolas',
     type: 'IP',
     lang: 'ES',
@@ -434,7 +440,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'la-cantina-de-memorias',
     name: 'La Cantina de Memorias',
-    category: 'Musical',
+    categories: ['Música'],
     brand: 'Independiente',
     type: 'IP',
     lang: 'ES',
@@ -446,7 +452,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'comedy-channel',
     name: 'Comedy Channel',
-    category: 'Cine',
+    categories: ['Cine'],
     brand: 'Independiente',
     type: 'IP',
     lang: 'ES',
@@ -458,7 +464,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'juntos-tv',
     name: 'Juntos TV',
-    category: 'Entretenimiento Peruano',
+    categories: ['Entretenimiento Peruano', 'Cocina', 'Informativo'],
     brand: 'Independiente',
     type: 'IP',
     lang: 'ES',
@@ -470,7 +476,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'pbo',
     name: 'PBO',
-    category: 'Informativo',
+    categories: ['Informativo'],
     brand: 'Independiente',
     type: 'IP',
     lang: 'ES',
@@ -482,7 +488,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'eco-tv',
     name: 'ECO TV',
-    category: 'Misceláneos',
+    categories: ['Regionales'],
     brand: 'Independiente',
     type: 'IP',
     lang: 'ES',
@@ -494,7 +500,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'tv-y-tv',
     name: 'TV y TV',
-    category: 'Series',
+    categories: ['Series'],
     brand: 'Independiente',
     type: 'IP',
     lang: 'ES',
@@ -506,7 +512,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'exitosa',
     name: 'EXITOSA',
-    category: 'Informativo',
+    categories: ['Informativo'],
     brand: 'Independiente',
     type: 'IP',
     lang: 'ES',
@@ -518,7 +524,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'karibena',
     name: 'Karibeña',
-    category: 'Musical',
+    categories: ['Música'],
     brand: 'Independiente',
     type: 'IP',
     lang: 'ES',
@@ -530,7 +536,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'bethel',
     name: 'Bethel',
-    category: 'Religión',
+    categories: ['Religión'],
     brand: 'Independiente',
     type: 'IP',
     lang: 'ES',
@@ -542,7 +548,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'albricias-tv',
     name: 'Albricias TV',
-    category: 'Misceláneos',
+    categories: ['Regionales'],
     brand: 'Independiente',
     type: 'IP',
     lang: 'ES',
@@ -554,7 +560,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'lejano-oeste',
     name: 'Lejano Oeste',
-    category: 'Cine',
+    categories: ['Cine clásico'],
     brand: 'Independiente',
     type: 'IP',
     lang: 'ES',
@@ -566,7 +572,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'sumac-tv',
     name: 'SUMAC TV',
-    category: 'Regional Peruano',
+    categories: ['Entretenimiento Peruano', 'Regionales'],
     brand: 'Independiente',
     type: 'IP',
     lang: 'ES',
@@ -578,7 +584,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'planeta-salvaje',
     name: 'Planeta Salvaje',
-    category: 'Documental',
+    categories: ['Documental'],
     brand: 'Independiente',
     type: 'IP',
     lang: 'ES',
@@ -590,7 +596,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'cajamarca-tv',
     name: 'Cajamarca TV',
-    category: 'Entretenimiento Peruano',
+    categories: ['Regionales'],
     brand: 'Independiente',
     type: 'IP',
     lang: 'ES',
@@ -602,7 +608,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'retro-x',
     name: 'Retro X',
-    category: 'Infantil',
+    categories: ['Series'],
     brand: 'Independiente',
     type: 'IP',
     lang: 'ES',
@@ -614,7 +620,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'planeta-historia',
     name: 'Planeta Historia',
-    category: 'Documental',
+    categories: ['Documental'],
     brand: 'Independiente',
     type: 'IP',
     lang: 'ES',
@@ -626,7 +632,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'rumbo-minero',
     name: 'Rumbo Minero',
-    category: 'Informativo',
+    categories: ['Minería', 'Financiero', 'Informativo'],
     brand: 'Independiente',
     type: 'IP',
     lang: 'ES',
@@ -638,7 +644,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'nina-tv',
     name: 'Nina TV',
-    category: 'Musical',
+    categories: ['Música'],
     brand: 'Independiente',
     type: 'IP',
     lang: 'ES',
@@ -650,7 +656,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'mac-tv',
     name: 'MAC TV',
-    category: 'Misceláneos',
+    categories: ['Regionales'],
     brand: 'Independiente',
     type: 'IP',
     lang: 'ES',
@@ -662,7 +668,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'peru-go-tv',
     name: 'Perú Go TV',
-    category: 'Entretenimiento Peruano',
+    categories: ['Regionales'],
     brand: 'Independiente',
     type: 'IP',
     lang: 'ES',
@@ -674,7 +680,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'inka-vision',
     name: 'Inka Vision',
-    category: 'Entretenimiento Peruano',
+    categories: ['Regionales'],
     brand: 'Independiente',
     type: 'IP',
     lang: 'ES',
@@ -686,7 +692,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'tv-tropical-cumbia',
     name: 'Tv Tropical Cumbia',
-    category: 'Musical',
+    categories: ['Música'],
     brand: 'Independiente',
     type: 'IP',
     lang: 'ES',
@@ -698,7 +704,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'tv-libertad',
     name: 'TV Libertad',
-    category: 'Informativo',
+    categories: ['Informativo'],
     brand: 'Independiente',
     type: 'IP',
     lang: 'ES',
@@ -710,7 +716,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'el-mundo-del-campo',
     name: 'El Mundo del Campo',
-    category: 'Turismo',
+    categories: ['Agricultura'],
     brand: 'Independiente',
     type: 'IP',
     lang: 'ES',
@@ -722,7 +728,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'chikitoonz',
     name: 'Chiki Toonz',
-    category: 'Infantil',
+    categories: ['Infantil'],
     brand: 'Independiente',
     type: 'IP',
     lang: 'ES',
@@ -734,7 +740,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'e-sports-go',
     name: 'E-Sports GO',
-    category: 'Deportes',
+    categories: ['Deportes'],
     brand: 'Independiente',
     type: 'IP',
     lang: 'ES',
@@ -746,7 +752,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'classic-series',
     name: 'Classic Series',
-    category: 'Series',
+    categories: ['Series'],
     brand: 'Independiente',
     type: 'IP',
     lang: 'ES',
@@ -758,7 +764,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'tvn-chile',
     name: 'TVN Chile',
-    category: 'Misceláneos',
+    categories: ['Informativo'],
     brand: 'Independiente',
     type: 'IP',
     lang: 'ES',
@@ -770,7 +776,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'classic-western',
     name: 'Classic Western',
-    category: 'Cine',
+    categories: ['Cine clásico'],
     brand: 'Independiente',
     type: 'IP',
     lang: 'ES',
@@ -782,7 +788,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'fierro-a-fondo',
     name: 'Fierro a Fondo',
-    category: 'Deportes',
+    categories: ['Deportes'],
     brand: 'Independiente',
     type: 'IP',
     lang: 'ES',
@@ -794,7 +800,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'agrotendencia',
     name: 'Agrotendencia',
-    category: 'Misceláneos',
+    categories: ['Agricultura'],
     brand: 'Independiente',
     type: 'IP',
     lang: 'ES',
@@ -806,7 +812,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'atlas',
     name: 'Atlas',
-    category: 'Documental',
+    categories: ['Documental'],
     brand: 'Independiente',
     type: 'IP',
     lang: 'ES',
@@ -818,7 +824,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'funbox',
     name: 'Fun Box',
-    category: 'Infantil',
+    categories: ['Infantil'],
     brand: 'Independiente',
     type: 'IP',
     lang: 'ES',
@@ -830,7 +836,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'antena-1',
     name: 'Antena 1',
-    category: 'Misceláneos',
+    categories: ['Entretenimiento Peruano'],
     brand: 'Independiente',
     type: 'IP',
     lang: 'ES',
@@ -842,7 +848,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'ovacion',
     name: 'Ovación',
-    category: 'Deportes',
+    categories: ['Deportes'],
     brand: 'Independiente',
     type: 'IP',
     lang: 'ES',
@@ -854,7 +860,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'sportsmax-news',
     name: 'SportsMax News',
-    category: 'Deportes',
+    categories: ['Deportes'],
     brand: 'Independiente',
     type: 'IP',
     lang: 'ES',
@@ -866,7 +872,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'esports-max',
     name: 'E Sport Max',
-    category: 'Deportes',
+    categories: ['Deportes'],
     brand: 'Independiente',
     type: 'IP',
     lang: 'ES',
@@ -878,7 +884,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'horse-racing-max',
     name: 'Horse Racing Max',
-    category: 'Deportes',
+    categories: ['Deportes'],
     brand: 'Independiente',
     type: 'IP',
     lang: 'ES',
@@ -890,7 +896,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'max-anime',
     name: 'Max Anime',
-    category: 'Infantil',
+    categories: ['Anime'],
     brand: 'NeoTech',
     type: 'IP',
     lang: 'ES',
@@ -902,7 +908,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'comic-pop',
     name: 'Comic Pop',
-    category: 'Infantil',
+    categories: ['Infantil'],
     brand: 'Independiente',
     type: 'IP',
     lang: 'ES',
@@ -914,7 +920,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'vpi',
     name: 'VPI',
-    category: 'Informativo',
+    categories: ['Informativo'],
     brand: 'Independiente',
     type: 'IP',
     lang: 'ES',
@@ -926,7 +932,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'telelima',
     name: 'Telelima',
-    category: 'Entretenimiento Peruano',
+    categories: ['Entretenimiento Peruano'],
     brand: 'Independiente',
     type: 'IP',
     lang: 'ES',
@@ -938,7 +944,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'animotion',
     name: 'Animotion',
-    category: 'Infantil',
+    categories: ['Infantil'],
     brand: 'Independiente',
     type: 'IP',
     lang: 'ES',
@@ -950,7 +956,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'france-24',
     name: 'France 24',
-    category: 'Informativo',
+    categories: ['Informativo'],
     brand: 'Independiente',
     type: 'IP',
     lang: 'ES',
@@ -962,7 +968,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'oracion-con-son',
     name: 'Oración con Son',
-    category: 'Religión',
+    categories: ['Religión'],
     brand: 'Independiente',
     type: 'IP',
     lang: 'ES',
@@ -974,7 +980,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'aliento-vision',
     name: 'Aliento Visión',
-    category: 'Religión',
+    categories: ['Religión'],
     brand: 'Independiente',
     type: 'IP',
     lang: 'ES',
@@ -986,7 +992,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'like-tv',
     name: 'Like TV',
-    category: 'Regional Peruano',
+    categories: ['Entretenimiento Peruano'],
     brand: 'Independiente',
     type: 'IP',
     lang: 'ES',
@@ -998,7 +1004,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'gracia-tv',
     name: 'Gracia TV',
-    category: 'Religión',
+    categories: ['Religión'],
     brand: 'Independiente',
     type: 'IP',
     lang: 'ES',
@@ -1010,7 +1016,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'conecta2-tv',
     name: 'Conecta2 TV',
-    category: 'Informativo',
+    categories: ['Entretenimiento Peruano'],
     brand: 'Independiente',
     type: 'IP',
     lang: 'ES',
@@ -1022,7 +1028,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'nativa',
     name: 'Nativa',
-    category: 'Informativo',
+    categories: ['Informativo'],
     brand: 'Independiente',
     type: 'IP',
     lang: 'ES',
@@ -1034,7 +1040,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'rusia-tv',
     name: 'Rusia TV',
-    category: 'Informativo',
+    categories: ['Informativo'],
     brand: 'Independiente',
     type: 'IP',
     lang: 'ES',
@@ -1046,7 +1052,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'radio-carioca-tv',
     name: 'Radio Carioca TV',
-    category: 'Musical',
+    categories: ['Música'],
     brand: 'Independiente',
     type: 'IP',
     lang: 'ES',
@@ -1058,7 +1064,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'rfi',
     name: 'RFI',
-    category: 'Informativo',
+    categories: ['Informativo'],
     brand: 'Independiente',
     type: 'IP',
     lang: 'ES',
@@ -1070,7 +1076,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'entertainment-play-classic',
     name: 'Entertainment Play Classic',
-    category: 'Series',
+    categories: ['Cine clásico', 'Series'],
     brand: 'Independiente',
     type: 'IP',
     lang: 'ES',
@@ -1082,7 +1088,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'entertainment-play-terror',
     name: 'Entertainment Play Terror',
-    category: 'Cine',
+    categories: ['Cine de terror'],
     brand: 'Independiente',
     type: 'IP',
     lang: 'ES',
@@ -1094,7 +1100,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'corazon-tv',
     name: 'Corazón TV',
-    category: 'Musical',
+    categories: ['Música'],
     brand: 'Independiente',
     type: 'IP',
     lang: 'ES',
@@ -1106,7 +1112,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'cine-d',
     name: 'Cine D',
-    category: 'Cine',
+    categories: ['Cine'],
     brand: 'Independiente',
     type: 'IP',
     lang: 'ES',
@@ -1118,7 +1124,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'ewtn',
     name: 'EWTN',
-    category: 'Religión',
+    categories: ['Religión'],
     brand: 'Independiente',
     type: 'IP',
     lang: 'ES',
@@ -1130,7 +1136,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'tv-carioca-internacional',
     name: 'TV Carioca Internacional',
-    category: 'Series',
+    categories: ['Series'],
     brand: 'Independiente',
     type: 'IP',
     lang: 'ES',
@@ -1142,7 +1148,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'via-alto-mayo',
     name: 'Vía Alto Mayo',
-    category: 'Regional Peruano',
+    categories: ['Regionales'],
     brand: 'Independiente',
     type: 'IP',
     lang: 'ES',
@@ -1155,7 +1161,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'vibra-novelas',
     name: 'Vibra Novelas',
-    category: 'Novelas',
+    categories: ['Novelas'],
     brand: 'Vibra',
     type: 'IP',
     lang: 'ES',
@@ -1167,7 +1173,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'vibra-series',
     name: 'Vibra Series',
-    category: 'Series',
+    categories: ['Series'],
     brand: 'Vibra',
     type: 'IP',
     lang: 'ES',
@@ -1179,7 +1185,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'vibra-terror',
     name: 'Vibra Terror',
-    category: 'Cine',
+    categories: ['Cine de terror'],
     brand: 'Vibra',
     type: 'IP',
     lang: 'ES',
@@ -1191,7 +1197,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'vibra-junior',
     name: 'Vibra Junior',
-    category: 'Infantil',
+    categories: ['Infantil'],
     brand: 'Vibra',
     type: 'IP',
     lang: 'ES',
@@ -1203,7 +1209,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'mirai',
     name: 'Mirai',
-    category: 'Cine',
+    categories: ['Cine'],
     brand: 'Vibra',
     type: 'IP',
     lang: 'ES',
@@ -1215,7 +1221,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'mirai-anime',
     name: 'Mirai Anime',
-    category: 'Infantil',
+    categories: ['Anime'],
     brand: 'Vibra',
     type: 'IP',
     lang: 'ES',
@@ -1227,7 +1233,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'mirai-music',
     name: 'Mirai Music',
-    category: 'Música',
+    categories: ['Música'],
     brand: 'Vibra',
     type: 'IP',
     lang: 'ES',
@@ -1239,7 +1245,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'warzone',
     name: 'WarZone',
-    category: 'Cine',
+    categories: ['Cine bélico'],
     brand: 'Vibra',
     type: 'IP',
     lang: 'ES',
@@ -1251,7 +1257,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'cine-mx',
     name: 'Cine MX',
-    category: 'Cine',
+    categories: ['Cine clásico'],
     brand: 'Vibra',
     type: 'IP',
     lang: 'ES',
@@ -1263,7 +1269,7 @@ export const CHANNELS: Channel[] = [
   {
     id: 'retrox-cartoons',
     name: 'Retrox Cartoons',
-    category: 'Infantil',
+    categories: ['Infantil'],
     brand: 'Vibra',
     type: 'IP',
     lang: 'ES',
@@ -1278,22 +1284,28 @@ export const TOTAL_CHANNELS = CHANNELS.length;
 
 export const CATEGORIES = [
   { id: 'all', label: 'Todos' },
-  { id: 'Informativo', label: 'Informativo' },
-  { id: 'Musical', label: 'Musical' },
-  { id: 'Comedia', label: 'Comedia' },
-  { id: 'Documental', label: 'Documental' },
-  { id: 'Entretenimiento Peruano', label: 'Entretenimiento Peruano' },
-  { id: 'Regional Peruano', label: 'Regional Peruano' },
-  { id: 'Misceláneos', label: 'Misceláneos' },
   { id: 'Cine', label: 'Cine' },
+  { id: 'Cine clásico', label: 'Cine clásico' },
+  { id: 'Cine de terror', label: 'Cine de terror' },
+  { id: 'Cine bélico', label: 'Cine bélico' },
+  { id: 'Cine infantil', label: 'Cine infantil' },
   { id: 'Series', label: 'Series' },
-  { id: 'Religión', label: 'Religión' },
-  { id: 'Caricaturas', label: 'Caricaturas' },
+  { id: 'Novelas', label: 'Novelas' },
+  { id: 'Anime', label: 'Anime' },
+  { id: 'Infantil', label: 'Infantil' },
+  { id: 'Música', label: 'Música' },
+  { id: 'Informativo', label: 'Informativo' },
+  { id: 'Documental', label: 'Documental' },
   { id: 'Deportes', label: 'Deportes' },
   { id: 'Turismo', label: 'Turismo' },
-  { id: 'Infantil', label: 'Infantil' },
-  { id: 'Novelas', label: 'Novelas' },
-  { id: 'Música', label: 'Música' },
+  { id: 'Entretenimiento Peruano', label: 'Entretenimiento Peruano' },
+  { id: 'Regionales', label: 'Regionales' },
+  { id: 'Religión', label: 'Religión' },
+  { id: 'Minería', label: 'Minería' },
+  { id: 'Financiero', label: 'Financiero' },
+  { id: 'Cocina', label: 'Cocina' },
+  { id: 'Agricultura', label: 'Agricultura' },
+  { id: 'Misceláneos', label: 'Misceláneos' },
 ] as const;
 
 export const BRANDS: ChannelBrand[] = ['Españolas', 'FMH', 'Grupo Max', 'MIC', 'NeoTech', 'Open', 'RPP', 'Vibra', 'Independiente'];

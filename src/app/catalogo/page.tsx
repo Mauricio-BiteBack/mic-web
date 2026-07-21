@@ -8,7 +8,7 @@ import Image from 'next/image';
 import PageShell from '@/components/PageShell';
 import { useCart } from '@/components/CartContext';
 import { useCotizar } from '@/components/CotizarContext';
-import { CHANNELS, CATEGORIES, Channel } from '@/data/channels';
+import { CHANNELS, CATEGORIES, Channel, ChannelCategory } from '@/data/channels';
 import { fuzzySearch } from '@/lib/search';
 
 function ChannelCard({ ch }: { ch: Channel }) {
@@ -42,7 +42,7 @@ function ChannelCard({ ch }: { ch: Channel }) {
         {/* Badges */}
         <div className="absolute top-2.5 left-2.5 right-2.5 flex justify-between items-start z-10">
           <span className="bg-black/55 backdrop-blur-sm text-white text-[9px] font-semibold px-1.5 py-[3px] rounded-[5px] uppercase tracking-wider">
-            {ch.category}
+            {ch.categories[0]}
           </span>
           <span className={`text-white text-[9px] font-bold px-1.5 py-[3px] rounded-[5px] uppercase tracking-wider ${
             ch.type === 'IP' ? 'bg-[#193595]/90' : 'bg-[#0aa84f]/90'
@@ -103,9 +103,9 @@ function CatalogoContent() {
 
   const filtered = useMemo(() => {
     return CHANNELS.filter(ch => {
-      if (catFilter !== 'all' && ch.category !== catFilter) return false;
+      if (catFilter !== 'all' && !ch.categories.includes(catFilter as ChannelCategory)) return false;
       if (typeFilter !== 'all' && ch.type !== typeFilter) return false;
-      if (search && !fuzzySearch(`${ch.name} ${ch.category} ${ch.brand}`, search)) return false;
+      if (search && !fuzzySearch(`${ch.name} ${ch.categories.join(' ')} ${ch.brand}`, search)) return false;
       return true;
     });
   }, [catFilter, typeFilter, search]);
@@ -119,7 +119,7 @@ function CatalogoContent() {
   const categoryCounts = useMemo(() => {
     const m: Record<string, number> = {};
     CHANNELS.forEach(ch => {
-      m[ch.category] = (m[ch.category] || 0) + 1;
+      ch.categories.forEach(cat => { m[cat] = (m[cat] || 0) + 1; });
     });
     return m;
   }, []);
@@ -231,43 +231,13 @@ function CatalogoContent() {
             </div>
 
             <div className="px-5 py-5 flex flex-col gap-6">
-              {/* Distribución — highlighted */}
+              {/* Categoría — highlighted, bigger text */}
               <div className="p-4 rounded-[16px] bg-gradient-to-br from-[#193595]/8 to-[#E8078B]/8 border-2 border-[#193595]/25">
-                <p className="text-[13px] font-extrabold uppercase tracking-[0.1em] text-[#0a1133] mb-3">Distribución</p>
-                <div className="grid grid-cols-3 gap-2">
-                  {(['all', 'IP', 'Satelital'] as const).map(t => {
-                    const active = typeFilter === t || (t === 'all' && typeFilter === 'all');
-                    return (
-                      <button
-                        key={t}
-                        onClick={() => setTypeFilter(t === typeFilter ? 'all' : t)}
-                        className={`px-2 py-3 rounded-[10px] text-[13.5px] font-bold cursor-pointer transition-all ${
-                          active
-                            ? t === 'IP'
-                              ? 'bg-[#193595] text-white shadow-md'
-                              : t === 'Satelital'
-                              ? 'bg-[#0aa84f] text-white shadow-md'
-                              : 'bg-[#0a1133] text-white shadow-md'
-                            : 'bg-white border border-gray-200 text-[#374151]'
-                        }`}
-                      >
-                        <span className="block">{t === 'all' ? 'Todos' : t}</span>
-                        <span className={`block text-[11px] font-semibold mt-0.5 ${active ? 'text-white/70' : 'text-[#9ca3af]'}`}>
-                          {t === 'all' ? CHANNELS.length : typeCounts[t] || 0}
-                        </span>
-                      </button>
-                    );
-                  })}
-                </div>
-              </div>
-
-              {/* Categoría */}
-              <div>
-                <p className="text-[11px] font-bold uppercase tracking-[0.1em] text-[#6a7196] mb-3">Categoría</p>
+                <p className="text-[14px] font-extrabold uppercase tracking-[0.1em] text-[#0a1133] mb-3">Categoría</p>
                 <div className="flex flex-wrap gap-2">
                   <button
                     onClick={() => setCatFilter('all')}
-                    className={`px-3.5 py-2 rounded-[8px] text-[13px] font-medium border cursor-pointer transition-all ${catFilter === 'all' ? 'bg-[#193595] text-white border-[#193595]' : 'bg-white border-gray-200 text-[#6a7196]'}`}
+                    className={`px-4 py-2.5 rounded-[10px] text-[14px] font-bold border cursor-pointer transition-all ${catFilter === 'all' ? 'bg-[#193595] text-white border-[#193595] shadow-md' : 'bg-white border-gray-200 text-[#374151]'}`}
                   >
                     Todas
                   </button>
@@ -278,11 +248,41 @@ function CatalogoContent() {
                       <button
                         key={c.id}
                         onClick={() => setCatFilter(catFilter === c.id ? 'all' : c.id)}
-                        className={`px-3.5 py-2 rounded-[8px] text-[13px] font-medium border cursor-pointer transition-all ${catFilter === c.id ? 'bg-[#193595] text-white border-[#193595]' : 'bg-white border-gray-200 text-[#6a7196]'}`}
+                        className={`px-4 py-2.5 rounded-[10px] text-[14px] font-bold border cursor-pointer transition-all ${catFilter === c.id ? 'bg-[#193595] text-white border-[#193595] shadow-md' : 'bg-white border-gray-200 text-[#374151]'}`}
                       >
-                        {c.label} <span className="opacity-60 text-[12px]">({categoryCounts[c.id] || 0})</span>
+                        {c.label} <span className="opacity-70 text-[12.5px]">({categoryCounts[c.id] || 0})</span>
                       </button>
                     ))}
+                </div>
+              </div>
+
+              {/* Distribución */}
+              <div className="p-4 rounded-[16px] bg-[#f6f7fb] border border-gray-200">
+                <p className="text-[12px] font-bold uppercase tracking-[0.1em] text-[#0a1133] mb-3">Distribución</p>
+                <div className="grid grid-cols-3 gap-2">
+                  {(['all', 'IP', 'Satelital'] as const).map(t => {
+                    const active = typeFilter === t || (t === 'all' && typeFilter === 'all');
+                    return (
+                      <button
+                        key={t}
+                        onClick={() => setTypeFilter(t === typeFilter ? 'all' : t)}
+                        className={`px-2 py-2.5 rounded-[9px] text-[12.5px] font-semibold cursor-pointer transition-all ${
+                          active
+                            ? t === 'IP'
+                              ? 'bg-[#193595] text-white shadow-sm'
+                              : t === 'Satelital'
+                              ? 'bg-[#0aa84f] text-white shadow-sm'
+                              : 'bg-[#0a1133] text-white shadow-sm'
+                            : 'bg-white border border-gray-200 text-[#374151]'
+                        }`}
+                      >
+                        <span className="block">{t === 'all' ? 'Todos' : t}</span>
+                        <span className={`block text-[10.5px] font-semibold mt-0.5 ${active ? 'text-white/70' : 'text-[#9ca3af]'}`}>
+                          {t === 'all' ? CHANNELS.length : typeCounts[t] || 0}
+                        </span>
+                      </button>
+                    );
+                  })}
                 </div>
               </div>
             </div>
@@ -330,10 +330,71 @@ function CatalogoContent() {
                 )}
               </AnimatePresence>
 
-              {/* ── Distribución — highlighted, always visible ── */}
+              {/* ── Categorías — highlighted, bigger text, always visible ── */}
               <div className="p-3.5 pb-4 border-b border-gray-100">
                 <div className="p-3.5 rounded-[14px] bg-gradient-to-br from-[#193595]/8 to-[#E8078B]/8 border-2 border-[#193595]/25">
-                  <span className="text-[12.5px] font-extrabold uppercase tracking-[0.08em] text-[#0a1133] mb-2.5 block">Distribución</span>
+                  <button
+                    onClick={() => setCatOpen(v => !v)}
+                    className="w-full flex items-center justify-between mb-2.5 cursor-pointer"
+                  >
+                    <span className="text-[14px] font-extrabold uppercase tracking-[0.08em] text-[#0a1133]">Categorías</span>
+                    <svg
+                      className={`text-[#0a1133] transition-transform duration-200 ${catOpen ? 'rotate-180' : ''}`}
+                      width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"
+                    >
+                      <polyline points="6 9 12 15 18 9"/>
+                    </svg>
+                  </button>
+                  <AnimatePresence>
+                    {catOpen && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
+                        className="overflow-hidden"
+                      >
+                        <div className="flex flex-col gap-1.5">
+                          <button
+                            onClick={() => setCatFilter('all')}
+                            className={`w-full text-left px-3 py-2.5 rounded-[10px] text-[14px] font-bold transition-all duration-150 cursor-pointer flex items-center justify-between ${
+                              catFilter === 'all'
+                                ? 'bg-[#193595] text-white shadow-md'
+                                : 'bg-white text-[#374151] border border-gray-200 hover:border-[#193595]/40'
+                            }`}
+                          >
+                            <span>Todas</span>
+                            <span className={`text-[12px] font-semibold ${catFilter === 'all' ? 'text-white/70' : 'text-[#9ca3af]'}`}>{CHANNELS.length}</span>
+                          </button>
+                          {CATEGORIES.filter(c => c.id !== 'all').map(c => {
+                            const count = categoryCounts[c.id] || 0;
+                            if (count === 0) return null;
+                            return (
+                              <button
+                                key={c.id}
+                                onClick={() => setCatFilter(catFilter === c.id ? 'all' : c.id)}
+                                className={`w-full text-left px-3 py-2.5 rounded-[10px] text-[14px] font-bold transition-all duration-150 cursor-pointer flex items-center justify-between ${
+                                  catFilter === c.id
+                                    ? 'bg-[#193595] text-white shadow-md'
+                                    : 'bg-white text-[#374151] border border-gray-200 hover:border-[#193595]/40'
+                                }`}
+                              >
+                                <span className="truncate pr-1">{c.label}</span>
+                                <span className={`text-[12px] font-semibold flex-shrink-0 ${catFilter === c.id ? 'text-white/70' : 'text-[#9ca3af]'}`}>{count}</span>
+                              </button>
+                            );
+                          })}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              </div>
+
+              {/* ── Distribución ── */}
+              <div className="p-3.5 pb-4">
+                <div className="p-3.5 rounded-[14px] bg-[#f6f7fb] border border-gray-200">
+                  <span className="text-[11.5px] font-bold uppercase tracking-[0.08em] text-[#0a1133] mb-2.5 block">Distribución</span>
                   <div className="flex flex-col gap-1.5">
                     {(['all', 'IP', 'Satelital'] as const).map(t => {
                       const active = typeFilter === t || (t === 'all' && typeFilter === 'all');
@@ -341,18 +402,18 @@ function CatalogoContent() {
                         <button
                           key={t}
                           onClick={() => setTypeFilter(t === 'all' ? 'all' : (typeFilter === t ? 'all' : t))}
-                          className={`w-full text-left px-3 py-2.5 rounded-[10px] text-[13.5px] font-bold transition-all duration-150 cursor-pointer flex items-center justify-between ${
+                          className={`w-full text-left px-3 py-2 rounded-[9px] text-[12.5px] font-semibold transition-all duration-150 cursor-pointer flex items-center justify-between ${
                             active
                               ? t === 'IP'
-                                ? 'bg-[#193595] text-white shadow-md'
+                                ? 'bg-[#193595] text-white shadow-sm'
                                 : t === 'Satelital'
-                                ? 'bg-[#0aa84f] text-white shadow-md'
-                                : 'bg-[#0a1133] text-white shadow-md'
-                              : 'bg-white text-[#374151] border border-gray-200 hover:border-[#193595]/40'
+                                ? 'bg-[#0aa84f] text-white shadow-sm'
+                                : 'bg-[#0a1133] text-white shadow-sm'
+                              : 'bg-white text-[#374151] border border-gray-200'
                           }`}
                         >
                           <span>{t === 'all' ? 'Todos' : t}</span>
-                          <span className={`text-[11.5px] font-semibold ${active ? 'text-white/70' : 'text-[#9ca3af]'}`}>
+                          <span className={`text-[10.5px] font-semibold ${active ? 'text-white/70' : 'text-[#9ca3af]'}`}>
                             {t === 'all' ? CHANNELS.length : typeCounts[t] || 0}
                           </span>
                         </button>
@@ -360,65 +421,6 @@ function CatalogoContent() {
                     })}
                   </div>
                 </div>
-              </div>
-
-              {/* ── Categorías accordion ── */}
-              <div>
-                <button
-                  onClick={() => setCatOpen(v => !v)}
-                  className="w-full flex items-center justify-between px-3.5 py-3 hover:bg-gray-50 transition-colors cursor-pointer"
-                >
-                  <span className="text-[11.5px] font-bold uppercase tracking-[0.08em] text-[#0a1133]">Categorías</span>
-                  <svg
-                    className={`text-[#6a7196] transition-transform duration-200 ${catOpen ? 'rotate-180' : ''}`}
-                    width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"
-                  >
-                    <polyline points="6 9 12 15 18 9"/>
-                  </svg>
-                </button>
-                <AnimatePresence>
-                  {catOpen && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: 'auto', opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
-                      className="overflow-hidden"
-                    >
-                      <div className="px-2.5 pb-2.5 flex flex-col gap-0.5">
-                        <button
-                          onClick={() => setCatFilter('all')}
-                          className={`w-full text-left px-2.5 py-1.5 rounded-[7px] text-[12px] font-medium transition-all duration-150 cursor-pointer flex items-center justify-between ${
-                            catFilter === 'all'
-                              ? 'bg-[#193595] text-white'
-                              : 'text-[#374151] hover:bg-gray-100'
-                          }`}
-                        >
-                          <span>Todas</span>
-                          <span className={`text-[10.5px] ${catFilter === 'all' ? 'text-white/70' : 'text-[#9ca3af]'}`}>{CHANNELS.length}</span>
-                        </button>
-                        {CATEGORIES.filter(c => c.id !== 'all').map(c => {
-                          const count = categoryCounts[c.id] || 0;
-                          if (count === 0) return null;
-                          return (
-                            <button
-                              key={c.id}
-                              onClick={() => setCatFilter(catFilter === c.id ? 'all' : c.id)}
-                              className={`w-full text-left px-2.5 py-1.5 rounded-[7px] text-[12px] font-medium transition-all duration-150 cursor-pointer flex items-center justify-between ${
-                                catFilter === c.id
-                                  ? 'bg-[#193595] text-white'
-                                  : 'text-[#374151] hover:bg-gray-100'
-                              }`}
-                            >
-                              <span className="truncate pr-1">{c.label}</span>
-                              <span className={`text-[10.5px] flex-shrink-0 ${catFilter === c.id ? 'text-white/70' : 'text-[#9ca3af]'}`}>{count}</span>
-                            </button>
-                          );
-                        })}
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
               </div>
 
             </aside>

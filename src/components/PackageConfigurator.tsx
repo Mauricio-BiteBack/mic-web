@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { CHANNELS, CATEGORIES } from '@/data/channels';
+import { CHANNELS, CATEGORIES, ChannelCategory } from '@/data/channels';
 import { useCart } from './CartContext';
 
 interface PackageConfiguratorProps {
@@ -16,13 +16,13 @@ export default function PackageConfigurator({ onCotizar }: PackageConfiguratorPr
   const counts = useMemo(() => {
     const m: Record<string, number> = {};
     CATEGORIES.forEach(c => {
-      m[c.id] = c.id === 'all' ? CHANNELS.length : CHANNELS.filter(ch => ch.category === c.id).length;
+      m[c.id] = c.id === 'all' ? CHANNELS.length : CHANNELS.filter(ch => ch.categories.includes(c.id as ChannelCategory)).length;
     });
     return m;
   }, []);
 
   const visible = useMemo(
-    () => (tab === 'all' ? CHANNELS : CHANNELS.filter(c => c.category === tab)),
+    () => (tab === 'all' ? CHANNELS : CHANNELS.filter(c => c.categories.includes(tab as ChannelCategory))),
     [tab]
   );
 
@@ -102,7 +102,7 @@ export default function PackageConfigurator({ onCotizar }: PackageConfiguratorPr
                         <span className="flex items-center gap-1 text-[11.5px] text-[#6a7196] mt-0.5">
                           <span>{ch.type}</span>
                           <span className="w-[3px] h-[3px] rounded-full bg-[#6a7196]" />
-                          <span>{ch.category}</span>
+                          <span>{ch.categories[0]}</span>
                           <span className="w-[3px] h-[3px] rounded-full bg-[#6a7196]" />
                           <span>{ch.lang}</span>
                         </span>
