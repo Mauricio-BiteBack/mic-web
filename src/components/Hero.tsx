@@ -7,15 +7,16 @@ import { TOTAL_CHANNELS } from '@/data/channels';
 export default function Hero() {
   return (
     <section className="relative text-white overflow-hidden pt-[168px] pb-24 isolate">
-      {/* Background image — Next.js optimized, priority loaded */}
-      <Image
-        src="/banner-mic-nuevo-2.png"
-        alt=""
-        fill
-        className="object-cover object-left-top md:object-top"
-        style={{ zIndex: -30 }}
-        priority
-      />
+      {/* Background image — Next.js optimized, priority loaded. Boxed at its native 2050×796 ratio so it is never cropped. */}
+      <div className="absolute inset-x-0 top-0 aspect-[2050/796] -z-30">
+        <Image
+          src="/banner-mic-nuevo-2.png"
+          alt=""
+          fill
+          className="object-cover"
+          priority
+        />
+      </div>
       {/* Subtle accent radial wash */}
       <div
         className="absolute inset-0 pointer-events-none"
