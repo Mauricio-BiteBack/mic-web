@@ -119,17 +119,9 @@ export default function WhatsAppTestimonials() {
 
       <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-[4vw]">
         <div className="mb-[1.4vw]">
-          <span className="inline-flex items-center gap-[0.4vw] text-[0.8vw] font-semibold tracking-[0.14em] uppercase text-[#128C55] mb-[0.5vw]">
-            <span className="w-[1.2vw] h-[0.13vw] bg-[#128C55] rounded-full" />
-            En vivo desde WhatsApp
-            <span className="w-[1.2vw] h-[0.13vw] bg-[#128C55] rounded-full" />
-          </span>
-          <h2 className="text-[2.3vw] font-bold tracking-[-0.025em] leading-[1.12] text-[#0a1133] mb-[0.55vw]">
+          <h2 className="text-[2.3vw] font-bold tracking-[-0.025em] leading-[1.12] text-[#0a1133]">
             La opinión de <span className="text-[#128C55]">nuestros clientes</span>
           </h2>
-          <p className="text-[0.85vw] text-[#3a4066] leading-relaxed max-w-[28vw] mx-auto">
-            Opiniones reales, tomadas directamente de nuestro grupo de soporte a operadores.
-          </p>
         </div>
 
         {/* Phone frame */}
@@ -138,7 +130,7 @@ export default function WhatsAppTestimonials() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className="rounded-[1vw] overflow-hidden shadow-[0_1.2vw_3vw_rgba(10,17,51,0.35)] ring-1 ring-black/10 w-[21vw]"
+          className="rounded-[1vw] overflow-hidden shadow-[0_1.2vw_3vw_rgba(10,17,51,0.35)] ring-1 ring-black/10 w-[27.3vw]"
         >
 
           {/* WhatsApp header */}
