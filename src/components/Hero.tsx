@@ -12,7 +12,7 @@ export default function Hero() {
         src="/banner-mic-nuevo.png"
         alt=""
         fill
-        className="object-cover object-left md:object-center"
+        className="object-cover object-left-top md:object-top"
         style={{ zIndex: -30 }}
         priority
       />
