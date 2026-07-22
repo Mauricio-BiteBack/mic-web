@@ -108,16 +108,18 @@ export default function WhatsAppTestimonials() {
 
   return (
     <section className="py-24 px-4 relative overflow-hidden isolate">
-      {/* Background image */}
-      <Image
-        src="/banner-comentarios-cliente.png"
-        alt=""
-        fill
-        className="object-cover -z-30"
-        priority={false}
-      />
-      {/* Light scrim for text legibility */}
-      <div className="absolute inset-0 bg-white/55 -z-20" />
+      {/* Background image — boxed at its native 1902×582 ratio so it is never cropped */}
+      <div className="absolute inset-x-0 top-0 aspect-[1902/582] -z-30">
+        <Image
+          src="/banner-comentarios-cliente.png"
+          alt=""
+          fill
+          className="object-cover"
+          priority={false}
+        />
+        {/* Light scrim for text legibility */}
+        <div className="absolute inset-0 bg-white/55" />
+      </div>
 
       <div className="max-w-[720px] mx-auto text-center mb-12">
         <span className="inline-flex items-center gap-2 text-[12px] font-semibold tracking-[0.14em] uppercase text-[#128C55] mb-3">
