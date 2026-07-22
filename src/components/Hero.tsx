@@ -9,7 +9,7 @@ export default function Hero() {
     <section className="relative text-white overflow-hidden pt-[168px] pb-24 isolate">
       {/* Background image — Next.js optimized, priority loaded */}
       <Image
-        src="/banner.jpg"
+        src="/banner-mic-nuevo.png"
         alt=""
         fill
         className="object-cover object-left md:object-center"
