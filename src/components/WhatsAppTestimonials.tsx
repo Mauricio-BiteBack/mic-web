@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
 
 const testimonials = [
   {
@@ -46,11 +47,11 @@ function nameColor(name: string): string {
 // Typing indicator — three bouncing dots
 function TypingIndicator() {
   return (
-    <div className="flex items-center gap-1 px-3 py-2 bg-white rounded-[18px] rounded-tl-[4px] w-fit shadow-sm">
+    <div className="flex items-center gap-1.5 px-4 py-2.5 bg-white rounded-[18px] rounded-tl-[4px] w-fit shadow-sm">
       {[0, 1, 2].map((i) => (
         <motion.span
           key={i}
-          className="block w-2 h-2 rounded-full bg-[#90949c]"
+          className="block w-2.5 h-2.5 rounded-full bg-[#90949c]"
           animate={{ y: [0, -4, 0] }}
           transition={{ duration: 0.6, repeat: Infinity, delay: i * 0.15 }}
         />
@@ -106,133 +107,162 @@ export default function WhatsAppTestimonials() {
   }, []);
 
   return (
-    <section className="py-16 px-4 bg-[#f0f4f8]">
-      <div className="max-w-lg mx-auto">
-        {/* Phone frame */}
-        <div className="rounded-[24px] overflow-hidden shadow-2xl border border-[#00000018] max-w-[460px] mx-auto">
+    <section className="py-24 px-4 relative overflow-hidden isolate">
+      {/* Background image */}
+      <Image
+        src="/banner-comentarios-cliente.png"
+        alt=""
+        fill
+        className="object-cover -z-30"
+        priority={false}
+      />
+      {/* Light scrim for text legibility */}
+      <div className="absolute inset-0 bg-white/55 -z-20" />
 
-          {/* WhatsApp header */}
-          <div className="flex items-center gap-3 px-4 py-3 bg-[#075E54]">
-            {/* Group avatar */}
-            <div className="w-9 h-9 rounded-full bg-[#25D366] flex items-center justify-center flex-shrink-0">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
-                <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
-              </svg>
-            </div>
-            <div>
-              <p className="text-white font-semibold text-sm leading-tight">Clientes MIC</p>
-              <p className="text-[#b2dfdb] text-[11px]">
-                {testimonials.length} participantes
-              </p>
-            </div>
-            {/* Action icons */}
-            <div className="ml-auto flex items-center gap-4">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="white" opacity="0.8">
-                <path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24 11.36 11.36 0 003.56.57 1 1 0 011 1V21a1 1 0 01-1 1A17 17 0 013 5a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.24 1.01l-2.21 2.21z"/>
-              </svg>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="white" opacity="0.8">
-                <circle cx="12" cy="5" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="12" cy="19" r="2"/>
-              </svg>
-            </div>
+      <div className="max-w-[720px] mx-auto text-center mb-12">
+        <span className="inline-flex items-center gap-2 text-[12px] font-semibold tracking-[0.14em] uppercase text-[#128C55] mb-3">
+          <span className="w-5 h-[2px] bg-[#128C55] rounded-full" />
+          En vivo desde WhatsApp
+          <span className="w-5 h-[2px] bg-[#128C55] rounded-full" />
+        </span>
+        <h2 className="text-[clamp(28px,3.5vw,44px)] font-bold tracking-[-0.025em] text-[#0a1133] mb-4">
+          La opinión de <span className="text-[#128C55]">nuestros clientes</span>
+        </h2>
+        <p className="text-[17px] text-[#3a4066] leading-relaxed">
+          Opiniones reales, tomadas directamente de nuestro grupo de soporte a operadores.
+        </p>
+      </div>
+
+      {/* Phone frame */}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-80px' }}
+        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+        className="rounded-[28px] overflow-hidden shadow-[0_30px_80px_rgba(10,17,51,0.35)] ring-1 ring-black/10 max-w-[560px] mx-auto"
+      >
+
+        {/* WhatsApp header */}
+        <div className="flex items-center gap-3 px-5 py-4 bg-[#075E54]">
+          {/* Group avatar */}
+          <div className="w-11 h-11 rounded-full bg-[#25D366] flex items-center justify-center flex-shrink-0">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+              <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
+            </svg>
           </div>
-
-          {/* Chat area */}
-          <div
-            ref={containerRef}
-            className="h-[380px] overflow-y-auto px-3 py-3 flex flex-col gap-1"
-            style={{
-              background: `${WA_PATTERN}, #E5DDD5`,
-            }}
-          >
-            {/* Sent message (admin/MIC) — always visible */}
-            <div className="flex flex-col items-end mb-1">
-              <div className="relative bg-[#DCF8C6] rounded-[10px] rounded-tr-[3px] px-3 pt-1.5 pb-1.5 max-w-[82%] shadow-sm">
-                {/* Bubble tail right */}
-                <span
-                  className="absolute -right-[6px] top-0 w-0 h-0"
-                  style={{
-                    borderTop: '8px solid #DCF8C6',
-                    borderRight: '7px solid transparent',
-                  }}
-                />
-                <p className="text-[13.5px] text-[#111b21] leading-snug pr-14">
-                  Buenos días! Qué tal les fue con las señales?
-                </p>
-                <span className="absolute bottom-1.5 right-2 flex items-center gap-0.5 text-[10px] text-[#8696a0] whitespace-nowrap">
-                  8:10 a.m.
-                  {/* Double blue check */}
-                  <svg width="15" height="11" viewBox="0 0 15 11" fill="none">
-                    <path d="M1 5.5L4.5 9L9 3" stroke="#53BDEB" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
-                    <path d="M6 5.5L9.5 9L14 3" stroke="#53BDEB" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </span>
-              </div>
-            </div>
-
-            <AnimatePresence>
-              {testimonials.slice(0, visibleCount).map((t, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 12 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.28, ease: 'easeOut' }}
-                  className="flex flex-col items-start mb-1"
-                >
-                  <div className="relative bg-white rounded-[10px] rounded-tl-[3px] px-3 pt-1.5 pb-1.5 max-w-[82%] shadow-sm">
-                    {/* Bubble tail */}
-                    <span
-                      className="absolute -left-[6px] top-0 w-0 h-0"
-                      style={{
-                        borderTop: '8px solid white',
-                        borderLeft: '7px solid transparent',
-                      }}
-                    />
-                    <p
-                      className="text-[12px] font-semibold mb-0.5 leading-none"
-                      style={{ color: nameColor(t.name) }}
-                    >
-                      {t.name}
-                    </p>
-                    <p className="text-[13.5px] text-[#111b21] leading-snug pr-10">
-                      {t.message}
-                    </p>
-                    <span className="absolute bottom-1.5 right-2 text-[10px] text-[#8696a0] whitespace-nowrap">
-                      {t.time}
-                    </span>
-                  </div>
-                </motion.div>
-              ))}
-
-              {showTyping && (
-                <motion.div
-                  key="typing"
-                  initial={{ opacity: 0, y: 8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.2 }}
-                  className="flex flex-col items-start mb-1"
-                >
-                  <TypingIndicator />
-                </motion.div>
-              )}
-            </AnimatePresence>
-
-            <div ref={bottomRef} />
+          <div>
+            <p className="text-white font-semibold text-[15px] leading-tight">Clientes MIC</p>
+            <p className="text-[#b2dfdb] text-[12px]">
+              {testimonials.length} participantes
+            </p>
           </div>
-
-          {/* Input bar (decorative) */}
-          <div className="flex items-center gap-2 px-3 py-2 bg-[#f0f2f5]">
-            <div className="flex-1 bg-white rounded-full px-4 py-2 text-[13px] text-[#8696a0]">
-              Escribe un mensaje
-            </div>
-            <div className="w-9 h-9 rounded-full bg-[#25D366] flex items-center justify-center flex-shrink-0">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="white">
-                <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
-              </svg>
-            </div>
+          {/* Action icons */}
+          <div className="ml-auto flex items-center gap-4">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="white" opacity="0.8">
+              <path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24 11.36 11.36 0 003.56.57 1 1 0 011 1V21a1 1 0 01-1 1A17 17 0 013 5a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.24 1.01l-2.21 2.21z"/>
+            </svg>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="white" opacity="0.8">
+              <circle cx="12" cy="5" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="12" cy="19" r="2"/>
+            </svg>
           </div>
         </div>
-      </div>
+
+        {/* Chat area */}
+        <div
+          ref={containerRef}
+          className="h-[480px] overflow-y-auto px-4 py-4 flex flex-col gap-1.5"
+          style={{
+            background: `${WA_PATTERN}, #E5DDD5`,
+          }}
+        >
+          {/* Sent message (admin/MIC) — always visible */}
+          <div className="flex flex-col items-end mb-1">
+            <div className="relative bg-[#DCF8C6] rounded-[12px] rounded-tr-[3px] px-3.5 pt-2 pb-2 max-w-[82%] shadow-sm">
+              {/* Bubble tail right */}
+              <span
+                className="absolute -right-[6px] top-0 w-0 h-0"
+                style={{
+                  borderTop: '8px solid #DCF8C6',
+                  borderRight: '7px solid transparent',
+                }}
+              />
+              <p className="text-[15px] text-[#111b21] leading-snug pr-14">
+                Buenos días! Qué tal les fue con las señales?
+              </p>
+              <span className="absolute bottom-1.5 right-2 flex items-center gap-0.5 text-[11px] text-[#8696a0] whitespace-nowrap">
+                8:10 a.m.
+                {/* Double blue check */}
+                <svg width="15" height="11" viewBox="0 0 15 11" fill="none">
+                  <path d="M1 5.5L4.5 9L9 3" stroke="#53BDEB" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M6 5.5L9.5 9L14 3" stroke="#53BDEB" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </span>
+            </div>
+          </div>
+
+          <AnimatePresence>
+            {testimonials.slice(0, visibleCount).map((t, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.28, ease: 'easeOut' }}
+                className="flex flex-col items-start mb-1"
+              >
+                <div className="relative bg-white rounded-[12px] rounded-tl-[3px] px-3.5 pt-2 pb-2 max-w-[82%] shadow-sm">
+                  {/* Bubble tail */}
+                  <span
+                    className="absolute -left-[6px] top-0 w-0 h-0"
+                    style={{
+                      borderTop: '8px solid white',
+                      borderLeft: '7px solid transparent',
+                    }}
+                  />
+                  <p
+                    className="text-[13px] font-semibold mb-0.5 leading-none"
+                    style={{ color: nameColor(t.name) }}
+                  >
+                    {t.name}
+                  </p>
+                  <p className="text-[15px] text-[#111b21] leading-snug pr-10">
+                    {t.message}
+                  </p>
+                  <span className="absolute bottom-1.5 right-2 text-[11px] text-[#8696a0] whitespace-nowrap">
+                    {t.time}
+                  </span>
+                </div>
+              </motion.div>
+            ))}
+
+            {showTyping && (
+              <motion.div
+                key="typing"
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.2 }}
+                className="flex flex-col items-start mb-1"
+              >
+                <TypingIndicator />
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          <div ref={bottomRef} />
+        </div>
+
+        {/* Input bar (decorative) */}
+        <div className="flex items-center gap-2 px-4 py-3 bg-[#f0f2f5]">
+          <div className="flex-1 bg-white rounded-full px-4 py-2.5 text-[14px] text-[#8696a0]">
+            Escribe un mensaje
+          </div>
+          <div className="w-10 h-10 rounded-full bg-[#25D366] flex items-center justify-center flex-shrink-0">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="white">
+              <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+            </svg>
+          </div>
+        </div>
+      </motion.div>
     </section>
   );
 }
