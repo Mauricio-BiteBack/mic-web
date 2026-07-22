@@ -108,18 +108,14 @@ export default function WhatsAppTestimonials() {
 
   return (
     <section className="py-24 px-4 relative overflow-hidden isolate">
-      {/* Background image — boxed at its native 1902×582 ratio so it is never cropped */}
-      <div className="absolute inset-x-0 top-0 aspect-[1902/582] -z-30">
-        <Image
-          src="/banner-comentarios-cliente.png"
-          alt=""
-          fill
-          className="object-cover"
-          priority={false}
-        />
-        {/* Light scrim for text legibility */}
-        <div className="absolute inset-0 bg-white/55" />
-      </div>
+      {/* Background image */}
+      <Image
+        src="/banner-comentarios-cliente.png"
+        alt=""
+        fill
+        className="object-cover -z-30"
+        priority={false}
+      />
 
       <div className="max-w-[720px] mx-auto text-center mb-12">
         <span className="inline-flex items-center gap-2 text-[12px] font-semibold tracking-[0.14em] uppercase text-[#128C55] mb-3">
@@ -141,7 +137,7 @@ export default function WhatsAppTestimonials() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: '-80px' }}
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        className="rounded-[28px] overflow-hidden shadow-[0_30px_80px_rgba(10,17,51,0.35)] ring-1 ring-black/10 max-w-[560px] mx-auto"
+        className="rounded-[28px] overflow-hidden shadow-[0_30px_80px_rgba(10,17,51,0.35)] ring-1 ring-black/10 max-w-[640px] mx-auto"
       >
 
         {/* WhatsApp header */}
