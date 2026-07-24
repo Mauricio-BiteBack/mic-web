@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import Navbar from '@/components/Navbar';
-import Hero from '@/components/Hero';
 import TrustBar from '@/components/TrustBar';
 import Services from '@/components/Services';
 import PackageConfigurator from '@/components/PackageConfigurator';
@@ -26,9 +25,8 @@ export default function HomePage() {
       <Navbar onOpenCart={() => setCartOpen(true)} />
 
       <main>
-        <Hero />
-        <TrustBar />
         <RPPBanner />
+        <TrustBar />
         <CatalogPreview />
         <PackageConfigurator onCotizar={cotizar.open} />
         <Services />
