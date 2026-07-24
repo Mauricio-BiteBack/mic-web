@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const BANNERS = [
   { src: '/banner-vibra.png',        alt: 'Banner MIC — Vibra' },
@@ -91,6 +92,15 @@ export default function RPPBanner() {
             <polyline points="9 18 15 12 9 6"/>
           </svg>
         </button>
+
+        {/* Ver catálogo CTA — persistent across all slides */}
+        <Link
+          href="/catalogo"
+          className="group absolute left-6 bottom-6 z-10 inline-flex items-center gap-2 px-6 py-3.5 bg-[#E8078B] text-white text-[15px] font-semibold rounded-[12px] shadow-[0_6px_18px_rgba(232,7,139,0.45)] hover:bg-[#ff1e9f] hover:shadow-[0_10px_26px_rgba(232,7,139,0.55)] transition-all duration-200"
+        >
+          Ver catálogo
+          <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
+        </Link>
 
         {/* Dots */}
         <div className="absolute bottom-5 left-1/2 -translate-x-1/2 flex gap-2">
