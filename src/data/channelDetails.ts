@@ -564,31 +564,37 @@ export const CHANNEL_DETAILS: Record<string, ChannelDetail> = {
   'vibra-terror': {
     displayCategory: 'Cine Terror',
     longDesc: `¿Te atreves a enfrentar tus peores pesadillas? Vibra Terror reúne las películas de horror que desafían la mente y ponen a prueba tus nervios. Desde terror psicológico y fenómenos paranormales hasta criaturas sobrenaturales y asesinos despiadados, cada historia está diseñada para mantenerte en tensión hasta el último minuto. Porque el verdadero miedo no termina cuando acaba la película… comienza cuando apagas la televisión.`,
+    videoUrls: [yt('https://youtu.be/Y28BMi3tSFE')],
     specs: [{ label: 'Código', value: 'Vibra Terror' }],
   },
   'vibra-junior': {
     displayCategory: 'Infantil',
     longDesc: `Vibra Junior es el canal donde la imaginación, la diversión y el aprendizaje crecen juntos. Diseñado para acompañar a los más pequeños en cada etapa de su desarrollo, ofrece una programación cuidadosamente seleccionada con series y caricaturas que fomentan valores como la amistad, el respeto, la empatía, la creatividad y el trabajo en equipo. Cada historia invita a descubrir nuevos mundos, resolver desafíos y vivir aventuras inolvidables junto a personajes entrañables como Hello Kitty, Care Bears, Filly Funtasia, The Deep, Jim de la Luna y muchos más. Con contenidos seguros, entretenidos y educativos, Vibra Junior brinda un espacio donde niños y familias pueden compartir momentos de diversión mientras estimulan la imaginación, la curiosidad y el aprendizaje. Porque cada episodio no solo entretiene, sino que inspira a soñar, explorar y crecer.`,
+    videoUrls: [yt('https://youtu.be/LdaZ83ODrGw')],
     specs: [{ label: 'Código', value: 'Vibra Junior' }],
   },
   'mirai': {
     displayCategory: 'Cine Asiático',
     longDesc: `Mirai es la puerta de entrada al fascinante universo del entretenimiento asiático. Descubre producciones que han conquistado a millones de espectadores alrededor del mundo gracias a sus historias envolventes, personajes memorables y una forma única de transmitir emociones. Desde apasionantes K-Dramas hasta aclamadas películas asiáticas, cada contenido te invita a vivir romances inolvidables, misterios que desafían la imaginación, intensas historias de acción y relatos que te mantendrán conectado hasta el último minuto. Con títulos como Tempted, Bon Appétit, Your Majesty, My Dangerous Wife, The Host, Ponyo y el secreto de la sirenita y muchas más, Mirai reúne el entretenimiento que ha convertido a Corea y Asia en un fenómeno cultural sin fronteras. Si buscas historias capaces de emocionarte, sorprenderte y permanecer en tu memoria mucho después de los créditos finales, Mirai es el lugar donde comienza tu próxima gran historia.`,
+    videoUrls: [yt('https://youtu.be/Kcpx8GG3iRk')],
     specs: [{ label: 'Código', value: 'Mirai' }],
   },
   'mirai-anime': {
     displayCategory: 'Anime',
     longDesc: `Hay historias que entretienen... y otras que permanecen contigo para siempre. En Mirai Anime, cada episodio es una invitación a descubrir mundos extraordinarios, héroes que luchan por sus ideales, amistades capaces de desafiar cualquier obstáculo y aventuras que inspiran a creer en lo imposible. Desde clásicos que marcaron la historia del anime hasta títulos que continúan conquistando nuevas generaciones, cada serie combina acción, fantasía, emoción y personajes inolvidables que trascienden la pantalla. Revive grandes éxitos como Las Aventuras de Fly, Yaiba: Samurai, Marmalade Boy, Blood+ y muchas más producciones que han convertido al anime en un fenómeno cultural a nivel mundial. Mirai Anime es el destino para quienes saben que el anime es mucho más que animación: es un universo de emociones, sueños y aventuras que dejan huella para toda la vida.`,
+    videoUrls: [yt('https://youtu.be/agyq9xPhYp4')],
     specs: [{ label: 'Código', value: 'Mirai Anime' }],
   },
   'mirai-music': {
     displayCategory: 'K-Pop',
     longDesc: `La música tiene el poder de unir millones de corazones, y el K-Pop es el mejor ejemplo de ello. Mirai MUSIC reúne a los artistas que han revolucionado la industria musical y conquistado a una generación de fans en todo el mundo. Disfruta de los grandes éxitos de BTS, una de las agrupaciones más influyentes del K-Pop, junto a talentosos grupos como A.C.E, DKB, DKZ, DRIPPIN, BXB y muchos más que continúan llevando la música coreana a lo más alto. Cada canción, cada coreografía y cada presentación crean una conexión única entre los idols y sus fans, convirtiendo la música en una experiencia llena de emoción, inspiración y sentido de pertenencia. Más que un género musical, el K-Pop es una cultura que une personas, rompe fronteras y crea comunidades alrededor del mundo. Mirai MUSIC es el punto de encuentro donde esa pasión cobra vida y donde cada fan encuentra un lugar para vivir, sentir y compartir el universo del K-Pop. 💜`,
+    videoUrls: [yt('https://youtu.be/PVyPNHLpFKI')],
     specs: [{ label: 'Código', value: 'Mirai Music' }],
   },
   'warzone': {
     displayCategory: 'Cine Bélico',
     longDesc: `Cruza la línea del frente y prepárate para vivir el cine bélico como nunca antes. En WarZone, cada película te transporta al corazón del combate, donde la tensión, la estrategia y el coraje se ponen a prueba en cada decisión. Experimenta la adrenalina de las misiones más peligrosas, la incertidumbre de cada batalla y la fuerza de quienes lucharon por sobrevivir en medio del caos.\n\nCon producciones llenas de acción, drama y emoción, WarZone te invita a sentir la intensidad de cada enfrentamiento y a vivir cada escena como si estuvieras en la primera línea del frente. Porque aquí no solo ves una película… entras en la Zona de Guerra.`,
+    videoUrls: [yt('https://youtu.be/484uV_tyYoc')],
     specs: [{ label: 'Código', value: 'WarZone' }],
   },
   'cine-mx': {
@@ -599,6 +605,7 @@ export const CHANNEL_DETAILS: Record<string, ChannelDetail> = {
   'retrox-cartoons': {
     displayCategory: 'Caricaturas Clásicas',
     longDesc: `Hay caricaturas que nunca pasan de moda. Son aquellas que nos hicieron despertar temprano los fines de semana, imaginar grandes aventuras y creer que todo era posible. Retrox Cartoons reúne los clásicos que marcaron la infancia de millones de personas y que hoy siguen emocionando con el mismo espíritu. Revive las aventuras de He-Man, Spider-Man, Super Friends, Robotech, Jetter Mars, El Pájaro Carpintero y muchas más series que dejaron una huella imborrable en la historia de la animación. Porque los verdaderos clásicos no envejecen… se convierten en recuerdos que vale la pena volver a vivir.`,
+    videoUrls: [yt('https://youtu.be/xTP_8hbSCso')],
     specs: [{ label: 'Código', value: 'Retrox Cartoons' }],
   },
   'tv-carioca-internacional': {

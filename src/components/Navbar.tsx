@@ -161,7 +161,7 @@ export default function Navbar({ onOpenCart }: NavbarProps) {
           </div>
 
           {[
-            { href: '/#configurador', label: 'Configurador' },
+            { href: '/#opiniones', label: 'Opiniones' },
             { href: '/catalogo', label: 'Catálogo' },
             { href: '/nosotros', label: 'Nosotros' },
             { href: '/contacto', label: 'Contacto' },
@@ -259,7 +259,7 @@ export default function Navbar({ onOpenCart }: NavbarProps) {
         <div className="md:hidden bg-white border-t border-gray-100 px-6 pb-5 pt-3 flex flex-col gap-4 shadow-lg">
           {[
             { href: '/#servicios', label: 'Servicios' },
-            { href: '/#configurador', label: 'Configurador' },
+            { href: '/#opiniones', label: 'Opiniones' },
             { href: '/catalogo', label: 'Catálogo' },
             { href: '/nosotros', label: 'Nosotros' },
             { href: '/contacto', label: 'Contacto' },
