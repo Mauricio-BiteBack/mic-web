@@ -13,7 +13,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  icons: { icon: '/logo blanco.png' },
+  icons: { icon: '/icon-mic.png' },
   title: 'MIC — Canales de TV y tecnología para cableoperadores en LATAM',
   description:
     `Distribución de señales IP, lineales 24x7, contenidos FAST y publicidad programática para cableoperadores de Latinoamérica. ${TOTAL_CHANNELS} canales, 14 países.`,

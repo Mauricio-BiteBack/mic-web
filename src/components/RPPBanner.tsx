@@ -96,7 +96,7 @@ export default function RPPBanner() {
         {/* Ver catálogo CTA — persistent across all slides */}
         <Link
           href="/catalogo"
-          className="group absolute left-6 bottom-6 z-10 inline-flex items-center gap-2 px-6 py-3.5 bg-[#E8078B] text-white text-[15px] font-semibold rounded-[12px] shadow-[0_6px_18px_rgba(232,7,139,0.45)] hover:bg-[#ff1e9f] hover:shadow-[0_10px_26px_rgba(232,7,139,0.55)] transition-all duration-200"
+          className="group absolute right-6 bottom-24 z-10 inline-flex items-center gap-2.5 px-8 py-[18px] bg-[#E8078B] text-white text-[17px] font-bold rounded-[14px] ring-2 ring-white/70 shadow-[0_10px_30px_rgba(232,7,139,0.6)] hover:bg-[#ff1e9f] hover:scale-105 hover:shadow-[0_14px_38px_rgba(232,7,139,0.7)] transition-all duration-200"
         >
           Ver catálogo
           <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>

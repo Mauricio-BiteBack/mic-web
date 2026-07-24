@@ -205,7 +205,7 @@ export default function Navbar({ onOpenCart }: NavbarProps) {
           {/* Cart / Package button */}
           <button
             onClick={onOpenCart}
-            aria-label="Mi paquete"
+            aria-label="Mi carrito"
             className={`relative flex items-center gap-2 px-3.5 py-2 rounded-[10px] text-sm font-semibold transition-all duration-200 cursor-pointer ${
               bump ? 'scale-110' : ''
             } ${
@@ -214,12 +214,12 @@ export default function Navbar({ onOpenCart }: NavbarProps) {
                 : 'bg-[#193595]/10 border border-[#193595]/20 text-[#193595] hover:bg-[#193595]/15'
             }`}
           >
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M3 3h2l.4 2M7 13h10l4-8H5.4"/>
               <circle cx="9" cy="20" r="1.5"/>
               <circle cx="18" cy="20" r="1.5"/>
             </svg>
-            <span className="hidden sm:inline">Mi paquete</span>
+            <span className="hidden sm:inline">Mi carrito</span>
             {cart.count > 0 && (
               <span className="absolute -top-1.5 -right-1.5 w-5 h-5 bg-[#E8078B] text-white text-[10px] font-bold rounded-full grid place-items-center">
                 {cart.count}
