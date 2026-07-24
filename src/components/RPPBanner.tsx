@@ -4,10 +4,12 @@ import { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
 
 const BANNERS = [
-  { src: '/banner-vibra.png', alt: 'Banner MIC — Vibra' },
-  { src: '/RPP-MIC.jpg',      alt: 'MIC — Distribuidor Oficial de RPP TV en Perú' },
-  { src: '/banner-3.png',     alt: 'Banner MIC 3' },
-  { src: '/banner-4.png',     alt: 'Banner MIC 4' },
+  { src: '/banner-vibra.png',        alt: 'Banner MIC — Vibra' },
+  { src: '/RPP-MIC.jpg',             alt: 'MIC — Distribuidor Oficial de RPP TV en Perú' },
+  { src: '/banner-fmh.png',          alt: 'Banner MIC — FMH Kids, Family y Movies' },
+  { src: '/banner-4.png',            alt: 'Banner MIC 4' },
+  { src: '/banner-documentales.png', alt: 'Banner MIC — Documentales' },
+  { src: '/banner-premium.png',      alt: 'Banner MIC — Premium' },
 ];
 
 // Clone of the first slide appended at the end so the auto-advance can keep
