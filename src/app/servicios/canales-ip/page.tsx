@@ -18,15 +18,19 @@ function ChannelCard({ ch }: { ch: Channel }) {
       transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
       className="bg-white rounded-[18px] border border-gray-200 overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
     >
-      <div
-        className="relative aspect-[16/9] flex flex-col justify-between p-3.5"
-        style={{ background: `linear-gradient(135deg, ${ch.color}, ${ch.dark})` }}
-      >
-        {ch.imageUrl && (
+      <div className="relative aspect-square overflow-hidden">
+        {ch.imageUrl ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img src={ch.imageUrl} alt={ch.name} className="absolute inset-0 w-full h-full object-cover" />
+        ) : (
+          <div
+            className="absolute inset-0 flex items-end p-3.5"
+            style={{ background: `linear-gradient(135deg, ${ch.color}, ${ch.dark})` }}
+          >
+            <span className="text-white font-bold text-[15px] tracking-tight leading-tight">{ch.name}</span>
+          </div>
         )}
-        <div className="relative z-10 flex justify-between items-start">
+        <div className="absolute top-2.5 left-2.5 right-2.5 flex justify-between items-start z-10">
           <span className="bg-black/50 text-white text-[10px] font-semibold px-2 py-1 rounded-[6px] uppercase tracking-wider">
             {ch.categories[0]}
           </span>
@@ -34,9 +38,6 @@ function ChannelCard({ ch }: { ch: Channel }) {
             {ch.type}
           </span>
         </div>
-        {!ch.imageUrl && (
-          <span className="relative z-10 text-white font-bold text-[15px] tracking-tight leading-tight">{ch.name}</span>
-        )}
       </div>
       <div className="p-4">
         <div className="flex items-start justify-between gap-2 mb-0.5">
