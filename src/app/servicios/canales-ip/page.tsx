@@ -131,7 +131,7 @@ export default function CanalesIPPage() {
     <PageShell>
       {/* Hero */}
       <section className="relative overflow-hidden">
-        <div className="relative w-full aspect-[2050/796]">
+        <div className="relative w-full aspect-[1440/480]">
           {HERO_BANNERS.map((src, i) => (
             // eslint-disable-next-line @next/next/no-img-element
             <img
