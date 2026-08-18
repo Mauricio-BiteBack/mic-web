@@ -3,6 +3,7 @@ export interface ChannelDetail {
   longDesc: string;
   videoUrls?: string[];
   specs?: { label: string; value: string }[];
+  epgUrl?: string;
 }
 
 function yt(url: string): string {
@@ -175,6 +176,7 @@ export const CHANNEL_DETAILS: Record<string, ChannelDetail> = {
     longDesc: `Chiki Toonz es el canal donde la música y la educación se convierten en diversión para los más pequeños. Acompañados de Chiki Pink, Chiki Purple, Chiki Yellow, Chiki Blue y Chiki Orange, los niños en edad preescolar aprenden cantando y bailando con canciones llenas de energía y mensajes positivos.\n\nDesde números, letras, formas y colores, hasta valores que fomentan la creatividad, imaginación y desarrollo emocional, Chiki Toonz transforma cada momento frente a la pantalla en una experiencia educativa única y entretenida.`,
     videoUrls: [yt('https://youtu.be/0rJZYc0Pasc')],
     specs: [{ label: 'Código', value: 'Chikitoonz' }],
+    epgUrl: '/programacion/chiki-toonz',
   },
   'horizons-wild': {
     longDesc: `La vida salvaje está llena de historias sorprendentes que esperan ser contadas. Horizons Wild es una ventana a la naturaleza en su estado más puro, desde majestuosos paisajes hasta la vida oculta en los rincones más inesperados.\n\nDescubre la lucha por la supervivencia de especies extraordinarias, sigue de cerca a los exploradores que documentan la biodiversidad del planeta y aprende sobre la importancia de conservar nuestros ecosistemas. Aquí, la realidad supera la ficción y cada imagen es un recordatorio de la belleza y el poder del mundo natural.`,
