@@ -241,7 +241,7 @@ function CatalogoContent() {
                   >
                     Todas
                   </button>
-                  {CATEGORIES.filter(c => c.id !== 'all' && !c.parent)
+                  {CATEGORIES.filter(c => c.id !== 'all' && c.id !== 'Cine' && !c.parent)
                     .filter(c => (categoryCounts[c.id] || 0) > 0)
                     .sort((a, b) => (categoryCounts[b.id] || 0) - (categoryCounts[a.id] || 0))
                     .map(c => (
@@ -254,20 +254,28 @@ function CatalogoContent() {
                       </button>
                     ))}
                 </div>
-                {/* Subcategorías de Cine */}
-                {CATEGORIES.filter(c => c.parent === 'Cine' && (categoryCounts[c.id] || 0) > 0).length > 0 && (
-                  <div className="flex flex-wrap gap-2 mt-2.5 pl-3 border-l-2 border-[#193595]/25">
-                    {CATEGORIES.filter(c => c.parent === 'Cine')
-                      .filter(c => (categoryCounts[c.id] || 0) > 0)
-                      .map(c => (
-                        <button
-                          key={c.id}
-                          onClick={() => setCatFilter(catFilter === c.id ? 'all' : c.id)}
-                          className={`px-3 py-2 rounded-[9px] text-[12.5px] font-bold border cursor-pointer transition-all ${catFilter === c.id ? 'bg-[#193595] text-white border-[#193595] shadow-md' : 'bg-white border-gray-200 text-[#6a7196]'}`}
-                        >
-                          {c.label} <span className="opacity-70 text-[11.5px]">({categoryCounts[c.id] || 0})</span>
-                        </button>
-                      ))}
+                {/* Cine + subcategorías, agrupadas juntas */}
+                {(categoryCounts['Cine'] || 0) > 0 && (
+                  <div className="mt-3 pt-3 border-t border-[#193595]/15">
+                    <button
+                      onClick={() => setCatFilter(catFilter === 'Cine' ? 'all' : 'Cine')}
+                      className={`px-4 py-2.5 rounded-[10px] text-[14px] font-bold border cursor-pointer transition-all ${catFilter === 'Cine' ? 'bg-[#193595] text-white border-[#193595] shadow-md' : 'bg-white border-gray-200 text-[#374151]'}`}
+                    >
+                      Cine <span className="opacity-70 text-[12.5px]">({categoryCounts['Cine'] || 0})</span>
+                    </button>
+                    <div className="flex flex-wrap gap-2 mt-2.5 pl-3 border-l-2 border-[#193595]/25">
+                      {CATEGORIES.filter(c => c.parent === 'Cine')
+                        .filter(c => (categoryCounts[c.id] || 0) > 0)
+                        .map(c => (
+                          <button
+                            key={c.id}
+                            onClick={() => setCatFilter(catFilter === c.id ? 'all' : c.id)}
+                            className={`px-3 py-2 rounded-[9px] text-[12.5px] font-bold border cursor-pointer transition-all ${catFilter === c.id ? 'bg-[#193595] text-white border-[#193595] shadow-md' : 'bg-white border-gray-200 text-[#6a7196]'}`}
+                          >
+                            {c.label} <span className="opacity-70 text-[11.5px]">({categoryCounts[c.id] || 0})</span>
+                          </button>
+                        ))}
+                    </div>
                   </div>
                 )}
               </div>
