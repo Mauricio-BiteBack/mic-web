@@ -1,11 +1,16 @@
 'use client';
 
-import { useState, useMemo } from 'react';
-import { motion } from 'framer-motion';
+import { useState, useEffect, useMemo } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import Link from 'next/link';
 import PageShell from '@/components/PageShell';
 import { useCart } from '@/components/CartContext';
+import { useCotizar } from '@/components/CotizarContext';
 import { CHANNELS, CATEGORIES, BRANDS, Channel, ChannelCategory } from '@/data/channels';
 import { fuzzySearch } from '@/lib/search';
+
+const HERO_BANNERS = ['/banner-canales-ip-1.png', '/banner-canales-ip-2.png'];
+const IP_CHANNELS = CHANNELS.filter(ch => ch.type === 'IP');
 
 function ChannelCard({ ch }: { ch: Channel }) {
   const cart = useCart();
@@ -15,39 +20,49 @@ function ChannelCard({ ch }: { ch: Channel }) {
       initial={{ opacity: 0, y: 16 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-40px' }}
-      transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-      className="bg-white rounded-[18px] border border-gray-200 overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
+      transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+      className="bg-white rounded-[16px] border border-gray-200 overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 flex flex-col"
     >
-      <div className="relative aspect-square overflow-hidden">
+      {/* Poster */}
+      <Link href={`/catalogo/${ch.id}`} className="block relative aspect-square overflow-hidden">
         {ch.imageUrl ? (
           // eslint-disable-next-line @next/next/no-img-element
-          <img src={ch.imageUrl} alt={ch.name} className="absolute inset-0 w-full h-full object-cover" />
+          <img
+            src={ch.imageUrl}
+            alt={ch.name}
+            className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+          />
         ) : (
           <div
-            className="absolute inset-0 flex items-end p-3.5"
+            className="absolute inset-0 flex items-end p-3"
             style={{ background: `linear-gradient(135deg, ${ch.color}, ${ch.dark})` }}
           >
-            <span className="text-white font-bold text-[15px] tracking-tight leading-tight">{ch.name}</span>
+            <span className="text-white font-bold text-[16px] tracking-tight leading-tight">{ch.name}</span>
           </div>
         )}
+        {/* Badges */}
         <div className="absolute top-2.5 left-2.5 right-2.5 flex justify-between items-start z-10">
-          <span className="bg-black/50 text-white text-[10px] font-semibold px-2 py-1 rounded-[6px] uppercase tracking-wider">
+          <span className="bg-black/55 backdrop-blur-sm text-white text-[9px] font-semibold px-1.5 py-[3px] rounded-[5px] uppercase tracking-wider">
             {ch.categories[0]}
           </span>
-          <span className="bg-white/20 backdrop-blur-sm text-white text-[10px] font-bold px-2 py-1 rounded-[6px] uppercase tracking-wider">
+          <span className="bg-[#193595]/90 text-white text-[9px] font-bold px-1.5 py-[3px] rounded-[5px] uppercase tracking-wider">
             {ch.type}
           </span>
         </div>
-      </div>
-      <div className="p-4">
-        <div className="flex items-start justify-between gap-2 mb-0.5">
-          <h3 className="text-[15px] font-bold text-[#0a1133] leading-tight">{ch.name}</h3>
-          <span className="text-[11px] text-[#6a7196] font-medium flex-shrink-0 mt-0.5">{ch.brand}</span>
+      </Link>
+
+      {/* Card body */}
+      <div className="p-3.5 flex flex-col flex-1">
+        <div className="flex items-start justify-between gap-1 mb-1">
+          <Link href={`/catalogo/${ch.id}`}>
+            <h3 className="text-[13.5px] font-bold text-[#0a1133] leading-tight hover:text-[#193595] transition-colors">{ch.name}</h3>
+          </Link>
+          <span className="text-[10px] text-[#6a7196] font-medium flex-shrink-0 mt-0.5 bg-gray-100 px-1.5 py-[2px] rounded-[4px]">{ch.brand}</span>
         </div>
-        <p className="text-[12.5px] text-[#6a7196] leading-relaxed mb-3">{ch.desc}</p>
+        <p className="text-[11.5px] text-[#6a7196] leading-relaxed mb-3 flex-1">{ch.desc}</p>
         <button
           onClick={() => cart.toggle(ch.id)}
-          className={`w-full py-2.5 rounded-[10px] text-[13px] font-semibold flex items-center justify-center gap-1.5 transition-all duration-150 cursor-pointer ${
+          className={`w-full py-2 rounded-[8px] text-[12px] font-semibold flex items-center justify-center gap-1 transition-all duration-150 cursor-pointer ${
             inCart
               ? 'bg-[#193595]/8 text-[#193595] border border-[#193595]/20 hover:bg-red-50 hover:text-red-600 hover:border-red-200'
               : 'bg-[#f6f7fb] text-[#0a1133] border border-gray-200 hover:bg-[#193595] hover:text-white hover:border-[#193595]'
@@ -55,12 +70,12 @@ function ChannelCard({ ch }: { ch: Channel }) {
         >
           {inCart ? (
             <>
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
               En tu paquete
             </>
           ) : (
             <>
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
               Agregar a paquete
             </>
           )}
@@ -71,13 +86,22 @@ function ChannelCard({ ch }: { ch: Channel }) {
 }
 
 export default function CanalesIPPage() {
+  const cart = useCart();
+  const cotizar = useCotizar();
+  const [banner, setBanner] = useState(0);
   const [catFilter, setCatFilter] = useState('all');
   const [brandFilter, setBrandFilter] = useState('all');
   const [search, setSearch] = useState('');
-  const cart = useCart();
+  const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
+  const [catOpen, setCatOpen] = useState(true);
+
+  useEffect(() => {
+    const id = setInterval(() => setBanner(b => (b + 1) % HERO_BANNERS.length), 5000);
+    return () => clearInterval(id);
+  }, []);
 
   const filtered = useMemo(() => {
-    return CHANNELS.filter(ch => {
+    return IP_CHANNELS.filter(ch => {
       if (catFilter !== 'all' && !ch.categories.includes(catFilter as ChannelCategory)) return false;
       if (brandFilter !== 'all' && ch.brand !== brandFilter) return false;
       if (search && !fuzzySearch(`${ch.name} ${ch.categories.join(' ')} ${ch.brand}`, search)) return false;
@@ -85,93 +109,380 @@ export default function CanalesIPPage() {
     });
   }, [catFilter, brandFilter, search]);
 
+  const activeFilterCount = [catFilter !== 'all', brandFilter !== 'all', search !== ''].filter(Boolean).length;
+
+  const categoryCounts = useMemo(() => {
+    const m: Record<string, number> = {};
+    IP_CHANNELS.forEach(ch => { ch.categories.forEach(cat => { m[cat] = (m[cat] || 0) + 1; }); });
+    return m;
+  }, []);
+
+  const brandCounts = useMemo(() => {
+    const m: Record<string, number> = {};
+    IP_CHANNELS.forEach(ch => { m[ch.brand] = (m[ch.brand] || 0) + 1; });
+    return m;
+  }, []);
+
+  const clearAll = () => { setCatFilter('all'); setBrandFilter('all'); setSearch(''); };
+
+  const availableBrands = BRANDS.filter(b => (brandCounts[b] || 0) > 0);
+
   return (
     <PageShell>
       {/* Hero */}
-      <section className="relative text-white py-20 px-6 overflow-hidden">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/banner-servicios.jpg" alt="" aria-hidden="true" className="absolute inset-0 w-full h-full object-cover object-center" style={{ zIndex: -20 }} />
-        <div className="absolute inset-0 bg-[#0D1E6B]/75" style={{ zIndex: -10 }} />
-        <div className="max-w-[1240px] mx-auto">
-          <div className="inline-flex items-center gap-2 bg-white/10 border border-white/20 px-3.5 py-2 rounded-full text-[13px] font-medium mb-6">
-            <span className="bg-[#E8078B] text-white text-[11px] font-bold px-2 py-[3px] rounded-full uppercase tracking-wider">Servicio 01</span>
-            Distribución IP
-          </div>
-          <h1 className="text-[clamp(32px,4vw,54px)] font-bold leading-[1.08] tracking-[-0.025em] mb-5 max-w-[700px]">
-            Canales IP listos para integrar en tu plataforma IPTV.
-          </h1>
-          <p className="text-[18px] text-white/78 leading-relaxed max-w-[580px] mb-8">
-            MIC distribuye señales premium vía streaming directamente a tu headend. Sin obras físicas, sin demoras. Integración en horas, no semanas.
-          </p>
-          <div className="flex flex-wrap gap-6">
-            {[
-              { num: String(CHANNELS.filter(c => c.type === 'IP').length), label: 'Canales disponibles' },
-              { num: 'HD', label: 'Calidad garantizada' },
-              { num: '24/7', label: 'Uptime y soporte' },
-              { num: '14', label: 'Países en LATAM' },
-            ].map((m, i) => (
-              <div key={i} className="text-center">
-                <span className="block text-[28px] font-bold tracking-tight">{m.num}</span>
-                <span className="text-[12px] text-white/60">{m.label}</span>
-              </div>
-            ))}
-          </div>
+      <section className="relative overflow-hidden">
+        <div className="relative w-full aspect-[2050/796]">
+          {HERO_BANNERS.map((src, i) => (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              key={src}
+              src={src}
+              alt=""
+              aria-hidden="true"
+              className="absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-700 ease-in-out"
+              style={{ opacity: i === banner ? 1 : 0 }}
+            />
+          ))}
         </div>
-      </section>
-
-      {/* Channel catalog */}
-      <section className="py-16 px-6 bg-[#f6f7fb]">
-        <div className="max-w-[1240px] mx-auto">
-          <div className="flex flex-col md:flex-row gap-4 mb-8">
-            {/* Search */}
-            <div className="relative flex-1 max-w-[320px]">
-              <svg className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#6a7196]" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-              <input
-                value={search}
-                onChange={e => setSearch(e.target.value)}
-                placeholder="Buscar canal..."
-                className="w-full pl-10 pr-4 py-2.5 rounded-[10px] border border-gray-200 bg-white text-[14px] outline-none focus:border-[#193595] transition-colors"
+        {HERO_BANNERS.length > 1 && (
+          <div className="absolute bottom-5 left-1/2 -translate-x-1/2 flex gap-2">
+            {HERO_BANNERS.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setBanner(i)}
+                aria-label={`Ir al banner ${i + 1}`}
+                className={`rounded-full transition-all duration-300 cursor-pointer ${
+                  i === banner ? 'w-7 h-2.5 bg-white' : 'w-2.5 h-2.5 bg-white/50 hover:bg-white/80'
+                }`}
               />
-            </div>
-            {/* Category filter */}
-            <div className="flex flex-wrap gap-1.5">
-              <button onClick={() => setCatFilter('all')} className={`px-3 py-1.5 rounded-[8px] text-[12.5px] font-medium transition-colors cursor-pointer ${catFilter === 'all' ? 'bg-[#193595] text-white' : 'bg-white border border-gray-200 text-[#6a7196] hover:border-[#193595] hover:text-[#193595]'}`}>Todos</button>
-              {CATEGORIES.filter(c => c.id !== 'all').map(c => (
-                <button key={c.id} onClick={() => setCatFilter(c.id)} className={`px-3 py-1.5 rounded-[8px] text-[12.5px] font-medium transition-colors cursor-pointer ${catFilter === c.id ? 'bg-[#193595] text-white' : 'bg-white border border-gray-200 text-[#6a7196] hover:border-[#193595] hover:text-[#193595]'}`}>{c.label}</button>
-              ))}
-            </div>
-          </div>
-
-          {/* Brand filter */}
-          <div className="flex flex-wrap gap-2 mb-8">
-            <button onClick={() => setBrandFilter('all')} className={`px-3 py-1.5 rounded-full text-[12px] font-semibold transition-colors cursor-pointer ${brandFilter === 'all' ? 'bg-[#E8078B] text-white' : 'bg-white border border-gray-200 text-[#6a7196] hover:border-[#E8078B] hover:text-[#E8078B]'}`}>Todas las marcas</button>
-            {BRANDS.map(b => (
-              <button key={b} onClick={() => setBrandFilter(b)} className={`px-3 py-1.5 rounded-full text-[12px] font-semibold transition-colors cursor-pointer ${brandFilter === b ? 'bg-[#E8078B] text-white' : 'bg-white border border-gray-200 text-[#6a7196] hover:border-[#E8078B] hover:text-[#E8078B]'}`}>{b}</button>
             ))}
           </div>
+        )}
+      </section>
 
-          <p className="text-[13px] text-[#6a7196] mb-5">{filtered.length} canal{filtered.length !== 1 ? 'es' : ''} encontrado{filtered.length !== 1 ? 's' : ''}</p>
+      {/* ── MOBILE FILTERS (hidden on md+) ─────────────────────────── */}
+      <div className="md:hidden bg-white border-b border-gray-200 sticky top-[72px] z-20 shadow-sm">
+        <div className="px-4 pt-3 pb-2 flex items-center gap-2">
+          <div className="relative flex-1">
+            <svg className="absolute left-3 top-1/2 -translate-y-1/2 text-[#6a7196]" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input
+              value={search}
+              onChange={e => setSearch(e.target.value)}
+              placeholder="Buscar canal..."
+              className="w-full pl-8 pr-4 py-2 rounded-[8px] border border-gray-200 text-[13px] outline-none focus:border-[#193595] bg-[#f6f7fb]"
+            />
+          </div>
+          <button
+            onClick={() => setMobileFiltersOpen(true)}
+            className={`flex items-center gap-1.5 px-3 py-2 rounded-[8px] text-[12.5px] font-semibold border transition-all cursor-pointer flex-shrink-0 ${
+              activeFilterCount > 0
+                ? 'bg-[#193595] text-white border-[#193595]'
+                : 'bg-white border-gray-200 text-[#0a1133]'
+            }`}
+          >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="11" y1="18" x2="13" y2="18"/></svg>
+            Filtros{activeFilterCount > 0 ? ` (${activeFilterCount})` : ''}
+          </button>
+        </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {filtered.map(ch => <ChannelCard key={ch.id} ch={ch} />)}
+        <div className="flex gap-2 px-4 pb-3 overflow-x-auto scrollbar-none">
+          {[
+            { id: 'all', label: 'Todos' },
+            ...CATEGORIES.filter(c => c.id !== 'all')
+              .filter(c => (categoryCounts[c.id] || 0) > 0)
+              .sort((a, b) => (categoryCounts[b.id] || 0) - (categoryCounts[a.id] || 0))
+              .slice(0, 4),
+          ].map(c => (
+            <button
+              key={c.id}
+              onClick={() => setCatFilter(catFilter === c.id ? 'all' : c.id)}
+              className={`flex-shrink-0 px-3 py-1.5 rounded-full text-[12px] font-semibold border transition-all cursor-pointer ${
+                catFilter === c.id
+                  ? 'bg-[#193595] text-white border-[#193595]'
+                  : 'bg-white border-gray-200 text-[#6a7196]'
+              }`}
+            >
+              {c.label}
+              {c.id !== 'all' && <span className="ml-1 opacity-60 text-[11px]">({categoryCounts[c.id] || 0})</span>}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* Mobile filters drawer */}
+      {mobileFiltersOpen && (
+        <div className="md:hidden fixed inset-0 z-50 flex flex-col">
+          <div className="absolute inset-0 bg-black/40" onClick={() => setMobileFiltersOpen(false)} />
+          <div className="absolute bottom-0 left-0 right-0 bg-white rounded-t-[24px] max-h-[80vh] overflow-y-auto">
+            <div className="flex items-center justify-between px-5 pt-5 pb-4 border-b border-gray-100">
+              <h3 className="text-[16px] font-bold text-[#0a1133]">Filtros</h3>
+              <div className="flex items-center gap-3">
+                {activeFilterCount > 0 && (
+                  <button onClick={clearAll} className="text-[12px] font-semibold text-[#E8078B] cursor-pointer">
+                    Limpiar todo
+                  </button>
+                )}
+                <button onClick={() => setMobileFiltersOpen(false)} className="w-8 h-8 rounded-full bg-gray-100 grid place-items-center cursor-pointer">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+              </div>
+            </div>
+
+            <div className="px-5 py-5 flex flex-col gap-6">
+              {/* Categoría */}
+              <div className="p-4 rounded-[16px] bg-gradient-to-br from-[#193595]/8 to-[#E8078B]/8 border-2 border-[#193595]/25">
+                <p className="text-[14px] font-extrabold uppercase tracking-[0.1em] text-[#0a1133] mb-3">Categoría</p>
+                <div className="flex flex-wrap gap-2">
+                  <button
+                    onClick={() => setCatFilter('all')}
+                    className={`px-4 py-2.5 rounded-[10px] text-[14px] font-bold border cursor-pointer transition-all ${catFilter === 'all' ? 'bg-[#193595] text-white border-[#193595] shadow-md' : 'bg-white border-gray-200 text-[#374151]'}`}
+                  >
+                    Todas
+                  </button>
+                  {CATEGORIES.filter(c => c.id !== 'all')
+                    .filter(c => (categoryCounts[c.id] || 0) > 0)
+                    .sort((a, b) => (categoryCounts[b.id] || 0) - (categoryCounts[a.id] || 0))
+                    .map(c => (
+                      <button
+                        key={c.id}
+                        onClick={() => setCatFilter(catFilter === c.id ? 'all' : c.id)}
+                        className={`px-4 py-2.5 rounded-[10px] text-[14px] font-bold border cursor-pointer transition-all ${catFilter === c.id ? 'bg-[#193595] text-white border-[#193595] shadow-md' : 'bg-white border-gray-200 text-[#374151]'}`}
+                      >
+                        {c.label} <span className="opacity-70 text-[12.5px]">({categoryCounts[c.id] || 0})</span>
+                      </button>
+                    ))}
+                </div>
+              </div>
+
+              {/* Marca */}
+              <div className="p-4 rounded-[16px] bg-gradient-to-br from-[#193595] to-[#E8078B] shadow-[0_6px_20px_rgba(232,7,139,0.25)]">
+                <p className="text-[13px] font-extrabold uppercase tracking-[0.1em] text-white mb-3">Marca</p>
+                <div className="flex flex-wrap gap-2">
+                  <button
+                    onClick={() => setBrandFilter('all')}
+                    className={`px-3 py-2 rounded-[9px] text-[12.5px] font-bold cursor-pointer transition-all ${
+                      brandFilter === 'all' ? 'bg-white text-[#193595] shadow-md' : 'bg-white/15 border border-white/30 text-white hover:bg-white/25'
+                    }`}
+                  >
+                    Todas
+                  </button>
+                  {availableBrands.map(b => (
+                    <button
+                      key={b}
+                      onClick={() => setBrandFilter(brandFilter === b ? 'all' : b)}
+                      className={`px-3 py-2 rounded-[9px] text-[12.5px] font-bold cursor-pointer transition-all ${
+                        brandFilter === b ? 'bg-white text-[#193595] shadow-md' : 'bg-white/15 border border-white/30 text-white hover:bg-white/25'
+                      }`}
+                    >
+                      {b}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <div className="px-5 pb-6">
+              <button
+                onClick={() => setMobileFiltersOpen(false)}
+                className="w-full py-3.5 bg-[#193595] text-white font-bold rounded-[12px] text-[15px] cursor-pointer"
+              >
+                Ver {filtered.length} canal{filtered.length !== 1 ? 'es' : ''}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ── DESKTOP + MOBILE CONTENT AREA ──────────────────────────── */}
+      <section className="py-8 px-4 md:px-6 bg-[#f6f7fb] min-h-[400px] pb-28">
+        <div className="max-w-[1280px] mx-auto">
+          <div className="flex gap-6 items-start">
+
+            {/* ── LEFT SIDEBAR (desktop only) ──────────────────────── */}
+            <aside className="hidden md:flex flex-col w-[260px] flex-shrink-0 sticky top-[80px] max-h-[calc(100vh-96px)] overflow-y-auto bg-white rounded-[14px] border border-gray-200 shadow-sm">
+
+              {/* Search */}
+              <div className="p-3.5 border-b border-gray-100">
+                <div className="relative">
+                  <svg className="absolute left-3 top-1/2 -translate-y-1/2 text-[#6a7196]" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                  <input
+                    value={search}
+                    onChange={e => setSearch(e.target.value)}
+                    placeholder="Buscar canal..."
+                    className="w-full pl-8 pr-3 py-2 rounded-[8px] border border-gray-200 text-[13px] outline-none focus:border-[#193595] bg-[#f6f7fb] transition-colors"
+                  />
+                </div>
+              </div>
+
+              {/* Clear filters */}
+              <AnimatePresence>
+                {activeFilterCount > 0 && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: 'auto', opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.15 }}
+                    className="overflow-hidden border-b border-gray-100"
+                  >
+                    <div className="px-3.5 py-2">
+                      <button
+                        onClick={clearAll}
+                        className="flex items-center gap-1.5 text-[11.5px] font-semibold text-[#E8078B] hover:text-[#c4006a] transition-colors cursor-pointer"
+                      >
+                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                        Limpiar filtros ({activeFilterCount})
+                      </button>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+
+              {/* ── Categorías ── */}
+              <div className="p-3.5 pb-4 border-b border-gray-100">
+                <div className="p-3.5 rounded-[14px] bg-gradient-to-br from-[#193595]/8 to-[#E8078B]/8 border-2 border-[#193595]/25">
+                  <button
+                    onClick={() => setCatOpen(v => !v)}
+                    className="w-full flex items-center justify-between mb-2.5 cursor-pointer"
+                  >
+                    <span className="text-[14px] font-extrabold uppercase tracking-[0.08em] text-[#0a1133]">Categorías</span>
+                    <svg
+                      className={`text-[#0a1133] transition-transform duration-200 ${catOpen ? 'rotate-180' : ''}`}
+                      width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"
+                    >
+                      <polyline points="6 9 12 15 18 9"/>
+                    </svg>
+                  </button>
+                  <AnimatePresence>
+                    {catOpen && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
+                        className="overflow-hidden"
+                      >
+                        <div className="flex flex-col gap-1.5">
+                          <button
+                            onClick={() => setCatFilter('all')}
+                            className={`w-full text-left px-3 py-2.5 rounded-[10px] text-[14px] font-bold transition-all duration-150 cursor-pointer flex items-center justify-between ${
+                              catFilter === 'all'
+                                ? 'bg-[#193595] text-white shadow-md'
+                                : 'bg-white text-[#374151] border border-gray-200 hover:border-[#193595]/40'
+                            }`}
+                          >
+                            <span>Todas</span>
+                            <span className={`text-[12px] font-semibold ${catFilter === 'all' ? 'text-white/70' : 'text-[#9ca3af]'}`}>{IP_CHANNELS.length}</span>
+                          </button>
+                          {CATEGORIES.filter(c => c.id !== 'all').map(c => {
+                            const count = categoryCounts[c.id] || 0;
+                            if (count === 0) return null;
+                            return (
+                              <button
+                                key={c.id}
+                                onClick={() => setCatFilter(catFilter === c.id ? 'all' : c.id)}
+                                className={`w-full text-left px-3 py-2.5 rounded-[10px] text-[14px] font-bold transition-all duration-150 cursor-pointer flex items-center justify-between ${
+                                  catFilter === c.id
+                                    ? 'bg-[#193595] text-white shadow-md'
+                                    : 'bg-white text-[#374151] border border-gray-200 hover:border-[#193595]/40'
+                                }`}
+                              >
+                                <span className="truncate pr-1">{c.label}</span>
+                                <span className={`text-[12px] font-semibold flex-shrink-0 ${catFilter === c.id ? 'text-white/70' : 'text-[#9ca3af]'}`}>{count}</span>
+                              </button>
+                            );
+                          })}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              </div>
+
+              {/* ── Marca ── */}
+              <div className="p-3.5 pb-4">
+                <div className="p-3.5 rounded-[14px] bg-gradient-to-br from-[#193595] to-[#E8078B] shadow-[0_6px_20px_rgba(232,7,139,0.25)]">
+                  <span className="text-[11.5px] font-extrabold uppercase tracking-[0.08em] text-white mb-2.5 block">Marca</span>
+                  <div className="flex flex-wrap gap-1.5">
+                    <button
+                      onClick={() => setBrandFilter('all')}
+                      className={`px-2.5 py-2 rounded-[9px] text-[12px] font-bold transition-all duration-150 cursor-pointer ${
+                        brandFilter === 'all' ? 'bg-white text-[#193595] shadow-md' : 'bg-white/15 text-white border border-white/30 hover:bg-white/25'
+                      }`}
+                    >
+                      Todas
+                    </button>
+                    {availableBrands.map(b => (
+                      <button
+                        key={b}
+                        onClick={() => setBrandFilter(brandFilter === b ? 'all' : b)}
+                        className={`px-2.5 py-2 rounded-[9px] text-[12px] font-bold transition-all duration-150 cursor-pointer ${
+                          brandFilter === b ? 'bg-white text-[#193595] shadow-md' : 'bg-white/15 text-white border border-white/30 hover:bg-white/25'
+                        }`}
+                      >
+                        {b}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+            </aside>
+
+            {/* ── MAIN CONTENT ─────────────────────────────────────── */}
+            <div className="flex-1 min-w-0">
+              <div className="flex items-center justify-between mb-5">
+                <p className="text-[13px] text-[#6a7196]">
+                  <span className="font-semibold text-[#0a1133]">{filtered.length}</span>{' '}
+                  canal{filtered.length !== 1 ? 'es' : ''} encontrado{filtered.length !== 1 ? 's' : ''}
+                </p>
+              </div>
+
+              {filtered.length === 0 ? (
+                <div className="text-center py-20 text-[#6a7196]">
+                  <svg className="mx-auto mb-4 opacity-40" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                  <p className="text-[16px] font-medium mb-3">No se encontraron canales con esos filtros.</p>
+                  <button onClick={clearAll} className="text-[#E8078B] hover:underline cursor-pointer font-semibold text-[14px]">
+                    Limpiar todos los filtros
+                  </button>
+                </div>
+              ) : (
+                <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                  {filtered.map(ch => <ChannelCard key={ch.id} ch={ch} />)}
+                </div>
+              )}
+            </div>
+
           </div>
         </div>
       </section>
 
-      {/* Cart tray */}
+      {/* Persistent bottom tray */}
       {cart.count > 0 && (
-        <div className="fixed bottom-0 left-0 right-0 z-30 bg-[#193595] text-white py-4 px-6 shadow-[0_-8px_32px_rgba(13,30,107,0.18)]">
-          <div className="max-w-[1240px] mx-auto flex items-center justify-between gap-4">
-            <div>
-              <strong className="text-[15px] font-bold">{cart.count} canal{cart.count !== 1 ? 'es' : ''} seleccionado{cart.count !== 1 ? 's' : ''}</strong>
-              <span className="text-white/70 text-[13px] ml-2">— listos para cotizar</span>
+        <div className="fixed bottom-0 left-0 right-0 z-30 bg-[#193595] text-white py-4 px-6 shadow-[0_-8px_32px_rgba(13,30,107,0.2)]">
+          <div className="max-w-[1240px] mx-auto flex items-center justify-between gap-4 flex-wrap">
+            <div className="flex items-center gap-3">
+              <span className="w-8 h-8 rounded-full bg-[#E8078B] grid place-items-center text-[13px] font-bold">{cart.count}</span>
+              <div>
+                <strong className="text-[14px] font-bold">canal{cart.count !== 1 ? 'es' : ''} seleccionado{cart.count !== 1 ? 's' : ''}</strong>
+                <span className="text-white/60 text-[12px] ml-2 hidden sm:inline">
+                  {[...new Set(cart.channels.map(c => c.type))].join(' · ')}
+                </span>
+              </div>
             </div>
-            <a
-              href="/cotizacion"
-              className="flex-shrink-0 px-6 py-2.5 bg-[#E8078B] text-white font-semibold text-[14px] rounded-[10px] shadow-[0_4px_14px_rgba(232,7,139,0.4)] hover:bg-[#ff1e9f] transition-colors cursor-pointer"
-            >
-              Solicitar cotización →
-            </a>
+            <div className="flex gap-3">
+              <button
+                onClick={() => cart.clear()}
+                className="text-[13px] text-white/60 hover:text-white transition-colors cursor-pointer"
+              >
+                Limpiar
+              </button>
+              <button
+                onClick={cotizar.open}
+                className="px-6 py-2.5 bg-[#E8078B] text-white font-semibold text-[14px] rounded-[10px] shadow-[0_4px_14px_rgba(232,7,139,0.4)] hover:bg-[#ff1e9f] transition-colors cursor-pointer"
+              >
+                Solicitar cotización →
+              </button>
+            </div>
           </div>
         </div>
       )}
