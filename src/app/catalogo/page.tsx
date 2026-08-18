@@ -188,7 +188,7 @@ function CatalogoContent() {
         <div className="flex gap-2 px-4 pb-3 overflow-x-auto scrollbar-none">
           {[
             { id: 'all', label: 'Todos' },
-            ...CATEGORIES.filter(c => c.id !== 'all')
+            ...CATEGORIES.filter(c => c.id !== 'all' && !c.parent)
               .filter(c => (categoryCounts[c.id] || 0) > 0)
               .sort((a, b) => (categoryCounts[b.id] || 0) - (categoryCounts[a.id] || 0))
               .slice(0, 4),
@@ -241,7 +241,7 @@ function CatalogoContent() {
                   >
                     Todas
                   </button>
-                  {CATEGORIES.filter(c => c.id !== 'all')
+                  {CATEGORIES.filter(c => c.id !== 'all' && !c.parent)
                     .filter(c => (categoryCounts[c.id] || 0) > 0)
                     .sort((a, b) => (categoryCounts[b.id] || 0) - (categoryCounts[a.id] || 0))
                     .map(c => (
@@ -254,6 +254,22 @@ function CatalogoContent() {
                       </button>
                     ))}
                 </div>
+                {/* Subcategorías de Cine */}
+                {CATEGORIES.filter(c => c.parent === 'Cine' && (categoryCounts[c.id] || 0) > 0).length > 0 && (
+                  <div className="flex flex-wrap gap-2 mt-2.5 pl-3 border-l-2 border-[#193595]/25">
+                    {CATEGORIES.filter(c => c.parent === 'Cine')
+                      .filter(c => (categoryCounts[c.id] || 0) > 0)
+                      .map(c => (
+                        <button
+                          key={c.id}
+                          onClick={() => setCatFilter(catFilter === c.id ? 'all' : c.id)}
+                          className={`px-3 py-2 rounded-[9px] text-[12.5px] font-bold border cursor-pointer transition-all ${catFilter === c.id ? 'bg-[#193595] text-white border-[#193595] shadow-md' : 'bg-white border-gray-200 text-[#6a7196]'}`}
+                        >
+                          {c.label} <span className="opacity-70 text-[11.5px]">({categoryCounts[c.id] || 0})</span>
+                        </button>
+                      ))}
+                  </div>
+                )}
               </div>
 
               {/* Distribución — vivid MIC gradient */}
@@ -366,22 +382,47 @@ function CatalogoContent() {
                             <span>Todas</span>
                             <span className={`text-[12px] font-semibold ${catFilter === 'all' ? 'text-white/70' : 'text-[#9ca3af]'}`}>{CHANNELS.length}</span>
                           </button>
-                          {CATEGORIES.filter(c => c.id !== 'all').map(c => {
+                          {CATEGORIES.filter(c => c.id !== 'all' && !c.parent).map(c => {
                             const count = categoryCounts[c.id] || 0;
-                            if (count === 0) return null;
+                            const children = CATEGORIES.filter(sc => sc.parent === c.id && (categoryCounts[sc.id] || 0) > 0);
+                            if (count === 0 && children.length === 0) return null;
                             return (
-                              <button
-                                key={c.id}
-                                onClick={() => setCatFilter(catFilter === c.id ? 'all' : c.id)}
-                                className={`w-full text-left px-3 py-2.5 rounded-[10px] text-[14px] font-bold transition-all duration-150 cursor-pointer flex items-center justify-between ${
-                                  catFilter === c.id
-                                    ? 'bg-[#193595] text-white shadow-md'
-                                    : 'bg-white text-[#374151] border border-gray-200 hover:border-[#193595]/40'
-                                }`}
-                              >
-                                <span className="truncate pr-1">{c.label}</span>
-                                <span className={`text-[12px] font-semibold flex-shrink-0 ${catFilter === c.id ? 'text-white/70' : 'text-[#9ca3af]'}`}>{count}</span>
-                              </button>
+                              <div key={c.id} className="flex flex-col gap-1.5">
+                                {count > 0 && (
+                                  <button
+                                    onClick={() => setCatFilter(catFilter === c.id ? 'all' : c.id)}
+                                    className={`w-full text-left px-3 py-2.5 rounded-[10px] text-[14px] font-bold transition-all duration-150 cursor-pointer flex items-center justify-between ${
+                                      catFilter === c.id
+                                        ? 'bg-[#193595] text-white shadow-md'
+                                        : 'bg-white text-[#374151] border border-gray-200 hover:border-[#193595]/40'
+                                    }`}
+                                  >
+                                    <span className="truncate pr-1">{c.label}</span>
+                                    <span className={`text-[12px] font-semibold flex-shrink-0 ${catFilter === c.id ? 'text-white/70' : 'text-[#9ca3af]'}`}>{count}</span>
+                                  </button>
+                                )}
+                                {children.length > 0 && (
+                                  <div className="flex flex-col gap-1.5 pl-3 border-l-2 border-[#193595]/20 ml-1.5">
+                                    {children.map(sc => {
+                                      const scCount = categoryCounts[sc.id] || 0;
+                                      return (
+                                        <button
+                                          key={sc.id}
+                                          onClick={() => setCatFilter(catFilter === sc.id ? 'all' : sc.id)}
+                                          className={`w-full text-left px-3 py-2 rounded-[9px] text-[12.5px] font-semibold transition-all duration-150 cursor-pointer flex items-center justify-between ${
+                                            catFilter === sc.id
+                                              ? 'bg-[#193595] text-white shadow-md'
+                                              : 'bg-[#f6f7fb] text-[#6a7196] border border-gray-200 hover:border-[#193595]/40'
+                                          }`}
+                                        >
+                                          <span className="truncate pr-1">{sc.label}</span>
+                                          <span className={`text-[11px] font-semibold flex-shrink-0 ${catFilter === sc.id ? 'text-white/70' : 'text-[#9ca3af]'}`}>{scCount}</span>
+                                        </button>
+                                      );
+                                    })}
+                                  </div>
+                                )}
+                              </div>
                             );
                           })}
                         </div>

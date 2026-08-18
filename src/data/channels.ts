@@ -1282,13 +1282,13 @@ export const CHANNELS: Channel[] = [
 
 export const TOTAL_CHANNELS = CHANNELS.length;
 
-export const CATEGORIES = [
+export const CATEGORIES: { id: string; label: string; parent?: string }[] = [
   { id: 'all', label: 'Todos' },
   { id: 'Cine', label: 'Cine' },
-  { id: 'Cine clásico', label: 'Cine clásico' },
-  { id: 'Cine de terror', label: 'Cine de terror' },
-  { id: 'Cine bélico', label: 'Cine bélico' },
-  { id: 'Cine infantil', label: 'Cine infantil' },
+  { id: 'Cine clásico', label: 'Cine clásico', parent: 'Cine' },
+  { id: 'Cine de terror', label: 'Cine de terror', parent: 'Cine' },
+  { id: 'Cine bélico', label: 'Cine bélico', parent: 'Cine' },
+  { id: 'Cine infantil', label: 'Cine infantil', parent: 'Cine' },
   { id: 'Series', label: 'Series' },
   { id: 'Novelas', label: 'Novelas' },
   { id: 'Anime', label: 'Anime' },
@@ -1306,7 +1306,7 @@ export const CATEGORIES = [
   { id: 'Cocina', label: 'Cocina' },
   { id: 'Agricultura', label: 'Agricultura' },
   { id: 'Misceláneos', label: 'Misceláneos' },
-] as const;
+];
 
 export const BRANDS: ChannelBrand[] = ['Españolas', 'FMH', 'Grupo Max', 'MIC', 'NeoTech', 'Open', 'RPP', 'Vibra', 'Independiente'];
 
