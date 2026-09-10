@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import PageShell from '@/components/PageShell';
 
 const ACCENTS = ['#193595', '#E8078B', '#f5b015', '#0aa84f'];
@@ -143,19 +144,9 @@ export default function MicCarrierPage() {
       {/* 1. Banner Principal */}
       <section className="text-white py-24 px-6 relative overflow-hidden">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/banner-servicios.jpg" alt="" aria-hidden="true" className="absolute inset-0 w-full h-full object-cover object-center" style={{ zIndex: -20 }} />
-        <div className="absolute inset-0 bg-[#050d3a]/85" style={{ zIndex: -10 }} />
-        <div
-          className="absolute inset-0 pointer-events-none opacity-[0.15]"
-          style={{
-            zIndex: -8,
-            backgroundImage:
-              'linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)',
-            backgroundSize: '42px 42px',
-            maskImage: 'radial-gradient(ellipse 900px 500px at 20% 40%, black, transparent)',
-          }}
-        />
-        <div className="absolute inset-0 pointer-events-none" style={{ zIndex: -5, background: 'radial-gradient(900px 650px at 12% 50%, rgba(25,53,149,0.6), transparent 70%), radial-gradient(600px 480px at 92% 10%, rgba(232,7,139,0.28), transparent 70%), radial-gradient(500px 420px at 80% 90%, rgba(245,176,21,0.16), transparent 70%)' }} />
+        <img src="/mic-carrier-banner.png" alt="" aria-hidden="true" className="absolute inset-0 w-full h-full object-cover object-center" style={{ zIndex: -20 }} />
+        <div className="absolute inset-0" style={{ zIndex: -10, background: 'linear-gradient(90deg, rgba(5,13,58,0.72) 0%, rgba(5,13,58,0.38) 45%, rgba(5,13,58,0.08) 68%, transparent 88%)' }} />
+        <div className="absolute inset-0 pointer-events-none" style={{ zIndex: -5, background: 'radial-gradient(600px 460px at 8% 88%, rgba(232,7,139,0.25), transparent 70%), radial-gradient(480px 380px at 32% 4%, rgba(245,176,21,0.16), transparent 70%)' }} />
 
         {/* Floating color orbs for movement */}
         <motion.div
@@ -177,11 +168,23 @@ export default function MicCarrierPage() {
               <span className="bg-gradient-to-r from-[#E8078B] to-[#f5b015] text-white text-[11px] font-bold px-2 py-[3px] rounded-full uppercase tracking-wider">Servicio 04</span>
               Transporte de señales
             </div>
-            <h1 className="text-[clamp(32px,4vw,52px)] font-bold leading-[1.08] tracking-[-0.025em] mb-5">
-              MIC CARRIER —{' '}
-              <em className="not-italic bg-gradient-to-r from-[#E8078B] via-[#ff67c1] to-[#f5b015] bg-clip-text text-transparent">
-                Transporte Profesional de Señales IP
-              </em>
+
+            <div className="flex items-center gap-4 mb-4">
+              <Image
+                src="/logo-mic-3d.png"
+                alt="MIC"
+                width={260}
+                height={158}
+                className="w-[130px] sm:w-[170px] md:w-[200px] h-auto drop-shadow-[0_10px_30px_rgba(0,0,0,0.4)]"
+                priority
+              />
+              <span className="text-[clamp(28px,3.6vw,46px)] font-extrabold tracking-tight text-white">CARRIER</span>
+            </div>
+
+            <h1 className="text-[clamp(30px,3.8vw,48px)] font-bold leading-[1.12] tracking-[-0.025em] mb-5">
+              <span className="bg-gradient-to-r from-[#E8078B] via-[#ff67c1] to-[#f5b015] bg-clip-text text-transparent">
+                Transportamos tu señal sin fronteras
+              </span>
             </h1>
             <p className="text-[17px] text-white/78 leading-relaxed mb-8">
               Conectamos canales de televisión con operadores mediante infraestructura IP segura, estable y de alto rendimiento.
@@ -196,44 +199,22 @@ export default function MicCarrierPage() {
               <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
             </a>
           </motion.div>
-
-          {/* Protocol pills — colorful */}
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.6 }}
-            className="flex flex-wrap items-center gap-2.5 mt-14"
-          >
-            <span className="inline-flex items-center gap-2 text-white/60 text-[12px] font-mono tracking-wider uppercase mr-1">
-              <span className="w-2 h-2 rounded-full bg-[#0aa84f] animate-pulse" />
-              Enlace activo
-            </span>
-            {PROTOCOLS.map((p, i) => (
-              <motion.span
-                key={p.name}
-                initial={{ opacity: 0, scale: 0.85 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.5 + i * 0.06 }}
-                className="px-3.5 py-1.5 rounded-full text-[12px] font-mono font-bold tracking-wide border"
-                style={{ color: p.color, borderColor: `${p.color}55`, background: `${p.color}18` }}
-              >
-                {p.name}
-              </motion.span>
-            ))}
-          </motion.div>
         </div>
       </section>
 
       {/* 2. ¿Qué ofrecemos? */}
       <section className="py-20 px-6 relative overflow-hidden">
-        <div className="absolute -top-24 -left-24 w-[380px] h-[380px] rounded-full pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(25,53,149,0.06), transparent 70%)' }} />
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/mic-carrier-infra-bg.png" alt="" aria-hidden="true" className="absolute inset-0 w-full h-full object-cover object-center" style={{ zIndex: -20 }} />
+        <div className="absolute inset-0" style={{ zIndex: -10, background: 'linear-gradient(155deg, rgba(132,31,137,0.94), rgba(74,15,92,0.93))' }} />
+        <div className="absolute inset-0 pointer-events-none" style={{ zIndex: -5, background: 'radial-gradient(600px 460px at 92% 0%, rgba(232,7,139,0.35), transparent 70%), radial-gradient(500px 400px at 4% 100%, rgba(245,176,21,0.18), transparent 70%)' }} />
         <div className="max-w-[1240px] mx-auto relative">
           <div className="max-w-[600px] mb-14">
-            <span className="inline-flex items-center gap-2 text-[12px] font-semibold tracking-[0.14em] uppercase text-[#E8078B] mb-3">
-              <span className="w-5 h-[2px] bg-[#E8078B] rounded-full" />
+            <span className="inline-flex items-center gap-2 text-[12px] font-semibold tracking-[0.14em] uppercase text-[#ffb3e2] mb-3">
+              <span className="w-5 h-[2px] bg-[#ffb3e2] rounded-full" />
               ¿Qué ofrecemos?
             </span>
-            <h2 className="text-[clamp(26px,3vw,40px)] font-bold tracking-[-0.025em] text-[#0a1133] mb-3">
+            <h2 className="text-[clamp(26px,3vw,40px)] font-bold tracking-[-0.025em] text-white mb-3">
               La infraestructura que conecta su señal con el operador.
             </h2>
           </div>
@@ -247,7 +228,7 @@ export default function MicCarrierPage() {
                 viewport={{ once: true }}
                 whileHover={{ y: -6 }}
                 transition={{ duration: 0.4, delay: i * 0.08 }}
-                className="bg-white border border-gray-200 rounded-[18px] p-6 hover:shadow-[0_16px_36px_rgba(13,30,107,0.12)] transition-shadow relative overflow-hidden"
+                className="bg-white rounded-[18px] p-6 hover:shadow-[0_16px_36px_rgba(0,0,0,0.3)] transition-shadow relative overflow-hidden"
                 style={{ borderTop: `3px solid ${f.color}` }}
               >
                 <div
@@ -451,14 +432,18 @@ export default function MicCarrierPage() {
       </section>
 
       {/* 7. ¿Por qué elegir MIC? */}
-      <section className="py-20 px-6">
-        <div className="max-w-[1240px] mx-auto">
+      <section className="py-20 px-6 relative overflow-hidden">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/mic-carrier-why-bg.png" alt="" aria-hidden="true" className="absolute inset-0 w-full h-full object-cover object-center" style={{ zIndex: -20 }} />
+        <div className="absolute inset-0" style={{ zIndex: -10, background: 'linear-gradient(155deg, rgba(10,17,51,0.92), rgba(13,30,107,0.88))' }} />
+        <div className="absolute inset-0 pointer-events-none" style={{ zIndex: -5, background: 'radial-gradient(600px 460px at 95% 100%, rgba(232,7,139,0.25), transparent 70%), radial-gradient(500px 400px at 0% 0%, rgba(245,176,21,0.16), transparent 70%)' }} />
+        <div className="max-w-[1240px] mx-auto relative">
           <div className="max-w-[600px] mb-14">
-            <span className="inline-flex items-center gap-2 text-[12px] font-semibold tracking-[0.14em] uppercase text-[#E8078B] mb-3">
-              <span className="w-5 h-[2px] bg-[#E8078B] rounded-full" />
+            <span className="inline-flex items-center gap-2 text-[12px] font-semibold tracking-[0.14em] uppercase text-[#ff67c1] mb-3">
+              <span className="w-5 h-[2px] bg-[#ff67c1] rounded-full" />
               Por qué MIC
             </span>
-            <h2 className="text-[clamp(26px,3vw,40px)] font-bold tracking-[-0.025em] text-[#0a1133] mb-3">
+            <h2 className="text-[clamp(26px,3vw,40px)] font-bold tracking-[-0.025em] text-white mb-3">
               ¿Por qué elegir MIC?
             </h2>
           </div>
@@ -474,15 +459,15 @@ export default function MicCarrierPage() {
                   viewport={{ once: true }}
                   whileHover={{ y: -3 }}
                   transition={{ duration: 0.35, delay: i * 0.06 }}
-                  className="flex items-center gap-3 bg-white border border-gray-200 rounded-[14px] px-5 py-4 hover:shadow-md transition-shadow"
+                  className="flex items-center gap-3 bg-white/[0.06] border border-white/15 rounded-[14px] px-5 py-4 backdrop-blur-sm hover:bg-white/[0.1] hover:border-white/25 transition-colors"
                 >
                   <span
                     className="w-7 h-7 rounded-full grid place-items-center flex-shrink-0"
-                    style={{ background: `${color}18`, color }}
+                    style={{ background: `${color}30`, color }}
                   >
                     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
                   </span>
-                  <span className="text-[14.5px] font-semibold text-[#0a1133]">{item}</span>
+                  <span className="text-[14.5px] font-semibold text-white">{item}</span>
                 </motion.div>
               );
             })}
