@@ -34,10 +34,10 @@ export const SERVICES: Service[] = [
   },
   {
     num: '04',
-    verb: 'Inserta',
-    title: 'AddFast',
-    desc: 'Publicidad programática con pricing en tiempo real. Inventario premium con CPMs competitivos.',
+    verb: 'Transporta',
+    title: 'MIC Carrier',
+    desc: 'Transporte profesional de señales IP entre canales y operadores. Infraestructura estable, segura y monitoreada 24/7.',
     accent: false,
-    href: '/servicios/addfast',
+    href: '/servicios/mic-carrier',
   },
 ];

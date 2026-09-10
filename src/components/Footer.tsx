@@ -57,7 +57,7 @@ export default function Footer() {
                 { label: 'Canales IP', href: '/servicios/canales-ip' },
                 { label: 'Lineal 24x7', href: '/servicios/lineales' },
                 { label: 'FAST Channels', href: '/servicios/fast' },
-                { label: 'AddFast', href: '/servicios/addfast' },
+                { label: 'MIC Carrier', href: '/servicios/mic-carrier' },
               ].map(s => (
                 <li key={s.label}>
                   <a href={s.href} className="text-[14.5px] text-white/70 hover:text-white transition-colors cursor-pointer">{s.label}</a>
