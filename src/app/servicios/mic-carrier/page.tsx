@@ -18,7 +18,7 @@ const OFFER = [
       </svg>
     ),
     title: 'Transporte de Señales IP',
-    desc: 'Recepción y entrega de señales mediante infraestructura profesional, punto a punto.',
+    desc: 'Transportamos sus señales vía IP con estabilidad, seguridad y calidad desde el origen hasta el destino.',
   },
   {
     color: FUCSIA,
@@ -29,7 +29,7 @@ const OFFER = [
       </svg>
     ),
     title: 'Distribución Multipunto',
-    desc: 'Una señal, múltiples destinos. Escale su entrega a tantos operadores como necesite.',
+    desc: 'Una misma señal, múltiples destinos. Amplíe su distribución de forma flexible y escalable.',
   },
   {
     color: MORADO,
@@ -39,7 +39,7 @@ const OFFER = [
       </svg>
     ),
     title: 'Monitoreo 24/7',
-    desc: 'Supervisión permanente de las señales, con alertas y respuesta inmediata ante incidencias.',
+    desc: 'Supervisión continua de sus señales para detectar y atender incidencias rápidamente.',
   },
   {
     color: AZUL,
@@ -49,7 +49,7 @@ const OFFER = [
       </svg>
     ),
     title: 'Soporte Especializado',
-    desc: 'Acompañamiento técnico durante la implementación y la operación de su transporte.',
+    desc: 'Asistencia técnica durante la implementación y operación de su servicio de transporte.',
   },
 ];
 
@@ -184,10 +184,8 @@ export default function MicCarrierPage() {
               <span className="text-[clamp(36px,4.7vw,60px)] font-extrabold tracking-tight text-white">CARRIER</span>
             </div>
 
-            <h1 className="text-[clamp(39px,4.9vw,62px)] font-bold leading-[1.12] tracking-[-0.025em] mb-5">
-              <span className="bg-gradient-to-r from-[#E8078B] via-[#841F89] to-[#193595] bg-clip-text text-transparent">
-                Transportamos tu señal sin fronteras
-              </span>
+            <h1 className="text-[clamp(39px,4.9vw,62px)] font-bold leading-[1.12] tracking-[-0.025em] mb-5 text-[#E8078B]">
+              Transportamos tu señal sin fronteras
             </h1>
             <p className="text-[22px] text-white/78 leading-relaxed mb-8">
               Conectamos canales de televisión con operadores mediante infraestructura IP segura, estable y de alto rendimiento.
@@ -214,10 +212,10 @@ export default function MicCarrierPage() {
         <div className="max-w-[1240px] mx-auto relative">
           <div className="max-w-[760px] mb-14">
             <span
-              className="inline-flex items-center gap-2 text-[18px] font-semibold tracking-[0.14em] uppercase text-[#E8078B] mb-3"
-              style={{ textShadow: '0 2px 10px rgba(0,0,0,0.55)' }}
+              className="inline-flex items-center gap-2 text-[19px] font-extrabold tracking-[0.14em] uppercase text-white mb-3"
+              style={{ textShadow: '0 2px 12px rgba(0,0,0,0.65)' }}
             >
-              <span className="w-6 h-[3px] bg-[#E8078B] rounded-full" />
+              <span className="w-6 h-[3px] bg-white rounded-full" />
               ¿Qué ofrecemos?
             </span>
             <h2
@@ -235,19 +233,32 @@ export default function MicCarrierPage() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                whileHover={{ y: -6 }}
                 transition={{ duration: 0.4, delay: i * 0.08 }}
-                className="bg-white rounded-[18px] p-6 hover:shadow-[0_16px_36px_rgba(0,0,0,0.3)] transition-shadow relative overflow-hidden"
-                style={{ borderTop: `3px solid ${f.color}` }}
+                className="group h-72 [perspective:1200px] cursor-pointer"
               >
-                <div
-                  className="w-20 h-20 rounded-[12px] grid place-items-center mb-4"
-                  style={{ background: `${f.color}18`, color: f.color }}
-                >
-                  {f.icon}
+                <div className="relative w-full h-full transition-transform duration-500 ease-out [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)] group-active:[transform:rotateY(180deg)]">
+                  {/* Frente: ícono + título */}
+                  <div
+                    className="absolute inset-0 [backface-visibility:hidden] bg-white rounded-[18px] p-6 flex flex-col items-center justify-center text-center gap-4 shadow-[0_8px_20px_rgba(0,0,0,0.12)]"
+                    style={{ borderTop: `3px solid ${f.color}` }}
+                  >
+                    <div
+                      className="w-20 h-20 rounded-[12px] grid place-items-center"
+                      style={{ background: `${f.color}18`, color: f.color }}
+                    >
+                      {f.icon}
+                    </div>
+                    <h3 className="text-[23px] font-bold text-[#0a1133]">{f.title}</h3>
+                  </div>
+
+                  {/* Reverso: definición sobre panel fucsia */}
+                  <div
+                    className="absolute inset-0 [backface-visibility:hidden] [transform:rotateY(180deg)] bg-[#E8078B] rounded-[18px] p-6 flex flex-col items-center justify-center text-center gap-3 shadow-[0_8px_20px_rgba(0,0,0,0.25)]"
+                  >
+                    <h3 className="text-[19px] font-bold text-white">{f.title}</h3>
+                    <p className="text-[16px] text-white/90 leading-relaxed">{f.desc}</p>
+                  </div>
                 </div>
-                <h3 className="text-[23px] font-bold text-[#0a1133] mb-2">{f.title}</h3>
-                <p className="text-[20px] text-[#6a7196] leading-relaxed">{f.desc}</p>
               </motion.div>
             ))}
           </div>
