@@ -18,7 +18,7 @@ export default function Footer() {
               />
             </div>
             <p className="text-white/55 text-[14px] leading-relaxed mb-5">
-              Canales de TV y tecnología para el cableoperador. 14 años distribuyendo señales en Latinoamérica.
+              Canales de TV y tecnología para el cableoperador. 26 años distribuyendo señales en Latinoamérica.
             </p>
             <div className="flex gap-3">
               {[
@@ -93,6 +93,7 @@ export default function Footer() {
                 <a href="mailto:info@mic.pe" className="hover:text-white transition-colors cursor-pointer">info@mic.pe</a>
               </li>
               <li className="leading-snug">Calle German Schreiber Nro. 210<br/>Urb. Santa Ana, San Isidro<br/>Lima, Perú</li>
+              <li className="leading-snug">Manager International Channels Sociedad Anónima Cerrada<br/>RUC: 20503788021</li>
               <li className="leading-snug">Miami FL 33130<br/>Estados Unidos</li>
             </ul>
           </div>

@@ -19,10 +19,10 @@ export default function CatalogPreview() {
             Catálogo
           </span>
           <h2 className="text-[clamp(28px,3.5vw,44px)] font-bold tracking-[-0.025em] text-[#0a1133] mb-4">
-            Una selección. El catálogo completo tiene mucho más.
+            Las señales preferidas por nuestros clientes
           </h2>
           <p className="text-[17px] text-[#6a7196] leading-relaxed">
-            Filtra por categoría, tipo de distribución (IP, lineal) e idioma para encontrar la mezcla exacta.
+            Descubre algunas de nuestras señales más contratadas por operadores de TV, y plataformas en Latinoamérica.
           </p>
         </div>
 
@@ -110,19 +110,24 @@ export default function CatalogPreview() {
           })}
         </div>
 
+        {/* ¿Quieres ver más? */}
+        <h3 className="text-center text-[clamp(24px,3vw,36px)] font-extrabold tracking-[-0.02em] text-[#E8078B] mt-14 mb-8">
+          ¿Quieres ver más?
+        </h3>
+
         {/* CTA bar */}
-        <div className="mt-10 bg-[#0D1E6B] rounded-[18px] p-6 flex flex-col sm:flex-row items-center justify-between gap-5">
+        <div className="bg-[#0D1E6B] rounded-[18px] p-6 flex flex-col sm:flex-row items-center justify-between gap-5">
           <div>
             <strong className="text-white text-[16px] font-bold block mb-1">
-              {CHANNELS.length} canales más en el catálogo completo
+              Más de 100 señales disponibles
             </strong>
             <span className="text-white/62 text-[14px]">
-              Filtros por categoría, tipo (IP / Satelital) e idioma.
+              Explora contenidos de cine, series, infantiles, noticias, deportes, documentales y mucho más.
             </span>
           </div>
           <a
             href="/catalogo"
-            className="flex-shrink-0 inline-flex items-center gap-2 px-6 py-3.5 bg-white text-[#193595] text-[15px] font-bold rounded-[12px] hover:bg-gray-100 transition-colors cursor-pointer group"
+            className="flex-shrink-0 inline-flex items-center gap-2.5 px-8 py-4 bg-[#E8078B] text-white text-[16px] font-bold rounded-[12px] ring-2 ring-white/70 shadow-[0_10px_30px_rgba(232,7,139,0.6)] hover:bg-[#ff1e9f] hover:scale-105 hover:shadow-[0_14px_38px_rgba(232,7,139,0.7)] transition-all duration-200 cursor-pointer group"
           >
             Ver catálogo completo
             <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
