@@ -26,11 +26,11 @@ export const SERVICES: Service[] = [
   },
   {
     num: '03',
-    verb: 'Monetiza',
-    title: 'FAST Channels',
-    desc: 'Canales gratuitos sostenidos por publicidad. Una segunda vía de ingresos sin alterar tu grilla.',
+    verb: 'Asegura',
+    title: 'NOC & Soporte',
+    desc: 'Aseguramiento, continuidad y soporte técnico especializado para la operación de tus señales IPTV/OTT.',
     accent: true,
-    href: '/servicios/fast',
+    href: '/noc-services-y-soporte',
   },
   {
     num: '04',

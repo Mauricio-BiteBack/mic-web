@@ -56,7 +56,7 @@ export default function Footer() {
               {[
                 { label: 'Canales IP', href: '/servicios/canales-ip' },
                 { label: 'Lineal 24x7', href: '/servicios/lineales' },
-                { label: 'FAST Channels', href: '/servicios/fast' },
+                { label: 'NOC & Soporte', href: '/noc-services-y-soporte' },
                 { label: 'MIC Carrier', href: '/servicios/mic-carrier' },
               ].map(s => (
                 <li key={s.label}>

@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Inter, Poppins } from 'next/font/google';
 import './globals.css';
 import { CartProvider } from '@/components/CartContext';
 import { CotizarProvider } from '@/components/CotizarContext';
@@ -9,6 +9,14 @@ import { TOTAL_CHANNELS } from '@/data/channels';
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
+  display: 'swap',
+});
+
+const poppins = Poppins({
+  subsets: ['latin'],
+  weight: ['700'],
+  style: ['italic'],
+  variable: '--font-poppins',
   display: 'swap',
 });
 
@@ -32,7 +40,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className={`${inter.variable} h-full`}>
+    <html lang="es" className={`${inter.variable} ${poppins.variable} h-full`}>
       <head>
         <Script
           defer

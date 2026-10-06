@@ -11,8 +11,8 @@ function ServiceIcon({ kind }: { kind: string }) {
   if (kind === 'Lineal 24x7') return (
     <svg {...props}><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg>
   );
-  if (kind === 'FAST Channels') return (
-    <svg {...props}><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+  if (kind === 'NOC & Soporte') return (
+    <svg {...props}><path d="M3 18v-2a9 9 0 0 1 18 0v2"/><rect x="2" y="15" width="4" height="6" rx="1.5"/><rect x="18" y="15" width="4" height="6" rx="1.5"/><path d="M21 18a3 3 0 0 1-3 3h-2"/></svg>
   );
   if (kind === 'MIC Carrier') return (
     <svg {...props}><rect x="3" y="3" width="18" height="6" rx="1.5"/><rect x="3" y="15" width="18" height="6" rx="1.5"/><line x1="7" y1="6" x2="7.01" y2="6"/><line x1="7" y1="18" x2="7.01" y2="18"/><path d="M12 9v6"/></svg>
