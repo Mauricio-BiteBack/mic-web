@@ -40,4 +40,12 @@ export const SERVICES: Service[] = [
     accent: false,
     href: '/servicios/mic-carrier',
   },
+  {
+    num: '05',
+    verb: 'Diseña',
+    title: 'Consultoría IPTV/OTT',
+    desc: 'Soluciones especializadas de ingeniería y arquitectura para implementar, renovar, optimizar o ampliar tu operación IPTV/OTT.',
+    accent: false,
+    href: '/consultoria-iptv-ott',
+  },
 ];

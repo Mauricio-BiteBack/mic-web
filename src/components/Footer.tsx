@@ -58,6 +58,7 @@ export default function Footer() {
                 { label: 'Lineal 24x7', href: '/servicios/lineales' },
                 { label: 'NOC & Soporte', href: '/noc-services-y-soporte' },
                 { label: 'MIC Carrier', href: '/servicios/mic-carrier' },
+                { label: 'Consultoría IPTV/OTT', href: '/consultoria-iptv-ott' },
               ].map(s => (
                 <li key={s.label}>
                   <a href={s.href} className="text-[14.5px] text-white/70 hover:text-white transition-colors cursor-pointer">{s.label}</a>
