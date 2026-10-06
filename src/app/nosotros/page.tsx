@@ -58,12 +58,6 @@ const TEAM = [
     img: '/nosotros-Jhonattan.png',
   },
   {
-    name: 'Jhon Albert',
-    role: 'Asistente Técnico',
-    bio: 'Comprometido con la continuidad y calidad de las operaciones tecnológicas de la empresa. Brinda apoyo en la integración de señales, el monitoreo de transmisiones y la gestión de procesos técnicos, colaborando con el equipo de ingeniería para ofrecer soluciones confiables y una experiencia de servicio de excelencia a nuestros clientes.',
-    img: '/nosotros-JhonAlbert.png',
-  },
-  {
     name: 'Christian Laura',
     role: 'Ingeniero en Operaciones',
     bio: 'Desempeña un papel clave en la gestión y optimización de los procesos tecnológicos que respaldan la distribución de contenidos audiovisuales. Su experiencia en operaciones, monitoreo e implementación de soluciones contribuye a garantizar servicios eficientes, infraestructura confiable y altos estándares de calidad, impulsando la excelencia operativa de la compañía y el éxito de sus clientes en toda la región.',
@@ -168,7 +162,7 @@ export default function NosotrosPage() {
               <p className="text-[18px] text-[#E8078B] font-semibold mb-6">Un sueño hecho realidad.</p>
               <div className="space-y-4 text-[16px] text-[#6a7196] leading-[1.8]">
                 <p>
-                  Hace 26 años empezamos a comercializar y distribuir canales de televisión internacionales europeos para toda la Región Andina. Poco a poco fuimos entendiendo que nuestro mercado exigía contenidos más cercanos, y empezamos a distribuir DHE, Pasiones, Cine Latino, Inti y otros contenidos de altísima calidad.
+                  Hace 26 años empezamos a comercializar y distribuir canales de televisión internacionales europeos para toda la Región Andina. Poco a poco fuimos entendiendo que nuestro mercado exigía contenidos más cercanos, y empezamos a distribuir DHE, Pasiones, Cine Latino y otros contenidos de altísima calidad.
                 </p>
                 <p>
                   Conscientes de lo constantes que son los cambios, fuimos los primeros en apostar por la tecnología IP. Hoy distribuimos contenidos lineales y on demand para las distintas plataformas, posicionándonos como la <strong className="text-[#0a1133]">única empresa peruana</strong> que distribuye, gestiona y realiza streaming de contenidos para los distintos actores del mercado de telecomunicaciones: operadores de cable e internet, ISP, WISP, canales de TV y servicios de streaming.
