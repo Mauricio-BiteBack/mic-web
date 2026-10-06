@@ -1,7 +1,7 @@
 import { Resend } from 'resend';
 import { NextRequest, NextResponse } from 'next/server';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const resend = new Resend(process.env.RESEND_API_KEY || 'placeholder');
 
 // Rate limiting: máx 3 envíos por IP por hora
 const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
