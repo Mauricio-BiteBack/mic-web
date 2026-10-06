@@ -559,7 +559,7 @@ export const CHANNELS: Channel[] = [
   },
   {
     id: 'lejano-oeste',
-    name: 'Lejano Oeste',
+    name: 'Feel Oeste',
     categories: ['Cine clásico'],
     brand: 'Independiente',
     type: 'IP',
@@ -567,7 +567,7 @@ export const CHANNELS: Channel[] = [
     color: '#92400e',
     dark: '#3a1808',
     desc: 'Películas del viejo oeste. Honor, valentía y justicia en tierras salvajes.',
-    imageUrl: '/Lejano Oeste.png',
+    imageUrl: '/Feel Oeste.png',
   },
   {
     id: 'sumac-tv',
@@ -583,7 +583,7 @@ export const CHANNELS: Channel[] = [
   },
   {
     id: 'planeta-salvaje',
-    name: 'Planeta Salvaje',
+    name: 'Feel Salvaje',
     categories: ['Documental'],
     brand: 'Independiente',
     type: 'IP',
@@ -591,7 +591,7 @@ export const CHANNELS: Channel[] = [
     color: '#15803d',
     dark: '#14532d',
     desc: 'La fuerza y belleza de la vida en estado natural. Fauna, naturaleza y supervivencia.',
-    imageUrl: '/PLANETA SALVAJE.png',
+    imageUrl: '/Feel Salvaje.png',
   },
   {
     id: 'cajamarca-tv',
@@ -619,7 +619,7 @@ export const CHANNELS: Channel[] = [
   },
   {
     id: 'planeta-historia',
-    name: 'Planeta Historia',
+    name: 'Feel Historia',
     categories: ['Documental'],
     brand: 'Independiente',
     type: 'IP',
@@ -627,7 +627,7 @@ export const CHANNELS: Channel[] = [
     color: '#92400e',
     dark: '#3a1808',
     desc: 'Civilizaciones antiguas, grandes personajes y misterios históricos de la humanidad.',
-    imageUrl: '/Planeta Historia.png',
+    imageUrl: '/Feel Historia.png',
   },
   {
     id: 'rumbo-minero',
@@ -1268,7 +1268,7 @@ export const CHANNELS: Channel[] = [
   },
   {
     id: 'retrox-cartoons',
-    name: 'Retrox Cartoons',
+    name: 'EpicToons',
     categories: ['Infantil'],
     brand: 'Vibra',
     type: 'IP',
@@ -1276,7 +1276,7 @@ export const CHANNELS: Channel[] = [
     color: '#dc2626',
     dark: '#7f1d1d',
     desc: 'He-Man, Spider-Man, Robotech y los clásicos de la animación que nunca pasan de moda.',
-    imageUrl: '/RETROX CARTOONS.png',
+    imageUrl: '/EpicToons.png',
   },
 ];
 

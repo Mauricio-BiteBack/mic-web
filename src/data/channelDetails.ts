@@ -82,9 +82,9 @@ export const CHANNEL_DETAILS: Record<string, ChannelDetail> = {
     specs: [{ label: 'Código', value: 'ALBRICIAS TV' }],
   },
   'lejano-oeste': {
-    longDesc: `En Lejano Oeste revivimos la esencia del viejo oeste con las historias que marcaron generaciones. Un canal dedicado a las películas que celebran el honor, la valentía, la justicia y el espíritu indomable de los hombres y mujeres que forjaron su destino en tierras salvajes.\n\nDisfruta de grandes producciones llenas de duelos inolvidables, paisajes desérticos, héroes solitarios y relatos donde el coraje siempre tiene la última palabra. Lejano Oeste es más que un canal de cine: es una experiencia que revive la aventura, la tradición y la emoción de un género que nunca pasa de moda.`,
+    longDesc: `En Feel Oeste revivimos la esencia del viejo oeste con las historias que marcaron generaciones. Un canal dedicado a las películas que celebran el honor, la valentía, la justicia y el espíritu indomable de los hombres y mujeres que forjaron su destino en tierras salvajes.\n\nDisfruta de grandes producciones llenas de duelos inolvidables, paisajes desérticos, héroes solitarios y relatos donde el coraje siempre tiene la última palabra. Feel Oeste es más que un canal de cine: es una experiencia que revive la aventura, la tradición y la emoción de un género que nunca pasa de moda.`,
     videoUrls: [yt('https://youtu.be/a25qeIp5Xi4')],
-    specs: [{ label: 'Código', value: 'LEJANO OESTE' }],
+    specs: [{ label: 'Código', value: 'FEEL OESTE' }],
   },
   'sumac-tv': {
     longDesc: `SUMAC TV es el canal que celebra la esencia de la música huayno en vivo, llevando a los hogares la energía, pasión y tradición de la cultura andina. A través de transmisiones en directo, conciertos, presentaciones especiales y artistas invitados, el canal conecta al público con nuestras raíces y el talento nacional.\n\nCon una programación 100% dedicada al huayno y a la identidad cultural peruana, SUMAC TV se convierte en una ventana permanente para disfrutar de la música que representa el sentimiento del pueblo.`,
@@ -92,9 +92,9 @@ export const CHANNEL_DETAILS: Record<string, ChannelDetail> = {
     specs: [{ label: 'Código', value: 'SUMAC TV' }],
   },
   'planeta-salvaje': {
-    longDesc: `Planeta Salvaje es un canal documental que conecta a la audiencia latinoamericana con la fuerza y belleza de la vida en estado natural. Desde la sabana africana y los grandes depredadores como los leones, hasta los ecosistemas marinos y paisajes imponentes del planeta.\n\nDiseñado para un público amplio que valora el contenido de calidad, presenta producciones que exploran la fauna, la naturaleza y los territorios donde la supervivencia define cada historia. Planeta Salvaje es más que un canal de animales; es una ventana al dominio de la naturaleza y a la vida salvaje en su máxima expresión.`,
+    longDesc: `Feel Salvaje es un canal documental que conecta a la audiencia latinoamericana con la fuerza y belleza de la vida en estado natural. Desde la sabana africana y los grandes depredadores como los leones, hasta los ecosistemas marinos y paisajes imponentes del planeta.\n\nDiseñado para un público amplio que valora el contenido de calidad, presenta producciones que exploran la fauna, la naturaleza y los territorios donde la supervivencia define cada historia. Feel Salvaje es más que un canal de animales; es una ventana al dominio de la naturaleza y a la vida salvaje en su máxima expresión.`,
     videoUrls: [yt('https://youtu.be/lwkaFCIrbGU')],
-    specs: [{ label: 'Código', value: 'PLANETA SALVAJE' }],
+    specs: [{ label: 'Código', value: 'FEEL SALVAJE' }],
   },
   'cajamarca-tv': {
     longDesc: `El canal de líderes, la voz de Cajamarca. Cajamarca TV tiene como objetivo principal informar y revalorar la rica cultura cajamarquina, promoviendo el orgullo regional a través de una comunicación efectiva y plural.\n\nCon contenido local de calidad, el canal se dedica a mostrar las historias, tradiciones y eventos que definen a esta maravillosa región. A través de una programación diversa y comprometida con la comunidad, Cajamarca TV se establece como el medio de comunicación que conecta a los cajamarquinos, reflejando su identidad y fortaleciendo su presencia.`,
@@ -112,8 +112,8 @@ export const CHANNEL_DETAILS: Record<string, ChannelDetail> = {
     specs: [{ label: 'Código', value: 'RETRO X' }],
   },
   'planeta-historia': {
-    longDesc: `Planeta Historia es un canal dedicado a explorar los momentos más fascinantes que han marcado a la humanidad. A través de documentales, series y producciones de alta calidad, recorre civilizaciones antiguas, grandes personajes, misterios históricos y acontecimientos que transformaron el mundo, ofreciendo contenido educativo y entretenido para toda la familia.`,
-    specs: [{ label: 'Código', value: 'PLANETA HISTORIA' }],
+    longDesc: `Feel Historia es un canal dedicado a explorar los momentos más fascinantes que han marcado a la humanidad. A través de documentales, series y producciones de alta calidad, recorre civilizaciones antiguas, grandes personajes, misterios históricos y acontecimientos que transformaron el mundo, ofreciendo contenido educativo y entretenido para toda la familia.`,
+    specs: [{ label: 'Código', value: 'FEEL HISTORIA' }],
   },
   'rumbo-minero': {
     longDesc: `Rumbo Minero TV es el canal líder en información especializada sobre minería, energía y las decisiones clave que mueven la industria. Con una programación 24/7, ofrece análisis profundos de los temas más relevantes del sector, con contenidos actualizados y exclusivos.\n\nDesde noticias sobre recursos naturales hasta informes sobre innovación tecnológica y políticas gubernamentales, Rumbo Minero TV conecta a los actores más importantes del sector con los desafíos y oportunidades que definen el futuro de la minería y la energía.`,
@@ -606,9 +606,9 @@ export const CHANNEL_DETAILS: Record<string, ChannelDetail> = {
   },
   'retrox-cartoons': {
     displayCategory: 'Caricaturas Clásicas',
-    longDesc: `Hay caricaturas que nunca pasan de moda. Son aquellas que nos hicieron despertar temprano los fines de semana, imaginar grandes aventuras y creer que todo era posible. Retrox Cartoons reúne los clásicos que marcaron la infancia de millones de personas y que hoy siguen emocionando con el mismo espíritu. Revive las aventuras de He-Man, Spider-Man, Super Friends, Robotech, Jetter Mars, El Pájaro Carpintero y muchas más series que dejaron una huella imborrable en la historia de la animación. Porque los verdaderos clásicos no envejecen… se convierten en recuerdos que vale la pena volver a vivir.`,
+    longDesc: `Hay caricaturas que nunca pasan de moda. Son aquellas que nos hicieron despertar temprano los fines de semana, imaginar grandes aventuras y creer que todo era posible. EpicToons reúne los clásicos que marcaron la infancia de millones de personas y que hoy siguen emocionando con el mismo espíritu. Revive las aventuras de He-Man, Spider-Man, Super Friends, Robotech, Jetter Mars, El Pájaro Carpintero y muchas más series que dejaron una huella imborrable en la historia de la animación. Porque los verdaderos clásicos no envejecen… se convierten en recuerdos que vale la pena volver a vivir.`,
     videoUrls: [yt('https://youtu.be/xTP_8hbSCso')],
-    specs: [{ label: 'Código', value: 'Retrox Cartoons' }],
+    specs: [{ label: 'Código', value: 'EpicToons' }],
   },
   'tv-carioca-internacional': {
     longDesc: `TV Carioca Internacional\n\nLa esencia del entretenimiento brasileño para toda Latinoamérica\n\nTV Carioca Internacional es una señal dedicada a llevar lo mejor de la televisión clásica, el cine, la comedia y la cultura de Brasil a las audiencias de habla hispana. Con programación en portugués y subtítulos en español, ofrece una experiencia única que acerca al público a la riqueza cultural y artística brasileña.\n\nDisfruta de grandes clásicos del entretenimiento mundial como Charles Chaplin, El Gordo y el Flaco, Los Tres Chiflados, Yo Amo a Lucy y Mi Bella Genio, además de espacios musicales, cine y programas especiales que reflejan la alegría y el espíritu de Brasil.\n\nLa señal también presenta coberturas especiales de eventos emblemáticos como el Carnaval de Río de Janeiro, llevando toda la energía, color y tradición de una de las celebraciones más reconocidas del mundo.\n\nTV Carioca Internacional combina nostalgia, diversión y cultura en una propuesta ideal para toda la familia.`,
