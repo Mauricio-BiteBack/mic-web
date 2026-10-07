@@ -27,8 +27,16 @@ export default function LoginPage() {
           <LoginForm />
         </Suspense>
       </div>
-      <p className="text-center text-xs text-[#6a7196] mt-6">
-        ¿Problemas para ingresar?{' '}
+      <div className="mt-4">
+        <Link
+          href="/registro"
+          className="block w-full text-center py-3 px-6 rounded-2xl border border-[#193595] text-[#193595] text-sm font-medium hover:bg-[#193595] hover:text-white transition-colors"
+        >
+          ¿No tienes cuenta? Solicitar acceso
+        </Link>
+      </div>
+      <p className="text-center text-xs text-[#6a7196] mt-4">
+        ¿Problemas?{' '}
         <a href="mailto:info@mic.pe" className="text-[#193595] hover:underline">
           Contacta a soporte
         </a>

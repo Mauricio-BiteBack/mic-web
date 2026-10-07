@@ -14,7 +14,7 @@ export default async function EditarCobroPage({ params }: { params: Promise<{ id
 
   const [{ data: charge }, { data: clients }, { data: payments }] = await Promise.all([
     supabase.from('charges').select('*').eq('id', id).single(),
-    supabase.from('profiles').select('id, email, company_name, contact_name, currency').eq('role', 'client').eq('active', true).order('company_name'),
+    supabase.from('profiles').select('id, email, company_name, contact_name, currency, ruc').eq('role', 'client').eq('active', true).order('company_name'),
     supabase.from('payments').select('id, amount, currency, status, paid_at').eq('charge_id', id).order('paid_at', { ascending: false }),
   ])
 

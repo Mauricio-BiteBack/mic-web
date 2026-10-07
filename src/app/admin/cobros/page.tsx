@@ -27,7 +27,7 @@ export default async function CobrosAdminPage() {
 
   const { data: charges } = await supabase
     .from('charges')
-    .select('id, description, amount, amount_paid, currency, status, due_date, created_at, profiles(company_name, contact_name, email)')
+    .select('id, description, amount, amount_paid, currency, status, due_date, created_at, profiles(company_name, contact_name, email, ruc)')
     .order('created_at', { ascending: false })
 
   return (
@@ -67,7 +67,7 @@ export default async function CobrosAdminPage() {
               <tbody className="divide-y divide-[#f0f1f5]">
                 {charges?.map((c) => {
                   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                  const profile = (c as any).profiles as { company_name: string; contact_name: string; email: string } | null
+                  const profile = (c as any).profiles as { company_name: string; contact_name: string; email: string; ruc?: string } | null
                   const pending = Number(c.amount) - Number(c.amount_paid)
                   const dueDate = new Date(c.due_date)
                   const isOverdue = c.status !== 'pagado' && dueDate < new Date()
@@ -75,6 +75,7 @@ export default async function CobrosAdminPage() {
                     <tr key={c.id} className="hover:bg-[#f6f7fb] transition-colors">
                       <td className="px-6 py-4">
                         <div className="font-medium text-[#0a1133]">{profile?.company_name || profile?.contact_name || '—'}</div>
+                        {profile?.ruc && <div className="text-xs font-mono text-[#193595]">RUC {profile.ruc}</div>}
                         <div className="text-xs text-[#6a7196]">{profile?.email}</div>
                       </td>
                       <td className="px-6 py-4 text-[#6a7196] max-w-[200px] truncate">{c.description}</td>

@@ -23,7 +23,14 @@ export default async function ClientesPage() {
       <div className="flex items-center justify-between mb-8">
         <div>
           <h1 className="text-2xl font-bold text-[#0a1133]">Clientes</h1>
-          <p className="text-sm text-[#6a7196] mt-1">{clients?.length ?? 0} cliente{clients?.length !== 1 ? 's' : ''}</p>
+          <p className="text-sm text-[#6a7196] mt-1">
+            {clients?.length ?? 0} cliente{clients?.length !== 1 ? 's' : ''}
+            {(clients?.filter(c => !c.active).length ?? 0) > 0 && (
+              <span className="ml-2 inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-yellow-50 text-yellow-700 border border-yellow-200">
+                {clients!.filter(c => !c.active).length} pendiente{clients!.filter(c => !c.active).length !== 1 ? 's' : ''}
+              </span>
+            )}
+          </p>
         </div>
         <Link
           href="/admin/clientes/nuevo"

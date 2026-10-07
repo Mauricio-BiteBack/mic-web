@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 
-type Client = { id: string; email: string; company_name: string; contact_name: string; currency: string }
+type Client = { id: string; email: string; company_name: string; contact_name: string; currency: string; ruc?: string | null }
 
 type Charge = {
   id: string
@@ -103,10 +103,16 @@ export default function CobroForm({ clients, charge }: { clients: Client[]; char
           <option value="">Seleccionar cliente…</option>
           {clients.map(c => (
             <option key={c.id} value={c.id}>
-              {c.company_name || c.contact_name || c.email}
+              {c.company_name || c.contact_name || c.email}{c.ruc ? ` — RUC ${c.ruc}` : ''}
             </option>
           ))}
         </select>
+        {form.client_id && (() => {
+          const selected = clients.find(c => c.id === form.client_id)
+          return selected?.ruc ? (
+            <p className="text-xs text-[#6a7196] mt-1">RUC: <span className="font-mono font-semibold text-[#0a1133]">{selected.ruc}</span></p>
+          ) : null
+        })()}
       </div>
 
       <div>
