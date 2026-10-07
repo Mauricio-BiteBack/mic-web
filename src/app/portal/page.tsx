@@ -27,6 +27,12 @@ export default async function PortalPage() {
     process.env.SUPABASE_SERVICE_ROLE_KEY!
   )
 
+  const { data: profile } = await supabase
+    .from('profiles')
+    .select('company_name, ruc, currency')
+    .eq('id', userId)
+    .single()
+
   // Fetch charges
   const { data: charges } = await supabase
     .from('charges')
@@ -93,8 +99,18 @@ export default async function PortalPage() {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold text-[#0a1133] mb-1">Dashboard</h1>
-      <p className="text-[#6a7196] text-sm mb-8">Resumen de tu cuenta</p>
+      <div className="flex items-start justify-between mb-8">
+        <div>
+          <h1 className="text-2xl font-bold text-[#0a1133] mb-1">Dashboard</h1>
+          <p className="text-[#6a7196] text-sm">Resumen de tu cuenta</p>
+        </div>
+        {profile?.ruc && (
+          <div className="bg-white border border-[#e5e7eb] rounded-xl px-4 py-2.5 text-right">
+            <p className="text-xs text-[#6a7196]">RUC</p>
+            <p className="text-sm font-bold text-[#0a1133] font-mono tracking-wide">{profile.ruc}</p>
+          </div>
+        )}
+      </div>
 
       {/* KPI cards */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">

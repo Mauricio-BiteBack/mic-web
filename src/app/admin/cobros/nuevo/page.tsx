@@ -11,7 +11,7 @@ export default async function NuevoCobroPage() {
 
   const { data: clients } = await supabase
     .from('profiles')
-    .select('id, email, company_name, contact_name, currency')
+    .select('id, email, company_name, contact_name, currency, ruc')
     .eq('role', 'client')
     .eq('active', true)
     .order('company_name')
