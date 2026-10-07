@@ -87,7 +87,7 @@ export default function PayPalPayment({ chargeId, pendingAmount, currency }: Pro
       {/* PayPal button */}
       {isValidAmount && !amountError && (
         <PayPalScriptProvider options={{
-          clientId: process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID ?? '',
+          clientId: (process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID ?? '').trim(),
           currency,
           intent: 'capture',
         }}>
