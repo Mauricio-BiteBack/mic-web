@@ -735,7 +735,7 @@ export const CHANNELS: Channel[] = [
     color: '#ec4899',
     dark: '#831843',
     desc: 'Música y educación para preescolares. Números, letras, valores y canciones llenas de energía.',
-    imageUrl: '/Chiki Toonz.jpeg',
+    imageUrl: '/Chiki Toonz.png',
   },
   {
     id: 'e-sports-go',
