@@ -2,7 +2,7 @@ import { createClient } from '@supabase/supabase-js'
 import { redirect, notFound } from 'next/navigation'
 import { headers } from 'next/headers'
 import Link from 'next/link'
-import PayPalPayment from './PayPalPayment'
+import PayPalWrapper from './PayPalWrapper'
 
 export const metadata = { title: 'Realizar pago — Portal MIC' }
 
@@ -71,7 +71,7 @@ export default async function PagarPage({ params }: { params: Promise<{ id: stri
             </div>
           </div>
 
-          <PayPalPayment
+          <PayPalWrapper
             chargeId={charge.id}
             pendingAmount={pending}
             currency={charge.currency}
