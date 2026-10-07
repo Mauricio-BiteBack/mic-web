@@ -90,16 +90,16 @@ export default function ClienteForm({ client }: { client?: Client }) {
               placeholder="cliente@empresa.com"
             />
           </Field>
-          <Field label="Contraseña temporal" required>
+          <Field label="Contraseña temporal">
             <input
               type="password"
               value={form.password}
               onChange={e => set('password', e.target.value)}
-              required
               minLength={8}
               className={inputCls}
-              placeholder="Mínimo 8 caracteres"
+              placeholder="Dejar vacío si usará Google"
             />
+            <p className="text-xs text-[#6a7196] mt-1">Si el cliente entrará con Google, deja este campo vacío.</p>
           </Field>
         </>
       )}

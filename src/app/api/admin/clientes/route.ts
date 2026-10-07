@@ -5,7 +5,7 @@ import { z } from 'zod'
 
 const schema = z.object({
   email: z.string().email(),
-  password: z.string().min(8),
+  password: z.string().min(8).optional().or(z.literal('')),
   company_name: z.string().default(''),
   contact_name: z.string().default(''),
   ruc: z.string().optional(),
@@ -39,10 +39,15 @@ export async function POST(request: NextRequest) {
 
   const supabase = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.SUPABASE_SERVICE_ROLE_KEY!)
 
+  // Use provided password or generate a random one (for Google-only clients)
+  const finalPassword = (password && password.length >= 8)
+    ? password
+    : Math.random().toString(36).slice(-12) + Math.random().toString(36).slice(-12)
+
   // Create auth user
   const { data: newUser, error: authError } = await supabase.auth.admin.createUser({
     email,
-    password,
+    password: finalPassword,
     email_confirm: true,
     user_metadata: { role: 'client', company_name, contact_name },
   })

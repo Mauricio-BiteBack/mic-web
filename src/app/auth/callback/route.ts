@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
 import { createServerClient } from '@supabase/ssr'
+import { createClient } from '@supabase/supabase-js'
 import { cookies } from 'next/headers'
 
 export async function GET(request: Request) {
@@ -27,11 +28,42 @@ export async function GET(request: Request) {
     const { error } = await supabase.auth.exchangeCodeForSession(code)
 
     if (!error) {
-      // Check if this is a new invite (user has no password set yet)
       const { data: { user } } = await supabase.auth.getUser()
-      const isInvite = user?.app_metadata?.provider === 'email' &&
-        !user?.last_sign_in_at
+      if (!user) return NextResponse.redirect(`${origin}/login?error=sin_usuario`)
 
+      const isOAuth = user.app_metadata?.provider !== 'email'
+
+      if (isOAuth) {
+        // Verify email is a registered client
+        const adminClient = createClient(
+          process.env.NEXT_PUBLIC_SUPABASE_URL!,
+          process.env.SUPABASE_SERVICE_ROLE_KEY!
+        )
+
+        const { data: profile } = await adminClient
+          .from('profiles')
+          .select('id, active, role')
+          .eq('email', user.email!)
+          .single()
+
+        if (!profile) {
+          // Not a registered client — sign out and redirect
+          await supabase.auth.signOut()
+          return NextResponse.redirect(`${origin}/sin-acceso`)
+        }
+
+        if (!profile.active) {
+          await supabase.auth.signOut()
+          return NextResponse.redirect(`${origin}/sin-acceso?razon=inactivo`)
+        }
+
+        // Profile exists — redirect based on role
+        const dest = profile.role === 'admin' ? '/admin' : next
+        return NextResponse.redirect(`${origin}${dest}`)
+      }
+
+      // Password login invite flow
+      const isInvite = user.app_metadata?.provider === 'email' && !user.last_sign_in_at
       if (isInvite) {
         return NextResponse.redirect(`${origin}/reset-password`)
       }
@@ -40,6 +72,5 @@ export async function GET(request: Request) {
     }
   }
 
-  // Something went wrong — redirect to login with error
   return NextResponse.redirect(`${origin}/login?error=link_invalido`)
 }
