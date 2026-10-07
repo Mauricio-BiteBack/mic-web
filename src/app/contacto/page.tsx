@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import PageShell from '@/components/PageShell';
 
@@ -56,6 +56,11 @@ export default function ContactoPage() {
   const [sent, setSent] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
+  const loadTimeRef = useRef<number>(0);
+
+  useEffect(() => {
+    loadTimeRef.current = Date.now();
+  }, []);
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -72,6 +77,8 @@ export default function ContactoPage() {
         whatsapp: fd.get('whatsapp'),
         pais: fd.get('pais'),
         mensaje: fd.get('mensaje'),
+        _hp: fd.get('_hp'),
+        _t: Date.now() - loadTimeRef.current,
       }),
     });
     setLoading(false);
@@ -229,34 +236,44 @@ export default function ContactoPage() {
                 </p>
 
                 <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+                  {/* Honeypot — invisible para humanos, los bots lo llenan */}
+                  <input
+                    name="_hp"
+                    type="text"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    aria-hidden="true"
+                    style={{ position: 'absolute', opacity: 0, height: 0, width: 0, pointerEvents: 'none' }}
+                  />
                   <div className="grid grid-cols-2 gap-4">
                     <div className="flex flex-col gap-1.5">
                       <label htmlFor="nombre" className="text-[12.5px] font-semibold text-[#0a1133]">Nombre completo</label>
-                      <input id="nombre" required placeholder="Tu nombre" className="border border-gray-200 rounded-[10px] px-3.5 py-3 text-[14px] outline-none focus:border-[#193595] transition-colors" />
+                      <input id="nombre" name="nombre" required placeholder="Tu nombre" className="border border-gray-200 rounded-[10px] px-3.5 py-3 text-[14px] outline-none focus:border-[#193595] transition-colors" />
                     </div>
                     <div className="flex flex-col gap-1.5">
                       <label htmlFor="empresa" className="text-[12.5px] font-semibold text-[#0a1133]">Empresa</label>
-                      <input id="empresa" required placeholder="Nombre del operador" className="border border-gray-200 rounded-[10px] px-3.5 py-3 text-[14px] outline-none focus:border-[#193595] transition-colors" />
+                      <input id="empresa" name="empresa" required placeholder="Nombre del operador" className="border border-gray-200 rounded-[10px] px-3.5 py-3 text-[14px] outline-none focus:border-[#193595] transition-colors" />
                     </div>
                   </div>
                   <div className="flex flex-col gap-1.5">
                     <label htmlFor="email" className="text-[12.5px] font-semibold text-[#0a1133]">Email</label>
-                    <input id="email" required type="email" placeholder="tu@empresa.com" className="border border-gray-200 rounded-[10px] px-3.5 py-3 text-[14px] outline-none focus:border-[#193595] transition-colors" />
+                    <input id="email" name="email" required type="email" placeholder="tu@empresa.com" className="border border-gray-200 rounded-[10px] px-3.5 py-3 text-[14px] outline-none focus:border-[#193595] transition-colors" />
                   </div>
                   <div className="grid grid-cols-2 gap-4">
                     <div className="flex flex-col gap-1.5">
                       <label htmlFor="whatsapp" className="text-[12.5px] font-semibold text-[#0a1133]">WhatsApp</label>
-                      <input id="whatsapp" type="tel" placeholder="+51 999 999 999" className="border border-gray-200 rounded-[10px] px-3.5 py-3 text-[14px] outline-none focus:border-[#193595] transition-colors" />
+                      <input id="whatsapp" name="whatsapp" type="tel" placeholder="+51 999 999 999" className="border border-gray-200 rounded-[10px] px-3.5 py-3 text-[14px] outline-none focus:border-[#193595] transition-colors" />
                     </div>
                     <div className="flex flex-col gap-1.5">
                       <label htmlFor="pais" className="text-[12.5px] font-semibold text-[#0a1133]">País</label>
-                      <input id="pais" placeholder="Perú" className="border border-gray-200 rounded-[10px] px-3.5 py-3 text-[14px] outline-none focus:border-[#193595] transition-colors" />
+                      <input id="pais" name="pais" placeholder="Perú" className="border border-gray-200 rounded-[10px] px-3.5 py-3 text-[14px] outline-none focus:border-[#193595] transition-colors" />
                     </div>
                   </div>
                   <div className="flex flex-col gap-1.5">
                     <label htmlFor="mensaje" className="text-[12.5px] font-semibold text-[#0a1133]">Mensaje</label>
                     <textarea
                       id="mensaje"
+                      name="mensaje"
                       required
                       rows={4}
                       placeholder="Cuéntanos sobre tu operador, cuántos suscriptores tienes y qué tipo de canales te interesan..."

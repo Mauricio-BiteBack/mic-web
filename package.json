@@ -9,13 +9,17 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@paypal/react-paypal-js": "^10.6.0",
+    "@supabase/ssr": "^0.12.7",
+    "@supabase/supabase-js": "^2.117.2",
     "@vercel/blob": "^2.8.0",
     "framer-motion": "^12.38.0",
     "next": "16.2.4",
     "react": "19.2.4",
     "react-dom": "19.2.4",
     "resend": "^6.12.4",
-    "xlsx": "https://cdn.sheetjs.com/xlsx-latest/xlsx-latest.tgz"
+    "xlsx": "https://cdn.sheetjs.com/xlsx-latest/xlsx-latest.tgz",
+    "zod": "^4.6.5"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
