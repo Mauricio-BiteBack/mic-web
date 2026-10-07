@@ -3,9 +3,9 @@ const PAYPAL_BASE = process.env.PAYPAL_MODE === 'sandbox'
   : 'https://api-m.paypal.com'
 
 async function getAccessToken(): Promise<string> {
-  const credentials = Buffer.from(
-    `${process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID}:${process.env.PAYPAL_SECRET_KEY}`
-  ).toString('base64')
+  const clientId = (process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID ?? '').trim()
+  const secretKey = (process.env.PAYPAL_SECRET_KEY ?? '').trim()
+  const credentials = Buffer.from(`${clientId}:${secretKey}`).toString('base64')
 
   const res = await fetch(`${PAYPAL_BASE}/v1/oauth2/token`, {
     method: 'POST',
