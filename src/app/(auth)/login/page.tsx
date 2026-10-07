@@ -28,9 +28,13 @@ export default function LoginPage() {
         </Suspense>
       </div>
       <p className="text-center text-xs text-[#6a7196] mt-6">
-        ¿Problemas para ingresar?{' '}
+        ¿No tienes cuenta?{' '}
+        <Link href="/registro" className="text-[#193595] hover:text-[#E8078B] font-medium transition-colors">
+          Solicitar acceso
+        </Link>
+        {' · '}
         <a href="mailto:info@mic.pe" className="text-[#193595] hover:underline">
-          Contacta a soporte
+          Soporte
         </a>
       </p>
     </div>
