@@ -1135,7 +1135,7 @@ export const CHANNELS: Channel[] = [
   },
   {
     id: 'tv-carioca-internacional',
-    name: 'TV Carioca Internacional',
+    name: 'Entertainment Play Family',
     categories: ['Series'],
     brand: 'Independiente',
     type: 'IP',
@@ -1143,7 +1143,7 @@ export const CHANNELS: Channel[] = [
     color: '#15803d',
     dark: '#052e16',
     desc: 'La esencia del entretenimiento brasileño para toda Latinoamérica. Clásicos, comedia, cine y cultura de Brasil con subtítulos en español.',
-    imageUrl: '/TV CARIOCA INTERNACIONAL.png',
+    imageUrl: '/Entertainment Play Family.png',
   },
   {
     id: 'via-alto-mayo',
