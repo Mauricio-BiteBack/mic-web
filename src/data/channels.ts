@@ -1131,7 +1131,7 @@ export const CHANNELS: Channel[] = [
     color: '#7c3aed',
     dark: '#3b0764',
     desc: 'Santa Misa, reflexiones, noticias del Vaticano y formación espiritual. Fe y esperanza las 24 horas.',
-    imageUrl: '/EWTN.png',
+    imageUrl: '/EWTN-2.png',
   },
   {
     id: 'tv-carioca-internacional',
