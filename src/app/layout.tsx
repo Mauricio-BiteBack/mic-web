@@ -5,6 +5,7 @@ import { CartProvider } from '@/components/CartContext';
 import { CotizarProvider } from '@/components/CotizarContext';
 import Script from 'next/script';
 import { TOTAL_CHANNELS } from '@/data/channels';
+import WhatsAppClickTracker from '@/components/WhatsAppClickTracker';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -51,6 +52,7 @@ export default function RootLayout({
       </head>
       <body className="min-h-full flex flex-col antialiased font-[family-name:var(--font-inter)]">
         <CartProvider><CotizarProvider>{children}</CotizarProvider></CartProvider>
+        <WhatsAppClickTracker />
       </body>
     </html>
   );
