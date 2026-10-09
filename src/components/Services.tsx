@@ -28,21 +28,21 @@ function ServiceIcon({ kind }: { kind: string }) {
 export default function Services() {
   return (
     <section id="servicios" className="py-24 bg-[#841F89]">
-      <div className="max-w-[1240px] mx-auto px-6">
+      <div className="max-w-[1553px] mx-auto px-6">
         <div className="max-w-[720px] mb-14">
           <span className="inline-flex items-center gap-2 text-[12px] font-semibold tracking-[0.14em] uppercase text-white/70 mb-3">
             <span className="w-5 h-[2px] bg-white/70 rounded-full" />
             Servicios
           </span>
           <h2 className="text-[clamp(28px,3.5vw,44px)] font-bold tracking-[-0.025em] text-white mb-4">
-            Cuatro formas de hacer crecer tu operación.
+            Cinco formas de hacer crecer tu operación.
           </h2>
           <p className="text-[17px] text-white/75 leading-relaxed">
             Sin contratos atados, sin volúmenes mínimos. Empieza con lo que necesitas hoy y escala cuando convenga.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5">
           {SERVICES.map((s, i) => (
             <motion.div
               key={s.num}

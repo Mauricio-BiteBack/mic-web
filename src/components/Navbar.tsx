@@ -12,6 +12,28 @@ interface NavbarProps {
   onOpenCart: () => void;
 }
 
+const SERVICE_LINKS = [
+  { href: '/servicios/mic-carrier', label: 'Transporte' },
+  { href: '/consultoria-iptv-ott', label: 'Asesoría' },
+  { href: '/noc-services-y-soporte', label: 'Soporte Técnico' },
+];
+
+const DESKTOP_LINKS = [
+  ...SERVICE_LINKS,
+  { href: '/catalogo', label: 'Catálogo' },
+  { href: '/nosotros', label: 'Nosotros' },
+  { href: '/contacto', label: 'Contacto' },
+];
+
+const MOBILE_LINKS = [
+  { href: '/#servicios', label: 'Servicios' },
+  ...SERVICE_LINKS,
+  { href: '/#opiniones', label: 'Opiniones' },
+  { href: '/catalogo', label: 'Catálogo' },
+  { href: '/nosotros', label: 'Nosotros' },
+  { href: '/contacto', label: 'Contacto' },
+];
+
 function ServiceIcon({ kind }: { kind: string }) {
   const p = { width: 18, height: 18, viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 2, strokeLinecap: 'round' as const, strokeLinejoin: 'round' as const };
   if (kind === 'Canales IP') return <svg {...p}><rect x="2" y="6" width="14" height="12" rx="2"/><path d="M22 8l-6 4 6 4V8z"/></svg>;
@@ -31,6 +53,7 @@ export default function Navbar({ onOpenCart }: NavbarProps) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [megaOpen, setMegaOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const [searchOpen, setSearchOpen] = useState(false);
   const prevCount = useRef(cart.count);
   const megaRef = useRef<HTMLDivElement>(null);
   const megaTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -41,6 +64,7 @@ export default function Navbar({ onOpenCart }: NavbarProps) {
     router.push(q ? `/catalogo?q=${encodeURIComponent(q)}` : '/catalogo');
     setSearchQuery('');
     setMenuOpen(false);
+    setSearchOpen(false);
   };
 
   useEffect(() => {
@@ -60,6 +84,10 @@ export default function Navbar({ onOpenCart }: NavbarProps) {
   }, [cart.count]);
 
   const isDark = !scrolled;
+
+  const navLinkClass = `relative py-1 text-[16px] font-semibold tracking-[-0.01em] whitespace-nowrap transition-colors after:absolute after:left-0 after:-bottom-0.5 after:h-[2px] after:w-0 after:rounded-full after:bg-[#E8078B] after:transition-all after:duration-200 hover:after:w-full ${
+    isDark ? 'text-white hover:text-white' : 'text-[#0a1133] hover:text-[#193595]'
+  }`;
 
   const handleMegaEnter = () => {
     if (megaTimerRef.current) clearTimeout(megaTimerRef.current);
@@ -92,7 +120,7 @@ export default function Navbar({ onOpenCart }: NavbarProps) {
         </Link>
 
         {/* Nav links — desktop */}
-        <nav className="hidden md:flex gap-7 flex-1 items-center" aria-label="Navegación principal">
+        <nav className="hidden xl:flex gap-6 flex-1 items-center"aria-label="Navegación principal">
           {/* Servicios with megamenu */}
           <div
             className="relative"
@@ -100,11 +128,7 @@ export default function Navbar({ onOpenCart }: NavbarProps) {
             onMouseLeave={handleMegaLeave}
             ref={megaRef}
           >
-            <button
-              className={`flex items-center gap-1 text-[14.5px] font-medium transition-colors hover:opacity-100 cursor-pointer ${
-                isDark ? 'text-white/85 hover:text-white' : 'text-[#2b3567] hover:text-[#193595]'
-              }`}
-            >
+            <button className={`flex items-center gap-1 cursor-pointer ${navLinkClass}`}>
               Servicios
               <svg
                 width="12"
@@ -162,44 +186,44 @@ export default function Navbar({ onOpenCart }: NavbarProps) {
             )}
           </div>
 
-          {[
-            { href: '/#opiniones', label: 'Opiniones' },
-            { href: '/catalogo', label: 'Catálogo' },
-            { href: '/nosotros', label: 'Nosotros' },
-            { href: '/contacto', label: 'Contacto' },
-          ].map(({ href, label }) => (
-            <a
-              key={href}
-              href={href}
-              className={`text-[14.5px] font-medium transition-colors hover:opacity-100 ${
-                isDark ? 'text-white/85 hover:text-white' : 'text-[#2b3567] hover:text-[#193595]'
-              }`}
-            >
+          {DESKTOP_LINKS.map(({ href, label }) => (
+            <a key={href} href={href} className={navLinkClass}>
               {label}
             </a>
           ))}
 
-          {/* Search — desktop, empujado a la derecha dentro del nav */}
-          <form onSubmit={handleSearch} className="ml-auto">
-            <div className={`flex items-center rounded-[12px] border-2 px-4 py-2.5 gap-2.5 w-[240px] focus-within:w-[300px] transition-all duration-200 shadow-sm focus-within:shadow-md ${
-              isDark
-                ? 'bg-white/15 border-white/30 focus-within:border-[#E8078B] focus-within:bg-white/20'
-                : 'bg-white border-[#193595]/25 focus-within:border-[#E8078B]'
-            }`}>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className={`flex-shrink-0 ${isDark ? 'text-white/80' : 'text-[#193595]'}`}>
+          {/* Search — desktop: ícono que despliega el buscador */}
+          <div className="relative ml-auto">
+            <button
+              onClick={() => setSearchOpen(v => !v)}
+              aria-label="Buscar canal"
+              className={`w-10 h-10 grid place-items-center rounded-[10px] transition-colors cursor-pointer ${
+                isDark ? 'text-white hover:bg-white/15' : 'text-[#193595] hover:bg-[#193595]/10'
+              }`}
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
               </svg>
-              <input
-                type="text"
-                value={searchQuery}
-                onChange={e => setSearchQuery(e.target.value)}
-                placeholder="Buscar canal…"
-                className={`bg-transparent text-[14px] font-medium w-full outline-none ${
-                  isDark ? 'text-white placeholder-white/60' : 'text-[#0a1133] placeholder-[#6a7196]'
-                }`}
-              />
-            </div>
-          </form>
+            </button>
+            {searchOpen && (
+              <form onSubmit={handleSearch} className="absolute right-0 top-[calc(100%+12px)] z-50">
+                <div className="flex items-center rounded-[12px] border-2 border-[#193595]/25 focus-within:border-[#E8078B] bg-white px-4 py-2.5 gap-2.5 w-[300px] shadow-[0_20px_60px_rgba(13,30,107,0.18)]">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="flex-shrink-0 text-[#193595]">
+                    <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                  </svg>
+                  <input
+                    autoFocus
+                    type="text"
+                    value={searchQuery}
+                    onChange={e => setSearchQuery(e.target.value)}
+                    onKeyDown={e => { if (e.key === 'Escape') setSearchOpen(false); }}
+                    placeholder="Buscar canal…"
+                    className="bg-transparent text-[14px] font-medium w-full outline-none text-[#0a1133] placeholder-[#6a7196]"
+                  />
+                </div>
+              </form>
+            )}
+          </div>
         </nav>
 
         {/* Actions */}
@@ -221,7 +245,7 @@ export default function Navbar({ onOpenCart }: NavbarProps) {
               <circle cx="9" cy="20" r="1.5"/>
               <circle cx="18" cy="20" r="1.5"/>
             </svg>
-            <span className="hidden sm:inline">Mi carrito</span>
+            <span className="hidden sm:inline xl:hidden 2xl:inline">Mi carrito</span>
             {cart.count > 0 && (
               <span className="absolute -top-1.5 -right-1.5 w-5 h-5 bg-[#E8078B] text-white text-[10px] font-bold rounded-full grid place-items-center">
                 {cart.count}
@@ -239,7 +263,7 @@ export default function Navbar({ onOpenCart }: NavbarProps) {
 
           {/* Mobile hamburger */}
           <button
-            className={`md:hidden p-2 cursor-pointer ${isDark ? 'text-white' : 'text-[#193595]'}`}
+            className={`xl:hidden p-2 cursor-pointer ${isDark ? 'text-white' : 'text-[#193595]'}`}
             onClick={() => setMenuOpen(v => !v)}
             aria-label={menuOpen ? 'Cerrar menú' : 'Abrir menú'}
           >
@@ -258,18 +282,12 @@ export default function Navbar({ onOpenCart }: NavbarProps) {
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div className="md:hidden bg-white border-t border-gray-100 px-6 pb-5 pt-3 flex flex-col gap-4 shadow-lg">
-          {[
-            { href: '/#servicios', label: 'Servicios' },
-            { href: '/#opiniones', label: 'Opiniones' },
-            { href: '/catalogo', label: 'Catálogo' },
-            { href: '/nosotros', label: 'Nosotros' },
-            { href: '/contacto', label: 'Contacto' },
-          ].map(({ href, label }) => (
+        <div className="xl:hidden bg-white border-t border-gray-100 px-6 pb-5 pt-3 flex flex-col gap-4 shadow-lg">
+          {MOBILE_LINKS.map(({ href, label }) => (
             <a
               key={href}
               href={href}
-              className="text-[15px] font-medium text-[#2b3567] hover:text-[#193595] transition-colors"
+              className="text-[16px] font-semibold text-[#0a1133] hover:text-[#193595] transition-colors"
               onClick={() => setMenuOpen(false)}
             >
               {label}
