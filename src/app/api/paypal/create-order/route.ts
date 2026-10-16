@@ -9,6 +9,8 @@ const schema = z.object({
   amount: z.number().positive(),
 })
 
+const MIN_PAYMENT: Record<string, number> = { USD: 10, PEN: 37 }
+
 export async function POST(request: NextRequest) {
   // Verify session from cookies
   const supabaseAuth = createServerClient(
@@ -48,6 +50,12 @@ export async function POST(request: NextRequest) {
   const pending = Number(charge.amount) - Number(charge.amount_paid)
   if (amount > pending + 0.01) {
     return NextResponse.json({ error: 'El monto excede el saldo pendiente' }, { status: 400 })
+  }
+
+  const minRequired = Math.min(MIN_PAYMENT[charge.currency] ?? 10, pending)
+  if (amount < minRequired - 0.01) {
+    const minLabel = charge.currency === 'USD' ? 'USD $10.00' : 'S/ 37.00'
+    return NextResponse.json({ error: `El monto mínimo de abono es de ${minLabel}` }, { status: 400 })
   }
 
   const order = await createPayPalOrder(amount, charge.currency, chargeId)

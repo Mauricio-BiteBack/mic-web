@@ -16,6 +16,9 @@ function formatCurrency(amount: number, currency: string) {
 
 const PAYPAL_CLIENT_ID = (process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID ?? '').trim()
 
+// Minimum payment amount per currency (USD $10 / PEN S/.37 ≈ equivalent)
+const MIN_PAYMENT: Record<string, number> = { USD: 10, PEN: 37 }
+
 export default function PayPalPayment({ chargeId, pendingAmount, currency }: Props) {
   const router = useRouter()
   const [amount, setAmount] = useState(pendingAmount.toFixed(2))
@@ -23,8 +26,14 @@ export default function PayPalPayment({ chargeId, pendingAmount, currency }: Pro
   const [payError, setPayError] = useState<string | null>(null)
   const [loading, setLoading] = useState(false)
 
+  // Effective minimum: if the full pending debt is less than the minimum, require the full amount
+  const minRequired = Math.min(MIN_PAYMENT[currency] ?? 10, pendingAmount)
+  const minLabel = pendingAmount < (MIN_PAYMENT[currency] ?? 10)
+    ? formatCurrency(pendingAmount, currency)
+    : currency === 'USD' ? 'USD $10.00' : 'S/ 37.00'
+
   const numAmount = Number(amount)
-  const isValidAmount = numAmount > 0 && numAmount <= pendingAmount + 0.01
+  const isValidAmount = numAmount >= minRequired - 0.01 && numAmount <= pendingAmount + 0.01
 
   function handleAmountChange(e: React.ChangeEvent<HTMLInputElement>) {
     setAmountError(null)
@@ -36,6 +45,10 @@ export default function PayPalPayment({ chargeId, pendingAmount, currency }: Pro
     const n = Number(amount)
     if (isNaN(n) || n <= 0) {
       setAmountError('Ingresa un monto válido')
+      return false
+    }
+    if (n < minRequired - 0.01) {
+      setAmountError(`El monto mínimo de abono es de ${minLabel}`)
       return false
     }
     if (n > pendingAmount + 0.01) {
@@ -66,15 +79,17 @@ export default function PayPalPayment({ chargeId, pendingAmount, currency }: Pro
               value={amount}
               onChange={handleAmountChange}
               onBlur={validateAmount}
-              min="0.01"
+              min={minRequired.toFixed(2)}
               max={pendingAmount.toFixed(2)}
               step="0.01"
               className="w-full pl-10 pr-4 py-3 rounded-xl border border-[#e5e7eb] bg-[#f6f7fb] text-[#0a1133] focus:outline-none focus:ring-2 focus:ring-[#E8078B]/30 focus:border-[#E8078B] transition text-sm"
             />
           </div>
-          {amountError && (
+          {amountError ? (
             <p className="text-xs text-red-600 mt-1">{amountError}</p>
-          )}
+          ) : pendingAmount >= (MIN_PAYMENT[currency] ?? 10) ? (
+            <p className="text-xs text-[#6a7196] mt-1">Mínimo de abono: {minLabel}</p>
+          ) : null}
           <div className="flex gap-2 mt-2">
             <button
               onClick={() => { setAmount(pendingAmount.toFixed(2)); setAmountError(null) }}
@@ -88,6 +103,13 @@ export default function PayPalPayment({ chargeId, pendingAmount, currency }: Pro
         {payError && (
           <div className="bg-red-50 border border-red-200 rounded-xl px-4 py-3 text-sm text-red-700">
             {payError}
+          </div>
+        )}
+
+        {/* Inline alert when amount is below minimum */}
+        {!isValidAmount && !amountError && numAmount > 0 && (
+          <div className="bg-amber-50 border border-amber-200 rounded-xl px-4 py-3 text-sm text-amber-800">
+            El monto mínimo de abono es de {minLabel}
           </div>
         )}
 
