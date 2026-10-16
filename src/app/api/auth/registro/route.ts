@@ -9,6 +9,7 @@ const schema = z.object({
   contact_name: z.string().default(''),
   ruc: z.string().optional(),
   currency: z.enum(['USD', 'PEN']).default('USD'),
+  odoo_partner_id: z.string().nullable().optional(),
 })
 
 export async function POST(request: NextRequest) {
@@ -18,7 +19,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: 'Datos inválidos' }, { status: 400 })
   }
 
-  const { email, password, company_name, contact_name, ruc, currency } = parsed.data
+  const { email, password, company_name, contact_name, ruc, currency, odoo_partner_id } = parsed.data
 
   const supabase = createClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -57,6 +58,7 @@ export async function POST(request: NextRequest) {
       ruc: ruc || null,
       currency,
       active: false,
+      ...(odoo_partner_id ? { odoo_partner_id } : {}),
     })
     .eq('id', newUser.user.id)
 

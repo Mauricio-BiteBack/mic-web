@@ -3,11 +3,14 @@
 import { useState } from 'react'
 
 type Step = 'form' | 'pending'
+type LoadingState = 'idle' | 'validating' | 'registering'
+type ErrorType = 'crm_not_found' | 'service_error' | 'generic' | null
 
 export default function RegistroForm() {
   const [step, setStep] = useState<Step>('form')
-  const [loading, setLoading] = useState(false)
+  const [loadingState, setLoadingState] = useState<LoadingState>('idle')
   const [error, setError] = useState<string | null>(null)
+  const [errorType, setErrorType] = useState<ErrorType>(null)
   const [form, setForm] = useState({
     email: '',
     password: '',
@@ -17,34 +20,84 @@ export default function RegistroForm() {
     currency: 'USD',
   })
 
+  const loading = loadingState !== 'idle'
+
   function set(field: string, value: string) {
     setForm(prev => ({ ...prev, [field]: value }))
     setError(null)
+    setErrorType(null)
+  }
+
+  function setErr(msg: string, type: ErrorType) {
+    setError(msg)
+    setErrorType(type)
+    setLoadingState('idle')
   }
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
     if (form.password.length < 8) {
-      setError('La contraseña debe tener al menos 8 caracteres')
+      setErr('La contraseña debe tener al menos 8 caracteres', 'generic')
       return
     }
-    setLoading(true)
+
     setError(null)
+    setErrorType(null)
 
-    const res = await fetch('/api/auth/registro', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(form),
-    })
-    const data = await res.json()
-    setLoading(false)
+    // Step 1: validate email against Odoo CRM via n8n
+    setLoadingState('validating')
+    let odoo_partner_id: string | null = null
 
-    if (!res.ok) {
-      setError(data.error || 'Error al crear la cuenta')
+    try {
+      const validationRes = await fetch('/api/auth/validate-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: form.email }),
+      })
+
+      if (validationRes.status === 504) {
+        setErr('No pudimos verificar tu correo en este momento. Por favor reintenta en unos minutos o contacta a soporte.', 'service_error')
+        return
+      }
+
+      if (!validationRes.ok) {
+        setErr('No pudimos verificar tu correo en este momento. Por favor reintenta en unos minutos o contacta a soporte.', 'service_error')
+        return
+      }
+
+      const validation = await validationRes.json()
+
+      if (!validation.valid) {
+        setErr('crm_not_found', 'crm_not_found')
+        return
+      }
+
+      odoo_partner_id = validation.odoo_partner_id ? String(validation.odoo_partner_id) : null
+    } catch {
+      setErr('No pudimos verificar tu correo en este momento. Por favor reintenta en unos minutos o contacta a soporte.', 'service_error')
       return
     }
 
-    setStep('pending')
+    // Step 2: create account in Supabase
+    setLoadingState('registering')
+
+    try {
+      const res = await fetch('/api/auth/registro', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...form, odoo_partner_id }),
+      })
+      const data = await res.json()
+
+      if (!res.ok) {
+        setErr(data.error || 'Error al crear la cuenta', 'generic')
+        return
+      }
+
+      setStep('pending')
+    } catch {
+      setErr('Error de conexión. Por favor reintenta.', 'generic')
+    }
   }
 
   if (step === 'pending') {
@@ -61,11 +114,17 @@ export default function RegistroForm() {
         </p>
         <p className="text-xs text-[#6a7196] mt-3">
           ¿Dudas? Escríbenos a{' '}
-          <a href="mailto:info@mic.pe" className="text-[#193595] hover:underline">info@mic.pe</a>
+          <a href="mailto:soporte@mic.pe" className="text-[#193595] hover:underline">soporte@mic.pe</a>
         </p>
       </div>
     )
   }
+
+  const mailtoHref = `mailto:soporte@mic.pe?subject=${encodeURIComponent(
+    `Solicitud de Acceso al Portal de Clientes - ${form.email}`
+  )}&body=${encodeURIComponent(
+    `Hola equipo de soporte,\n\nSoy representante de la empresa ${form.company_name || '[mi empresa]'} y deseo solicitar el acceso al portal de clientes para el correo ${form.email}.\n\nPor favor su ayuda habilitando mi cuenta.\n\nSaludos.`
+  )}`
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
@@ -127,13 +186,17 @@ export default function RegistroForm() {
 
       <div className="grid grid-cols-2 gap-3">
         <div>
-          <label className="block text-sm font-medium text-[#0a1133] mb-1.5">RUC</label>
+          <label className="block text-sm font-medium text-[#0a1133] mb-1.5">
+            Tax ID / RUC / Doc. Identidad
+            {form.currency === 'PEN' && <span className="text-red-500 ml-0.5">*</span>}
+          </label>
           <input
             type="text"
             value={form.ruc}
             onChange={e => set('ruc', e.target.value)}
-            placeholder="20XXXXXXXXX"
-            maxLength={11}
+            placeholder={form.currency === 'PEN' ? '20XXXXXXXXX' : 'Opcional'}
+            maxLength={20}
+            required={form.currency === 'PEN'}
             className={inputCls}
           />
         </div>
@@ -146,7 +209,25 @@ export default function RegistroForm() {
         </div>
       </div>
 
-      {error && (
+      {error && errorType === 'crm_not_found' && (
+        <div className="bg-amber-50 border border-amber-200 rounded-xl px-4 py-3 text-sm text-amber-800">
+          <p className="font-medium mb-1">Correo no encontrado en nuestro sistema</p>
+          <p className="text-xs text-amber-700 mb-3">
+            Tu correo electrónico no está registrado como cliente internacional en nuestro CRM. Si ya eres cliente MIC, contacta a soporte para habilitar tu acceso.
+          </p>
+          <a
+            href={mailtoHref}
+            className="inline-flex items-center gap-1.5 px-3 py-2 bg-amber-700 hover:bg-amber-800 text-white text-xs font-semibold rounded-lg transition-colors"
+          >
+            <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+            Contactar soporte vía email
+          </a>
+        </div>
+      )}
+
+      {error && errorType !== 'crm_not_found' && (
         <div className="bg-red-50 border border-red-200 rounded-xl px-4 py-3 text-sm text-red-700">
           {error}
         </div>
@@ -157,7 +238,9 @@ export default function RegistroForm() {
         disabled={loading}
         className="w-full py-3 bg-[#E8078B] hover:bg-[#ff1e9f] disabled:opacity-50 text-white font-semibold rounded-xl transition-colors text-sm shadow-[0_4px_14px_rgba(232,7,139,0.35)]"
       >
-        {loading ? 'Enviando solicitud…' : 'Solicitar acceso'}
+        {loadingState === 'validating' && 'Verificando cuenta…'}
+        {loadingState === 'registering' && 'Enviando solicitud…'}
+        {loadingState === 'idle' && 'Solicitar acceso'}
       </button>
     </form>
   )
