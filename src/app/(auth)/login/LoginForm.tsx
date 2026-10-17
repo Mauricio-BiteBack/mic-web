@@ -38,29 +38,20 @@ export default function LoginForm() {
     const password = (form.elements.namedItem('password') as HTMLInputElement).value
 
     const supabase = createClient()
-    const { data, error: authError } = await supabase.auth.signInWithPassword({ email, password })
+    const { error: authError } = await supabase.auth.signInWithPassword({ email, password })
 
-    if (authError || !data.user) {
+    if (authError) {
       setError('Email o contraseña incorrectos')
       setPending(false)
       return
     }
 
-    const { data: profile } = await supabase
-      .from('profiles')
-      .select('role, active')
-      .eq('id', data.user.id)
-      .single()
-
-    if (profile && !profile.active) {
-      await supabase.auth.signOut()
-      setError('Tu cuenta está desactivada. Contacta a soporte.')
-      setPending(false)
-      return
-    }
-
-    const dest = redirectParam || (profile?.role === 'admin' ? '/admin' : '/portal')
-    window.location.href = dest
+    // Delegate role-based redirect to a server-side endpoint that uses the
+    // service role key (bypasses RLS). Admins will always land on /admin
+    // regardless of any redirectParam — this prevents a stale ?redirect=/portal
+    // in the URL from trapping an admin in the client portal.
+    const fallback = redirectParam && redirectParam.startsWith('/portal') ? redirectParam : '/portal'
+    window.location.href = `/api/auth/redirect?fallback=${encodeURIComponent(fallback)}`
   }
 
   return (
