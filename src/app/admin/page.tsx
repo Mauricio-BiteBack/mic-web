@@ -32,12 +32,14 @@ export default async function AdminDashboard() {
     { count: totalClients },
     { count: activeClients },
     { count: pendingCharges },
+    { count: paymentsToVerify },
     { data: paymentsThisMonth },
     { data: recentCharges },
   ] = await Promise.all([
     supabase.from('profiles').select('*', { count: 'exact', head: true }).eq('role', 'client'),
     supabase.from('profiles').select('*', { count: 'exact', head: true }).eq('role', 'client').eq('active', true),
     supabase.from('charges').select('*', { count: 'exact', head: true }).in('status', ['pendiente', 'parcial', 'vencido']),
+    supabase.from('payments').select('*', { count: 'exact', head: true }).eq('status', 'pending'),
     supabase.from('payments').select('amount, currency').eq('status', 'completed').gte('paid_at', firstOfMonth),
     supabase.from('charges')
       .select('id, description, amount, amount_paid, currency, status, due_date, profiles(company_name, contact_name)')
@@ -93,6 +95,23 @@ export default async function AdminDashboard() {
           color="text-green-600"
         />
       </div>
+
+      {/* Payments to verify alert */}
+      {(paymentsToVerify ?? 0) > 0 && (
+        <a href="/admin/conciliacion" className="block mb-8">
+          <div className="bg-amber-50 border border-amber-200 rounded-2xl p-4 flex items-center justify-between hover:bg-amber-100 transition-colors">
+            <div className="flex items-center gap-3">
+              <span className="w-2.5 h-2.5 rounded-full bg-amber-500 animate-pulse shrink-0" />
+              <div>
+                <p className="text-sm font-semibold text-amber-900">
+                  {paymentsToVerify} pago{(paymentsToVerify ?? 0) !== 1 ? 's' : ''} pendiente{(paymentsToVerify ?? 0) !== 1 ? 's' : ''} de conciliación
+                </p>
+                <p className="text-xs text-amber-700 mt-0.5">Ir a Conciliación para aprobar o rechazar →</p>
+              </div>
+            </div>
+          </div>
+        </a>
+      )}
 
       {/* Recent charges */}
       <div className="bg-white rounded-2xl border border-[#e5e7eb] overflow-hidden">
