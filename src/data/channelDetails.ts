@@ -134,15 +134,6 @@ export const CHANNEL_DETAILS: Record<string, ChannelDetail> = {
     videoUrls: [yt('https://youtu.be/NsoiN7t1O6Q')],
     specs: [{ label: 'Código', value: 'Perú Go TV' }],
   },
-  'memorias-tv': {
-    longDesc: `El canal 24/7 con los mejores videos de la música romántica de los años 1960s, 1970s, 1980s y 1990s. Una selección inigualable de baladas, boleros y canciones que marcaron generaciones enteras en toda Latinoamérica.`,
-    videoUrls: [yt('https://youtu.be/m9v8xGBDXs0')],
-    specs: [
-      { label: 'Código', value: 'Memorias TV' },
-      { label: 'Distribución', value: 'Latinoamérica' },
-      { label: 'Tecnología', value: 'IP' },
-    ],
-  },
   'memorias-classic': {
     longDesc: `Los mejores videos clásicos del pop y rock en inglés de los maravillosos años 80s y 90s. Una ventana a la época dorada de la música anglosajona, con los grandes éxitos que siguen sonando a través del tiempo.`,
     videoUrls: [yt('https://youtu.be/K7cxNkPon7c')],
@@ -270,12 +261,6 @@ export const CHANNEL_DETAILS: Record<string, ChannelDetail> = {
     longDesc: `El mundo cambia cada segundo, y France 24 te mantiene un paso adelante. Con una cobertura informativa las 24 horas del día, el canal ofrece noticias de última hora, análisis especializados, entrevistas exclusivas y reportajes desde los lugares donde ocurre la noticia. Gracias a su amplia red de corresponsales internacionales, France 24 brinda una visión global de los acontecimientos más importantes en política, economía, ciencia, tecnología, cultura y sociedad, con el rigor periodístico que lo ha convertido en una de las cadenas informativas más respetadas a nivel internacional.`,
     videoUrls: [yt('https://youtu.be/yCm7BnUsHqs?si=FcVM4w8lJ72QMz7t')],
     specs: [{ label: 'Código', value: 'France 24' }],
-  },
-  'oracion-con-son': {
-    displayCategory: 'Música Cristiana',
-    longDesc: `Oración con Son es el canal donde la fe cobra vida a través de la música. Una propuesta dedicada a la alabanza, la adoración y los conciertos cristianos que elevan el espíritu y conectan al oyente con lo eterno.\n\nCon una programación cuidadosamente seleccionada, reúne lo mejor de la música cristiana contemporánea y tradicional, desde conciertos en vivo hasta videoclips de artistas que llevan el mensaje de esperanza, amor y fe a todos los rincones del mundo. Porque la música es la oración que más alto llega.`,
-    videoUrls: [yt('https://youtu.be/yCm7BnUsHqs?si=FcVM4w8lJ72QMz7t')],
-    specs: [{ label: 'Código', value: 'Oración con Son' }],
   },
   'aliento-vision': {
     longDesc: `Somos una cadena de televisión en español, enfocada en transmitir aliento, fe y esperanza en un mundo plagado de dificultades, con el fin de fortalecer la familia y el matrimonio.\n\nNuestra meta es impactar al mundo con el mensaje cristiano de aliento, esperanza y fe con una programación edificante, inspiradora, educativa, informativa y divertida.`,
@@ -510,14 +495,6 @@ export const CHANNEL_DETAILS: Record<string, ChannelDetail> = {
     videoUrls: [yt('https://youtu.be/yaisTcE0KTg')],
     specs: [{ label: 'Código', value: 'Animotion' }],
   },
-  'radio-carioca-tv': {
-    longDesc: `Radio Carioca es un canal musical dedicado a celebrar la riqueza de la música y la cultura brasileña a través de una programación dinámica y entretenida. Con una propuesta única en español, ofrece una combinación de videoclips, especiales musicales, biografías de artistas, contenido exclusivo detrás de cámaras y cobertura de los eventos más emblemáticos de Brasil.\n\nEntre sus principales atractivos destaca la cobertura especial del famoso Carnaval de Río de Janeiro, acercando a la audiencia toda la energía, color y tradición de una de las festividades más importantes del mundo.\n\nRadio Carioca es una ventana al ritmo, la cultura y la pasión de Brasil, diseñada para conectar a los espectadores con los artistas, historias y sonidos que han marcado generaciones.`,
-    videoUrls: [yt('https://youtu.be/2dw1o6jnB5I')],
-    specs: [
-      { label: 'Contenido', value: 'Musicales · Biografías · Backstage · Carnaval de Río de Janeiro' },
-      { label: 'Tecnología', value: 'IP' },
-    ],
-  },
   'rfi': {
     longDesc: `RFI (Radio France Internationale) es una reconocida emisora internacional que conecta a sus oyentes con la actualidad del mundo a través de noticias, análisis, cultura y contenidos de interés global. Con una cobertura informativa confiable y una mirada internacional, RFI ofrece programación en múltiples idiomas, acercando a las audiencias a los acontecimientos más relevantes de política, economía, sociedad y cultura. Una señal pensada para quienes buscan información de calidad, perspectiva global y conexión con el mundo sin fronteras.`,
     videoUrls: [yt('https://youtu.be/Kbf5NnHh9OU?si=Dm1ZjY6Yq13zRFn5')],
@@ -533,14 +510,6 @@ export const CHANNEL_DETAILS: Record<string, ChannelDetail> = {
     videoUrls: [yt('https://youtu.be/bko0izo7P1k')],
     specs: [
       { label: 'Código', value: 'Entertainment Play Classic' },
-      { label: 'Tecnología', value: 'IP' },
-    ],
-  },
-  'cine-d': {
-    displayCategory: 'Cine Religioso',
-    longDesc: `Cine D: Películas que Iluminan el Alma\n\nEn Cine D, te ofrecemos una selección única de películas que nos acercan a la fe y la espiritualidad. Disfruta de historias inspiradas en la Biblia, películas sobre Jesús, y contenidos cristianos que te conectarán con el mensaje de esperanza y amor.\n\nNuestro canal es el lugar ideal para quienes buscan entretenimiento enriquecedor, con historias que edifican, testimonios de fe, y películas religiosas que transforman vidas. Desde clásicos cristianos hasta producciones modernas, Cine D trae a la pantalla grandes relatos basados en los principios y valores cristianos.\n\nCon Cine D, no solo verás una película; vivirás una experiencia que te acerca más a la palabra de Dios.\n\n¡Únete a nuestra comunidad y deja que el cine te guíe en el camino de la fe!`,
-    specs: [
-      { label: 'Código', value: 'Cine D' },
       { label: 'Tecnología', value: 'IP' },
     ],
   },
