@@ -100,17 +100,17 @@ export default function EventsGallery() {
   );
 
   return (
-    <section className="py-20 px-6 bg-[#f6f7fb]">
+    <section className="py-20 px-6 bg-[#841F89]" style={{ background: 'linear-gradient(160deg, #841F89 0%, #5e1462 100%)' }}>
       <div className="max-w-[1240px] mx-auto">
         <div className="max-w-[640px] mb-12">
-          <span className="inline-flex items-center gap-2 text-[12px] font-semibold tracking-[0.14em] uppercase text-[#E8078B] mb-3">
-            <span className="w-5 h-[2px] bg-[#E8078B] rounded-full" />
+          <span className="inline-flex items-center gap-2 text-[12px] font-semibold tracking-[0.14em] uppercase text-white/80 mb-3">
+            <span className="w-5 h-[2px] bg-white/80 rounded-full" />
             Eventos
           </span>
-          <h2 className="text-[clamp(26px,3vw,40px)] font-bold tracking-[-0.025em] text-[#0a1133]">
+          <h2 className="text-[clamp(26px,3vw,40px)] font-bold tracking-[-0.025em] text-white">
             Nuestra participación en eventos.
           </h2>
-          <p className="text-[16px] text-[#6a7196] leading-relaxed mt-3">
+          <p className="text-[16px] text-white/75 leading-relaxed mt-3">
             Año tras año acompañamos a la industria en las ferias y encuentros más importantes del sector.
           </p>
         </div>
@@ -132,7 +132,7 @@ export default function EventsGallery() {
                 {/* Main photo */}
                 <button
                   onClick={() => setOpen({ event, index: 0 })}
-                  className={`group relative lg:col-span-7 aspect-[16/10] rounded-[20px] overflow-hidden bg-[#0D1E6B] cursor-pointer text-left ${i % 2 ? 'lg:order-2' : ''}`}
+                  className={`group relative lg:col-span-7 aspect-[16/10] rounded-[20px] overflow-hidden bg-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.25)] cursor-pointer text-left ${i % 2 ? 'lg:order-2' : ''}`}
                 >
                   <Image
                     src={photoSrc(event.slug, cover.n)}
@@ -159,7 +159,7 @@ export default function EventsGallery() {
                       <button
                         key={p.n}
                         onClick={() => setOpen({ event, index: j + 1 })}
-                        className="group relative aspect-square rounded-[12px] overflow-hidden bg-[#e4e7f2] cursor-pointer"
+                        className="group relative aspect-square rounded-[12px] overflow-hidden bg-white/10 cursor-pointer"
                         aria-label={`${event.name} ${event.year} — foto ${j + 2}`}
                       >
                         <Image
@@ -170,7 +170,7 @@ export default function EventsGallery() {
                           className="object-cover transition-transform duration-300 group-hover:scale-105"
                         />
                         {last && (
-                          <span className="absolute inset-0 bg-[#0D1E6B]/70 text-white text-[20px] font-bold flex items-center justify-center">
+                          <span className="absolute inset-0 bg-[#3d0b40]/70 text-white text-[20px] font-bold flex items-center justify-center">
                             +{extra}
                           </span>
                         )}
