@@ -5,6 +5,7 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import PageShell from '@/components/PageShell';
+import EventsGallery from '@/components/EventsGallery';
 import { TOTAL_CHANNELS } from '@/data/channels';
 
 const STATS = [
@@ -242,6 +243,8 @@ export default function NosotrosPage() {
           </div>
         </div>
       </section>
+
+      <EventsGallery />
 
       {/* CTA */}
       <section className="py-20 px-6 bg-[#193595] text-white">
