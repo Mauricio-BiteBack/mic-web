@@ -64,6 +64,7 @@ export default function RPPBanner() {
                 src={b.src}
                 alt={b.alt}
                 fill
+                sizes="100vw"
                 className="object-cover"
                 priority={i === 0}
               />

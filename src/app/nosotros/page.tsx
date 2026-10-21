@@ -81,6 +81,7 @@ export default function NosotrosPage() {
           src="/nosotros-banner.jpg"
           alt=""
           fill
+          sizes="100vw"
           className="object-cover object-center"
           style={{ zIndex: -20 }}
           priority

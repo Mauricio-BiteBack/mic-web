@@ -29,6 +29,8 @@ function ChannelCard({ ch }: { ch: Channel }) {
           <img
             src={ch.imageUrl}
             alt={ch.name}
+            loading="lazy"
+            decoding="async"
             className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 hover:scale-105"
           />
         ) : (
@@ -140,6 +142,7 @@ function CatalogoContent() {
           src="/banner-catalogo.jpg"
           alt=""
           fill
+          sizes="100vw"
           className="object-cover object-center"
           style={{ zIndex: -20 }}
           priority
