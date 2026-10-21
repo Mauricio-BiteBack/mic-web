@@ -147,7 +147,7 @@ export default function MicCarrierPage() {
       {/* 1. Banner Principal */}
       <section className="text-white py-24 px-6 relative overflow-hidden">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/mic-carrier-banner.png" alt="" aria-hidden="true" className="absolute inset-0 w-full h-full object-cover object-center" style={{ zIndex: -20 }} />
+        <img src="/mic-carrier-banner.webp" alt="" aria-hidden="true" className="absolute inset-0 w-full h-full object-cover object-center" style={{ zIndex: -20 }} />
         <div className="absolute inset-0" style={{ zIndex: -10, background: 'linear-gradient(90deg, rgba(10,17,51,0.72) 0%, rgba(10,17,51,0.38) 45%, rgba(10,17,51,0.08) 68%, transparent 88%)' }} />
         <div className="absolute inset-0 pointer-events-none" style={{ zIndex: -5, background: `radial-gradient(600px 460px at 8% 88%, ${FUCSIA}40, transparent 70%), radial-gradient(480px 380px at 32% 4%, ${AZUL}30, transparent 70%)` }} />
 
@@ -206,7 +206,7 @@ export default function MicCarrierPage() {
       {/* 2. ¿Qué ofrecemos? */}
       <section className="py-20 px-6 relative overflow-hidden">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/mic-carrier-infra-bg.png" alt="" aria-hidden="true" className="absolute inset-0 w-full h-full object-cover object-center" style={{ zIndex: -20 }} />
+        <img src="/mic-carrier-infra-bg.webp" alt="" aria-hidden="true" className="absolute inset-0 w-full h-full object-cover object-center" style={{ zIndex: -20 }} />
         <div className="absolute inset-0" style={{ zIndex: -10, background: `${MORADO}99` }} />
         <div className="absolute inset-0 pointer-events-none" style={{ zIndex: -5, background: `radial-gradient(600px 460px at 92% 0%, ${FUCSIA}4d, transparent 70%), radial-gradient(500px 400px at 4% 100%, ${AZUL}33, transparent 70%)` }} />
         <div className="max-w-[1240px] mx-auto relative">
@@ -452,7 +452,7 @@ export default function MicCarrierPage() {
       {/* 7. ¿Por qué elegir MIC? */}
       <section className="py-20 px-6 relative overflow-hidden">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/mic-carrier-why-bg.png" alt="" aria-hidden="true" className="absolute inset-0 w-full h-full object-cover object-center" style={{ zIndex: -20 }} />
+        <img src="/mic-carrier-why-bg.webp" alt="" aria-hidden="true" className="absolute inset-0 w-full h-full object-cover object-center" style={{ zIndex: -20 }} />
         <div className="absolute inset-0" style={{ zIndex: -10, background: 'rgba(10,17,51,0.5)' }} />
         <div className="absolute inset-0 pointer-events-none" style={{ zIndex: -5, background: `radial-gradient(600px 460px at 95% 100%, ${FUCSIA}33, transparent 70%), radial-gradient(500px 400px at 0% 0%, ${MORADO}2e, transparent 70%)` }} />
         <div className="max-w-[1240px] mx-auto relative">

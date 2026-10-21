@@ -12,7 +12,7 @@ const LOGOS = [
   { src: '/win.png', alt: 'WIN' },
   { src: '/mifibra.png', alt: 'Mi Fibra' },
   { src: '/best-cable.png', alt: 'Best Cable' },
-  { src: '/mt-fibra.png', alt: 'MT Fibra' },
+  { src: '/mt-fibra.webp', alt: 'MT Fibra' },
   { src: '/cosmored.png', alt: 'Cosmored' },
   { src: '/aster.png', alt: 'Aster' },
   { src: '/cable-peru.png', alt: 'Cable Perú' },
@@ -24,7 +24,7 @@ const LOGOS = [
   { src: '/win.png', alt: 'WIN' },
   { src: '/mifibra.png', alt: 'Mi Fibra' },
   { src: '/best-cable.png', alt: 'Best Cable' },
-  { src: '/mt-fibra.png', alt: 'MT Fibra' },
+  { src: '/mt-fibra.webp', alt: 'MT Fibra' },
   { src: '/cosmored.png', alt: 'Cosmored' },
   { src: '/aster.png', alt: 'Aster' },
 ];

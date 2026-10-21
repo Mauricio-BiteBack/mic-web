@@ -9,7 +9,7 @@ import { useCotizar } from '@/components/CotizarContext';
 import { CHANNELS, CATEGORIES, BRANDS, Channel, ChannelCategory } from '@/data/channels';
 import { fuzzySearch } from '@/lib/search';
 
-const HERO_BANNERS = ['/banner-canales-ip-1.png', '/banner-canales-ip-2.png'];
+const HERO_BANNERS = ['/banner-canales-ip-1.webp', '/banner-canales-ip-2.webp'];
 const IP_CHANNELS = CHANNELS.filter(ch => ch.type === 'IP');
 
 function ChannelCard({ ch }: { ch: Channel }) {

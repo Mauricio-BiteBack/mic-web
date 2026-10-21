@@ -110,7 +110,7 @@ export default function WhatsAppTestimonials() {
     <section id="opiniones" className="relative w-full aspect-[1902/582] overflow-hidden isolate">
       {/* Background image — section is locked to its native 1902×582 ratio, everything below is sized in vw to always fit inside it */}
       <Image
-        src="/banner-comentarios-cliente.png"
+        src="/banner-comentarios-cliente.webp"
         alt=""
         fill
         className="object-cover -z-30"

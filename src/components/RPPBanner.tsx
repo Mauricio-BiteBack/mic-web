@@ -6,11 +6,11 @@ import Link from 'next/link';
 
 const BANNERS = [
   { src: '/banner-mic-2.webp',        alt: 'Banner MIC — +100 canales en IP' },
-  { src: '/RPP-MIC.png',             alt: 'MIC — Distribuidor Oficial de RPP TV en Perú' },
-  { src: '/banner-fmh.png',          alt: 'Banner MIC — FMH Kids, Family y Movies' },
+  { src: '/RPP-MIC.webp',             alt: 'MIC — Distribuidor Oficial de RPP TV en Perú' },
+  { src: '/banner-fmh.webp',          alt: 'Banner MIC — FMH Kids, Family y Movies' },
   { src: '/banner-4.webp',            alt: 'Banner MIC 4' },
-  { src: '/banner-documentales.png', alt: 'Banner MIC — Documentales' },
-  { src: '/banner-premium.png',      alt: 'Banner MIC — Premium' },
+  { src: '/banner-documentales.webp', alt: 'Banner MIC — Documentales' },
+  { src: '/banner-premium.webp',      alt: 'Banner MIC — Premium' },
 ];
 
 // Clone of the first slide appended at the end so the auto-advance can keep
