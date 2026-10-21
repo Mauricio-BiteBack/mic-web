@@ -5,10 +5,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 const BANNERS = [
-  { src: '/banner-mic-2.png',        alt: 'Banner MIC — +100 canales en IP' },
+  { src: '/banner-mic-2.webp',        alt: 'Banner MIC — +100 canales en IP' },
   { src: '/RPP-MIC.png',             alt: 'MIC — Distribuidor Oficial de RPP TV en Perú' },
   { src: '/banner-fmh.png',          alt: 'Banner MIC — FMH Kids, Family y Movies' },
-  { src: '/banner-4.png',            alt: 'Banner MIC 4' },
+  { src: '/banner-4.webp',            alt: 'Banner MIC 4' },
   { src: '/banner-documentales.png', alt: 'Banner MIC — Documentales' },
   { src: '/banner-premium.png',      alt: 'Banner MIC — Premium' },
 ];

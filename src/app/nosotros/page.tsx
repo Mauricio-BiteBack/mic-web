@@ -20,55 +20,55 @@ const TEAM = [
     name: 'Katya Sagastizabal',
     role: 'CEO & Fundadora',
     bio: 'Katya Sagastizabal es CEO de Manager International Channels (MIC). Lidera la estrategia y expansión de la compañía en Latinoamérica, promoviendo alianzas con operadores de TV paga, IPTV y OTT. Su enfoque en la innovación, la excelencia en el servicio y el desarrollo de nuevos contenidos ha posicionado a MIC como un socio estratégico para la industria audiovisual de la región.',
-    img: '/nosotros-Katya.png',
+    img: '/nosotros-Katya.webp',
   },
   {
     name: 'Emily Rosell',
     role: 'Administradora',
     bio: 'Profesional en administración de empresas con sólidos conocimientos técnicos y valores éticos. Proactiva, organizada y con excelentes relaciones interpersonales.',
-    img: '/nosotros-Emily.png',
+    img: '/nosotros-Emily.webp',
   },
   {
     name: 'Nailuj López Izarra',
     role: 'Ejecutiva Comercial',
     bio: 'Amplia experiencia en telecomunicaciones, señales de TV, digitalización y plataformas IPTV y OTT. Propone soluciones concretas a los desafíos comerciales de cada cliente.',
-    img: '/nosotros-Nailuj.png',
+    img: '/nosotros-Nailuj.webp',
   },
   {
     name: 'Thalia Rodríguez',
     role: 'Ejecutiva Comercial',
     bio: 'Especialista en investigación de mercado y captación de clientes. Experta en digitalización, plataformas IPTV y OTT con enfoque en soluciones a medida para cada operador.',
-    img: '/nosotros-Thalia.png',
+    img: '/nosotros-Thalia.webp',
   },
   {
     name: 'Johanna Gutiérrez',
     role: 'Ejecutiva Comercial',
     bio: 'Especializada en el desarrollo de soluciones comerciales para operadores de TV paga, IPTV y OTT, acompaña a los clientes en la selección e integración de contenidos, ofreciendo asesoría personalizada y un servicio orientado a construir relaciones de confianza y crecimiento mutuo.',
-    img: '/nosotros-Johanna.png',
+    img: '/nosotros-Johanna.webp',
   },
   {
     name: 'Frei Mendoza',
     role: 'Ejecutiva Comercial',
     bio: 'Brinda asesoría personalizada a operadores de TV paga, IPTV y OTT, acompañándolos en la selección e implementación de contenidos que aporten valor a sus plataformas, siempre con un enfoque en la calidad del servicio y la satisfacción del cliente.',
-    img: '/nosotros-Frei.png',
+    img: '/nosotros-Frei.webp',
   },
   {
     name: 'Jhonattan Ocampo',
     role: 'Jefe de Operaciones Técnicas',
     bio: 'Impulsa la innovación tecnológica y la excelencia operativa de la compañía mediante una gestión estratégica y orientada a resultados. Su liderazgo y compromiso con la mejora continua permiten optimizar procesos, fortalecer la infraestructura y garantizar soluciones confiables, eficientes y de alta calidad para operadores de TV paga, IPTV y plataformas OTT en toda Latinoamérica.',
-    img: '/nosotros-Jhonattan.png',
+    img: '/nosotros-Jhonattan.webp',
   },
   {
     name: 'Christian Laura',
     role: 'Ingeniero en Operaciones',
     bio: 'Desempeña un papel clave en la gestión y optimización de los procesos tecnológicos que respaldan la distribución de contenidos audiovisuales. Su experiencia en operaciones, monitoreo e implementación de soluciones contribuye a garantizar servicios eficientes, infraestructura confiable y altos estándares de calidad, impulsando la excelencia operativa de la compañía y el éxito de sus clientes en toda la región.',
-    img: '/nosotros-Christian.png',
+    img: '/nosotros-Christian.webp',
   },
   {
     name: 'Kayra Gonzales',
     role: 'Marketing',
     bio: 'Desarrolla e impulsa estrategias de marketing y comunicación orientadas a fortalecer el posicionamiento de MIC como referente en la distribución de contenidos audiovisuales. Su enfoque combina creatividad, innovación y análisis de mercado para diseñar campañas de alto impacto, potenciar la identidad de la marca y generar conexiones sólidas con operadores de TV paga, IPTV y plataformas OTT, contribuyendo al crecimiento y expansión de la compañía en Latinoamérica.',
-    img: '/nosotros-Kayra.png',
+    img: '/nosotros-Kayra.webp',
   },
 ];
 
@@ -178,7 +178,7 @@ export default function NosotrosPage() {
               <div className="mt-8 flex items-center gap-4 pt-6 border-t border-gray-100">
                 <div className="w-12 h-12 rounded-full overflow-hidden flex-shrink-0 ring-2 ring-[#E8078B]/20">
                   <Image
-                    src="/nosotros-Katya.png"
+                    src="/nosotros-Katya.webp"
                     alt="Katya Sagastizabal"
                     width={48}
                     height={48}
