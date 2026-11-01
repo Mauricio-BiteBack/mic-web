@@ -51,7 +51,7 @@ export default function LibroReclamacionesPage() {
     setSubmitted(true);
   };
 
-  const folio = `MIC-${Date.now().toString().slice(-8)}`;
+  const [folio] = useState(() => `MIC-${Date.now().toString().slice(-8)}`);
 
   return (
     <PageShell>

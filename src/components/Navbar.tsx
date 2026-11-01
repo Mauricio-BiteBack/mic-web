@@ -178,9 +178,9 @@ export default function Navbar({ onOpenCart }: NavbarProps) {
 
                 <div className="mt-3 pt-3 border-t border-gray-100 flex items-center justify-between">
                   <span className="text-[12px] text-[#6a7196]">Explora todos los servicios de MIC</span>
-                  <a href="/#servicios" className="text-[12px] font-semibold text-[#193595] hover:text-[#E8078B] transition-colors flex items-center gap-1">
+                  <Link href="/#servicios" className="text-[12px] font-semibold text-[#193595] hover:text-[#E8078B] transition-colors flex items-center gap-1">
                     Ver todos <span>→</span>
-                  </a>
+                  </Link>
                 </div>
               </div>
             )}

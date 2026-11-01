@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import Link from 'next/link';
 import { TOTAL_CHANNELS } from '@/data/channels';
 
 export default function Hero() {
@@ -49,12 +50,12 @@ export default function Hero() {
               Armar mi paquete
               <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
             </a>
-            <a
+            <Link
               href="/catalogo"
               className="inline-flex items-center gap-2 px-6 py-4 bg-white/10 border border-white/30 text-white text-[15.5px] font-semibold rounded-[12px] backdrop-blur-sm hover:bg-white/18 transition-all duration-200 cursor-pointer"
             >
               Ver catálogo
-            </a>
+            </Link>
           </div>
 
           {/* Metrics */}

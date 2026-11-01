@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo, useEffect, Suspense } from 'react';
+import { useState, useMemo, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
@@ -94,12 +94,7 @@ function CatalogoContent() {
   const searchParams = useSearchParams();
   const [catFilter, setCatFilter] = useState('all');
   const [typeFilter, setTypeFilter] = useState('all');
-  const [search, setSearch] = useState('');
-
-  useEffect(() => {
-    const q = searchParams.get('q');
-    if (q) setSearch(q);
-  }, [searchParams]);
+  const [search, setSearch] = useState(() => searchParams.get('q') ?? '');
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   const [catOpen, setCatOpen] = useState(true);
 

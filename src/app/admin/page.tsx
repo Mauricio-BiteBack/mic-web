@@ -1,4 +1,3 @@
-import { headers } from 'next/headers'
 import { createClient } from '@supabase/supabase-js'
 import Link from 'next/link'
 
@@ -17,9 +16,6 @@ function StatCard({ label, value, sub, href, color }: { label: string; value: st
 }
 
 export default async function AdminDashboard() {
-  const headersList = await headers()
-  const userId = headersList.get('x-user-id')!
-
   const supabase = createClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.SUPABASE_SERVICE_ROLE_KEY!

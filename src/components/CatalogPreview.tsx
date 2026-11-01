@@ -125,13 +125,13 @@ export default function CatalogPreview() {
               Explora contenidos de cine, series, infantiles, noticias, deportes, documentales y mucho más.
             </span>
           </div>
-          <a
+          <Link
             href="/catalogo"
             className="flex-shrink-0 inline-flex items-center gap-2.5 px-8 py-4 bg-[#E8078B] text-white text-[16px] font-bold rounded-[12px] ring-2 ring-white/70 shadow-[0_10px_30px_rgba(232,7,139,0.6)] hover:bg-[#ff1e9f] hover:scale-105 hover:shadow-[0_14px_38px_rgba(232,7,139,0.7)] transition-all duration-200 cursor-pointer group"
           >
             Ver catálogo completo
             <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
-          </a>
+          </Link>
         </div>
       </div>
     </section>

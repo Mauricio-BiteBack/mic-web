@@ -30,7 +30,7 @@ export default function Testimonials() {
               transition={{ duration: 0.5, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
               className="bg-white rounded-[22px] border border-gray-200 p-7 flex flex-col gap-5 shadow-sm hover:shadow-[0_8px_24px_rgba(13,30,107,0.08)] transition-shadow duration-200"
             >
-              <span className="text-[56px] leading-none text-[#E8078B] font-serif select-none">"</span>
+              <span className="text-[56px] leading-none text-[#E8078B] font-serif select-none">&ldquo;</span>
               <blockquote className="text-[15px] text-[#2b3567] leading-relaxed flex-1 -mt-8">
                 {t.quote}
               </blockquote>

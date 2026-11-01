@@ -4,6 +4,7 @@
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import Link from 'next/link';
 import PageShell from '@/components/PageShell';
 import EventsGallery from '@/components/EventsGallery';
 import { TOTAL_CHANNELS } from '@/data/channels';
@@ -259,12 +260,12 @@ export default function NosotrosPage() {
             </p>
           </div>
           <div className="flex flex-wrap gap-3 flex-shrink-0">
-            <a
+            <Link
               href="/#configurador"
               className="inline-flex items-center gap-2 px-7 py-4 bg-[#E8078B] text-white text-[15px] font-semibold rounded-[12px] shadow-[0_6px_18px_rgba(232,7,139,0.4)] hover:bg-[#ff1e9f] transition-all cursor-pointer"
             >
               Armar mi paquete
-            </a>
+            </Link>
             <a
               href="https://wa.me/51991688980?text=Hola%2C%20me%20interesa%20conocer%20el%20cat%C3%A1logo%20de%20MIC."
               target="_blank"

@@ -31,6 +31,8 @@ const CSP = [
 
 const nextConfig: NextConfig = {
   images: {
+    // Cloudflare no tiene el optimizador de imagenes de Vercel: las imagenes ya van comprimidas en public/
+    unoptimized: true,
     deviceSizes: [640, 828, 1080, 1920],
     imageSizes: [32, 96, 256],
     minimumCacheTTL: 2678400, // 31 dias
