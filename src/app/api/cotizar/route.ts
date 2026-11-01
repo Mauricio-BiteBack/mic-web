@@ -15,7 +15,7 @@ const schema = z.object({
   mensaje: z.string().max(3000).optional(),
   origen: z.enum(['contacto', 'cotizacion']).optional(),
   // Honeypot: debe estar vacio; bots lo rellenan
-  _hp: z.string().max(0).optional(),
+  _hp: z.string().optional(),
 })
 
 function esc(str: string): string {
@@ -24,6 +24,7 @@ function esc(str: string): string {
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;')
 }
 
 export async function POST(req: NextRequest) {
