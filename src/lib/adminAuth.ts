@@ -7,9 +7,12 @@ const SESSION_TTL_SECONDS = 12 * 60 * 60; // 12h
 const encoder = new TextEncoder();
 
 function getSecret(): string {
-  const secret = process.env.ADMIN_SESSION_SECRET || process.env.ADMIN_EPG_PASSWORD;
+  const secret = process.env.ADMIN_SESSION_SECRET;
   if (!secret) {
-    throw new Error('ADMIN_SESSION_SECRET or ADMIN_EPG_PASSWORD env var must be set');
+    throw new Error(
+      'ADMIN_SESSION_SECRET env var is required and must be distinct from ADMIN_EPG_PASSWORD. ' +
+      'Generate with: openssl rand -hex 32'
+    );
   }
   return secret;
 }

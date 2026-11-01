@@ -42,7 +42,6 @@ export async function POST(request: NextRequest) {
   const dest = profile?.role === 'admin' ? '/admin' : '/portal'
   const res = NextResponse.json({ ok: true, redirect: dest })
 
-  // Set cookies with SameSite=lax so they are sent on the next navigation
   cookiesToSet.forEach(({ name, value }) => {
     res.cookies.set({
       name,
@@ -50,12 +49,10 @@ export async function POST(request: NextRequest) {
       path: '/',
       httpOnly: true,
       sameSite: 'lax',
-      secure: false, // localhost — no HTTPS
+      secure: process.env.NODE_ENV === 'production',
       maxAge: 60 * 60 * 24 * 7, // 7 days
     })
   })
-
-  console.log('[login] cookies set:', cookiesToSet.map(c => c.name).join(', '))
 
   return res
 }

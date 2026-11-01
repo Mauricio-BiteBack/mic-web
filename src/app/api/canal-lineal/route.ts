@@ -36,7 +36,7 @@ export async function POST(req: NextRequest) {
   });
 
   if (error) {
-    console.error('Resend error:', JSON.stringify(error));
+    console.error('Resend error sending canal-lineal email');
     return NextResponse.json({ ok: false, error }, { status: 500 });
   }
 
