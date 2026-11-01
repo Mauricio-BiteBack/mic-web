@@ -1,16 +1,28 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { ADMIN_SESSION_COOKIE, createSessionToken, verifyPassword } from '@/lib/adminAuth';
+import { rateLimit } from '@/lib/rateLimit';
 
 export async function POST(req: NextRequest) {
+  // Rate limit: max 10 intentos por IP por hora para evitar fuerza bruta
+  const ip =
+    req.headers.get('x-forwarded-for')?.split(',')[0].trim() ??
+    req.headers.get('x-real-ip') ??
+    'unknown';
+
+  const { allowed } = await rateLimit({ action: 'admin-login', identifier: ip, limit: 10 });
+  if (!allowed) {
+    return NextResponse.json({ ok: false, error: 'Demasiados intentos. Espera un momento.' }, { status: 429 });
+  }
+
   const { password } = await req.json().catch(() => ({ password: '' }));
 
   if (typeof password !== 'string' || !password) {
-    return NextResponse.json({ ok: false, error: 'Ingresa una contraseña.' }, { status: 400 });
+    return NextResponse.json({ ok: false, error: 'Ingresa una contrasena.' }, { status: 400 });
   }
 
   const valid = await verifyPassword(password);
   if (!valid) {
-    return NextResponse.json({ ok: false, error: 'Contraseña incorrecta.' }, { status: 401 });
+    return NextResponse.json({ ok: false, error: 'Contrasena incorrecta.' }, { status: 401 });
   }
 
   const token = await createSessionToken();

@@ -1,10 +1,8 @@
 import { Resend } from 'resend';
 import { NextRequest, NextResponse } from 'next/server';
+import { rateLimit } from '@/lib/rateLimit';
 
 const resend = new Resend(process.env.RESEND_API_KEY || 'placeholder');
-
-// Rate limiting: máx 3 envíos por IP por hora
-const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
 
 function esc(str: string): string {
   return str
@@ -38,20 +36,8 @@ export async function POST(req: NextRequest) {
     req.headers.get('x-real-ip') ??
     'unknown';
 
-  const now = Date.now();
-  const entry = rateLimitMap.get(ip);
-  if (entry) {
-    if (now < entry.resetAt) {
-      if (entry.count >= 3) {
-        return NextResponse.json({ ok: false }, { status: 429 });
-      }
-      entry.count++;
-    } else {
-      rateLimitMap.set(ip, { count: 1, resetAt: now + 60 * 60 * 1000 });
-    }
-  } else {
-    rateLimitMap.set(ip, { count: 1, resetAt: now + 60 * 60 * 1000 });
-  }
+  const { allowed } = await rateLimit({ action: 'contacto', identifier: ip, limit: 3 });
+  if (!allowed) return NextResponse.json({ ok: false }, { status: 429 });
 
   const body = await req.json();
   const { nombre, empresa, email, whatsapp, pais, mensaje, _hp, _t } = body;
