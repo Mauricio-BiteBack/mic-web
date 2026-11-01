@@ -1,12 +1,25 @@
 import { redirect } from 'next/navigation'
-import { headers } from 'next/headers'
+import { createServerClient } from '@supabase/ssr'
 import { createClient } from '@supabase/supabase-js'
+import { cookies } from 'next/headers'
 import AdminSidebar from './AdminSidebar'
 
 export default async function AdminLayout({ children }: { children: React.ReactNode }) {
-  const headersList = await headers()
-  const userId = headersList.get('x-user-id')
-  if (!userId) redirect('/login')
+  const cookieStore = await cookies()
+
+  const supabaseAuth = createServerClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    {
+      cookies: {
+        getAll() { return cookieStore.getAll() },
+        setAll() {},
+      },
+    }
+  )
+
+  const { data: { user } } = await supabaseAuth.auth.getUser()
+  if (!user) redirect('/login')
 
   const supabase = createClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -16,7 +29,7 @@ export default async function AdminLayout({ children }: { children: React.ReactN
   const { data: profile } = await supabase
     .from('profiles')
     .select('role, email, contact_name, company_name')
-    .eq('id', userId)
+    .eq('id', user.id)
     .single()
 
   if (!profile || profile.role !== 'admin') redirect('/portal')

@@ -3,10 +3,22 @@ import { createServerClient } from '@supabase/ssr'
 import { createClient } from '@supabase/supabase-js'
 import { cookies } from 'next/headers'
 
+/**
+ * Valida que el destino de redireccion sea una ruta interna:
+ * - Debe empezar por "/"
+ * - No puede empezar por "//" (evita open redirect hacia otros origenes)
+ * - No puede contener ":" (evita javascript: u otros esquemas)
+ */
+function safeInternalPath(raw: string | null, fallback: string): string {
+  if (!raw) return fallback
+  if (!raw.startsWith('/') || raw.startsWith('//') || raw.includes(':')) return fallback
+  return raw
+}
+
 export async function GET(request: Request) {
   const { searchParams, origin } = new URL(request.url)
   const code = searchParams.get('code')
-  const next = searchParams.get('next') ?? '/portal'
+  const next = safeInternalPath(searchParams.get('next'), '/portal')
 
   if (code) {
     const cookieStore = await cookies()
@@ -57,7 +69,7 @@ export async function GET(request: Request) {
           return NextResponse.redirect(`${origin}/sin-acceso?razon=inactivo`)
         }
 
-        // Profile exists — redirect based on role
+        // Profile exists — redirect based on role; admins always go to /admin
         const dest = profile.role === 'admin' ? '/admin' : next
         return NextResponse.redirect(`${origin}${dest}`)
       }

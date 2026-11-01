@@ -64,15 +64,22 @@ export async function POST(request: NextRequest) {
   const paidAmount = Number(captureUnit?.amount?.value ?? 0)
   const currency = captureUnit?.amount?.currency_code ?? 'USD'
 
-  // Get charge to update
-  const { data: charge, error: chargeError } = await supabase
+  // Get charge to update — verify ownership: the charge must belong to the authenticated user
+  const { data: charge } = await supabase
     .from('charges')
     .select('*')
     .eq('id', chargeId)
+    .eq('client_id', userId)
     .single()
 
-  if (chargeError) console.error('Charge query error:', chargeError)
   if (!charge) return NextResponse.json({ error: 'Cobro no encontrado' }, { status: 404 })
+
+  // Verify the PayPal order reference_id matches the chargeId (order was created for this charge)
+  const paypalChargeRef = capture.purchase_units?.[0]?.reference_id
+  if (paypalChargeRef && paypalChargeRef !== chargeId) {
+    console.error('PayPal order reference_id mismatch')
+    return NextResponse.json({ error: 'La orden de pago no corresponde a este cobro' }, { status: 400 })
+  }
 
   // Get profile separately
   const { data: profileRow } = await supabase

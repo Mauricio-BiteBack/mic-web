@@ -1,16 +1,28 @@
 import { redirect } from 'next/navigation'
-import { headers } from 'next/headers'
-import { createClient as createServiceClient } from '@supabase/supabase-js'
+import { createServerClient } from '@supabase/ssr'
+import { createClient } from '@supabase/supabase-js'
+import { cookies } from 'next/headers'
 import PortalSidebar from './PortalSidebar'
 
 export default async function PortalLayout({ children }: { children: React.ReactNode }) {
-  const headersList = await headers()
-  const userId = headersList.get('x-user-id')
+  const cookieStore = await cookies()
 
-  if (!userId) redirect('/login')
+  const supabaseAuth = createServerClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    {
+      cookies: {
+        getAll() { return cookieStore.getAll() },
+        setAll() {},
+      },
+    }
+  )
 
-  // Use service role to bypass RLS — safe because userId comes from verified middleware
-  const supabase = createServiceClient(
+  const { data: { user } } = await supabaseAuth.auth.getUser()
+  if (!user) redirect('/login')
+
+  // Use service role to bypass RLS — userId comes from verified JWT, not a header
+  const supabase = createClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.SUPABASE_SERVICE_ROLE_KEY!
   )
@@ -18,7 +30,7 @@ export default async function PortalLayout({ children }: { children: React.React
   const { data: profile } = await supabase
     .from('profiles')
     .select('*')
-    .eq('id', userId)
+    .eq('id', user.id)
     .single()
 
   if (!profile || !profile.active) redirect('/login')
