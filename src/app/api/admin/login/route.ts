@@ -1,13 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { ADMIN_SESSION_COOKIE, createSessionToken, verifyPassword } from '@/lib/adminAuth';
-import { rateLimit } from '@/lib/rateLimit';
+import { rateLimit, getClientIp } from '@/lib/rateLimit';
 
 export async function POST(req: NextRequest) {
   // Rate limit: max 10 intentos por IP por hora para evitar fuerza bruta
-  const ip =
-    req.headers.get('x-forwarded-for')?.split(',')[0].trim() ??
-    req.headers.get('x-real-ip') ??
-    'unknown';
+  const ip = getClientIp(req);
 
   const { allowed } = await rateLimit({ action: 'admin-login', identifier: ip, limit: 10 });
   if (!allowed) {

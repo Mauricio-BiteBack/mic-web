@@ -11,6 +11,41 @@
  *   no distribuido. Util para reducir spam pero no es una barrera fuerte.
  */
 
+import type { NextRequest } from 'next/server';
+
+/**
+ * Extrae la IP real del cliente de forma segura según el entorno.
+ *
+ * En Vercel (process.env.VERCEL definido):
+ *   - Usa x-real-ip (inyectado por el edge de Vercel, no falsificable).
+ *   - Fallback: primer valor de x-forwarded-for.
+ *   - NUNCA usa cf-connecting-ip: en Vercel esa cabecera puede venir del
+ *     cliente y no es de confianza.
+ *
+ * En Cloudflare Workers / otro (process.env.VERCEL no definido):
+ *   - Usa cf-connecting-ip (Cloudflare la sobreescribe siempre, el cliente
+ *     no puede falsificarla).
+ *   - Fallback: x-real-ip.
+ *
+ * Si no se puede determinar la IP devuelve "unknown". El bucket "unknown"
+ * recibe la mitad del límite configurado (ver rateLimit()).
+ */
+export function getClientIp(req: NextRequest): string {
+  if (process.env.VERCEL) {
+    return (
+      req.headers.get('x-real-ip') ??
+      req.headers.get('x-forwarded-for')?.split(',')[0].trim() ??
+      'unknown'
+    );
+  }
+  // Cloudflare Workers (OpenNext) u otro entorno
+  return (
+    req.headers.get('cf-connecting-ip') ??
+    req.headers.get('x-real-ip') ??
+    'unknown'
+  );
+}
+
 const inMemoryStore = new Map<string, { count: number; resetAt: number }>()
 
 async function upstashIncr(
@@ -64,12 +99,15 @@ export async function rateLimit({
   limit,
   windowMs = 60 * 60 * 1000,
 }: RateLimitOptions): Promise<RateLimitResult> {
+  // Las IPs desconocidas comparten un único bucket; aplicar límite más estricto
+  // para que ese bucket compartido no sea un vector de bypass.
+  const effectiveLimit = identifier === 'unknown' ? Math.max(1, Math.floor(limit / 2)) : limit;
   const key = `rl:${action}:${identifier}`
 
   // Intentar con Upstash
   const upstash = await upstashIncr(key, windowMs)
   if (upstash !== null) {
-    return { allowed: upstash.count <= limit, count: upstash.count }
+    return { allowed: upstash.count <= effectiveLimit, count: upstash.count }
   }
 
   // Fallback a Map en memoria
@@ -82,5 +120,5 @@ export async function rateLimit({
   }
 
   entry.count++
-  return { allowed: entry.count <= limit, count: entry.count }
+  return { allowed: entry.count <= effectiveLimit, count: entry.count }
 }

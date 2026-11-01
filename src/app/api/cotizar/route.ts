@@ -1,7 +1,7 @@
 import { Resend } from 'resend';
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
-import { rateLimit } from '@/lib/rateLimit';
+import { rateLimit, getClientIp } from '@/lib/rateLimit';
 
 const resend = new Resend(process.env.RESEND_API_KEY || 'placeholder');
 
@@ -27,10 +27,7 @@ function esc(str: string): string {
 }
 
 export async function POST(req: NextRequest) {
-  const ip =
-    req.headers.get('x-forwarded-for')?.split(',')[0].trim() ??
-    req.headers.get('x-real-ip') ??
-    'unknown'
+  const ip = getClientIp(req)
 
   const { allowed } = await rateLimit({ action: 'cotizar', identifier: ip, limit: 5 })
   if (!allowed) return NextResponse.json({ ok: false }, { status: 429 })
