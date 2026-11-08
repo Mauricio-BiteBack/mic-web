@@ -6,9 +6,17 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: '*',
         allow: '/',
-        disallow: ['/admin', '/portal', '/api', '/auth'],
+        disallow: [
+          '/admin',
+          '/portal',
+          '/api',
+          '/auth',
+          '/forgot-password',
+          '/reset-password',
+          '/sin-acceso',
+        ],
       },
     ],
-    sitemap: `${process.env.NEXT_PUBLIC_APP_URL ?? 'https://mic.pe'}/sitemap.xml`,
+    sitemap: `${process.env.NEXT_PUBLIC_APP_URL ?? 'https://www.mic.pe'}/sitemap.xml`,
   };
 }
