@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 const BANNERS = [
-  { src: '/banner-mic-2.webp',        alt: 'Banner MIC — +100 canales en IP' },
+  { src: '/banner-mic-2.webp',        alt: 'Banner MIC — 96 canales en IP' },
   { src: '/RPP-MIC.webp',             alt: 'MIC — Distribuidor Oficial de RPP TV en Perú' },
   { src: '/banner-fmh.webp',          alt: 'Banner MIC — FMH Kids, Family y Movies' },
   { src: '/banner-4.webp',            alt: 'Banner MIC 4' },

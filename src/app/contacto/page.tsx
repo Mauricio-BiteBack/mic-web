@@ -168,7 +168,7 @@ export default function ContactoPage() {
             {/* Addresses */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {[
-                { city: 'Lima, Perú', address: 'Calle German Shereiber Nro. 210 Urb. Santa Ana, San Isidro' },
+                { city: 'Lima, Perú', address: 'Calle German Schreiber Nro. 210 Urb. Santa Ana, San Isidro' },
                 { city: 'Miami, FL · USA', address: 'FL 33130, Estados Unidos' },
               ].map(loc => (
                 <div key={loc.city} className="bg-white rounded-[14px] border border-gray-200 p-4">

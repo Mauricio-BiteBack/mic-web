@@ -15,11 +15,7 @@ function ChannelCard({ ch }: { ch: Channel }) {
   const cart = useCart();
   const inCart = cart.has(ch.id);
   return (
-    <motion.article
-      initial={{ opacity: 0, y: 16 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-40px' }}
-      transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+    <article
       className="bg-white rounded-[16px] border border-gray-200 overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 flex flex-col"
     >
       {/* Poster — aspect-square to match 308×308 format */}
@@ -84,7 +80,7 @@ function ChannelCard({ ch }: { ch: Channel }) {
           )}
         </button>
       </div>
-    </motion.article>
+    </article>
   );
 }
 
@@ -534,9 +530,72 @@ function CatalogoContent() {
   );
 }
 
+function CatalogoFallback() {
+  return (
+    <PageShell>
+      <section className="relative text-white py-16 px-6 overflow-hidden">
+        <Image
+          src="/banner-catalogo.jpg"
+          alt=""
+          fill
+          sizes="100vw"
+          className="object-cover object-center"
+          style={{ zIndex: -20 }}
+          priority
+        />
+        <div className="absolute inset-0 bg-[#841F89]/75" style={{ zIndex: -10 }} />
+        <div className="max-w-[1240px] mx-auto relative">
+          <span className="inline-flex items-center gap-2 bg-white/10 border border-white/20 px-3.5 py-1.5 rounded-full text-[12px] font-medium mb-5">
+            Catálogo completo
+          </span>
+          <h1 className="text-[clamp(28px,3.5vw,48px)] font-bold leading-tight tracking-[-0.025em] mb-3">
+            {CHANNELS.length} canales disponibles para tu grilla.
+          </h1>
+          <p className="text-white/70 text-[16px] leading-relaxed max-w-[560px]">
+            Filtra por categoría o tipo de distribución. Agrega los que quieras y solicita cotización en segundos.
+          </p>
+        </div>
+      </section>
+      <section className="py-8 px-4 md:px-6 bg-[#f6f7fb]">
+        <div className="max-w-[1240px] mx-auto">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+            {CHANNELS.map(ch => (
+              <Link key={ch.id} href={`/catalogo/${ch.id}`} className="bg-white rounded-[16px] border border-gray-200 overflow-hidden shadow-sm flex flex-col">
+                <div className="relative aspect-square overflow-hidden">
+                  {ch.imageUrl ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      src={ch.imageUrl}
+                      alt={ch.name}
+                      loading="lazy"
+                      decoding="async"
+                      className="absolute inset-0 w-full h-full object-cover"
+                    />
+                  ) : (
+                    <div
+                      className="absolute inset-0 flex items-end p-3"
+                      style={{ background: `linear-gradient(135deg, ${ch.color}, ${ch.dark})` }}
+                    >
+                      <span className="text-white font-bold text-[16px] tracking-tight leading-tight">{ch.name}</span>
+                    </div>
+                  )}
+                </div>
+                <div className="p-3.5">
+                  <p className="text-[13.5px] font-bold text-[#0a1133] leading-tight mb-1">{ch.name}</p>
+                  <p className="text-[11.5px] text-[#6a7196] leading-relaxed line-clamp-2">{ch.desc}</p>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+    </PageShell>
+  );
+}
+
 export default function CatalogoPage() {
   return (
-    <Suspense>
+    <Suspense fallback={<CatalogoFallback />}>
       <CatalogoContent />
     </Suspense>
   );

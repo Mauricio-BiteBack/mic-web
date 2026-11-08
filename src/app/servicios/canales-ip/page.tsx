@@ -129,6 +129,7 @@ export default function CanalesIPPage() {
 
   return (
     <PageShell>
+      <h1 className="sr-only">Canales IP para cableoperadores en Latinoamérica</h1>
       {/* Hero */}
       <section className="relative overflow-hidden">
         <div className="relative w-full aspect-[1440/480]">
