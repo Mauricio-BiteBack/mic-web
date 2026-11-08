@@ -22,6 +22,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL ?? 'https://www.mic.pe'),
   icons: { icon: '/icon-mic.png' },
   title: 'MIC — Canales de TV y tecnología para cableoperadores en LATAM',
   description:

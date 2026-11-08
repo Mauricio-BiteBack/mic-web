@@ -4,6 +4,7 @@ export const metadata: Metadata = {
   title: 'NOC Services y Soporte | MIC',
   description:
     'Aseguramiento, continuidad y soporte técnico especializado para la operación de señales IPTV/OTT.',
+  alternates: { canonical: '/noc-services-y-soporte' },
   openGraph: {
     title: 'NOC Services y Soporte | MIC',
     description: 'Aseguramiento, continuidad y soporte técnico especializado para la operación de señales IPTV/OTT.',

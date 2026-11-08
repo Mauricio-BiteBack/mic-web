@@ -4,6 +4,7 @@ export const metadata: Metadata = {
   title: 'Consultoría, Asesoría y Capacitación IPTV/OTT | MIC',
   description:
     'Soluciones especializadas de ingeniería y arquitectura para implementar, renovar, optimizar o ampliar tu operación IPTV/OTT.',
+  alternates: { canonical: '/consultoria-iptv-ott' },
   openGraph: {
     title: 'Consultoría, Asesoría y Capacitación IPTV/OTT | MIC',
     description: 'Soluciones especializadas de ingeniería y arquitectura para implementar, renovar, optimizar o ampliar tu operación IPTV/OTT.',
