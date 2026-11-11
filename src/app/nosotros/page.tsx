@@ -59,10 +59,10 @@ const TEAM = [
     img: '/nosotros-Jhonattan.png',
   },
   {
-    name: 'Christian Laura',
+    name: 'Carlos Villavicencio',
     role: 'Ingeniero en Operaciones',
-    bio: 'Desempeña un papel clave en la gestión y optimización de los procesos tecnológicos que respaldan la distribución de contenidos audiovisuales. Su experiencia en operaciones, monitoreo e implementación de soluciones contribuye a garantizar servicios eficientes, infraestructura confiable y altos estándares de calidad, impulsando la excelencia operativa de la compañía y el éxito de sus clientes en toda la región.',
-    img: '/nosotros-Christian.png',
+    bio: 'Brinda asistencia técnica y seguimiento personalizado a cada cliente. Encargado de atender incidencias, realizar validaciones técnicas y acompañar a nuestros clientes durante la recepción y operación de las señales, ofreciendo un soporte cercano, eficiente y adaptado a las necesidades de cada operación.',
+    img: '/nosotros-Carlos.webp',
   },
   {
     name: 'Kayra Gonzales',

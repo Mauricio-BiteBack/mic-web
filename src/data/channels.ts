@@ -250,7 +250,7 @@ export const CHANNELS: Channel[] = [
     color: '#059669',
     dark: '#064e3b',
     desc: 'Comedias, dramas y las mejores películas programadas por expertos del cine.',
-    imageUrl: '/Clover Portada.png',
+    imageUrl: '/Clover Nuevo.png',
   },
   {
     id: 'animash',
@@ -447,7 +447,7 @@ export const CHANNELS: Channel[] = [
     color: '#f97316',
     dark: '#7c2d12',
     desc: 'La risa nunca termina. Programas divertidos, bromas y pranks. ¡Humor sin límites!',
-    imageUrl: '/Comedy Channel.png',
+    imageUrl: '/Comedy Channel Nuevo.png',
   },
   {
     id: 'juntos-tv',

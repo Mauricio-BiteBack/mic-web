@@ -1,6 +1,6 @@
 export interface ChannelDetail {
   displayCategory?: string;
-  longDesc: string;
+  longDesc?: string;
   videoUrls?: string[];
   specs?: { label: string; value: string }[];
   epgUrl?: string;
@@ -93,7 +93,7 @@ export const CHANNEL_DETAILS: Record<string, ChannelDetail> = {
   },
   'planeta-salvaje': {
     longDesc: `Feel Salvaje es un canal documental que conecta a la audiencia latinoamericana con la fuerza y belleza de la vida en estado natural. Desde la sabana africana y los grandes depredadores como los leones, hasta los ecosistemas marinos y paisajes imponentes del planeta.\n\nDiseñado para un público amplio que valora el contenido de calidad, presenta producciones que exploran la fauna, la naturaleza y los territorios donde la supervivencia define cada historia. Feel Salvaje es más que un canal de animales; es una ventana al dominio de la naturaleza y a la vida salvaje en su máxima expresión.`,
-    videoUrls: [yt('https://youtu.be/lwkaFCIrbGU')],
+    videoUrls: [yt('https://youtu.be/nJAjKX6fIC4')],
     specs: [{ label: 'Código', value: 'FEEL SALVAJE' }],
   },
   'cajamarca-tv': {
@@ -113,6 +113,7 @@ export const CHANNEL_DETAILS: Record<string, ChannelDetail> = {
   },
   'planeta-historia': {
     longDesc: `Feel Historia es un canal dedicado a explorar los momentos más fascinantes que han marcado a la humanidad. A través de documentales, series y producciones de alta calidad, recorre civilizaciones antiguas, grandes personajes, misterios históricos y acontecimientos que transformaron el mundo, ofreciendo contenido educativo y entretenido para toda la familia.`,
+    videoUrls: [yt('https://youtu.be/a-FbHyLKt1Y')],
     specs: [{ label: 'Código', value: 'FEEL HISTORIA' }],
   },
   'rumbo-minero': {
@@ -165,7 +166,7 @@ export const CHANNEL_DETAILS: Record<string, ChannelDetail> = {
   },
   'chikitoonz': {
     longDesc: `Chiki Toonz es el canal donde la música y la educación se convierten en diversión para los más pequeños. Acompañados de Chiki Pink, Chiki Purple, Chiki Yellow, Chiki Blue y Chiki Orange, los niños en edad preescolar aprenden cantando y bailando con canciones llenas de energía y mensajes positivos.\n\nDesde números, letras, formas y colores, hasta valores que fomentan la creatividad, imaginación y desarrollo emocional, Chiki Toonz transforma cada momento frente a la pantalla en una experiencia educativa única y entretenida.`,
-    videoUrls: [yt('https://youtu.be/0rJZYc0Pasc')],
+    videoUrls: [yt('https://youtu.be/kYgzxf0e4Sc')],
     specs: [{ label: 'Código', value: 'Chikitoonz' }],
     epgUrl: '/programacion/chiki-toonz',
   },
@@ -512,6 +513,9 @@ export const CHANNEL_DETAILS: Record<string, ChannelDetail> = {
       { label: 'Código', value: 'Entertainment Play Classic' },
       { label: 'Tecnología', value: 'IP' },
     ],
+  },
+  'entertainment-play-terror': {
+    videoUrls: [yt('https://youtu.be/K8nglSiXVkk')],
   },
   'ewtn': {
     longDesc: `EWTN es una señal que acompaña a millones de personas alrededor del mundo con contenido que inspira, fortalece la fe y brinda esperanza en el día a día. Con transmisiones de la Santa Misa, mensajes de reflexión, noticias del Vaticano, testimonios, programas familiares y espacios de formación espiritual, EWTN conecta con quienes buscan una televisión con propósito, valores y un mensaje que toque el corazón. Una compañía de fe y esperanza disponible las 24 horas del día.`,
